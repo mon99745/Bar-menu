@@ -1,0 +1,75 @@
+@charset "UTF-8";
+/* 사이드 메뉴리스트 에서 가져옴css */
+
+/* 사이드 메뉴리스트 css */
+
+.p red{
+    float: right;
+    font-family: "Jua", sans-serif;
+    font-size: 15px;
+    background-color: #000000;
+    color: #e80000;
+
+}
+
+c {
+    font-family: "Jua", sans-serif;
+    font-size: 15px;
+    background-color: #000000;
+    color: #fff;
+
+}
+.right-sidebar {
+    width: 140px;
+    height: 100%;
+    float: left;
+}
+
+.left-list ul li label {
+    float: left;
+    text-align: center;
+    width: 130px;
+    height: 60px;
+    padding: 20px;
+    margin: 6px;
+    margin-left: 15px;
+    border-radius: 10px;
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    animation: flicker-box 1.5s infinite alternate;
+    background-color: transparent;
+    font-size: 20px;
+    font-family: "Jua", sans-serif;
+    border: 3px solid #fff;
+    color: #fff;
+    text-transform: uppercase;
+}
+right-list ul li label {
+    float: right;
+    text-align: center;
+    width: 130px;
+    height: 60px;
+    padding: 20px;
+    margin: 6px;
+    margin-left: 15px;
+    border-radius: 10px;
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    animation: flicker-box 1.5s infinite alternate;
+    background-color: transparent;
+    font-size: 20px;
+    font-family: "Jua", sans-serif;
+    border: 3px solid #fff;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#tabletA{
+    border: 20px solid #222;
+    box-sizing: content-box;
+    margin: 0 auto;
+    width: 1100px;
+    height: 600px;
+    border-radius: 25px;
+    background-image: url("벽돌.png");
+}
