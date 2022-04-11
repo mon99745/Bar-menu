@@ -20,13 +20,11 @@
 
     <div class=left-list> <!--=왼쪽 사이드 메뉴 리스트-->
       <ul>
-        <!--로그인시-->
-        <!--                <li>-->
-        <!--                    <button type="button" id="sidebar"><a href="memberLogout.me">로그아웃</a></button>-->
-        <!--                </li>-->
-        <li>
-
-          <button type="button" id="sidebar" onclick="location.href='../memberLogin.me'">로그인</button>
+        <li sec:authorize="isAnonymous()">
+          <button type="button" id="sidebar" onclick="location.href='@{/auth/user/login}'">로그인</button>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+          <button type="button" id="sidebar" onclick="location.href='@{/logout}'">로그아웃</button>
         </li>
         <li>
           <button type="button" id="sidebar" onclick="location.href='../cart/cartOk.html'" >
