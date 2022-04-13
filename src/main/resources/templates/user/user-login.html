@@ -10,14 +10,14 @@
 <body>
 <div id=tablet>
     <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
-        <button class="mainBtn" onClick="@{/}">HOME</button >
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
     </div>
 
     <div id=middle> <!--가운데 레이아웃-->
         <div class=middle-top>
-            <div class=logo href="@{/}"> <!--단타포차 로고-->
+            <div class=logo href="/"> <!--단타포차 로고-->
                 <button type="button" id="logo">
-                    <a href="@{/}">Danta</a>
+                    <a href="/">Danta</a>
                 </button>
 
             </div>
@@ -42,11 +42,14 @@
                     <label for="password"></label>
 
                     <button class="w-100 btn btn-lg btn-success" id="btn-login">로그인</button>
-                </form>
 
+                    <!--회원가입 안내-->
+                    <button id="Signup-Btn" type="button" onclick="location.href='/auth/user/save'">회원가입</button>
 
-                    <input type="button" value="회원가입" onclick="location.href='@{/auth/user/save'"/>
                     <p class="message">아이디 비밀번호를 잊으셨나요?<a href="#">Id/Pw 찾기</a></p>
+
+                </form>
+<!--                    <input type="button" value="회원가입" onclick="location.href='@{/auth/user/save}'"/>-->
             </div>
         </div>
 
@@ -57,5 +60,8 @@
 
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/user.js}"></script>
 </body>
 </html>
