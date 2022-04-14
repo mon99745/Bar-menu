@@ -64,8 +64,8 @@ var colorPalette = [
 var noname = '이름 없음';
 var font = '32px Jua';
 var font2 = font; //'36px Sans-serif';
-var line_color = '#fff';
-var bgColor = 'black';
+var line_color = 'black';
+var bgColor = '#ff000000'; //배경색
 var pinColor = 'red'
 var fontStrokeStyle = '#37474f';
 
@@ -338,7 +338,7 @@ function Roulette() {
 
         // shadow
         R.buffer.shadowBlur = 15;
-        R.buffer.shadowColor = 'black';
+        R.buffer.shadowColor = '#FF00000';
         drawArc({ x: R.center.x, y: R.center.y + 15 + 5, radius: window.radius - 5, rotation: 0, angle: 360, color: bgColor }, '');
         R.buffer.shadowBlur = 0;
         drawArc({ x: R.center.x, y: R.center.y + 15, radius: window.radius, rotation: 0, angle: 360, color: bgColor }, '');
