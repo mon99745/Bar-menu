@@ -4,73 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>단타포차에 오신걸 환영합니다.</title>
-    <link rel="stylesheet" th:href="@{css/login.css}" href="../css/login.css">
-    <link rel="stylesheet" th:href="@{css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
 </head>
 <body>
 <div id=tablet>
+    <!--왼쪽 사이드 레이아웃-->
     <div id=left-sidebar>
-        <!--왼쪽 사이드 레이아웃-->
-        <button class="mainBtn" onlick="history.back();">HOME</button>
+        <button class="mainBtn" onclick="location.href='/'">HOME</button>
 
     </div>
+
+    <!--가운데 레이아웃-->
     <div id=middle>
-        <!--가운데 레이아웃-->
         <div class=middle-top>
-            <div class=logo href="@{/}">
+            <div class=logo href="/">
                 <!--단타포차 로고-->
                 <button type="button" id="logo">
-                    <a href="@{/}">Danta</a>
+                    <a href="/">Danta</a>
                 </button>
             </div>
         </div>
         <div class="login-page">
             <div class="form">
                 <form id="needs-validation" novalidate>
-                    <table border="1">
-                        <div class="form-floating m-3">
-                            <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요." required
-                                   minlength="4" size="20">
-                            <label for="username">아이디</label>
-                            <div class="valid-feedback">
-                                good!
-                            </div>
-                            <div class="invalid-feedback">
-                                아이디는 4자 이상 입력해야 합니다.
-                            </div>
+                        <div>
+                            <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요." required minlength="4" size="20">
+                            <div class="valid-feedback" >good!</div>
+                            <div class="invalid-feedback">아이디는 4자 이상 입력해야 합니다.</div>
                         </div>
 
-                        <div class="form-floating m-3">
-                            <input type="password" class="form-control" id="password" placeholder="패스워드를 입력하세요." required
-                                   minlength="8" size="20">
-                            <label for="password">패스워드</label>
-                            <div class="valid-feedback">
-                                very good!
-                            </div>
-                            <div class="invalid-feedback">
-                                패스워드는 8자 이상 입력해야 합니다.
-                            </div>
+                        <div>
+                            <input type="password" class="form-control" id="password" placeholder="패스워드를 입력하세요." required minlength="8" size="20">
+                            <div class="valid-feedback">very good!</div>
+                            <div class="invalid-feedback">패스워드는 8자 이상 입력해야 합니다.</div>
                         </div>
 
-                        <div class="form-floating m-3">
-                            <input type="text" class="form-control" id="nickname" placeholder="닉네임을 입력하세요." required
-                                   minlength="3" size="20">
-                            <label for="nickname">닉네임</label>
-                            <div class="valid-feedback">
-                                very nice!
-                            </div>
-                            <div class="invalid-feedback">
-                                닉네임은 4자 이상 입력해야 합니다.
-                            </div>
-                            div class="form-floating m-3">
+                        <div>
+                            <input type="text" class="form-control" id="nickname" placeholder="닉네임을 입력하세요." required minlength="3" size="20">
+                            <div class="valid-feedback">very nice!</div>
+                            <div class="invalid-feedback">닉네임은 3자 이상 입력해야 합니다.</div>
+                        </div>
+
+                        <div>
                             <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요." required>
-                            <label for="email">이메일</label>
-                            <div class="valid-feedback">
-                                nice!
-                            </div>
-                            <div class="invalid-feedback">
-                                이메일 형식으로 입력해야 합니다.
-                            </div>
+                            <div class="valid-feedback">nice!</div>
+                            <div class="invalid-feedback">이메일 형식으로 입력해야 합니다.</div>
                         </div>
 
 <!--                        <input type="text" name="member_birthday" placeholder="생년월일 (-)생략 " required="required" min="0" />-->
@@ -81,12 +61,16 @@
 <!--                        </tr>-->
 <!--                        <input type="text" name="member_phone" placeholder="휴대폰 번호 (-)생략"maxlength="30" />-->
 
-                    </table>
                 </form>
-                <td colspan="2" align="center">
                 <button class="w-100 btn btn-lg btn-primary" id="btn-save">회원가입</button>
-                <input type="button" value="로그인" onclick="location.href='@{auth/user/login}'" /></td>
             </div>
         </div>
+    </div>
+</div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/user.js}"></script>
+        <script th:src="@{/js/vaildation.js}"></script>
 </body>
 </html>
