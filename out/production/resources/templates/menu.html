@@ -1,10 +1,10 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:float="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" >
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>단타포차에 오신걸 환영합니다.</title>
   <link rel="stylesheet" th:href="@{css/style.css}" href="/src/main/resources/static/css/style.css">
+
 
 </head>
 <body>
@@ -26,30 +26,20 @@
         <li sec:authorize="isAuthenticated()">
           <button type="button" id="sidebar" onclick="location.href='/logout'">로그아웃</button>
         </li>
-        <li>
-          <button type="button" id="sidebar" onclick="location.href='../cart/cartOk.html'" >
-            주문내역
-          </button>
+        <li sec:authorize="isAnonymous()">
+          <button type="button" id="sidebar" onclick="location.href='/auth/user/save'">회원가입</button>
         </li>
         <li>
-          <button type="button" id="sidebar" onclick="location.href='../chat/chatForm.html'">
-            채팅
-          </button>
+          <button type="button" id="sidebar" onclick="location.href='#'" >주문내역</button>
         </li>
         <li>
-          <button type="button" id="sidebar" onclick="location.href='../songRequest/songRequest.html'">
-            노래 신청
-          </button>
+          <button type="button" id="sidebar" onclick="location.href='/auth/chat'">채팅</button>
         </li>
         <li>
-          <button type="button" id="sidebar" onclick="location.href='../roulette/roulette.html'">
-            룰렛
-          </button>
+          <button type="button" id="sidebar" onclick="location.href='/auth/roulette/roulette'">룰렛</button>
         </li>
         <li>
-          <button type="button" id="sidebar" class="btn">
-            호출
-          </button>
+          <button type="button" id="sidebar" class="btn">호출</button>
           <div class="modal">
             <div class="modal-call">
               <span id=call_close class="close">확인</span>
@@ -187,7 +177,7 @@
           <p>DEMO</p>
         </li>
       </ul>
-      <p id ="login>"닉네임" 님 환영합니다. </p>
+<!--      <p id ="login" style="float: right">"닉네임" 님 환영합니다. </p>-->
     </div>
   </div>
 </div>

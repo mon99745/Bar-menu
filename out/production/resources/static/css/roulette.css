@@ -9,6 +9,7 @@
     width: 1100px;
     height: 600px;
     border-radius: 25px;
+    background-image: url("../img/벽돌.png");
 }
 .mainBtn {
     display: inline-block;

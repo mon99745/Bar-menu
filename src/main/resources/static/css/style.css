@@ -29,7 +29,7 @@ ul {
     width: 1100px;
     height: 600px;
     border-radius: 25px;
-    background-image: url("벽돌.png");
+    background-image: url("../img/벽돌.png");
 }
 
 #left-sidebar {
@@ -469,4 +469,8 @@ p#login{
     font-family: "Jua", sans-serif;
     text-transform: uppercase;
     animation: flicker 3s infinite alternate;
+}
+input::placeholder {
+    color: white;
+    opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
 }

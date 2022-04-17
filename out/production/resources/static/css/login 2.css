@@ -1,4 +1,4 @@
-@import url(/css/style.css);
+@import url(../css/style.css);
 @import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
@@ -29,6 +29,7 @@ login.html
     width: 360px;
     margin: 0 auto;
 }
+
 .form {
     margin-top: 30px;
     position: relative;
@@ -44,7 +45,6 @@ login.html
     border: 8px solid #fff;
     animation: flicker 1s infinite alternate;
     text-transform: uppercase;
-
     background-color: rgba(0, 0, 0, 0.719);
 }
 .form input {
@@ -61,7 +61,7 @@ login.html
     border: 2px solid #fff;
     animation: flicker-box 1s infinite alternate;
 }
-.form input :placeholder {
+.form input ::placeholder {
     color: #fff;
 }
 .form button {
@@ -86,7 +86,7 @@ input::placeholder {
     animation: flicker-text 1s infinite alternate;
 
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 14px;
 }
 .message a {
     color: #fff;
