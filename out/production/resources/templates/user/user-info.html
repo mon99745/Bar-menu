@@ -11,7 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
     <link rel="stylesheet" th:href="@{/css/chat.css}" href="../css/chat.css">
 
-     <!-- 부가적인 테마 -->
+    <!-- 부가적인 테마 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
@@ -34,19 +34,33 @@
 
             </div>
         </div>
-    <br/>
+        <br/>
+        <div id="main-top">
+            <div id="main-top-top">
+                <h1>회원 정보 [My Page]</h1>
+            </div>
+            <div id="main-top-middle">
+                <div id="main-top-middle-1">
+                    <i class="fas fa-user-circle fa-5x"></i>
+                </div>
+                <div id="main-top-middle-2">
+                    <li id="i1" th:sec:authentication="principal.username" ></li>님
 
-        <input type="text" id="nickname" class="form-inline" placeholder="닉네임을 입력해주세요" required autofocus>
-        <button class = "btn btn-primary" id = "name">확인</button>
+                    <a th:href="@{#}" href="#">
+                        <li id="i2">회원정보수정</li>
+                    </a>
+                    <a th:href="@{#}" href="#">
+                        <li id="i3">결제조회</li>
+                    </a>
+                    <a th:href="@{#}" href="#">
+                        <li id="i4">쿠폰조회</li>
+                    </a>
+                </div>
 
-        <!--채팅을 하기 위한 박스-->
-        <div id = "chatroom" style = "width:600px; height: 300px; border:1px solid; background-color : #fff"></div>
-
-        <input type = "text" id = "message" style = "height : 30px; width : 340px" placeholder="내용을 입력하세요" autofocus>
-        <button class = "btn btn-primary" id = "send">전송</button>
+            </div>
+    </div>
+    </div>
 </div>
-</div>
-<script th:src="@{/js/websocket.js}"></script>
 </body>
 
 </html>

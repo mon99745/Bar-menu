@@ -22,6 +22,14 @@ public class UserController {
     }
 
     /**
+     * 회원정보 페이지 (My Page)
+     */
+    @GetMapping("/user/info")
+    public String userInfo() {
+        return "user/user-info";
+    }
+
+    /**
      * 회원수정 페이지
      */
     @GetMapping("/user/update")
