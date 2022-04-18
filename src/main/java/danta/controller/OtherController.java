@@ -9,15 +9,15 @@ public class OtherController {
     /**
      * 채팅
      */
-    @GetMapping("/auth/chat/#")
+    @GetMapping("/auth/chat")
     public String chat() {
-        return "#";
+        return "/chat/chat";
     }
 
     /**
      * 룰렛
      */
-    @GetMapping("/auth/roulette/roulette")
+    @GetMapping("/auth/roulette")
     public String roulette() {
         return "/roulette/roulette";
     }
