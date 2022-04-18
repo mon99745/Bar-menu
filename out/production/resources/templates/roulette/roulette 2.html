@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>단타포차에 오신걸 환영합니다.</title>
-  <link rel="stylesheet" href="../css/login.css">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" type="text/css" href="../css/roulette.css">
-  <script type="text/javascript" src="../lib/jquery-3.2.0.min.js"></script>
-  <script type="text/javascript" src="../lib/jquery.color-2.1.2.min.js"></script>
+  <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+  <link rel="stylesheet" th:href="@{/css/roulette.css}" href="../css/roulette.css">
+
+  <script th:src="@{/js/jquery-3.2.0.min.js}" src="../js/jquery-3.2.0.min.js"></script>
+  <script th:src="@{/js/jquery.color-2.1.2.min.js}" src="../js/jquery.color-2.1.2.min.js"></script>
+
+
 </head>
 
 <body>
 <div id=tablet-roulette>
   <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
 
-    <button class="mainBtn" onClick="history.back();">HOME</button >
+    <button class="mainBtn" onClick="history.back();">HOME</button>
 
   </div>
 
@@ -25,7 +28,8 @@
     </div>
     <div class="wrap">
 
-      <canvas width="400" height="400" class="roulette">지원하지 않는 브라우저입니다. Google Chrome 최신 버전을 사용해주세요.</canvas>
+      <canvas width="400" height="400" class="roulette" >
+        지원하지 않는 브라우저입니다. Google Chrome 최신 버전을 사용해주세요.</canvas>
       <div id="roll" class="button"></div>
     </div>
     <ul id=list-zone style= "overflow-y: scroll">
@@ -43,7 +47,7 @@
       <div><span class="command">클릭</span><span class="number">±1</span></div>
     </div>
     <div id="result" style="display: none;">!!</div>
-    <script type="text/javascript" src="../js/roulette.js"></script>
+    <script type="text/javascript" th:src="@{/js/roulette.js}" src="../js/roulette.js"></script>
     <script>
       document.getElementsByTagName('body')[0].removeAttribute('class');
     </script>
