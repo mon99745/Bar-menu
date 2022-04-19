@@ -1,4 +1,4 @@
-package danta.dto.user;
+package danta.model.dto.user;
 
 
 import danta.domain.user.Role;

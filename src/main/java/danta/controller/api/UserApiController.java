@@ -3,7 +3,7 @@ package danta.controller.api;
 
 import danta.config.auth.PrincipalDetail;
 import danta.domain.user.User;
-import danta.dto.user.UserSaveRequestDto;
+import danta.model.dto.user.UserSaveRequestDto;
 import danta.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
