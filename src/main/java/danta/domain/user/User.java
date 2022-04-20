@@ -5,12 +5,12 @@ import lombok.*;
 
 import javax.persistence.*;
 
+@Entity //JPA로 관리되는 엔티티 객체 (테이블)
+@Table(name = "users")
 @Getter
-@Setter
 @Builder // 어느 필드에 어떤 값을 채워야하는지 명확하게 알 수 있기 때문에
 @AllArgsConstructor
 @NoArgsConstructor // Lombok - 빈 생성자를 만듬
-@Entity //JPA로 관리되는 엔티티 객체 (테이블)
 public class User extends BaseTimeEntity {
 
     @Id // 테이블의 Primary Key(PK)

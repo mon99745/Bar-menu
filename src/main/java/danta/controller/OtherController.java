@@ -5,6 +5,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class OtherController {
+    /**
+     * 관리정보
+     */
+    @GetMapping("/management")
+    public String management() {
+        return "/admin/management";
+    }
 
     /**
      * 채팅
