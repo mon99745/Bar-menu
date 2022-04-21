@@ -1,3 +1,6 @@
+
+<!--메뉴 항목을 보여주는 페이지-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -14,6 +17,7 @@
   <!-- font awesome -->
   <script src="https://kit.fontawesome.com/5aa242c369.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
 <div class="container">
   <div class="titleContainer">
@@ -49,15 +53,16 @@
             <span class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>
             <div class="starRatingContainer">
               <div class="ratingContainer">
-<!--                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>-->
+                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>
               </div>
-<!--              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>-->
+              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>
             </div>
           </div>
         </a>
       </div>
     </div>
   </form>
+
 
 </div>
 
@@ -135,7 +140,7 @@
 
   .ratingContainer{
     position: relative;
-    background: url("/images/reviews/star_rating.png") no-repeat -39px -43px;
+    background: url("/img/star_rating.png") no-repeat -39px -43px;
     min-width: 75px;
     max-width: 75px;
     max-height: 15px;
@@ -144,7 +149,7 @@
 
   .rating {
     position: absolute;
-    background: url("/images/reviews/star_rating.png") no-repeat -39px -58px;
+    background: url("/img/star_rating.png") no-repeat -39px -58px;
     max-height: 15px;
     min-height: 15px;
   }

@@ -1,5 +1,6 @@
 package danta.controller;
 
+import danta.model.dto.CatalogSummary;
 import danta.service.CatalogService;
 import danta.service.CategoryService;
 import danta.service.ItemSearchForm;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -32,8 +35,8 @@ public class CatalogController {
         // 아이템 리스트
         searchForm.setCategoryId(category);
         //검색기능
-//        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
-//        model.addAttribute("items", items);
+        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
+        model.addAttribute("items", items);
 
         return "catalog";
     }
