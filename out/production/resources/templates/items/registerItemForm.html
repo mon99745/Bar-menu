@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title> Galid Commerce </title>
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"
+          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+          crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <!-- font awesome -->
+  <script src="https://kit.fontawesome.com/5aa242c369.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+<div class="jumbotron">
+  <div class="container">
+    <form method="post" th:object="${form}" th:action="@{/items/new}">
+      <div class="form-group">
+        <label th:for="name">상품명</label>
+        <input type="text" th:field="*{name}" class="form-control" placeholder="상품 이름">
+      </div>
+
+      <div class="form-group">
+        <label th:for="imagePath">상품사진</label>
+        <input type="text" th:field="*{imagePath}" class="form-control" placeholder="상품 사진">
+      </div>
+
+      <div class="form-group">
+        <label th:for="price">상품가격</label>
+        <input type="text" th:field="*{price}" class="form-control" placeholder="상품 가격">
+      </div>
+
+      <div class="form-group">
+        <label th:for="stockQuantity">재고</label>
+        <input type="text" th:field="*{stockQuantity}" class="form-control" placeholder="재고">
+      </div>
+
+      <div class="form-group">
+        <label th:for="categoryId">카테고리</label>
+        <input type="text" th:field="*{categoryId}" class="form-control" placeholder="카테고리">
+      </div>
+
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
