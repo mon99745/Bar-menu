@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+
 @Repository
 public class CatalogDao {
     private JPAQueryFactory query;
@@ -20,7 +21,7 @@ public class CatalogDao {
     }
 
     public List<CatalogSummary> searchItem(ItemSearchForm searchForm)  {
-        return query.select(new CatalogSummary(itemEntity.itemId, itemEntity.imagePath, itemEntity.name, itemEntity.price,
+        return query.select(new QCatalogSummary(itemEntity.itemId, itemEntity.imagePath, itemEntity.name, itemEntity.price,
                         reviewProductEntity.ratingAverage, reviewProductEntity.totalCount))
                 .from(itemEntity)
                 .join(reviewProductEntity)

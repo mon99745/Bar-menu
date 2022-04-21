@@ -56,7 +56,16 @@ dependencies {
 	implementation 'com.querydsl:querydsl-jpa:5.0.0'
 }
 
+// QueryDSL
+sourceSets {
+	main {
+		java {
+			srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+		}
+	}
+}
 
 test {
 	useJUnitPlatform()
 }
+
