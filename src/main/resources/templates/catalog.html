@@ -1,3 +1,6 @@
+
+<!--메뉴 항목을 보여주는 페이지-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -14,12 +17,11 @@
   <!-- font awesome -->
   <script src="https://kit.fontawesome.com/5aa242c369.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-
-
 <div class="container">
   <div class="titleContainer">
-    <div th:replace="fragments/category"></div>
+<!--    <div th:replace="fragments/category"></div>-->
     <h3>GALID</h3>
   </div>
 
@@ -36,11 +38,12 @@
         <select th:field="*{sorter}">
           <option value="">정렬기준</option>
           <option
-                  th:each="sorter : ${T(com.galid.commerce.domains.catalog.presentation.Sorter).values()}"
+                  th:each="sorter : ${T(danta.controller.Sorter).values()}"
                   th:value="${sorter}"
                   th:text="${sorter.getSorter()}"/>
         </select>
       </div>
+
       <div class="itemContainer" th:each="item : ${items}">
         <a class="item" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
           <div class="itemImageContainer">
@@ -51,9 +54,9 @@
             <span class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>
             <div class="starRatingContainer">
               <div class="ratingContainer">
-                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>
+              <!--                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>-->
               </div>
-              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>
+<!--              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>-->
             </div>
           </div>
         </a>
