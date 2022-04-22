@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static danta.domain.item.QItemEntity.itemEntity;
+import static danta.domain.review.QReviewProductEntity.reviewProductEntity;
 
 
 @Repository
@@ -24,7 +25,8 @@ public class CatalogDao {
     }
 
     public List<CatalogSummary> searchItem(ItemSearchForm searchForm)  {
-        return query.select(new QCatalogSummary(itemEntity.itemId, itemEntity.imagePath, itemEntity.name, itemEntity.price,
+        return query
+                .select(new QCatalogSummary(itemEntity.itemId, itemEntity.imagePath, itemEntity.name, itemEntity.price,
                         reviewProductEntity.ratingAverage, reviewProductEntity.totalCount))
                 .from(itemEntity)
                 .join(reviewProductEntity)
@@ -33,6 +35,8 @@ public class CatalogDao {
                 .orderBy(sorter(searchForm.getSorter()))
                 .fetch();
     }
+
+
 
     private Predicate nameLike(String name) {
         if (name != null && name.length() > 0)
@@ -58,4 +62,5 @@ public class CatalogDao {
 
         return itemEntity.createdDate.desc();
     }
+
 }

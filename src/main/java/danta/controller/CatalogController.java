@@ -1,9 +1,10 @@
 package danta.controller;
 
-import danta.model.dto.CatalogSummary;
+import danta.domain.item.ItemEntity;
 import danta.service.CatalogService;
 import danta.service.CategoryService;
 import danta.service.ItemSearchForm;
+import danta.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,11 @@ import java.util.List;
 public class CatalogController {
     private final CatalogService catalogService;
     private final CategoryService categoryService;
+    private final ItemService itemService;
 
     @GetMapping("/catalog")
     public String getMainPage(@RequestParam(value = "category", required = false) Long category,
-                              @ModelAttribute ItemSearchForm searchForm,
-                              Model model) {
+                              @ModelAttribute ItemSearchForm searchForm, Model model) {
         // category
         model.addAttribute("rootCategory", categoryService.createCategoryRoot());
 
@@ -34,10 +35,15 @@ public class CatalogController {
 
         // 아이템 리스트
         searchForm.setCategoryId(category);
-        //검색기능
-        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
+
+        List<ItemEntity> items = itemService.findAll();
         model.addAttribute("items", items);
 
+//        searchForm에서의 오류를 못잡음
+//        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
+//        model.addAttribute("items", items);
+
         return "catalog";
+
     }
 }

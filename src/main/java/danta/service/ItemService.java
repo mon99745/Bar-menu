@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
@@ -24,6 +26,9 @@ public class ItemService {
         ItemEntity savedItem = itemRepository.save(newItem);
 
         return savedItem.getItemId();
+    }
+    public List<ItemEntity> findAll() {
+        return itemRepository.findAll();
     }
 
     public ItemDetails findItem(Long itemId) {

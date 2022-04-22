@@ -3,6 +3,7 @@ package danta.service;
 import danta.domain.item.CategoryRepository;
 import danta.model.dto.CategoryDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,7 +18,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-//    @Cacheable("categories")
+    @Cacheable("categories")
     public CategoryDto createCategoryRoot() {
         Map<Long, List<CategoryDto>> groupingByParent = categoryRepository.findAll()
                 .stream()

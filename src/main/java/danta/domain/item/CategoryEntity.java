@@ -21,3 +21,4 @@ public class CategoryEntity {
         this.parentId = parentId;
     }
 }
+

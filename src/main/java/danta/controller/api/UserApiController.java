@@ -17,6 +17,10 @@ import java.util.List;
 public class UserApiController {
 
     private final UserService userService;
+
+//    v1 은 현재 사용 중인 디플로이 연동 API의 버전을 의미.
+//    추후 기능 추가 및 변경으로 인하여 API가 바뀌면 v2 등을 사용하게 될 수도 있다.
+
     /**
      * 회원가입 API
      */

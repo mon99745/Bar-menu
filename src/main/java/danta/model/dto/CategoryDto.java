@@ -20,3 +20,4 @@ public class CategoryDto implements Serializable {
         this.parentId = parentId;
     }
 }
+

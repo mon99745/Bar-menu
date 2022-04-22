@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.RememberMeConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
@@ -35,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable() //csrf 토큰 해제
                 .authorizeRequests() // URL별 권한 관리를 설정하는 옵션
-                .antMatchers("/", "/auth/**", "/js/**", "/css/**", "/img/**").permitAll() //권한 관리 대상을 지정하는 옵션
+                .antMatchers("/","/static/**", "/auth/**", "/js/**", "/css/**", "/img/**").permitAll() //권한 관리 대상을 지정하는 옵션
                 .anyRequest().authenticated()
                 .and()
 

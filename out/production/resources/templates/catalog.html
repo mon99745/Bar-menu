@@ -2,27 +2,14 @@
 <!--메뉴 항목을 보여주는 페이지-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title> Galid Commerce </title>
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.js"
-          integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-          crossorigin="anonymous"></script>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <!-- font awesome -->
-  <script src="https://kit.fontawesome.com/5aa242c369.js" crossorigin="anonymous"></script>
-</head>
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<div th:replace="fragments/configHeader"/>
 <body>
-<div class="container">
+<div th:replace="fragments/head"/>
+
   <div class="titleContainer">
 <!--    <div th:replace="fragments/category"></div>-->
-    <h3>GALID</h3>
+    <h3>상품 목록</h3>
   </div>
 
   <form th:action="@{/catalog}" th:object="${itemSearchForm}" onsubmit="return isNotEmpty()">
@@ -43,7 +30,10 @@
                   th:text="${sorter.getSorter()}"/>
         </select>
       </div>
+여기까지는 들어옴? 1
       <div class="itemContainer" th:each="item : ${items}">
+<!--        <p th:text="${'index : ' + itemStat.count}"></p>-->
+        여기까지는 들어옴? 2
         <a class="item" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
           <div class="itemImageContainer">
             <img class="itemImage" th:src="@{${item.getImagePath()}}" alt="">
@@ -53,16 +43,15 @@
             <span class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>
             <div class="starRatingContainer">
               <div class="ratingContainer">
-                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>
+<!--                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>-->
               </div>
-              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>
+<!--              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>-->
             </div>
           </div>
         </a>
       </div>
     </div>
   </form>
-
 
 </div>
 
@@ -140,7 +129,7 @@
 
   .ratingContainer{
     position: relative;
-    background: url("/img/star_rating.png") no-repeat -39px -43px;
+    background: url("../static/img/star.png") no-repeat -39px -43px;
     min-width: 75px;
     max-width: 75px;
     max-height: 15px;
@@ -149,7 +138,7 @@
 
   .rating {
     position: absolute;
-    background: url("/img/star_rating.png") no-repeat -39px -58px;
+    background: url("../static/img/star.png") no-repeat -39px -58px;
     max-height: 15px;
     min-height: 15px;
   }
