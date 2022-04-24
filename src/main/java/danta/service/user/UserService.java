@@ -3,6 +3,7 @@ package danta.service.user;
 import danta.config.auth.PrincipalDetail;
 import danta.domain.user.User;
 import danta.domain.user.UserRepository;
+import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +17,7 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final CartService cartService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
@@ -25,6 +27,11 @@ public class UserService {
     public Long save(User user) {
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
+
+        // 회원가입과 동시에 장바구니 생성
+        Long authId = userRepository.save(user).getAuthId();
+        cartService.createCart(authId);
+
         return userRepository.save(user).getAuthId();
     }
 

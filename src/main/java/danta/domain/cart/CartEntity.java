@@ -13,25 +13,24 @@ import java.util.Map;
 @Getter
 @NoArgsConstructor
 public class CartEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long cartId;
 
-    // Member를 참조하는 외래키 역할
-    private Long memberId;
+    // User를 참조하는 외래키 역할
+    private Long authId;
 
     // Map을 이용하므로써 @ElementCollection의 단점을 보완
     // itemId를 키로 사용
     // 1. 수정시, 모든 로우를 삭제 후, 수정된 로우를 추가하는 문제
     // 2. 삭제시, 모든 로우를 삭제 후, 삭제 대상을 제외한 모든 로우를 다시 입력하는 문제
     @ElementCollection
-    @CollectionTable(
-            name = "cart_line"
-    )
+    @CollectionTable(name = "cart_line")
     @MapKeyColumn(name = "map_key")
     private Map<Long, CartLine> cart = new HashMap<>();
 
-    public CartEntity(Long memberId) {
-        this.memberId = memberId;
+    public CartEntity(Long authId) {
+        this.authId = authId;
     }
 
     public void addItemToCart(int targetStockQuantity, CartLine cartLine) {
