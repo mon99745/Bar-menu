@@ -15,7 +15,7 @@ public class User extends BaseTimeEntity {
 
     @Id // 테이블의 Primary Key(PK)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; //sequence, auto_increment
+    private Long authId; //sequence, auto_increment
 
     @Column(nullable = false, length = 20, unique = true)
     private String username; //아이디

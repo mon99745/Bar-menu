@@ -30,10 +30,8 @@
                   th:text="${sorter.getSorter()}"/>
         </select>
       </div>
-여기까지는 들어옴? 1
       <div class="itemContainer" th:each="item : ${items}">
 <!--        <p th:text="${'index : ' + itemStat.count}"></p>-->
-        여기까지는 들어옴? 2
         <a class="item" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
           <div class="itemImageContainer">
             <img class="itemImage" th:src="@{${item.getImagePath()}}" alt="">
@@ -43,6 +41,7 @@
             <span class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>
             <div class="starRatingContainer">
               <div class="ratingContainer">
+<!--                  리뷰는 에러-->
 <!--                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>-->
               </div>
 <!--              <div class="reviewCount" th:text="'(' + ${item.reviewCount} + ')'"></div>-->

@@ -60,7 +60,7 @@ public class PrincipalDetail implements UserDetails {
 
     //사용자 pk
     public Long getId() {
-        return user.getId();
+        return user.getAuthId();
     }
 
     //계정이 만료되었는지 (true: 만료되지 않음)

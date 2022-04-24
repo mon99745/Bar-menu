@@ -1,7 +1,7 @@
 package danta.domain.item;
 
 import danta.domain.BaseTimeEntity;
-import danta.service.NotEnoughStockQuantityException;
+import danta.service.item.NotEnoughStockQuantityException;
 import lombok.*;
 
 import javax.persistence.*;

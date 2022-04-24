@@ -4,7 +4,7 @@ package danta.controller.api;
 import danta.config.auth.PrincipalDetail;
 import danta.domain.user.User;
 import danta.model.dto.user.UserSaveRequestDto;
-import danta.service.UserService;
+import danta.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
@@ -46,7 +46,7 @@ public class UserApiController {
     // @AuthenticationPrincipal에 PrincipalDetail타입으로 파라미터를 받으면 유저 정보를 얻을 수 있다.
     public Long update(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         userService.update(user, principalDetail);
-        return user.getId();
+        return user.getAuthId();
     }
 
     /**

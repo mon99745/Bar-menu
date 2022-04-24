@@ -1,8 +1,8 @@
 package danta.model.dto;
 
-import com.querydsl.core.types.dsl.*;
-
 import com.querydsl.core.types.ConstructorExpression;
+import danta.model.dto.item.CatalogSummary;
+
 import javax.annotation.processing.Generated;
 
 /**
