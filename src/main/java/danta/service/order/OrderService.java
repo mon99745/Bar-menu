@@ -1,5 +1,6 @@
 package danta.service.order;
 
+import danta.domain.delivery.DeliveryEntity;
 import danta.domain.item.ItemEntity;
 import danta.domain.item.ItemRepository;
 import danta.domain.order.OrderEntity;

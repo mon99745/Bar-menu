@@ -18,3 +18,4 @@ public class MyOrderDetailsDto {
     private MyOrderDetailsReceiverInfoDto receiverInfoDto;
     private OrderStatus orderStatus;
 }
+

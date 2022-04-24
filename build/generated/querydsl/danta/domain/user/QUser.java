@@ -21,12 +21,12 @@ public class QUser extends EntityPathBase<User> {
 
     public final danta.domain.QBaseTimeEntity _super = new danta.domain.QBaseTimeEntity(this);
 
+    public final NumberPath<Long> authId = createNumber("authId", Long.class);
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
     public final StringPath email = createString("email");
-
-    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;

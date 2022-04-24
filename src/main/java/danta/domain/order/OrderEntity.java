@@ -1,6 +1,8 @@
 package danta.domain.order;
 
 import danta.domain.BaseTimeEntity;
+import danta.domain.delivery.DeliveryEntity;
+import danta.domain.delivery.DeliveryStatus;
 import danta.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Builder;

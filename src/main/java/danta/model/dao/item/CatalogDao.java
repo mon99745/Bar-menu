@@ -5,7 +5,7 @@ import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import danta.controller.Sorter;
 import danta.model.dto.item.CatalogSummary;
-import danta.model.dto.QCatalogSummary;
+import danta.model.dto.item.QCatalogSummary;
 import danta.service.item.ItemSearchForm;
 import org.springframework.stereotype.Repository;
 

@@ -5,7 +5,7 @@ import danta.domain.item.ItemRepository;
 import danta.domain.user.AuthenticationConverter;
 import danta.domain.user.User;
 import danta.model.dao.order.OrderDao;
-import danta.model.dto.order.OrderInfoDto;
+import danta.model.dto.order.OrdererInfoDto;
 import danta.model.dto.order.OrderItemDto;
 import danta.model.dto.order.OrderSummaryDto;
 import danta.service.order.OrderLineRequest;
@@ -39,10 +39,10 @@ public class OrderController {
     public void setOrderInfo(Authentication authentication,
                              Model model) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);
-        model.addAttribute("shippingInfo", user.getAuthId());
+        model.addAttribute("shippingInfo", user.getAddress());
 
-        OrderInfoDto orderInfoDto = createOrderInfo(user);
-        model.addAttribute("orderInfo", orderInfoDto);
+        OrdererInfoDto ordererInfoDto = createOrdererInfo(user);
+        model.addAttribute("ordererInfo", ordererInfoDto);
     }
 
     // 주문 페이지
@@ -87,8 +87,8 @@ public class OrderController {
     }
 
 
-    private OrderInfoDto createOrdererInfo(User orderer) {
-        return new OrderInfoDto(orderer.getAuthId(),
+    private OrdererInfoDto createOrdererInfo(User orderer) {
+        return new OrdererInfoDto(orderer.getAuthId(),
                 orderer.getName(),
                 orderer.getPhone());
     }

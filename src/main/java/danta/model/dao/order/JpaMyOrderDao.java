@@ -24,7 +24,7 @@ public class JpaMyOrderDao implements MyOrderDao {
     public Page<OrderEntity> getMyOrders(Long ordererId, Pageable pageable) {
         QueryResults<OrderEntity> searchOrderByOrdererId = query.select(orderEntity)
                 .from(orderEntity)
-                .join(orderEntity.orderer, memberEntity).fetchJoin()
+                .join(orderEntity.orderer, User).fetchJoin()
                 .join(orderEntity.deliveryInformation, deliveryEntity).fetchJoin()
                 .where(orderEntity.removed.eq(false))
                 .where(orderEntity.orderer.memberId.eq(ordererId))
@@ -51,3 +51,4 @@ public class JpaMyOrderDao implements MyOrderDao {
         return Optional.of(orderEntity);
     }
 }
+
