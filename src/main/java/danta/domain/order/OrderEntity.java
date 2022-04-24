@@ -1,8 +1,6 @@
 package danta.domain.order;
 
 import danta.domain.BaseTimeEntity;
-import danta.domain.delivery.DeliveryEntity;
-import danta.domain.delivery.DeliveryStatus;
 import danta.domain.user.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -31,17 +29,14 @@ public class OrderEntity extends BaseTimeEntity{
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private User orderer;
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "delivery_id")
-    private DeliveryEntity deliveryInformation;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderItemEntity> orderItemList = new ArrayList<>();
 
     @Builder
-    public OrderEntity(User orderer, DeliveryEntity deliveryInformation, List<OrderItemEntity> orderItemEntityList) {
+    public OrderEntity(User orderer, List<OrderItemEntity> orderItemEntityList) {
         this.orderer = orderer;
-        this.deliveryInformation = deliveryInformation;
         this.setOrderItemList(orderItemEntityList);
         this.status = OrderStatus.ORDERED_STATUS;
     }
@@ -60,13 +55,8 @@ public class OrderEntity extends BaseTimeEntity{
 
     // ==== 비즈니스 로직 ====
     public void cancel() {
-        if(this.deliveryInformation.getStatus() == DeliveryStatus.COMPLETE_STATUS
-                || this.deliveryInformation.getStatus() == DeliveryStatus.SHIPPING_STATUS)
-            throw new IllegalStateException("이미 배송중이거나 배송이 완료된 주문은 취소가 불가능합니다.");
-
         this.orderItemList.stream()
                 .forEach(orderItem -> orderItem.cancel());
-
         this.status = OrderStatus.CANCEL_STATUS;
     }
 

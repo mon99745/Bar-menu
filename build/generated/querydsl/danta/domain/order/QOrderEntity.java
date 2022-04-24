@@ -27,8 +27,6 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;
 
-    public final danta.domain.delivery.QDeliveryEntity deliveryInformation;
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modifiedDate = _super.modifiedDate;
 
@@ -64,7 +62,6 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
 
     public QOrderEntity(Class<? extends OrderEntity> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.deliveryInformation = inits.isInitialized("deliveryInformation") ? new danta.domain.delivery.QDeliveryEntity(forProperty("deliveryInformation")) : null;
         this.orderer = inits.isInitialized("orderer") ? new danta.domain.user.QUser(forProperty("orderer")) : null;
     }
 
