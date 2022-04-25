@@ -21,6 +21,8 @@ public class CatalogController {
     private final CategoryService categoryService;
     private final ItemService itemService;
 
+    // 완성 후 인덱스와 합칠것
+
     @GetMapping("/catalog")
     public String getMainPage(@RequestParam(value = "category", required = false) Long category,
                               @ModelAttribute ItemSearchForm searchForm, Model model) {

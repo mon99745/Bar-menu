@@ -4,6 +4,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>단타포차에 오신걸 환영합니다.</title>
   <link rel="stylesheet" th:href="@{css/style.css}" href="/src/main/resources/static/css/style.css">
+
 </head>
 <body>
 
@@ -43,6 +44,7 @@
           <button type="button" id="sidebar" onclick="location.href='/auth/roulette'">룰렛</button>
         </li>
         <li>
+
           <button type="button" id="sidebar" class="btn">호출</button>
           <div class="modal">
             <div class="modal-call">
@@ -50,6 +52,7 @@
               <p>직원이 호출 되었습니다.</p>
             </div>
           </div>
+
         </li>
       </ul>
     </div>
@@ -73,38 +76,41 @@
       <label for="tab6">주류</label>
 
       <!-- popup-->
-      <div id="tang" class="tabimage" style= "overflow-y: scroll"> <!--메뉴 이미지-->
+      <!--메뉴 이미지-->
+<!--      <div id="tang" class="tabimage" style= "overflow-y: scroll" >-->
+<!--        <h2>보글보글 탕탕탕!</h2>-->
+<!--        <a th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">-->
+<!--          <ul>-->
+<!--            <li><img class="product" th:src="@{${item.getImagePath()}}">-->
+<!--              <span th:text="${item.name}"></span>-->
+<!--              <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>-->
+<!--              <button type="submit" class = "btn">-->
+<!--                <img class="product" th:src="@{${item.getImagePath()}}"></button>-->
+<!--              <a>곱도리탕<br>15900원</a>-->
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </a>-->
+<!--      </div>-->
 
-        <h2>보글보글 탕탕탕!</h2>
-        <form action ="Cart" method = "post">
-          <ul>
-            <li><input type="hidden" name="product" value="곱도리탕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/곱도리탕.jpeg"></button><a>곱도리탕<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="곱창묵은지전골"><input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/곱창묵은지전골.jpeg"></button><a>곱창묵은지전골<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="나가사키탕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/나가사키탕.jpeg"></button><a>나가사키탕<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="밀푀유나베"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/밀푀유나베.jpeg"></button><a>밀푀유나베<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="새우탕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/새우탕.jpeg"></button><a>새우탕<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="소불고기전골"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/소불고기전골.jpeg"></button><a>소불고기전골<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="어묵탕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/어묵탕.jpeg"></button><a>어묵탕<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="제주화산전골"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/제주화산전골.jpeg"></button><a>제주화산전골<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="차돌박이 짬뽕탕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/차돌박이 짬뽕탕.jpeg"></button><a>차돌박이 짬뽕탕<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="차돌박이김치찌개"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/차돌박이김치찌개.jpeg"></button><a>차돌박이김치찌개<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="크림짬뽕"> <input type="hidden" name="price" value="15900"><button type="submit" class = "btn"><img class="product" src ="../image/크림짬뽕.jpeg"></button><a>크림짬뽕<br>15900원</a></li>
-          </ul>
-        </form>
-      </div>
 
-      <div id="stir-fry" class="tabimage" style= "overflow-y: scroll">
+      <div id="stir-fry" class="tabimage" style= "overflow-y: scroll" >
         <h2>볶으면 뭔들...</h2>
-        <form action ="Cart" method = "post">
+<!--        th:src="@{../img/해물볶음우동.jpeg}"-->
           <ul>
-            <li><input type="hidden" name="product" value="해물볶음우동"> <input type="hidden" name="price" value="15900"><button type="submit" name ="product" value="해물볶음우동"><img class="product" src ="../image/해물볶음우동.jpeg"></button><a>해물볶음우동<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="쭈꾸미볶음"> <input type="hidden" name="price" value="15900"><button type="submit" name ="product" value="쭈꾸미볶음"><img class="product" src ="../image/쭈꾸미볶음.jpeg"></button><a>쭈꾸미볶음<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="차돌박이 숙주볶음"> <input type="hidden" name="price" value="15900"><button type="submit" name ="product" value="차돌박이 숙주볶음"><img class="product" src ="../image/차돌박이 숙주볶음.jpeg"></button><a>차돌박이 숙주볶음<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="매콤무뼈닭발"> <input type="hidden" name="price" value="15900"><button type="submit" name ="product" value="매콤무뼈닭발"><img class="product" src ="../image/매콤무뼈닭발.jpeg"></button><a>매콤무뼈닭발<br>15900원</a></li>
-            <li><input type="hidden" name="product" value="우삼겹 숙주볶음"> <input type="hidden" name="price" value="15900"><button type="submit" name ="product" value="우삼겹 숙주볶음"><img class="product" src ="../image/우삼겹 숙주볶음.jpeg"></button><a>우삼겹 숙주볶음<br>15900원</a></li>
-
+            <li th:each="item : ${items}">
+              <input type="hidden" name="product"
+                     th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <button type="submit" name ="product">
+                <img class="product" th:src="@{${item.getImagePath()}}">
+              </button>
+              <a>
+                <span th:text="${item.name}">메뉴이름</span><br>
+                <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+              </a>
+              </a>
+            </li>
           </ul>
-        </form>
+      </div>
       </div>
 
       <div id="delicacy" class="tabimage" style= "overflow-y: scroll">
