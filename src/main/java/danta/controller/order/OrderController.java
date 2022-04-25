@@ -39,7 +39,7 @@ public class OrderController {
     public void setOrderInfo(Authentication authentication,
                              Model model) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);
-        model.addAttribute("shippingInfo", user.getAddress());
+        model.addAttribute("shippingInfo", user.getUsername());
 
         OrdererInfoDto ordererInfoDto = createOrdererInfo(user);
         model.addAttribute("ordererInfo", ordererInfoDto);
@@ -89,8 +89,8 @@ public class OrderController {
 
     private OrdererInfoDto createOrdererInfo(User orderer) {
         return new OrdererInfoDto(orderer.getAuthId(),
-                orderer.getName(),
-                orderer.getPhone());
+                orderer.getUsername(),
+                orderer.getNickname());
     }
 
     // 주문 요청 처리

@@ -27,7 +27,7 @@ public class OrderEntity extends BaseTimeEntity{
     private LocalDateTime removedAt;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "user_id")
     private User orderer;
 
     @OneToMany(cascade = CascadeType.ALL)

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor //생성자 주입을 받기 위해
 @Service
@@ -42,6 +43,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    public User findUser(Long authId) {
+        User user = validateExistMember(userRepository.findById(authId));
+
+        return user;
+    }
+
+
     /**
      * 회원수정 로직
      */
@@ -65,4 +73,14 @@ public class UserService {
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
+
+    /**
+     * 예외검증
+     */
+    private User validateExistMember(Optional<User> memberEntity) {
+        if(!memberEntity.isPresent())
+            throw new IllegalStateException("존재하지 않는 유저입니다.");
+        return memberEntity.get();
+    }
+
 }

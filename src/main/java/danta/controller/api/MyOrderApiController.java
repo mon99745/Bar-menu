@@ -1,4 +1,4 @@
-package danta.controller.order;
+package danta.controller.api;
 
 import danta.domain.user.AuthenticationConverter;
 import danta.domain.user.User;
@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class MyOrderRestController {
+public class MyOrderApiController {
     private final AuthenticationConverter authenticationConverter;
     private final MyOrderService myOrderService;
 
-    @GetMapping("/api/my/orders")
+    @GetMapping("/api/v1/orders")
     public MyOrderSummaryDto getMoreOrderList(Authentication authentication,
                                               Pageable pageable) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);

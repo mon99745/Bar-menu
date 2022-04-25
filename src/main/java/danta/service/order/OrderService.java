@@ -28,10 +28,6 @@ public class OrderService {
         // 엔티티 조회
         User orderer = userService.findUser(ordererId);
 
-        // 배송지 생성
-        DeliveryEntity deliveryEntity = DeliveryEntity.builder()
-                .address(orderer.getAddress())
-                .build();
 
         // 주문상품 생성
         List<OrderItemEntity> orderItemEntityList = orderRequest.getOrderLineList()
@@ -50,7 +46,6 @@ public class OrderService {
         // 주문 생성
         OrderEntity orderEntity = OrderEntity.builder()
                 .orderer(orderer)
-                .deliveryInformation(deliveryEntity)
                 .orderItemEntityList(orderItemEntityList)
                 .build();
 

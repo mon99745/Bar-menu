@@ -53,7 +53,7 @@ public class MyOrderService {
         MyOrderDetailsDto myOrderDetailsDto = MyOrderDetailsDto.builder()
                 .orderDate(orderEntity.getCreatedDate())
                 .orderId(orderId)
-                .receiverInfoDto(new MyOrderDetailsReceiverInfoDto(orderEntity.getOrderer().getName(), orderEntity.getOrderer().getPhone(), orderEntity.getDeliveryInformation().getAddress()))
+//                .receiverInfoDto(new MyOrderDetailsReceiverInfoDto(orderEntity.getOrderer().getName(), orderEntity.getOrderer().getPhone(), orderEntity.getDeliveryInformation().getAddress()))
                 .orderedItemList(myOrderDetailsItemDtoList)
                 .orderStatus(orderEntity.getStatus())
                 .build();
