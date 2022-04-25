@@ -54,8 +54,8 @@ public class UserApiController {
      */
     @DeleteMapping("/api/v1/user/{id}")
     // id값을 주소에 받기 위해 @PathVariable
-    public Long deleteById(@PathVariable Long id) {
-        userService.deleteById(id);
-        return id;
+    public Long deleteById(@PathVariable Long Id) {
+        userService.deleteById(Id);
+        return Id;
     }
 }

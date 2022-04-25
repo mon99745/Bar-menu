@@ -2,14 +2,38 @@
 <!--회원 정보를 열람하는 페이지 - 관리자 (예시)-->
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Index Page</title>
 </head>
 <body>
-<div class="userContainer" th:each="user : ${users}">
+    <form action="/users" class="form-inline">
+        <div class="form-group mb-2">
+            <input type="text" class="form-control" name="name" placeholder="Search User" />
+            <input type="submit" value="Search"  class="btn btn-primary"/>
+        </div>
+    </form>
+    <div class="card">
+        <div class="card card-body">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Add</th>
+                </tr>
+                </thead>
+                <center>
+                <tr th:each="user:${users}">
+                    <a class="item" th:href="@{/users/{authId}(authId=${user.getAuthId()})}">
+                        <td th:text="${user.username}"></td>
+                        <td th:text="${user.email}"></td>
+                    </a>
+                </tr>
+                </center>
+            </table>
+        </div>
+    </div>
 </div>
-
 </body>
 </html>

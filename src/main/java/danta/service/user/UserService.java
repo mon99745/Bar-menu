@@ -42,7 +42,7 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
-
+    // orderer 구분을 위함
     public User findUser(Long authId) {
         User user = validateExistMember(userRepository.findById(authId));
 
@@ -70,8 +70,8 @@ public class UserService {
      * 게시물을 작성한 회원은 삭제 불가
      */
     @Transactional
-    public void deleteById(Long id) {
-        userRepository.deleteById(id);
+    public void deleteById(Long Id) {
+        userRepository.deleteById(Id);
     }
 
     /**
