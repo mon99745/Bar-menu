@@ -14,6 +14,7 @@ import java.util.List;
 public class CatalogService {
     private final CatalogDao catalogDao;
 
+
     public List<CatalogSummary> getCatalog(ItemSearchForm searchForm) {
         return catalogDao.searchItem(searchForm);
     }

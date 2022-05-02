@@ -37,7 +37,6 @@ public class CatalogController {
 
         // 아이템 리스트
         searchForm.setCategoryId(category);
-
         List<ItemEntity> items = itemService.findAll();
         model.addAttribute("items", items);
 
