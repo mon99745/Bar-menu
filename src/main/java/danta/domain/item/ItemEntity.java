@@ -20,15 +20,15 @@ public class ItemEntity extends BaseTimeEntity {
     private int price;
     private int stockQuantity;
 
-    private Long categoryId;
+    private String categoryName;
 
     @Builder
-    public ItemEntity(String imagePath, String name, int price, int stockQuantity, Long categoryId) {
+    public ItemEntity(String imagePath, String name, int price, int stockQuantity, String categoryName) {
         this.imagePath = imagePath;
         this.name = name;
         this.price = price;
         this.stockQuantity = stockQuantity;
-        this.categoryId = categoryId;
+        this.categoryName = categoryName;
     }
 
     // ==== 비즈니스 로직 ====

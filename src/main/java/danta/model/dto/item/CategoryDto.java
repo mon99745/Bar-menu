@@ -11,13 +11,13 @@ import java.util.List;
 public class CategoryDto implements Serializable {
     private Long categoryId;
     private String categoryName;
-    private Long parentId;
+//    private Long parentId;
     private List<CategoryDto> subCategories;
 
-    public CategoryDto(Long categoryId, String categoryName, Long parentId) {
+    public CategoryDto(Long categoryId, String categoryName) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
-        this.parentId = parentId;
+//        this.parentId = parentId;
     }
 }
 

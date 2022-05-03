@@ -21,7 +21,7 @@ public class QItemEntity extends EntityPathBase<ItemEntity> {
 
     public final danta.domain.QBaseTimeEntity _super = new danta.domain.QBaseTimeEntity(this);
 
-    public final NumberPath<Long> categoryId = createNumber("categoryId", Long.class);
+    public final StringPath categoryName = createString("categoryName");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> createdDate = _super.createdDate;

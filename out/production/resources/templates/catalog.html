@@ -32,15 +32,17 @@
         </select>
       </div>
       <div class="itemContainer" th:each="item : ${items}">
+
 <!--        <p th:text="${'index : ' + itemStat.count}"></p>-->
-        <a class="item" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+        <a class="item" th:if="${item.categoryName} eq '탕'" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
           <div class="itemImageContainer">
             <img class="itemImage" th:src="@{${item.getImagePath()}}" alt="">
           </div>
           <div class="itemInformationContainer">
             <span class="itemName" th:text="${item.name}"></span>
             <span class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></span>
-            <div class="starRatingContainer" >
+          </div>
+              <div class="starRatingContainer" >
               <div class="ratingContainer">
 <!--                  리뷰는 에러-->
 <!--                <div class="rating" th:style="'width: ' + 20 * ${item.reviewRating} + '%'"></div>-->

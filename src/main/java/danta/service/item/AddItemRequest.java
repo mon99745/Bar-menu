@@ -20,5 +20,5 @@ public class AddItemRequest {
     private int price;
     @Min(1)
     private int stockQuantity;
-    private Long categoryId;
+    private String categoryName;
 }

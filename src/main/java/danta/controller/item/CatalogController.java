@@ -2,7 +2,6 @@ package danta.controller.item;
 
 import danta.domain.item.ItemEntity;
 import danta.service.item.CatalogService;
-import danta.service.item.CategoryService;
 import danta.service.item.ItemSearchForm;
 import danta.service.item.ItemService;
 import lombok.RequiredArgsConstructor;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -18,16 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CatalogController {
     private final CatalogService catalogService;
-    private final CategoryService categoryService;
+//    private final CategoryService categoryService;
     private final ItemService itemService;
 
     // 완성 후 인덱스와 합칠것
 
     @GetMapping("/catalog")
-    public String getMainPage(@RequestParam(value = "category", required = false) Long category,
-                              @ModelAttribute ItemSearchForm searchForm, Model model) {
-        // category
-        model.addAttribute("rootCategory", categoryService.createCategoryRoot());
+    public String getMainPage(String categoryName, @ModelAttribute ItemSearchForm searchForm, Model model) {
+//        // category
+//        List<CategoryEntity> categorys = categoryService.findAll();
+//        model.addAttribute("categorys", categorys);
 
         // 아이템 검색 form
         if (searchForm == null)
@@ -36,7 +34,7 @@ public class CatalogController {
             model.addAttribute("itemSearchForm", searchForm);
 
         // 아이템 리스트
-        searchForm.setCategoryId(category);
+        searchForm.setCategoryName(categoryName);
         List<ItemEntity> items = itemService.findAll();
         model.addAttribute("items", items);
 

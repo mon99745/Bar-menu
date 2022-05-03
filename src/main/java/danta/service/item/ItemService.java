@@ -21,7 +21,7 @@ public class ItemService {
                 .imagePath(request.getImagePath())
                 .price(request.getPrice())
                 .stockQuantity(request.getStockQuantity())
-                .categoryId(request.getCategoryId())
+                .categoryName(request.getCategoryName())
                 .build();
         ItemEntity savedItem = itemRepository.save(newItem);
 

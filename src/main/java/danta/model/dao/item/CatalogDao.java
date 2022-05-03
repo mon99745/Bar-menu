@@ -31,7 +31,7 @@ public class CatalogDao {
                 .from(itemEntity)
                 .join(reviewProductEntity)
                 .on(itemEntity.itemId.eq(reviewProductEntity.productId))
-                .where(nameLike(searchForm.getName()), categoryEq(searchForm.getCategoryId()))
+                .where(nameLike(searchForm.getName()), categoryEq(searchForm.getCategoryName()))
                 .orderBy(sorter(searchForm.getSorter()))
                 .fetch();
     }
@@ -44,9 +44,9 @@ public class CatalogDao {
         return null;
     }
 
-    private Predicate categoryEq(Long categoryId) {
-        if (categoryId != null)
-            return itemEntity.categoryId.eq(categoryId);
+    private Predicate categoryEq(String categoryName) {
+        if (categoryName != null)
+            return itemEntity.categoryName.eq(categoryName);
         return null;
     }
 
