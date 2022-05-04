@@ -70,12 +70,12 @@ public class UserService {
      * 게시물을 작성한 회원은 삭제 불가
      */
     @Transactional
-    public void deleteById(Long Id) {
-        userRepository.deleteById(Id);
+    public void deleteById(Long authId) {
+        userRepository.deleteById(authId);
     }
 
     /**
-     * 예외검증
+     * 회원 예외검증
      */
     private User validateExistMember(Optional<User> memberEntity) {
         if(!memberEntity.isPresent())
