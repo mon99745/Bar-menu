@@ -59,7 +59,7 @@ public class PrincipalDetail implements UserDetails {
     }
 
     //사용자 pk
-    public Long getId() {
+    public Long getAuthId() {
         return user.getAuthId();
     }
 

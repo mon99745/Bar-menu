@@ -67,7 +67,6 @@ public class UserService {
 
     /**
      * 회원삭제 로직
-     * 게시물을 작성한 회원은 삭제 불가
      */
     @Transactional
     public void deleteById(Long authId) {

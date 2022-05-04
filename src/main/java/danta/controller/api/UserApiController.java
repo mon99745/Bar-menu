@@ -52,10 +52,10 @@ public class UserApiController {
     /**
      * 회원탈퇴 API
      */
-    @DeleteMapping("/api/v1/user/{id}")
+    @DeleteMapping("/api/v1/user/{authId}")
     // id값을 주소에 받기 위해 @PathVariable
-    public Long deleteById(@PathVariable Long Id) {
-        userService.deleteById(Id);
-        return Id;
+    public Long deleteById(@PathVariable Long authId) {
+        userService.deleteById(authId);
+        return authId;
     }
 }

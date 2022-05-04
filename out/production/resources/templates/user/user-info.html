@@ -56,12 +56,12 @@
                     <a th:href="@{#}" href="#">
                         <li id="i4">쿠폰조회</li>
                     </a>
+
                     <div>
                     <form id="needs-validation" novalidate>
-                        <input type="hidden" id="id" th:value="${#authentication.principal.id}">
+                        <input type="hidden" id="authId" th:value="${#authentication.principal.authId}">
                     </form>
-                    <button class="w-100 btn btn-lg btn-success" id="btn-delete">회원탈퇴</button>
-                        <li id="i5">회원탈퇴</li>
+                    <button id="btn-delete">회원탈퇴</button>
                     </div>
                 </div>
 

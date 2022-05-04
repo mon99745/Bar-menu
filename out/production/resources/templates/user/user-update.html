@@ -46,7 +46,7 @@
 
             <div id="main-middle">
                 <table class="info" border="0">
-                    <input type="hidden" id="id" th:value="${#authentication.principal.id}">
+                    <input type="hidden" id="id" th:value="${#authentication.principal.authId}">
 
                     <tr>
                         <td for="username" class="t1">아이디</td>
@@ -73,16 +73,6 @@
                     </tr>
                 </table>
             </div>
-
-<!--            <div id="main-bottom">-->
-<!--                <div id="main-bottom-1">-->
-<!--                    <li>회원탈퇴</li>-->
-<!--                    <a href="/src/main/resources/templates/TopMenu/mypage.html"><li>취소</li></a>-->
-<!--                    <li id="btn-update">회원정보수정</li>-->
-
-<!--                </div>-->
-<!--            </div>-->
-
         </form>
     </div>
 </div>

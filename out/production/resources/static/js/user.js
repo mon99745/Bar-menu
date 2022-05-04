@@ -62,7 +62,7 @@ let index = {
     //회원 정보 수정
     update: function () {
         let data = {
-            id: $("#id").val(),
+            authId: $("#authId").val(),
             password: $("#password").val(),
             email: $("#email").val(),
             nickname: $("#nickname").val()
@@ -83,15 +83,14 @@ let index = {
     },
 
     //회원 정보 삭제
-    // 삭제같은 경우는 data가 필요가없고 id만 필요
-    // board-detail에서 글 번호로 id값을 받음.
+    // 삭제같은 경우는 ID 데이터만 필요
     // input 태그가 아니기 때문
     delete: function () {
-        let id = $("#id").val();
+        let authId = $("#authId").val();
 
         $.ajax({
             type: "DELETE",
-            url: "/api/v1/user/" + id,
+            url: "/api/v1/user/" + authId,
             dataType: "json"
         }).done(function (res) {
             alert("회원탈퇴가 완료되었습니다.");

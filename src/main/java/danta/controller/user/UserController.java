@@ -42,14 +42,6 @@ public class UserController {
     }
 
     /**
-     * 회원탈퇴 페이지
-     */
-    @GetMapping("/user/delete")
-    public String userDelete() {
-        return "user/user-delete";
-    }
-
-    /**
      * 전체 회원목록 조회
      */
     @Autowired
