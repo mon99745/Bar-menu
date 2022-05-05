@@ -21,7 +21,7 @@ public class CatalogController {
 
     // 완성 후 인덱스와 합칠것
 
-    @GetMapping("/catalog")
+    @GetMapping("/")
     public String getMainPage(String categoryName, @ModelAttribute ItemSearchForm searchForm, Model model) {
 //        // category
 //        List<CategoryEntity> categorys = categoryService.findAll();
@@ -42,7 +42,7 @@ public class CatalogController {
 //        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
 //        model.addAttribute("items", items);
 
-        return "catalog";
+        return "menu";
 
     }
 }

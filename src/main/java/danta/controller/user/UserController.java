@@ -1,13 +1,13 @@
 package danta.controller.user;
 
 import danta.service.user.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class UserController {
+    private UserService userService;
 
     /**
      * 회원가입 페이지
@@ -44,9 +44,6 @@ public class UserController {
     /**
      * 전체 회원목록 조회
      */
-    @Autowired
-    private UserService userService;
-
     @GetMapping("/admin/users")
     public String list(Model model) {
         model.addAttribute("users", userService.findAll());
