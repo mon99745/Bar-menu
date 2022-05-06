@@ -4,10 +4,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"/>
+<head>
+  <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
 <body>
-<div th:replace="fragments/head"/>
+<div id=tablet>
+  <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+    <button class="mainBtn" onclick="location.href='/'">HOME</button >
+  </div>
 
-<div class="container">
+  <div id=middle> <!--가운데 레이아웃-->
+    <div class=middle-top>
+      <div class=logo href="/"> <!--단타포차 로고-->
+        <button type="button" id="logo">
+          <a href="/">Danta</a>
+        </button>
+      </div>
+    </div>
+
+<div class="container table">
   <div class="itemContainer">
     <div class="imageContainer">
       <img class="itemImage" th:src="@{${item.imagePath}}" alt="">
@@ -44,7 +60,13 @@
       </div>
     </div>
   </div>
+  세부사항 :
+  </br>
+  원산지 표기 :
 </div>
+  </div>
+</div>
+
 <script th:src="@{/js/validateOrderCount.js}"></script>
 <script th:src="@{/js/cartInputList.js}"></script>
 </body>

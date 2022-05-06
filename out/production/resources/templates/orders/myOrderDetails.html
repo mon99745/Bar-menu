@@ -5,7 +5,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"/>
 <body>
-<div th:replace="fragments/head"/>
 
 <div class="container">
     <div class="titleContainer">
@@ -58,17 +57,12 @@
                     <span><strong th:text="${myOrderDetails.receiverInfoDto.receiverName}"></strong></span>
                 </div>
                 <div class="receiverInformationLine">
-                    <span>연락처</span>
+                    <span>이메일</span>
                     <span><strong th:text="${myOrderDetails.receiverInfoDto.contact}"></strong></span>
-                </div>
-                <div class="receiverInformationLine">
-                    <span>받는주소</span>
-<!--                    <span><strong th:text="${myOrderDetails.receiverInfoDto.address.city} + ' ' + ${myOrderDetails.receiverInfoDto.address.street}"></strong></span>-->
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
 </body>

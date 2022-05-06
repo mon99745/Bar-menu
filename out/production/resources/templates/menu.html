@@ -82,14 +82,9 @@
       <div id="tang" class="tabimage" style= "overflow-y: scroll">
         <h2>보글보글 탕탕탕!</h2>
         <ul>
-          <li th:each="item : ${items}" th:if="${item.categoryName} eq '탕'">
-            <form th:onsubmit="return validateOrderCount()">
-            <input id="itemIdInput" type="hidden" th:name="itemId" th:value="${item.itemId}"
-                   style="display: none;">
-            <input id="orderCountInput" type="hidden" th:value="1" th:min="1" th:max="${item.stockQuantity}"
-                   th:name="orderCount">
-            <form th:formmethod="post" th:formaction="@{/carts}">
-            <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+          <li th:each="item : ${items}" th:if="${item.categoryName} eq '탕'" >
+            <!-- a 태그에 대한 기존설정이 있어서 b로 임시 태그설정  -->
+            <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
             <button type="submit" name ="product">
               <img class="product" th:src="@{${item.getImagePath()}}">
             </button>
@@ -97,18 +92,16 @@
               <span th:text="${item.name}">메뉴이름</span><br>
               <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
             </a>
-            </form>
-            </form>
+            </a>
           </li>
         </ul>
       </div>
 
     <div id="stir-fry" class="tabimage" style= "overflow-y: scroll">
       <h2>볶으면 뭔들...</h2>
-      <form action ="Cart" method = "post">
         <ul>
           <li th:each="item : ${items}" th:if="${item.categoryName} eq '볶음'">
-            <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+            <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
             <button type="submit" name ="product">
               <img class="product" th:src="@{${item.getImagePath()}}">
             </button>
@@ -116,17 +109,16 @@
               <span th:text="${item.name}">메뉴이름</span><br>
               <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
             </a>
+            </a>
           </li>
         </ul>
-      </form>
     </div>
 
       <div id="delicacy" class="tabimage" style= "overflow-y: scroll">
         <h2>별미</h2>
-        <form action ="Cart" method = "post">
           <ul>
             <li th:each="item : ${items}" th:if="${item.categoryName} eq '별미'">
-              <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
               <button type="submit" name ="product">
                 <img class="product" th:src="@{${item.getImagePath()}}">
               </button>
@@ -134,17 +126,16 @@
                 <span th:text="${item.name}">메뉴이름</span><br>
                 <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
               </a>
+              </a>
             </li>
           </ul>
-        </form>
       </div>
 
       <div id="salad" class="tabimage" style= "overflow-y: scroll">
         <h2>샐러드</h2>
-        <form action ="Cart" method = "post">
           <ul>
             <li th:each="item : ${items}" th:if="${item.categoryName} eq '샐러드'">
-              <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
               <button type="submit" name ="product">
                 <img class="product" th:src="@{${item.getImagePath()}}">
               </button>
@@ -152,17 +143,16 @@
                 <span th:text="${item.name}">메뉴이름</span><br>
                 <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
               </a>
+              </a>
             </li>
           </ul>
-        </form>
       </div>
 
       <div id="soda" class="tabimage">
         <h2>톡 쏘는 음료!</h2>
-        <form action ="Cart" method = "post">
           <ul>
             <li th:each="item : ${items}" th:if="${item.categoryName} eq '음료'">
-              <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
               <button type="submit" name ="product">
                 <img class="product" th:src="@{${item.getImagePath()}}">
               </button>
@@ -170,17 +160,16 @@
                 <span th:text="${item.name}">메뉴이름</span><br>
                 <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
               </a>
+              </a>
             </li>
           </ul>
-        </form>
       </div>
 
       <div id="alcohol" class="tabimage" style= "overflow-y: scroll">
         <h2>술이들어간다 쭉쭉~</h2>
-        <form action ="Cart" method = "post">
           <ul>
             <li th:each="item : ${items}" th:if="${item.categoryName} eq '주류'">
-              <input type="hidden" name="product" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
               <button type="submit" name ="product">
                 <img class="product" th:src="@{${item.getImagePath()}}">
               </button>
@@ -188,9 +177,9 @@
                 <span th:text="${item.name}">메뉴이름</span><br>
                 <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
               </a>
+              </a>
             </li>
           </ul>
-        </form>
       </div>
 
     </div>

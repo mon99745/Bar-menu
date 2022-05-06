@@ -4,8 +4,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"/>
+<head>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
 <body>
-<div th:replace="fragments/head"/>
+<div id=tablet>
+    <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
+    </div>
+
+    <div id=middle> <!--가운데 레이아웃-->
+        <div class=middle-top>
+            <div class=logo href="/"> <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
 
 <div class="container">
     <div class="titleContainer">
@@ -31,14 +47,15 @@
                 </div>
             </div>
             <div class="continueShoppingBtnContainer">
-                <a th:href="@{/catalog}">
+                <a th:href="@{/menu}">
                     <div class="btn btn-primary" id="continueShoppingBtn">계속 쇼핑하기 ></div>
                 </a>
             </div>
         </div>
     </div>
 </div>
-
+    </div>
+</div>
 </body>
 </html>
 

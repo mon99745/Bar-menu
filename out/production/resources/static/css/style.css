@@ -293,7 +293,7 @@ ul {
 }
 .tabimage li a {
     display: block;
-    padding-top: 5px;
+    padding-top: 0px;
     line-height: 1.5;
     font-size: 20px;
     text-align: center;
@@ -473,4 +473,13 @@ p#login{
 input::placeholder {
     color: white;
     opacity: 1; /* 파이어폭스에서 뿌옇게 나오는 현상을 방지하기 위한 css */
+}
+.table {
+    display: block;
+    padding-top: 0px;
+    line-height: 1.5;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    font-family: "Jua", sans-serif;
 }

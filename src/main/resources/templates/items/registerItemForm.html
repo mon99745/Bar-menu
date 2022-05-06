@@ -4,10 +4,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"></div>
+<head>
+  <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
 <body>
-<div th:replace="fragments/head"></div>
+<div id=tablet>
+  <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+    <button class="mainBtn" onclick="location.href='/'">HOME</button >
+  </div>
 
-<div class="jumbotron">
+  <div id=middle> <!--가운데 레이아웃-->
+    <div class=middle-top>
+      <div class=logo href="/"> <!--단타포차 로고-->
+        <button type="button" id="logo">
+          <a href="/">Danta</a>
+        </button>
+      </div>
+    </div>
+
+<div class="jumbotron table">
   <div class="container">
     <form method="post" th:object="${form}" th:action="@{/items/new}">
       <div class="form-group">
@@ -32,11 +48,13 @@
 
       <div class="form-group">
         <label th:for="categoryName">카테고리</label>
-        <input type="text" th:field="*{categoryName}" class="form-control" placeholder="카테고리">
+        <input type="text" th:field="*{categoryName}" class="form-control" placeholder="탕, 볶음, 별미, 샐러드, 음료, 주류 ">
       </div>
 
       <button type="submit" class="btn btn-primary">SUBMIT</button>
     </form>
+  </div>
+</div>
   </div>
 </div>
 </body>

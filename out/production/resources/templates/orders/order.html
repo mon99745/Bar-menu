@@ -4,8 +4,26 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"/>
+<head>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
 <body>
-<div th:replace="fragments/head"/>
+
+<div id=tablet>
+    <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
+    </div>
+
+    <div id=middle> <!--가운데 레이아웃-->
+        <div class=middle-top>
+            <div class=logo href="/"> <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
+
 
 <div class="container">
     <div class="titleContainer">
@@ -33,35 +51,6 @@
         </div>
     </div>
 
-    <!-- 받는 사람 정보 -->
-    <div class="componentContainer">
-        <div class="componentHeaderContainer">
-            <h5>받는사람정보</h5>
-            <button class="btn btn-light">배송지변경</button>
-        </div>
-        <div class="component">
-            <table class="table table-bordered">
-                <tbody>
-                <tr>
-                    <th scope="row">이름</th>
-                    <td>JJY</td>
-                </tr>
-                <tr>
-                    <th scope="row">배송주소</th>
-<!--                    <td th:text="${shippingInfo.getCity()}"></td>-->
-                </tr>
-                <tr>
-                    <th scope="row">연락처</th>
-                    <td>010-xxxx-xxxx</td>
-                </tr>
-                <tr>
-                    <th scope="row">배송요청사항</th>
-                    <td>하이</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
     <!-- 주문상품 정보 -->
     <div class="componentContainer">
@@ -96,16 +85,8 @@
                     <td th:text="${#numbers.formatInteger(orderSummary.totalAmount, 3, 'COMMA')} + ' 원'"></td>
                 </tr>
                 <tr>
-                    <th scope="row">배송비</th>
-                    <td>2,500 원</td>
-                </tr>
-                <tr>
-                    <th scope="row">총결제금액</th>
-                    <td th:text="${#numbers.formatInteger(orderSummary.totalAmount + 2500, 3, 'COMMA')} + ' 원'"></td>
-                </tr>
-                <tr>
                     <th scope="row">결제방법</th>
-                    <td>하이</td>
+                    <td>카운터에 문의해주세요.</td>
                 </tr>
                 </tbody>
             </table>
@@ -117,8 +98,10 @@
             <span>결제하기</span>
         </div>
     </div>
-
 </div>
+</div>
+</div>
+<script th:src="@{/js/order.js}"></script>
 </body>
 </html>
 
@@ -131,6 +114,7 @@
 
     h2, h5 {
         font-weight: bold;
+        color: white;
     }
 
     .table {
@@ -141,7 +125,7 @@
 
     .table th {
         width: 15%;
-        background-color: #F4F4F4;
+        background-color: #000000;
         font-size: 12px;
         padding: 10px;
         padding-right: 15px;
@@ -163,8 +147,8 @@
     }
 
     .component {
-        border-top: 2px solid #CECECE;
-        border-bottom: 1px solid #CECECE;
+        border-top: 2px solid #000000;
+        border-bottom: 1px solid #000000;
     }
 
     .componentHeaderContainer {
@@ -196,33 +180,3 @@
         cursor: pointer;
     }
 </style>
-
-<script>
-    $(function() {
-        // 주문 요청 폼생성 ====================
-        // 선택된 input dom을 만들어 반환
-        function getCartInputList() {
-            let trList = $(".orderItemListTr");
-            let orderLineInputList = "";
-
-            // 테이블의 형태에 따라서 시작 인덱스(i)의 값이 유동적
-            for (let i = 0; i < trList.length; i++) {
-                let itemId = $(trList[i]).find(".itemIdTd").text();
-                let orderCount = $(trList[i]).find(".orderCountTd").text();
-                orderLineInputList += "<input type='text' name='orderLineList[" + i + "].itemId'  value='" + itemId +"'> ";
-                orderLineInputList += "<input type='text' value='" + orderCount + "' name='orderLineList[" + i + "].orderCount'> ";
-            }
-
-            return orderLineInputList;
-        }
-
-        // form 생성
-        $("#payBtn").on("click", function () {
-            let form = $("<form action='/orders/order' method='post'>" +
-                getCartInputList() +
-                "</form> ");
-            $("body").append(form);
-            form.submit();
-        });
-    });
-</script>

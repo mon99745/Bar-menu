@@ -16,7 +16,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CatalogController {
     private final CatalogService catalogService;
-//    private final CategoryService categoryService;
     private final ItemService itemService;
 
     // 완성 후 인덱스와 합칠것
