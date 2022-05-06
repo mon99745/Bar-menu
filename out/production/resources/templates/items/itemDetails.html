@@ -24,6 +24,7 @@
         <i class="fas fa-ban" style="color: #CCC;"></i> 품절
       </div>
       <div th:unless="${item.stockQuantity &lt; 1}" class="orderContainer">
+
         <form th:onsubmit="return validateOrderCount()">
           <div class="form-group">
             <input id="itemIdInput" type="text" th:name="itemId" th:value="${item.itemId}"
@@ -44,7 +45,8 @@
     </div>
   </div>
 </div>
-
+<script th:src="@{/js/validateOrderCount.js}"></script>
+<script th:src="@{/js/cartInputList.js}"></script>
 </body>
 </html>
 
@@ -115,36 +117,3 @@
   }
 
 </style>
-
-<script>
-  function validateOrderCount() {
-    let orderCount = parseInt(document.getElementById("orderCountInput").value);
-
-    if(orderCount <= 0) {
-      alert("주문 수량은 1개 이상이어야 합니다.");
-      return false;
-    }
-    return true;
-  }
-
-  $(function () {
-    // 바로 구매 ====================
-    function getCartInputList() {
-      let cartInputList = "";
-      let itemId = $("#itemIdInput").val();
-      let orderCount = $("#orderCountInput").val();
-      cartInputList += "<input type='text' name='orderLineList[0].itemId' value='" + itemId + "'>";
-      cartInputList += "<input type='text' name='orderLineList[0].orderCount' value='"+ orderCount + "'>";
-      return cartInputList;
-    }
-
-    $("#orderBtn").on("click", function() {
-      let form = $("<form action='/orders/direct' method='post'>" +
-              getCartInputList() +
-              "</form> ");
-      $("body").append(form);
-      form.submit();
-    });
-
-  });
-</script>

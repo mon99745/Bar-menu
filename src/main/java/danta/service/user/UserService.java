@@ -42,6 +42,7 @@ public class UserService {
     public List<User> findAll() {
         return userRepository.findAll();
     }
+
     // orderer 구분을 위함
     public User findUser(Long authId) {
         User user = validateExistMember(userRepository.findById(authId));

@@ -25,29 +25,29 @@
         </tr>
         </thead>
         <tbody>
-        <!--            <tr th:each="myOrder : ${myOrderSummary.myOrderList}">-->
-        <!--                <td th:text="${myOrder.orderId}"></td>-->
-        <!--                <td th:text="${#temporals.format(myOrder.orderDate, 'yyyy-MM-dd HH:mm')}"></td>-->
-        <!--                <td>-->
-        <!--                    <a class="itemInformationContainer" th:href="@{/my/orders/{orderId}(orderId=${myOrder.orderId})}">-->
-        <!--                        <div class="representativeImageContainer">-->
-        <!--                            <img class="representativeImage" th:src="@{${myOrder.getRepresentativeImagePath()}}">-->
-        <!--                        </div>-->
-        <!--                        <span class="representativeName" th:text="${myOrder.getRepresentativeItemName() + ' 등'}"></span>-->
-        <!--                    </a>-->
-        <!--                </td>-->
-        <!--                <td th:text="${myOrder.getTotalAmount()}"></td>-->
-        <!--                <td>-->
-        <!--                    <div>-->
-        <!--                        <span th:text="${myOrder.getOrderStatus()}"></span>-->
-        <!--                    </div>-->
-        <!--                    <div class="write_review_btn">-->
-        <!--                        <a href="">리뷰작성</a>-->
-        <!--                    </div>-->
-        <!--                </td>-->
-        <!--            </tr>-->
+<!--                    <tr th:each="myOrder : ${myOrderSummary.myOrderList}">-->
+<!--                        <td th:text="${myOrder.orderId}"></td>-->
+<!--                        <td th:text="${#temporals.format(myOrder.orderDate, 'yyyy-MM-dd HH:mm')}"></td>-->
+<!--                        <td>-->
+<!--                            <a class="itemInformationContainer" th:href="@{/my/orders/{orderId}(orderId=${myOrder.orderId})}">-->
+<!--                                <div class="representativeImageContainer">-->
+<!--                                    <img class="representativeImage" th:src="@{${myOrder.getRepresentativeImagePath()}}">-->
+<!--                                </div>-->
+<!--                                <span class="representativeName" th:text="${myOrder.getRepresentativeItemName() + ' 등'}"></span>-->
+<!--                            </a>-->
+<!--                        </td>-->
+<!--                        <td th:text="${myOrder.getTotalAmount()}"></td>-->
+<!--                        <td>-->
+<!--                            <div>-->
+<!--                                <span th:text="${myOrder.getOrderStatus()}"></span>-->
+<!--                            </div>-->
+<!--                            <div class="write_review_btn">-->
+<!--                                <a href="">리뷰작성</a>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                    </tr>-->
         </tbody>
-        <!--        <div id="myOrderTotalCount" style="display: none;" th:text="${myOrderSummary.total}"></div>-->
+<!--                <div id="myOrderTotalCount" style="display: none;" th:text="${myOrderSummary.total}"></div>-->
     </table>
 
 </div>
@@ -111,7 +111,7 @@
             let nextPage = parseInt(total/size);
             let data = '';
 
-            await $.get(`/api/my/orders?page=${nextPage}&size=${size}`, function(result) {
+            await $.get(`/api/v1/orders?page=${nextPage}&size=${size}`, function(result) {
                 data = result;
             })
             $("tbody").append(toTrList(data.myOrderList));
