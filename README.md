@@ -1,8 +1,16 @@
 # Bar-menu-V2
+현 가게들에서 사용되는 태블릿 메뉴판에 들어갈 수 있는 웹 어플리케이션입니다.
 
 ## Project name : Danta
-A new platform for drinking culture.
 
+- Tools : 
+  
+  - FE : Html, CSS, JS, JQuery, Bootstrap
+  - BE : Spring, SpringBoot, JPA, MySQL 
+  - SSR : Thymeleaf
+  - Hosting : AWS
+  - Collaboration : Discode, Github
+  - 
 ![image](https://user-images.githubusercontent.com/84507123/150490207-a1d78786-1217-48ec-9ea0-3024b90f8ff2.png)
 
 ## ERD
