@@ -3,7 +3,14 @@
 
 ## Project name : Danta
 
+![image](https://user-images.githubusercontent.com/84507123/150490207-a1d78786-1217-48ec-9ea0-3024b90f8ff2.png)
 
+- 주요기능
+  
+  - Spring Security 를 이용한 유저서비스
+  - JPA와 MySQL 을 이용한 RDBMS와 주문서비스
+  - Web Socket을 이용한 채팅 서비스
+  
 - Tools : 
   
   - FE : Html, CSS, JS, JQuery, Bootstrap
@@ -12,9 +19,7 @@
   - Hosting : AWS
   - Collaboration : Discode, Github
   
-![image](https://user-images.githubusercontent.com/84507123/150490207-a1d78786-1217-48ec-9ea0-3024b90f8ff2.png)
-
-## ERD
+## DataBase - ERD
 <img width="836" alt="스크린샷 2022-05-12 오전 8 18 23" src="https://user-images.githubusercontent.com/84507123/167962798-0dfa25aa-b409-440c-95a4-5c6bf499ca6c.png">
 
 
