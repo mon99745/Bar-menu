@@ -28,7 +28,7 @@
   - Tools : Html, CSS, JS, JQuery, JSP, Servlet, MySQL, AWS
   - IDE : Visual Studio Code, Eclipse 
   - Collaboration : Github
-  - https://ProjectDanta.com [ AWS EC2 패키지 무료만기로 폐쇄 ]
+  - ~~https://ProjectDanta.com~~ [ AWS EC2 패키지 무료만기로 폐쇄 ]
 
 
 
