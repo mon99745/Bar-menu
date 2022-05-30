@@ -9,7 +9,7 @@
   
   - Spring Security 를 이용한 유저서비스
   - JPA와 MySQL 을 이용한 RDBMS와 주문서비스
-  - Web Socket을 이용한 채팅 서비스
+  - Web Socket API 을 이용한 채팅 서비스
   
 - Tools : 
   
