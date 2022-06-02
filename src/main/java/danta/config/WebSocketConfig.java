@@ -14,7 +14,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     private final WebSocket webSocketHandler;
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(webSocketHandler,"/chat");
+        registry.addHandler(webSocketHandler,"/chatting");
 //        .setAllowedOrigins("*") TLS 통신을 하기위해서는 필요
     }
 }
