@@ -3,7 +3,9 @@
 
 ## Project name : Danta
 
-![image](https://user-images.githubusercontent.com/84507123/150490207-a1d78786-1217-48ec-9ea0-3024b90f8ff2.png)
+<img width="1193" alt="스크린샷 2022-06-02 오후 1 22 06" src="https://user-images.githubusercontent.com/84507123/171552485-25f2f685-8e3b-4253-9b94-7b60acc90526.png">
+
+
 
 - 주요기능
   
