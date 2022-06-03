@@ -5,7 +5,7 @@
 
     <title>단타포차에 오신걸 환영합니다.</title>
     <!-- Bootstrap core CSS -->
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
@@ -13,7 +13,10 @@
 
      <!-- 부가적인 테마 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -32,7 +35,7 @@
             </div>
         </div>
 
-        <input type="text" id="nickname" class="chat-form" placeholder="ex) 테이블 번호 or 닉네임을(DEMO 이후 자동 설정) 입력해주세요  " required autofocus>
+        <input type="text" id="nickname" class="chat-form" placeholder="ex) 테이블 번호 or 닉네임(DEMO 이후 자동 설정)을 입력하세요  " required autofocus>
         <button class = "chat-btn" id = "name">채팅 시작</button>
 
         <!--채팅을 하기 위한 박스-->
