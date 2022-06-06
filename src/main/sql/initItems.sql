@@ -38,13 +38,13 @@ insert into items(category_name, image_path, name, price, stock_quantity) values
 
 -- 음료
 insert into items(category_name, image_path, name, price, stock_quantity) values ('음료', '../img/코카콜라.jpeg', '코카콜라', 2500, 999);
-insert into items(category_name, image_path, name, price, stock_quantity) values ('음료', '../img/환타오렌지.jpeg', '환타오렌지', 2500, 999);
+insert into items(category_name, image_path, name, price, stock_quantity) values ('음료', '../img/웰치스[포도].jpeg', '웰치스[포도]', 2500, 999);
 insert into items(category_name, image_path, name, price, stock_quantity) values ('음료', '../img/사이다.jpeg', '사이다', 2500, 999);
 
 -- 주류
 insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/진로.gif', '진로', 4500, 999);
-insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/처음처럼.gif', '처음처럼', 4500, 999);
-insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/참이슬.gif', '참이슬', 4500, 999);
+insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/처음처럼.jpeg', '처음처럼', 4500, 999);
+insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/참이슬.jpeg', '참이슬', 4500, 999);
 insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/테라.gif', '테라', 4500, 999);
 insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/살얼음맥주.gif', '살얼음맥주 500ml', 4000, 999);
 insert into items(category_name, image_path, name, price, stock_quantity) values ('주류', '../img/살얼음맥주.gif', '살얼음맥주 300ml', 3500, 999);

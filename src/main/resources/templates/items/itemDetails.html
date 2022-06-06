@@ -7,6 +7,7 @@
 <head>
   <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+  <link rel="stylesheet" th:href="@{/css/itemdetails.css}" href="../css/itemdetails.css">
 </head>
 <body>
 <div id=tablet>
@@ -58,11 +59,14 @@
           </button>
         </div>
       </div>
+      <div class="detailsContainer">
+      세부사항 :
+      </br>
+      원산지 표기 :
+      </div>
     </div>
   </div>
-  세부사항 :
-  </br>
-  원산지 표기 :
+
 </div>
   </div>
 </div>
@@ -71,71 +75,3 @@
 <script th:src="@{/js/cartInputList.js}"></script>
 </body>
 </html>
-
-<style>
-  .container {
-
-  }
-
-  .itemContainer {
-    height: 50vh;
-    margin-top: 5vh;
-    border: solid 1px #CECECE;
-    display: flex;
-    align-items: center;
-  }
-
-  .imageContainer {
-    flex: 1;
-    height: 90%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .itemImage {
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .informationContainer {
-    flex: 1;
-    max-width: 50%;
-    height: 90%;
-  }
-
-  .itemNameContainer {
-    max-width: 90%;
-    border-bottom: 1px solid #CCC;
-  }
-
-  .itemName {
-    overflow: auto;
-    text-overflow: ellipsis;
-    font-size: 18px;
-    font-weight: bold;
-  }
-
-  .itemPriceContainer {
-    padding: 12px 0px;
-  }
-
-  .itemPrice {
-    font-size: 18px;
-    font-weight: bold;
-    color: #AE0000;
-  }
-
-  .soldOutContainer {
-    color: #CCC;
-  }
-
-  .orderContainer {
-    display: flex;
-  }
-
-  .orderCountError {
-    font-size: 10px;
-    color: orangered;
-  }
-
-</style>

@@ -4,7 +4,25 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <div th:replace="fragments/configHeader"/>
+<head>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/myorderdetails.css}" href="../css/myorderdetails.css">
+</head>
 <body>
+<div id=tablet>
+    <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
+    </div>
+
+    <div id=middle> <!--가운데 레이아웃-->
+        <div class=middle-top>
+            <div class=logo href="/"> <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
 
 <div class="container">
     <div class="titleContainer">
@@ -48,12 +66,12 @@
     <!-- 받는사람 정보 -->
     <div class="component receiverComponent">
         <div class="componentHeader">
-            <div class="captionContainer">받는사람 정보</div>
+            <div class="captionContainer">구매자</div>
         </div>
         <div class="componentBody">
             <div class="receiverInformationContainer">
                 <div class="receiverInformationLine">
-                    <span>받는사람</span>
+                    <span>구매자</span>
                     <span><strong th:text="${myOrderDetails.receiverInfoDto.receiverName}"></strong></span>
                 </div>
                 <div class="receiverInformationLine">
@@ -64,112 +82,7 @@
         </div>
     </div>
 </div>
-
+    </div>
+</div>
 </body>
 </html>
-
-<style>
-    .titleContainer {
-        height: 10vh;
-        display: flex;
-        align-items: center;
-    }
-
-
-    .componentHeader {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 20px;
-    }
-
-    .captionContainer {
-        font-size: 14px;
-        color: #333333;
-    }
-
-    .captionContainer span {
-        font-size: 12px;
-        color: #111111;
-    }
-
-    .removeBtnContainer {
-        border: 1px solid #CECECE;
-    }
-
-    .removeBtnContainer a {
-        font-size: 14px;
-        padding: 5px;
-    }
-
-    .componentBody {
-        border-top: 2px solid black;
-    }
-
-    .orderInformationContainer {
-        margin-top: 20px;
-        height: 200px;
-        display: flex;
-        border: 1px solid #CECECE;
-    }
-
-    .receiverComponent {
-        margin-top: 35px;
-    }
-
-    .itemContainer {
-        display: flex;
-    }
-
-    .itemImageContainer {
-        width: 150px;
-        padding: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .itemImage {
-        max-width: 100%;
-        max-height: 100%;
-    }
-
-    .itemInformationContainer {
-        width: 700px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-
-    .itemInformationContainer a {
-        color: black;
-    }
-
-    .itemInformationContainer a:hover {
-        text-decoration: underline;
-    }
-
-    .itemInformationContainer span {
-        font-size: 13px;
-    }
-
-    .etcContainer {
-        border-left: 1px solid #CECECE;
-        width: 250px;
-        padding: 30px 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-    }
-
-    .receiverInformationContainer span {
-        padding: 10px 15px;
-        color: #333333;
-        font-size: 12px;
-    }
-
-    .receiverInformationLine {
-        height: 45px;
-    }
-</style>

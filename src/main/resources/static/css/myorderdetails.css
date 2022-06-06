@@ -1,0 +1,103 @@
+.titleContainer {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+}
+
+
+.componentHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.captionContainer {
+    font-size: 14px;
+    color: #333333;
+}
+
+.captionContainer span {
+    font-size: 12px;
+    color: #111111;
+}
+
+.removeBtnContainer {
+    border: 1px solid #CECECE;
+}
+
+.removeBtnContainer a {
+    font-size: 14px;
+    padding: 5px;
+}
+
+.componentBody {
+    border-top: 2px solid black;
+}
+
+.orderInformationContainer {
+    margin-top: 20px;
+    height: 200px;
+    display: flex;
+    border: 1px solid #CECECE;
+}
+
+.receiverComponent {
+    margin-top: 35px;
+}
+
+.itemContainer {
+    display: flex;
+}
+
+.itemImageContainer {
+    width: 150px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemImage {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.itemInformationContainer {
+    width: 700px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.itemInformationContainer a {
+    color: black;
+}
+
+.itemInformationContainer a:hover {
+    text-decoration: underline;
+}
+
+.itemInformationContainer span {
+    font-size: 13px;
+}
+
+.etcContainer {
+    border-left: 1px solid #CECECE;
+    width: 250px;
+    padding: 30px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.receiverInformationContainer span {
+    padding: 10px 15px;
+    color: #333333;
+    font-size: 12px;
+}
+
+.receiverInformationLine {
+    height: 45px;
+}

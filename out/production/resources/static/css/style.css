@@ -483,3 +483,11 @@ input::placeholder {
     color: #fff;
     font-family: "Jua", sans-serif;
 }
+/*.right-picture{*/
+/*    margin-top: 160px;*/
+/*}*/
+
+.w-btn-green2-outline {
+    border: 3px solid #519d9e;
+    color: darkgray;
+}

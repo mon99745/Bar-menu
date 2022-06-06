@@ -37,7 +37,7 @@
         <br/>
         <div id="main-top">
             <div id="main-top-top">
-                <h1>회원 정보 [My Page]</h1>
+                <span th:sec:authentication="principal.username" > -- 회원정보 </span> 님의 회원 정보
             </div>
             <div id="main-top-middle">
                 <div id="main-top-middle-1">
@@ -45,23 +45,25 @@
                 </div>
                 <div id="main-top-middle-2">
 
-                    <li id="i1" th:sec:authentication="principal.username" ></li>
+
+<!--                    <li id="i1" th:sec:authentication="principal.username" ></li>-->
 
                     <a th:href="@{/user/update}" href="#">
                         <li id="i2">회원정보수정</li>
                     </a>
-                    <a th:href="@{#}" href="#">
+                    <a th:href="@{/my/orders}">
                         <li id="i3">결제조회</li>
                     </a>
-                    <a th:href="@{#}" href="#">
-                        <li id="i4">쿠폰조회</li>
-                    </a>
+<!--                    <a th:href="@{#}" href="#">-->
+<!--                        <li id="i4">쿠폰조회</li>-->
+<!--                    </a>-->
 
                     <div>
+                        <a>
                     <form id="needs-validation" novalidate>
                         <input type="hidden" id="authId" th:value="${#authentication.principal.authId}">
                     </form>
-                    <button id="btn-delete">회원탈퇴</button>
+                    <button class="btn btn-primary" id="btn-delete">회원탈퇴</button></a>
                     </div>
                 </div>
 
