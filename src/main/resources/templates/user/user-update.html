@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css">
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/form-update.css}" href="../css/form-update.css">
 
     <!-- 부가적인 테마 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -34,13 +35,9 @@
             </div>
         </div>
 
-        <form id="needs-validation" novalidate>
-            <h1 class="h3 m-3 fw-normal">회원 정보 수정 </h1>
-            <div id="empty-top"></div>
+        <form class= "form-update" id="needs-validation" novalidate>
             <div id="main-top-1">
-                <i class="fas fa-user-circle fa-5x"></i></div>
-
-            <div id="main-top-2">
+                <i class="fas fa-user-circle fa-5x"></i>
                 <span id="i1" sec:authentication="principal.username"></span> 님
             </div>
 
@@ -73,6 +70,13 @@
                     </tr>
                 </table>
             </div>
+
+            <div id="main-bottom">
+                <div id="main-bottom-1">
+                    <button id="btn-update">회원정보수정</button>
+                </div>
+            </div>
+
         </form>
     </div>
 </div>
