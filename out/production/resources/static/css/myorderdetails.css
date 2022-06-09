@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+h2, h5 {
+    font-weight: bold;
+    color: white;
+}
 
 .componentHeader {
     display: flex;
