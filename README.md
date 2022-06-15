@@ -12,6 +12,7 @@
   - Spring Security 를 이용한 유저서비스
   - JPA와 MySQL 을 이용한 RDBMS와 주문서비스
   - Web Socket API 을 이용한 채팅 서비스
+  - 
   
 - Tools : 
   
@@ -20,6 +21,7 @@
   - SSR : Thymeleaf
   - Hosting : AWS
   - Collaboration : Discode, Github
+  - 
   
 ## DataBase - ERD
 <img width="836" alt="스크린샷 2022-05-12 오전 8 18 23" src="https://user-images.githubusercontent.com/84507123/167962798-0dfa25aa-b409-440c-95a4-5c6bf499ca6c.png">
