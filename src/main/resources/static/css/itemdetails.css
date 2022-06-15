@@ -2,18 +2,34 @@
 
 }
 
+#middle img {
+    width: 430px;
+    height: 300px;
+    border-radius: 10%;
+}
+
 .itemContainer {
     height: 40vh;
-    margin-top: 5vh;
-    border: solid 1px #000000;
     display: flex;
     align-items: center;
+    margin-top: 5vh;
+    z-index: 1;
     background: #000000;
+    width: 850px;
+    padding: 45px;
+    font-size: 15px;
+    font-family: "Jua", sans-serif;
+    color: #fff;
+    border-radius: 2rem;
+    border: 5px solid #fff;
+    animation: flicker-box 1.5s infinite alternate;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.719);
 }
 
 .imageContainer {
     flex: 0.5;
-    height: 90%;
+    height: 120%;
     display: flex;
     justify-content: center;
 }
