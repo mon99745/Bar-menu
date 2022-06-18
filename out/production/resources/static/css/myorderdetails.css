@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+#myorderdetails-middle {
+    float: left;
+    width: 950px;
+    height: 75%;
+    margin: 0 auto;
+    margin-left: -80px;
+}
+
 h2, h5 {
     font-weight: bold;
     color: white;
@@ -16,13 +24,13 @@ h2, h5 {
 }
 
 .captionContainer {
+    color: white;
     font-size: 14px;
-    color: #333333;
 }
 
 .captionContainer span {
     font-size: 12px;
-    color: #111111;
+    color: white;
 }
 
 .removeBtnContainer {
@@ -35,7 +43,7 @@ h2, h5 {
 }
 
 .componentBody {
-    border-top: 2px solid black;
+    border-top: 2px solid white;
 }
 
 .orderInformationContainer {
@@ -46,11 +54,12 @@ h2, h5 {
 }
 
 .receiverComponent {
-    margin-top: 35px;
+    margin-top: 10px;
 }
 
 .itemContainer {
     display: flex;
+    color: white;
 }
 
 .itemImageContainer {
@@ -75,7 +84,6 @@ h2, h5 {
 }
 
 .itemInformationContainer a {
-    color: black;
 }
 
 .itemInformationContainer a:hover {
@@ -87,8 +95,8 @@ h2, h5 {
 }
 
 .etcContainer {
-    border-left: 1px solid #CECECE;
-    width: 250px;
+    border-left: 1px solid white;
+    width: 100px;
     padding: 30px 0px;
     display: flex;
     flex-direction: column;
@@ -98,8 +106,8 @@ h2, h5 {
 
 .receiverInformationContainer span {
     padding: 10px 15px;
-    color: #333333;
     font-size: 12px;
+    color: white;
 }
 
 .receiverInformationLine {

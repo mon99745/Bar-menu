@@ -1,11 +1,19 @@
 .titleContainer {
-    height: 10vh;
+    height: 5vh;
     display: flex;
     align-items: center;
 }
 
 td {
     font-size: 13px;
+}
+
+#myorderlist-middle {
+    float: left;
+    width: 950px;
+    height: 75%;
+    margin: 0 auto;
+    margin-left: -80px;
 }
 
 .itemInformationContainer {
@@ -31,5 +39,4 @@ td {
 
 .representativeName {
     margin-left: 10px;
-    color: black;
 }

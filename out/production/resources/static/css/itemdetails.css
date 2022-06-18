@@ -29,7 +29,7 @@
 
 .imageContainer {
     flex: 0.5;
-    height: 90%;
+    height: 120%;
     display: flex;
     justify-content: center;
 }

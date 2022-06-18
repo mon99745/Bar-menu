@@ -23,10 +23,10 @@
                 </button>
             </div>
         </div>
-
+        <div id=myorderdetails-middle> <!--가운데 레이아웃-->
 <div class="container">
     <div class="titleContainer">
-        <h2>주문상세</h2>
+        <h1 class = "table">주문상세</h1>
     </div>
 
     <!--  주문일 | 주문번호  -->
@@ -45,13 +45,13 @@
             <div class="orderInformationContainer" th:each="orderedItem : ${myOrderDetails.orderedItemList}">
                 <div class="itemContainer">
                     <div class="itemImageContainer">
-                        <img class="itemImage" th:src="@{${orderedItem.itemImagePath}}" alt="">
+                        <img class="itemImage" th:src="@{/items/{itemId}(itemId=${orderedItem.itemImagePath})}" alt="">
                     </div>
                     <div class="itemInformationContainer">
                         <a th:href="@{/items/{itemId}(itemId=${orderedItem.itemId})}">
-                            <span style="font-weight: bold;" th:text="${orderedItem.itemName}"></span>
+                            <span style="font-weight: bold; margin-left: 100px;" th:text="${orderedItem.itemName}"></span>
                         </a>
-                        <span style="margin-top: 10px;" th:text="${orderedItem.itemPrice}"></span>
+                        <span style="margin-top: 10px; margin-left: 100px;" th:text="${orderedItem.itemPrice}"></span>
                     </div>
                     <div class="etcContainer">
                         <span th:text="${myOrderDetails.orderStatus.getStatus()}"></span>
@@ -82,6 +82,7 @@
         </div>
     </div>
 </div>
+    </div>
     </div>
 </div>
 </body>
