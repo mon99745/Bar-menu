@@ -49,7 +49,7 @@ $(function() {
                 "<span>" + order.orderStatus + "</span>" +
                 "</div>" +
                 "<div>" +
-                "<a href=" + `/my/orders/${order.orderId}` + "><span>리뷰작성</span></a>"
+                "<a href=" + `/my/orders/${order.orderId}` + "><span>결제 조회</span></a>"
             "</div>" +
             "</td>" +
             "</tr>";

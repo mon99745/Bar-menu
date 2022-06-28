@@ -1,7 +1,7 @@
 // 채팅방을 위한 websocket JS
 
-var webSocket;
-var nickname;
+let webSocket;
+let nickname;
 document.getElementById("name").addEventListener("click", function(){
     nickname = document.getElementById("nickname").value;
     document.getElementById("nickname").style.display="none";
@@ -12,7 +12,7 @@ document.getElementById("send").addEventListener("click",function(){
     send();
 })
 function connect(){
-    webSocket = new WebSocket("ws://localhost:8080/chat");
+    webSocket = new WebSocket("ws://localhost:8080/chatting");
     console.log(webSocket);
     webSocket.onopen = onOpen;
     webSocket.onclose = onClose;
@@ -23,7 +23,7 @@ function disconnect(){
     webSocket.close();
 }
 function send(){
-    msg = document.getElementById("message").value;
+    let msg = document.getElementById("message").value;
     webSocket.send(nickname + " : " + msg);
     document.getElementById("message").value = "";
 }

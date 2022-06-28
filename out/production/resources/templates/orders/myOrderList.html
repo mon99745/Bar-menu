@@ -7,6 +7,7 @@
 <head>
     <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
     <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/myorderlist.css}" href="../css/myorderlist.css">
 </head>
 <body>
 <div id=tablet>
@@ -23,9 +24,10 @@
             </div>
         </div>
 
+<div id=myorderlist-middle> <!--가운데 레이아웃-->
 <div class="container">
     <div class="titleContainer">
-        <h2>주문목록/배송조회</h2>
+        <h1 class = "table">주문내역</h1>
     </div>
 
     <table class="table">
@@ -39,6 +41,7 @@
         </tr>
         </thead>
         <tbody>
+<!--        **** JS 파일에서 정리 ****-->
         <!--                    <tr th:each="myOrder : ${myOrderSummary.myOrderList}">-->
         <!--                        <td th:text="${myOrder.orderId}"></td>-->
         <!--                        <td th:text="${#temporals.format(myOrder.orderDate, 'yyyy-MM-dd HH:mm')}"></td>-->
@@ -66,44 +69,7 @@
 </div>
 </div>
 </div>
+</div>
 <script th:src="@{/js/myorderlist.js}"></script>
 </body>
 </html>
-
-<style>
-    .titleContainer {
-        height: 10vh;
-        display: flex;
-        align-items: center;
-    }
-
-    td {
-        font-size: 13px;
-    }
-
-    .itemInformationContainer {
-        display: flex;
-        max-width: 500px;
-        min-width: 500px;
-    }
-
-    .itemInformationContainer:hover {
-        text-decoration: underline;
-    }
-
-    .representativeImageContainer {
-        width: 60px;
-        height: 60px;
-    }
-
-    .representativeImage {
-        max-width: 100%;
-        max-height: 100%;
-        margin-right: 20px;
-    }
-
-    .representativeName {
-        margin-left: 10px;
-        color: black;
-    }
-</style>

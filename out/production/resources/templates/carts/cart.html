@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+  <link rel="stylesheet" th:href="@{/css/cart.css}" href="../css/cart.css">
 </head>
 <body>
 <div id=tablet>
@@ -22,9 +23,10 @@
 
 <div class="container">
   <div class="titleContainer">
-    <h2 class = "table">장바구니</h2>
+    <h1 class = "table">장바구니</h1>
   </div>
-
+<th:block th:if="${cartLineList == null}"> 장바구니에 담긴 상품이 없습니다. </th:block>
+  <th:block th:unless="${cartLineList == null}">
   <div class="cartContainer">
     <table class="table" id="table">
       <thead>
@@ -73,9 +75,10 @@
       </tbody>
     </table>
   </div>
+  </th:block>
 
   <div>
-    <button id="orderBtn" class="btn btn-primary">구매하기</button>
+    <button class="btn btn-primary" id="orderBtn" > 주문 </button>
   </div>
   </div>
   </div>
@@ -83,53 +86,3 @@
 <script th:src="@{/js/cart.js}"></script>
 </body>
 </html>
-
-<style>
-  .titleContainer {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-  }
-
-  .checkBoxTd {
-    max-width: 57px;
-  }
-
-  .checkBox {
-    height: 70px;
-  }
-
-  .itemImageTd {
-    max-width: 230px;
-    max-height: 230px;
-  }
-
-  .itemImage {
-    max-width: 100px;
-    max-height: 70px;
-  }
-
-  .itemInfoTd {
-    max-width: 347px;
-  }
-
-  .itemPriceTd {
-    max-width: 173px;
-    max-height: 100px;
-  }
-
-  .orderCountTd {
-    max-width: 65px;
-    max-height: 100px;
-  }
-
-  .orderCount {
-    max-width: 40px;
-  }
-
-  .totalPriceTd {
-    max-width: 173px;
-    max-height: 100px;
-  }
-</style>
-

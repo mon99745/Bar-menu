@@ -1,0 +1,62 @@
+@import url(../css/style.css);
+@import url("https://fonts.googleapis.com/css2?family=Poor+Story&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&display=swap");
+/*
+--------------------------
+--------------------------
+--------------------------
+login.html
+--------------------------
+--------------------------
+--------------------------
+*/
+/*로그인창 상단 이미지 로고 영역 */
+.form-update {
+    margin-top: 30px;
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    font-family: "Jua", sans-serif;
+    color: #fff;
+    border-radius: 2rem;
+    border: 8px solid #fff;
+    animation: flicker 1s infinite alternate;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.719);
+}
+.form-update input {
+    font-family: "Jua", sans-serif;
+    outline: 0;
+    background: black;
+    color: #fff;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 2px solid #fff;
+    animation: flicker-box 1s infinite alternate;
+}
+.form-update input ::placeholder {
+    color: #fff;
+}
+.form-update button {
+    font-family: "Jua", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #fff;
+    animation: flicker-box 1s infinite alternate;
+    background-color: transparent;
+}

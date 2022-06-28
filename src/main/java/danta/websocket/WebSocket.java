@@ -12,6 +12,8 @@ import java.util.List;
 
 @Slf4j
 @Component
+// WebSocket의 호스트 주소 설정
+//@ServerEndpoint("/websocket")
 public class WebSocket extends TextWebSocketHandler {
     private List<WebSocketSession> sessions = new ArrayList<>();
 
@@ -19,6 +21,7 @@ public class WebSocket extends TextWebSocketHandler {
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessions.add(session);
         log.info("접속 : {}",  session);
+
     }
 
     @Override
