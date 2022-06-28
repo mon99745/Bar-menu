@@ -1,0 +1,220 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>단타포차에 오신걸 환영합니다.</title>
+  <link rel="stylesheet" th:href="@{css/style.css}" href="/src/main/resources/static/css/style.css">
+
+</head>
+<body>
+
+<div id=tablet>
+  <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+    <div class=logo> <!--단타포차 로고-->
+      <button type="button" id="logo">
+        <a href="/">Danta</a>
+      </button>
+
+    </div>
+
+    <div class=left-list> <!--=왼쪽 사이드 메뉴 리스트-->
+      <ul>
+        <li sec:authorize ="hasRole('ADMIN')">
+          <button type="button" id="sidebar" onclick="location.href='/management'">관리정보</button>
+        </li>
+        <li sec:authorize="isAnonymous()">
+          <button type="button" id="sidebar" onclick="location.href='/auth/user/login'">로그인</button>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+          <button type="button" id="sidebar" onclick="location.href='/logout'">로그아웃</button>
+        </li>
+        <li sec:authorize="isAnonymous()">
+          <button type="button" id="sidebar" onclick="location.href='/auth/user/save'">회원가입</button>
+        </li>
+        <li sec:authorize="isAuthenticated()">
+          <button type="button" id="sidebar" onclick="location.href='/user/info'">회원정보</button>
+        </li>
+        <li>
+          <button type="button" id="sidebar" onclick="location.href='/carts'" >장바구니</button>
+        </li>
+        <li>
+          <button type="button" id="sidebar" onclick="location.href='/my/orders'" >주문내역</button>
+        </li>
+        <li>
+          <button type="button" id="sidebar" onclick="location.href='/auth/chat'">채팅</button>
+        </li>
+        <li>
+          <button type="button" id="sidebar" onclick="location.href='/auth/roulette'">룰렛</button>
+        </li>
+        <li>
+
+          <button type="button" id="sidebar" class="btn">호출</button>
+          <div class="modal">
+            <div class="modal-call">
+              <span id=call_close class="close">확인</span>
+              <p>직원이 호출 되었습니다.</p>
+            </div>
+          </div>
+
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div id=middle> <!--가운데 레이아웃-->
+    <div id="tabMenu" style= "overflow-y:scroll">
+      <!--상단 메뉴 리스트-->
+      <input type="radio" id="tab1" name="tabs" checked>
+      <label for="tab1">탕</label>
+      <input type="radio" id="tab2" name="tabs">
+      <label for="tab2">볶음</label>
+      <input type="radio" id="tab3" name="tabs">
+      <label for="tab3">별미</label>
+      <input type="radio" id="tab4" name="tabs">
+      <label for="tab4">샐러드</label>
+      <input type="radio" id="tab5" name="tabs">
+      <label for="tab5">음료</label>
+      <input type="radio" id="tab6" name="tabs">
+      <label for="tab6">주류</label>
+
+      <!-- popup-->
+      <!--메뉴 이미지-->
+      <div id="tang" class="tabimage" style= "overflow-y: scroll">
+        <h2>보글보글 탕탕탕!</h2>
+        <ul>
+          <li th:each="item : ${items}" th:if="${item.categoryName} eq '탕'" >
+            <!-- a 태그에 대한 기존설정이 있어서 b로 임시 태그설정  -->
+            <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+            <button type="submit" name ="product">
+              <img class="product" th:src="@{${item.getImagePath()}}">
+            </button>
+            <a>
+              <span th:text="${item.name}">메뉴이름</span><br>
+              <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+            </a>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    <div id="stir-fry" class="tabimage" style= "overflow-y: scroll">
+      <h2>볶으면 뭔들...</h2>
+        <ul>
+          <li th:each="item : ${items}" th:if="${item.categoryName} eq '볶음'">
+            <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+            <button type="submit" name ="product">
+              <img class="product" th:src="@{${item.getImagePath()}}">
+            </button>
+            <a>
+              <span th:text="${item.name}">메뉴이름</span><br>
+              <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+            </a>
+            </a>
+          </li>
+        </ul>
+    </div>
+
+      <div id="delicacy" class="tabimage" style= "overflow-y: scroll">
+        <h2>별미</h2>
+          <ul>
+            <li th:each="item : ${items}" th:if="${item.categoryName} eq '별미'">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <button type="submit" name ="product">
+                <img class="product" th:src="@{${item.getImagePath()}}">
+              </button>
+              <a>
+                <span th:text="${item.name}">메뉴이름</span><br>
+                <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+              </a>
+              </a>
+            </li>
+          </ul>
+      </div>
+
+      <div id="salad" class="tabimage" style= "overflow-y: scroll">
+        <h2>샐러드</h2>
+          <ul>
+            <li th:each="item : ${items}" th:if="${item.categoryName} eq '샐러드'">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <button type="submit" name ="product">
+                <img class="product" th:src="@{${item.getImagePath()}}">
+              </button>
+              <a>
+                <span th:text="${item.name}">메뉴이름</span><br>
+                <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+              </a>
+              </a>
+            </li>
+          </ul>
+      </div>
+
+      <div id="soda" class="tabimage">
+        <h2>톡 쏘는 음료!</h2>
+          <ul>
+            <li th:each="item : ${items}" th:if="${item.categoryName} eq '음료'">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <button type="submit" name ="product">
+                <img class="product" th:src="@{${item.getImagePath()}}">
+              </button>
+              <a>
+                <span th:text="${item.name}">메뉴이름</span><br>
+                <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+              </a>
+              </a>
+            </li>
+          </ul>
+      </div>
+
+      <div id="alcohol" class="tabimage" style= "overflow-y: scroll">
+        <h2>술이들어간다 쭉쭉~</h2>
+          <ul>
+            <li th:each="item : ${items}" th:if="${item.categoryName} eq '주류'">
+              <a type="hidden" th:href="@{/items/{itemId}(itemId=${item.getItemId()})}">
+              <button type="submit" name ="product">
+                <img class="product" th:src="@{${item.getImagePath()}}">
+              </button>
+              <a>
+                <span th:text="${item.name}">메뉴이름</span><br>
+                <span th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
+              </a>
+              </a>
+            </li>
+          </ul>
+      </div>
+
+    </div>
+  </div>
+  <div class="modal">
+    <div class="modal-content">
+      <span id=call_close class="close">확인</span>
+      <p>
+      </p>
+
+    </div>
+  </div>
+
+
+  <div id=right-sidebar> <!--오른쪽 사이드 레이아웃-->
+
+    <div id=right-list >
+      <ul>
+        <li id=tableNumber>
+          <p>테이블명</p>
+          <p>DEMO</p>
+        </li>
+      </ul>
+<!--      <p id ="login" style="float: right">"닉네임" 님 환영합니다. </p>-->
+    </div>
+  </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/modal.js}"></script>
+
+<!--cartdetail-->
+<script th:src="@{/js/validateOrderCount.js}"></script>
+<script th:src="@{/js/cartInputList.js}"></script>
+
+<script src=../js/modal.js></script>
+</body>
+</html>
