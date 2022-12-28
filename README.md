@@ -19,7 +19,7 @@
   - FE : Html, CSS, JS, JQuery, Bootstrap
   - BE : Spring, SpringBoot, JPA, MySQL 
   - SSR : Thymeleaf
-  - Hosting : AWS
+  - Cloud : AWS
   - Collaboration : Discode, Github
   - 
   
