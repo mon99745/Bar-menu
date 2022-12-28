@@ -1,0 +1,42 @@
+.titleContainer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+}
+
+td {
+    font-size: 13px;
+}
+
+#myorderlist-middle {
+    float: left;
+    width: 950px;
+    height: 75%;
+    margin: 0 auto;
+    margin-left: -80px;
+}
+
+.itemInformationContainer {
+    display: flex;
+    max-width: 500px;
+    min-width: 500px;
+}
+
+.itemInformationContainer:hover {
+    text-decoration: underline;
+}
+
+.representativeImageContainer {
+    width: 60px;
+    height: 60px;
+}
+
+.representativeImage {
+    max-width: 100%;
+    max-height: 100%;
+    margin-right: 20px;
+}
+
+.representativeName {
+    margin-left: 10px;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script th:src="@{https://use.fontawesome.com/releases/v5.2.0/js/all.js}" src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>단타포차에 오신걸 환영합니다.</title>
+
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/form-update.css}" href="../css/form-update.css">
+
+    <!-- 부가적인 테마 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+    <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+<div id=tablet>
+    <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
+    </div>
+
+    <div id=middle> <!--가운데 레이아웃-->
+        <div class=middle-top>
+            <div class=logo href="/"> <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
+
+        <form class= "form-update" id="needs-validation" novalidate>
+            <div id="main-top-1">
+                <i class="fas fa-user-circle fa-5x"></i>
+                <span id="i1" sec:authentication="principal.username"></span> 님
+            </div>
+
+            <div id="main-middle">
+                <table class="info" border="0">
+                    <input type="hidden" id="id" th:value="${#authentication.principal.authId}">
+
+                    <tr>
+                        <td for="username" class="t1">아이디</td>
+                        <td><input type="text" th:value="${#authentication.principal.username}" class="input" id="username" placeholder="아이디를 입력하세요."required minlength="4" size="20" readonly></td>
+                    </tr>
+
+                    <tr>
+                        <td class="t1" for="password">비밀번호</td>
+                        <td><input type="password" class="input" id="password" placeholder="패스워드를 입력하세요." required minlength="8" size="20"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="t1">비밀번호 확인</td>
+                        <td><input type="password" class="input" placeholder="패스워드를 입력하세요."></td>
+                    </tr>
+                    <tr>
+                        <td class="t1">닉네임</td>
+                        <td><input type="text" class="input" th:value="${#authentication.principal.nickname}"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="t1" for="email">이메일</td>
+                        <td><input type="email" th:value="${#authentication.principal.email}" class="input" id="email" placeholder="이메일을 입력하세요." required readonly></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="main-bottom">
+                <div id="main-bottom-1">
+                    <button id="btn-update">회원정보수정</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!-- js 링크 -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script th:src="@{/js/user-update.js}" src="/src/main/resources/static/js/user-update.js"></script>
+<script th:src="@{/js/user.js}"></script>
+</body>
+</html>

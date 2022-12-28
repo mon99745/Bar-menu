@@ -1,0 +1,61 @@
+
+<!--상품 항목을 추가하는 폼 페이지-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/configHeader"></div>
+<head>
+  <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
+<body>
+<div id=tablet>
+  <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+    <button class="mainBtn" onclick="location.href='/'">HOME</button >
+  </div>
+
+  <div id=middle> <!--가운데 레이아웃-->
+    <div class=middle-top>
+      <div class=logo href="/"> <!--단타포차 로고-->
+        <button type="button" id="logo">
+          <a href="/">Danta</a>
+        </button>
+      </div>
+    </div>
+
+<div class="jumbotron table">
+  <div class="container">
+    <form method="post" th:object="${form}" th:action="@{/items/new}">
+      <div class="form-group">
+        <label th:for="name">상품명</label>
+        <input type="text" th:field="*{name}" class="form-control" placeholder="상품 이름">
+      </div>
+
+      <div class="form-group">
+        <label th:for="imagePath">상품사진</label>
+        <input type="text" th:field="*{imagePath}" class="form-control" placeholder="상품 사진">
+      </div>
+
+      <div class="form-group">
+        <label th:for="price">상품가격</label>
+        <input type="text" th:field="*{price}" class="form-control" placeholder="상품 가격">
+      </div>
+
+      <div class="form-group">
+        <label th:for="stockQuantity">재고</label>
+        <input type="text" th:field="*{stockQuantity}" class="form-control" placeholder="재고">
+      </div>
+
+      <div class="form-group">
+        <label th:for="categoryName">카테고리</label>
+        <input type="text" th:field="*{categoryName}" class="form-control" placeholder="탕, 볶음, 별미, 샐러드, 음료, 주류 ">
+      </div>
+
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
+    </form>
+  </div>
+</div>
+  </div>
+</div>
+</body>
+</html>
