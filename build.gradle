@@ -62,6 +62,9 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
+	implementation 'io.springfox:springfox-swagger-ui:3.0.0'
+
 	// https://mvnrepository.com/artifact/io.socket/socket.io-client
 	implementation group: 'io.socket', name: 'socket.io-client', version: '2.1.0'
 }
