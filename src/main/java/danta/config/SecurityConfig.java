@@ -29,11 +29,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(principalDetailService).passwordEncoder(bCryptPasswordEncoder());
     }
 
+    private static final String[] PERMIT_URL_ARRAY = {
+            /* swagger v2 */
+            "/v2/api-docs",
+            "/swagger-resources",
+            "/swagger-resources/**",
+            "/configuration/ui",
+            "/configuration/security",
+            "/swagger-ui.html",
+            "/webjars/**",
+            /* swagger v3 */
+            "/v3/api-docs/**",
+            "/swagger-ui/**"
+    };
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable() //csrf 토큰 해제
                 .authorizeRequests() // URL별 권한 관리를 설정하는 옵션
+                .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .antMatchers("/","/static/**", "/auth/**", "/js/**", "/css/**", "/img/**").permitAll() //권한 관리 대상을 지정하는 옵션
                 .anyRequest().authenticated()
                 .and()
