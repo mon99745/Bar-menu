@@ -15,7 +15,8 @@ plugins {
 
 group = 'danta'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = 11
+targetCompatibility = 11
 
 configurations {
 	compileOnly {
@@ -43,20 +44,20 @@ dependencies {
 
 	// sql 의존성 추가
 	annotationProcessor 'org.projectlombok:lombok'
-	runtimeOnly 'mysql:mysql-connector-java'
 	// +JPA
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	// +Security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-
 	// For inject
 	implementation group: 'javax.inject', name: 'javax.inject', version: '1'
-
 	// For commons
 	implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
 
+	//DB
+	implementation 'mysql:mysql-connector-java'
+//	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+//	runtimeOnly 'org.postgresql:postgresql'
 	// QueryDSL
 	//querydsl 추가
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
