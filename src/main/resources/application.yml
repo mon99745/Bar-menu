@@ -1,5 +1,5 @@
 server:
-  port: '8080'
+  port: '8000'
   error:
     include-message: always
     include-stacktrace: never
@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bar-menu?rewriteBatchedStatements=true
     username: root
-    password: 0000
+    password: '0000'
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

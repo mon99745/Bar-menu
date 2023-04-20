@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+  <li sec:authorize ="hasRole('ADMIN')">
+    <button type="button" id="sidebar" onclick="location.href='/management'">관리정보</button>
+  </li>
+  <li sec:authorize="isAnonymous()">
+    <button type="button" id="sidebar" onclick="location.href='/auth/user/save'">회원가입</button>
+  </li>
+  <li sec:authorize="isAnonymous()">
+    <button type="button" id="sidebar" onclick="location.href='/auth/user/login'">로그인</button>
+  </li>
+  <li sec:authorize="isAuthenticated()">
+    <button type="button" id="sidebar" onclick="location.href='/logout'">로그아웃</button>
+  </li>
+  <li sec:authorize="isAuthenticated()">
+    <button type="button" id="sidebar" onclick="location.href='/user/info'">회원정보</button>
+  </li>
+  <li>
+    <button type="button" id="sidebar" onclick="location.href='/carts'" >장바구니</button>
+  </li>
+  <li>
+    <button type="button" id="sidebar" onclick="location.href='/my/orders'" >주문내역</button>
+  </li>
+  <li>
+    <button type="button" id="sidebar" onclick="location.href='/chat'">채팅</button>
+  </li>
+  <li>
+    <button type="button" id="sidebar" onclick="location.href='/auth/roulette'">룰렛</button>
+  </li>
+  <li>
+    <button type="button" id="sidebar" class="btn" style="color: paleturquoise; ">호출</button>
+    <div class="modal">
+      <div class="modal-call">
+        <span id=call_close class="close">확인</span>
+        <p>직원이 호출 되었습니다.</p>
+      </div>
+    </div>
+
+  </li>
+</ul>
+</body>
+</html>

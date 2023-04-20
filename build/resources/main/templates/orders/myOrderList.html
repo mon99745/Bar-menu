@@ -1,0 +1,75 @@
+
+<!--주문내역 조회-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragments/configHeader"/>
+<head>
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+    <link rel="stylesheet" th:href="@{/css/myorderlist.css}" href="../css/myorderlist.css">
+</head>
+<body>
+<div id=tablet>
+    <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+        <button class="mainBtn" onclick="location.href='/'">HOME</button >
+    </div>
+
+    <div id=middle> <!--가운데 레이아웃-->
+        <div class=middle-top>
+            <div class=logo href="/"> <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
+
+<div id=myorderlist-middle> <!--가운데 레이아웃-->
+<div class="container">
+    <div class="titleContainer">
+        <h1 class = "table">주문내역</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>주문번호</th>
+            <th>주문일자</th>
+            <th>주문상품정보</th>
+            <th>결제금액</th>
+            <th>주문상태</th>
+        </tr>
+        </thead>
+        <tbody>
+<!--        **** JS 파일에서 정리 ****-->
+        <!--                    <tr th:each="myOrder : ${myOrderSummary.myOrderList}">-->
+        <!--                        <td th:text="${myOrder.orderId}"></td>-->
+        <!--                        <td th:text="${#temporals.format(myOrder.orderDate, 'yyyy-MM-dd HH:mm')}"></td>-->
+        <!--                        <td>-->
+        <!--                            <a class="itemInformationContainer" th:href="@{/my/orders/{orderId}(orderId=${myOrder.orderId})}">-->
+        <!--                                <div class="representativeImageContainer">-->
+        <!--                                    <img class="representativeImage" th:src="@{${myOrder.getRepresentativeImagePath()}}">-->
+        <!--                                </div>-->
+        <!--                                <span class="representativeName" th:text="${myOrder.getRepresentativeItemName() + ' 등'}"></span>-->
+        <!--                            </a>-->
+        <!--                        </td>-->
+        <!--                        <td th:text="${myOrder.getTotalAmount()}"></td>-->
+        <!--                        <td>-->
+        <!--                            <div>-->
+        <!--                                <span th:text="${myOrder.getOrderStatus()}"></span>-->
+        <!--                            </div>-->
+        <!--                            <div class="write_review_btn">-->
+        <!--                                <a href="">리뷰작성</a>-->
+        <!--                            </div>-->
+        <!--                        </td>-->
+        <!--                    </tr>-->
+        </tbody>
+        <!--                <div id="myOrderTotalCount" style="display: none;" th:text="${myOrderSummary.total}"></div>-->
+    </table>
+</div>
+</div>
+</div>
+</div>
+<script th:src="@{/js/myorderlist.js}"></script>
+</body>
+</html>

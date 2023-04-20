@@ -41,7 +41,8 @@ public class CatalogController {
 //        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
 //        model.addAttribute("items", items);
 
-        return "menu";
+        // Todo 정상 작동 시 menu 로 복구
+        return "test";
 
     }
 }
