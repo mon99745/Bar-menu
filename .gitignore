@@ -26,3 +26,4 @@ hazelcast-mc/
 *.iml
 *.ipr
 *.iws
+*.class

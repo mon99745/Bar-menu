@@ -3,10 +3,17 @@ package danta.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
+    @GetMapping("api")
+    public Object api() {
+            return new RedirectView("swagger-ui/");
+        }
+
 
 //    @GetMapping("/")
 //// @PageableDefault를 설정하면 페이지의 size, 정렬순을 정할 수 있다.
