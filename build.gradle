@@ -51,7 +51,6 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
-	// https://mvnrepository.com/artifact/io.socket/socket.io-client
 	implementation group: 'io.socket', name: 'socket.io-client', version: '2.1.0'
 }
 
