@@ -1,5 +1,6 @@
 package danta.service.order;
 
+
 import danta.domain.item.ItemEntity;
 import danta.domain.order.OrderEntity;
 import danta.domain.order.OrderRepository;
@@ -53,7 +54,7 @@ public class MyOrderService {
         MyOrderDetailsDto myOrderDetailsDto = MyOrderDetailsDto.builder()
                 .orderDate(orderEntity.getCreatedDate())
                 .orderId(orderId)
-                .receiverInfoDto(new MyOrderDetailsReceiverInfoDto(orderEntity.getOrderer().getNickname(), orderEntity.getOrderer().getEmail()))
+                .receiverInfoDto(new MyOrderDetailsReceiverInfoDto(orderEntity.getOrderer().getUsername(), orderEntity.getOrderer().getEmail()))
                 .orderedItemList(myOrderDetailsItemDtoList)
                 .orderStatus(orderEntity.getStatus())
                 .build();

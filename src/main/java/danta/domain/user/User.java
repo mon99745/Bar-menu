@@ -1,5 +1,6 @@
 package danta.domain.user;
 
+
 import danta.domain.BaseTimeEntity;
 import lombok.*;
 
@@ -26,8 +27,8 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 20)
-    private String nickname; //닉네임
+//    @Column(nullable = false, length = 20)
+//    private String nickname; //닉네임
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -50,8 +51,8 @@ public class User extends BaseTimeEntity {
     /**
      * 회원수정 메소드
      */
-    public void update(String password, String nickname) {
+    public void update(String password) {
         this.password = password;
-        this.nickname = nickname;
+//        this.nickname = nickname;
     }
 }

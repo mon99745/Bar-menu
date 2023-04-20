@@ -1,5 +1,6 @@
 package danta.service.user;
 
+
 import danta.config.auth.PrincipalDetail;
 import danta.domain.user.User;
 import danta.domain.user.UserRepository;
@@ -37,7 +38,7 @@ public class UserService {
     }
 
     /**
-     * 회원목록 로직
+     * 전체 회원 목록 로직 (관리자용)
      */
     public List<User> findAll() {
         return userRepository.findAll();
@@ -61,7 +62,7 @@ public class UserService {
     public Long update(User user,
                        @AuthenticationPrincipal PrincipalDetail principalDetail) {
         User userEntity = userRepository.findById(user.getAuthId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getAuthId()));
-        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()), user.getNickname());
+        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()));
         principalDetail.setUser(userEntity); //추가
         return userEntity.getAuthId();
     }
@@ -70,8 +71,8 @@ public class UserService {
      * 회원삭제 로직
      */
     @Transactional
-    public void deleteById(Long authId) {
-        userRepository.deleteById(authId);
+    public void delete(User user) {
+        userRepository.delete(user);
     }
 
     /**

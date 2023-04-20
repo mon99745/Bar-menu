@@ -53,10 +53,10 @@ public class PrincipalDetail implements UserDetails {
         return user.getEmail();
     }
 
-    //사용자 닉네임
-    public String getNickname() {
-        return user.getNickname();
-    }
+//    //사용자 닉네임
+//    public String getNickname() {
+//        return user.getNickname();
+//    }
 
     //사용자 pk
     public Long getAuthId() {

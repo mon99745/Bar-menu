@@ -5,13 +5,16 @@ import danta.domain.item.ItemRepository;
 import danta.domain.user.AuthenticationConverter;
 import danta.domain.user.User;
 import danta.model.dao.order.OrderDao;
-import danta.model.dto.order.OrdererInfoDto;
 import danta.model.dto.order.OrderItemDto;
 import danta.model.dto.order.OrderSummaryDto;
+import danta.model.dto.order.OrdererInfoDto;
 import danta.service.order.OrderLineRequest;
 import danta.service.order.OrderRequest;
 import danta.service.order.OrderService;
+import io.swagger.annotations.Api;
+import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,9 +30,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
+@RequiredArgsConstructor(access = AccessLevel.PROTECTED)
+@Api(tags = OrderController.TAG, description = "주문을 관리하는 API")
 @Controller
-@RequiredArgsConstructor
 public class OrderController {
+    public static final String TAG = "Order API";
     private final OrderService orderService;
     private final OrderDao orderDao;
     private final ItemRepository itemRepository;
@@ -89,8 +95,8 @@ public class OrderController {
 
     private OrdererInfoDto createOrdererInfo(User orderer) {
         return new OrdererInfoDto(orderer.getAuthId(),
-                orderer.getUsername(),
-                orderer.getNickname());
+                orderer.getUsername());
+//                orderer.getNickname());
     }
 
     // 주문 요청 처리
