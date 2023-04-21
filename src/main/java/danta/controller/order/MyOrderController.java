@@ -1,9 +1,6 @@
 package danta.controller.order;
 
-import danta.domain.user.AuthenticationConverter;
-import danta.domain.user.User;
-import danta.model.dto.order.MyOrderDetailsDto;
-import danta.service.order.MyOrderService;
+import danta.service.order.OrderService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MyOrderController {
     public static final String PATH = "/my/orders";
     public static final String TAG = "My Order API";
-    private final MyOrderService myOrderService;
-    private final AuthenticationConverter authenticationConverter;
+    private final OrderService orderService;
 
     @GetMapping("")
     public String getMyOrderListPage() {
@@ -33,16 +29,16 @@ public class MyOrderController {
     @GetMapping("{orderId}")
     public String getMyOrderDetails(@PathVariable("orderId") Long orderId,
                                     Model model) {
-        MyOrderDetailsDto myOrderDetails = myOrderService.getMyOrderDetails(orderId);
-        model.addAttribute("myOrderDetails", myOrderDetails);
+//        OrderDetail orderDetails = orderService.getMyOrderDetails(orderId);
+//        model.addAttribute("myOrderDetails", myOrderDetails);
         return "orders/myOrderDetails";
     }
 
     @GetMapping("delete/{orderId}")
     public String deleteMyOrder(Authentication authentication,
                                 @PathVariable("orderId") Long orderId) {
-        User user = authenticationConverter.getUserFromAuthentication(authentication);
-        myOrderService.deleteMyOrder(user.getAuthId(), orderId);
+//        User user = authenticationConverter.getUserFromAuthentication(authentication);
+//        orderService.deleteMyOrder(user.getAuthId(), orderId);
         return "redirect:/my/orders";
     }
 }

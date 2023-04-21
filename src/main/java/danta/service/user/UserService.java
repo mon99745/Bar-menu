@@ -1,12 +1,10 @@
 package danta.service.user;
 
-
-import danta.config.auth.PrincipalDetail;
-import danta.domain.user.User;
-import danta.domain.user.UserRepository;
+import danta.model.Cart;
+import danta.model.User;
+import danta.repository.UserRepository;
 import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,15 +24,18 @@ public class UserService {
      * 회원가입 로직
      */
     @Transactional
-    public Long save(User user) {
+    public String save(User user) {
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
 
         // 회원가입과 동시에 장바구니 생성
-        Long authId = userRepository.save(user).getAuthId();
-        cartService.createCart(authId);
+        User savedUser = userRepository.save(user);
+        Cart cart = new Cart();
+        cart.setId(savedUser.getId());
 
-        return userRepository.save(user).getAuthId();
+        cartService.createCart(cart);
+
+        return userRepository.save(user).getId();
     }
 
     /**
@@ -45,8 +46,8 @@ public class UserService {
     }
 
     // orderer 구분을 위함
-    public User findUser(Long authId) {
-        User user = validateExistMember(userRepository.findById(authId));
+    public User findUser(Long id) {
+        User user = validateExistMember(userRepository.findById(id));
 
         return user;
     }
@@ -59,12 +60,12 @@ public class UserService {
     // UserService 클래스에서도
     // @AuthenticationPrincipal PrincipalDetail principalDetail를 파라미터로
     // 받아서 update된 유저 정보를 principalDetail에 집어넣는다.
-    public Long update(User user,
-                       @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        User userEntity = userRepository.findById(user.getAuthId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getAuthId()));
-        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()));
-        principalDetail.setUser(userEntity); //추가
-        return userEntity.getAuthId();
+    public String update(User user) {
+        User userEntity = userRepository.findById(Long.valueOf(user.getId())).orElseThrow(()
+                -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
+//        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()));
+//        User.setUser(userEntity); //추가
+        return userEntity.getId();
     }
 
     /**
@@ -74,6 +75,7 @@ public class UserService {
     public void delete(User user) {
         userRepository.delete(user);
     }
+
 
     /**
      * 회원 예외검증

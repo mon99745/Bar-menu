@@ -1,8 +1,7 @@
 package danta.controller.user;
 
 
-import danta.domain.user.Role;
-import danta.model.dto.user.UserSaveRequestDto;
+
 import io.swagger.annotations.*;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -38,15 +37,15 @@ public class UserTestRestController {
             @PathVariable @NotBlank @ApiParam(example = "example@gmail.com") String email
 //            @PathVariable @NotBlank @ApiParam(example = "mjw") String nickname
     ) {
-        //  회원가입 설정
-        UserSaveRequestDto createMsg = new UserSaveRequestDto();
-//        createMsg.setRole(createMsg);
-
-        createMsg.setRole(Role.valueOf(role));
-        createMsg.setUsername(username);
-        createMsg.setPassword(password);
-        createMsg.setEmail(email);
-//        createMsg.nickname(nickname);
-//        return createMsg.serialize();
+//        //  회원가입 설정
+//        User createMsg = new UserSaveRequestDto();
+////        createMsg.setRole(createMsg);
+//
+//        createMsg.setRole(Role.valueOf(role));
+//        createMsg.setUsername(username);
+//        createMsg.setPassword(password);
+//        createMsg.setEmail(email);
+////        createMsg.nickname(nickname);
+////        return createMsg.serialize();
     }
 }

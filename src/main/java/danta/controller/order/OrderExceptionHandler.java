@@ -1,6 +1,6 @@
 package danta.controller.order;
 
-import danta.service.item.NotEnoughStockQuantityException;
+import danta.exception.NotEnoughStockQuantityException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

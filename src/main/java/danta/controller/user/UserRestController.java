@@ -1,15 +1,12 @@
 package danta.controller.user;
 
-import danta.config.auth.PrincipalDetail;
-import danta.domain.user.User;
-import danta.model.dto.user.UserSaveRequestDto;
+import danta.model.User;
 import danta.service.user.UserService;
 import io.swagger.annotations.Api;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -46,8 +43,8 @@ public class UserRestController {
      * 회원가입 API
      */
     @PostMapping("create")
-    public Long create(@RequestBody UserSaveRequestDto userSaveRequestDto) {
-        return userService.save(userSaveRequestDto.toEntity());
+    public String create(@RequestBody User user) {
+        return userService.save(user);
     }
 
     /**
@@ -65,9 +62,8 @@ public class UserRestController {
      */
     @PutMapping("update")
     // @AuthenticationPrincipal에 PrincipalDetail타입으로 파라미터를 받으면 유저 정보를 얻을 수 있다.
-    public Long update(@RequestBody User user, @AuthenticationPrincipal PrincipalDetail principalDetail) {
-        userService.update(user, principalDetail);
-        return user.getAuthId();
+    public String update(@RequestBody User user) {
+        return userService.update(user);
     }
 
     /**

@@ -1,6 +1,5 @@
 package danta.config;
 
-import danta.config.auth.PrincipalDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,17 +15,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity // 시큐리티 설정 활성화
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private PrincipalDetailService principalDetailService;
-
     @Bean //@Bean을 통해 비밀번호 암호화 스프링 부트 2.0부터는 필수
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(principalDetailService).passwordEncoder(bCryptPasswordEncoder());
     }
 
     private static final String[] PERMIT_URL_ARRAY = {
@@ -70,8 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 보류 remember.me
         http
-                .rememberMe().tokenValiditySeconds(60 * 60 * 7) // 쿠키를 얼마나 유지할 것인지 계산합니다. (7일 설정)
-                .userDetailsService(principalDetailService);
+                .rememberMe().tokenValiditySeconds(60 * 60 * 7); // 쿠키를 얼마나 유지할 것인지 계산합니다. (7일 설정)
 
     }
 
