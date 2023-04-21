@@ -10,17 +10,15 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+
 /**
  * 주문 상세
  */
 @Schema(description = "주문 상세")
 @Getter
 @Setter
-@SuperBuilder
 @NoArgsConstructor
 @Entity
-@DynamicInsert
-@DynamicUpdate
 @Table(indexes = {
         @Index(name = "idx_orderDetail_id", columnList = "id", unique = true),
         @Index(name = "idx_orderDetail_name", columnList = "name"),
@@ -30,7 +28,6 @@ import javax.persistence.*;
         @Index(name = "idx_orderDetail_status", columnList = "status"),
         @Index(name = "idx_orderDetail_reg_date", columnList = "regDate"),
         @Index(name = "idx_orderDetail_mod_date", columnList = "modDate")})
-@org.hibernate.annotations.Table(appliesTo = OrderDetail.TABLE_NAME, comment = OrderDetail.TABLE_DESC)
 public class OrderDetail {
     public static final String NAME_SPACE = "OrderDetail";
     public static final String TABLE_NAME = "orderDetail";
@@ -40,9 +37,41 @@ public class OrderDetail {
      * 주문 상세 ID
      */
     @Id
-    @Schema(description = "주문 ID")
+    @Schema(description = "주문 상세 ID")
     @Column(name = "id", nullable = false)
     protected String id;
+
+    /**
+     * 주문 ID
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "주문 ID")
+    @Column(length = 100)
+    protected Order orderId;
+
+    /**
+     * 상품 ID
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "상품 ID")
+    @Column(length = 100)
+    protected Product productId;
+
+    /**
+     * 주문 수량
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "주문 수량")
+    @Column(length = 100)
+    protected int orderQuantity;
+
+    /**
+     * 주문 가격
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "주문 가격")
+    @Column(length = 100)
+    protected int orderPrice;
 
 
 }

@@ -21,6 +21,7 @@ import javax.persistence.*;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
+@Embeddable
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {

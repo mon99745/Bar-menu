@@ -36,7 +36,6 @@ import java.util.Map;
         @Index(name = "idx_cart_status", columnList = "status"),
         @Index(name = "idx_cart_reg_date", columnList = "regDate"),
         @Index(name = "idx_cart_mod_date", columnList = "modDate")})
-@org.hibernate.annotations.Table(appliesTo = Cart.TABLE_NAME, comment = Cart.TABLE_DESC)
 public class Cart {
     public static final String NAME_SPACE = "Cart";
     public static final String TABLE_NAME = "cart";

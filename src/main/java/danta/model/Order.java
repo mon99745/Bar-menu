@@ -25,6 +25,7 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
+@Embeddable
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
@@ -37,7 +38,7 @@ import java.util.List;
         @Index(name = "idx_order_reg_date", columnList = "regDate"),
         @Index(name = "idx_order_mod_date", columnList = "modDate")})
 @org.hibernate.annotations.Table(appliesTo = Order.TABLE_NAME, comment = Order.TABLE_DESC)
-public class Order extends BaseTimeEntity {
+public class Order {
     public static final String NAME_SPACE = "Order";
     public static final String TABLE_NAME = "order";
     public static final String TABLE_DESC = "주문";
@@ -55,7 +56,7 @@ public class Order extends BaseTimeEntity {
     protected String orderId;
 
     /**
-     * 주문 이름
+     * 주문자 이름
      */
     @JsonProperty(index = 10)
     @Schema(description = "주문자 이름")

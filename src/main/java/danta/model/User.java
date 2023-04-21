@@ -24,6 +24,7 @@ import javax.persistence.*;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
+@Embeddable
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
@@ -33,7 +34,7 @@ import javax.persistence.*;
         @Index(name = "idx_user_reg_date", columnList = "regDate"),
         @Index(name = "idx_user_mod_date", columnList = "modDate")})
 @org.hibernate.annotations.Table(appliesTo = User.TABLE_NAME, comment = User.TABLE_DESC)
-public class User extends BaseTimeEntity {
+public class User {
     public static final String NAME_SPACE = "User";
     public static final String TABLE_NAME = "user";
     public static final String TABLE_DESC = "회원";
