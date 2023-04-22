@@ -49,6 +49,14 @@ public class Cart {
     @Column(name = "id", nullable = false)
     protected String id;
 
+    /**
+     * 장바구니 회원 ID
+     */
+    @JsonProperty
+    @Schema(description = "장바구니 ID")
+    @Column(length = 100)
+    protected String carterId;
+
 
     /**
      * 장바구니에 담긴 수량

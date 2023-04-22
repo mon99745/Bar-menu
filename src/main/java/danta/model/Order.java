@@ -63,6 +63,24 @@ public class Order {
     @Column(length = 100)
     protected User orderer;
 
+    /**
+     * 주문 상태
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "주문 상태")
+    @Column(length = 100)
+    protected String status;
+
+    /**
+     * 주문 금액
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "주문 금액")
+    @Column(length = 100)
+    protected Long price;
+
+
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderProduct> orderProductList = new ArrayList<>();

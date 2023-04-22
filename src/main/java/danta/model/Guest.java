@@ -35,17 +35,21 @@ public class Guest {
     public static final String TABLE_NAME = "guest";
     public static final String TABLE_DESC = "비회원";
 
+    /**
+     * TODO:
+     * 일련 번호 사용
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     protected String id;
 
     /**
-     * 이름
+     * 비회원 상태
      */
     @JsonProperty(index = 10)
-    @Schema(description = "이름")
+    @Schema(description = "비회원 상태")
     @Column(length = 100)
-    protected String name;
+    protected String status;
 
 }

@@ -54,4 +54,32 @@ public class Admin {
     @Column(length = 100)
     protected String name;
 
+    /**
+     * 관리자 비밀번호
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "관리자 비밀번호")
+    @Column(length = 100)
+    protected String password;
+
+    /**
+     * 관리자 상태
+     * TODO 상태정보를 ENUM 처리
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "관리자 상태")
+    @Column(length = 100)
+    protected String status;
+
+    /**
+     * 관리 주소
+     * (지점 주소)
+     * TODO Stream 사용
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "관리 주소")
+    @Column(length = 100)
+    protected String adress;
+
+
 }

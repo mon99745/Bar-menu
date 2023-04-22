@@ -65,6 +65,7 @@ public class Product {
 
     /**
      * 상품 이미지
+     * TODO 상품이미지를 경로로 변경
      */
     @JsonProperty(index = 10)
     @Schema(description = "상품 이미지")
