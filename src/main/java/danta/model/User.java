@@ -2,14 +2,11 @@ package danta.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import danta.common.BaseTimeEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.apache.catalina.users.AbstractUser;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -41,6 +38,7 @@ public class User extends AbstractModel {
      */
     @Id
     @Schema(description = "회원 ID")
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "user_id",nullable = false)
     protected String id;
 

@@ -36,6 +36,7 @@ public class Guest extends AbstractModel {
      * 일련 번호 사용
      */
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "guest_id", nullable = false)
     protected String id;
 

@@ -65,7 +65,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Bean
     @Override
     // 회원수정 후에 세션을 유지하기 위해 코드를 수정
     public AuthenticationManager authenticationManagerBean() throws Exception {

@@ -12,6 +12,7 @@ import lombok.experimental.SuperBuilder;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -30,6 +31,7 @@ import java.util.List;
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
+@Component
 @Table(name = "OrderInfo",indexes = {
         @Index(name = "idx_order_id", columnList = "order_id", unique = true),
         @Index(name = "idx_order_orderer", columnList = "user_id"),

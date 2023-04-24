@@ -3,12 +3,14 @@ package danta.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -24,6 +26,7 @@ import javax.persistence.*;
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
+@Component
 @Table(name = "ProductInfo", indexes = {
         @Index(name = "idx_product_id", columnList = "product_id", unique = true),
         @Index(name = "idx_product_name", columnList = "name"),
