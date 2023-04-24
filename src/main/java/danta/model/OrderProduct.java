@@ -18,7 +18,6 @@ import javax.persistence.*;
 public class OrderProduct extends AbstractModel{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderProductId;
     private int orderCount;
     private int orderProductAmount;

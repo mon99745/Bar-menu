@@ -29,6 +29,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @Table(name = "UserInfo", indexes = {
         @Index(name = "idx_user_id", columnList = "user_id", unique = true),
+        @Index(name = "idx_user_password", columnList = "password"),
         @Index(name = "idx_user_name", columnList = "name"),
         @Index(name = "idx_user_status", columnList = "status"),
         @Index(name = "idx_user_reg_date", columnList = "regDate"),
@@ -45,6 +46,7 @@ public class User extends AbstractModel {
 
     /**
      * 회원 비밀번호
+     * TODO 암호화 함수 추가
      */
     @JsonProperty(index = 10)
     @Schema(description = "회원 비밀번호")

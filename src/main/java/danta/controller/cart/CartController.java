@@ -17,7 +17,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
-    private final AuthenticationConverter authenticationConverter;
+//    private final AuthenticationConverter authenticationConverter;
 
     @GetMapping("/carts")
     public String getCartPage(Authentication authentication, Model model) {

@@ -18,11 +18,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "OrderDetail", indexes = {
         @Index(name = "idx_orderDetail_id", columnList = "orderDeatil_id", unique = true),
-        @Index(name = "idx_orderDetail_name", columnList = "name"),
-        @Index(name = "idx_orderDetail_price", columnList = "price"),
-        @Index(name = "idx_orderDetail_image", columnList = "image"),
-        @Index(name = "idx_orderDetail_description", columnList = "description"),
-        @Index(name = "idx_orderDetail_status", columnList = "status"),
+        @Index(name = "idx_orderDetail_order_id", columnList = "order_id"),
+        @Index(name = "idx_orderDetail_product_id", columnList = "product_id"),
+        @Index(name = "idx_orderDetail_orderQuantity", columnList = "orderQuantity"),
+        @Index(name = "idx_orderDetail_orderPrice", columnList = "orderPrice"),
         @Index(name = "idx_orderDetail_reg_date", columnList = "regDate"),
         @Index(name = "idx_orderDetail_mod_date", columnList = "modDate")})
 public class OrderDetail extends AbstractModel {
@@ -38,6 +37,7 @@ public class OrderDetail extends AbstractModel {
     /**
      * 주문 ID
      */
+    @JsonProperty(index = 10)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     protected Order orderId;
@@ -47,7 +47,7 @@ public class OrderDetail extends AbstractModel {
      */
     @JsonProperty(index = 10)
     @Schema(description = "상품 ID")
-    @Column(length = 100)
+    @JoinColumn(name = "product_id")
     protected Product productId;
 
     /**

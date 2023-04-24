@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 

@@ -25,8 +25,10 @@ import javax.persistence.*;
 @DynamicUpdate
 @Table(name = "adminInfo", indexes = {
         @Index(name = "idx_admin_id", columnList = "admin_id", unique = true),
+        @Index(name = "idx_admin_password", columnList = "password"),
         @Index(name = "idx_admin_name", columnList = "name"),
         @Index(name = "idx_admin_status", columnList = "status"),
+        @Index(name = "idx_admin_address", columnList = "address"),
         @Index(name = "idx_admin_reg_date", columnList = "regDate"),
         @Index(name = "idx_admin_mod_date", columnList = "modDate")})
 
@@ -41,20 +43,20 @@ public class Admin extends AbstractModel {
     protected String id;
 
     /**
-     * 관리자 이름
-     */
-    @JsonProperty(index = 10)
-    @Schema(description = "관리자 이름")
-    @Column(length = 100)
-    protected String name;
-
-    /**
      * 관리자 비밀번호
      */
     @JsonProperty(index = 10)
     @Schema(description = "관리자 비밀번호")
     @Column(length = 100)
     protected String password;
+
+    /**
+     * 관리자 이름
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "관리자 이름")
+    @Column(length = 100)
+    protected String name;
 
     /**
      * 관리자 상태
@@ -73,7 +75,7 @@ public class Admin extends AbstractModel {
     @JsonProperty(index = 10)
     @Schema(description = "관리 주소")
     @Column(length = 100)
-    protected String adress;
+    protected String address;
 
 
 }

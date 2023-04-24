@@ -32,28 +32,28 @@ public class OrderService {
 
 
         // 주문상품 생성
-        List<OrderProduct> orderItemEntityList = orderRequest.getOrderLineList()
+        List<OrderProduct> orderProductList = orderRequest.getOrderLineList()
                 .stream()
                 .map(ol -> {
-                    Product Product = productRepository.findById(ol.getItemId())
+                    Product Product = productRepository.findById(ol.getProductId())
                             .get();
                     return new OrderProduct(product, ol.getOrderCount());
                 })
                 .collect(Collectors.toList());
 
         // 주문 상품 재고 줄이기
-        orderItemEntityList.stream()
+        orderProductList.stream()
                 .forEach(oi -> oi.removeStockQuantity());
 
         // 주문 생성
         Order orderEntity = Order.builder()
                 .orderer(orderer)
-                .orderProductList(orderItemEntityList)
+                .orderProductList(orderProductList)
                 .build();
 
         // 장바구니 비우기 (특정 상품들만 주문하는 경우가 존재하므로, 장바구니를 그냥 비우는게 아닌, id를 기준으로 비워야함)
         List<Long> itemIdList = orderRequest.getOrderLineList().stream()
-                .map(ol -> ol.getItemId())
+                .map(ol -> ol.getProductId())
                 .collect(Collectors.toList());
         cartService.removeCartLines(orderer.getId(), itemIdList);
 

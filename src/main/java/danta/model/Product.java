@@ -28,9 +28,10 @@ import javax.persistence.*;
         @Index(name = "idx_product_id", columnList = "product_id", unique = true),
         @Index(name = "idx_product_name", columnList = "name"),
         @Index(name = "idx_product_price", columnList = "price"),
+        @Index(name = "idx_product_status", columnList = "status"),
         @Index(name = "idx_product_image", columnList = "image"),
         @Index(name = "idx_product_description", columnList = "description"),
-        @Index(name = "idx_product_status", columnList = "status"),
+        @Index(name = "idx_product_stock", columnList = "stock"),
         @Index(name = "idx_product_reg_date", columnList = "regDate"),
         @Index(name = "idx_product_mod_date", columnList = "modDate")})
 public class Product extends AbstractModel {
@@ -88,7 +89,7 @@ public class Product extends AbstractModel {
      * 상품 재고
      */
     @JsonProperty(index = 10)
-    @Schema(description = "상품 가격")
+    @Schema(description = "상품 재고")
     @Column(length = 100)
     protected int stock;
 
