@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 장바구니
+ * 장바구니 정보 ENTITY
  */
 @Schema(description = "장바구니")
 @Getter
@@ -26,16 +26,14 @@ import java.util.Map;
 @Entity
 @DynamicInsert
 @DynamicUpdate
-@Table(indexes = {
+@Table(name = "CartInfo", indexes = {
         @Index(name = "idx_cart_id", columnList = "cart_id", unique = true),
         @Index(name = "idx_cart_carterId", columnList = "user_id"),
         @Index(name = "idx_cart_quantity", columnList = "quantity"),
         @Index(name = "idx_cart_reg_date", columnList = "regDate"),
         @Index(name = "idx_cart_mod_date", columnList = "modDate")})
+
 public class Cart extends AbstractModel {
-    public static final String NAME_SPACE = "Cart";
-    public static final String TABLE_NAME = "cart";
-    public static final String TABLE_DESC = "장바구니";
 
     /**
      * 장바구니 ID

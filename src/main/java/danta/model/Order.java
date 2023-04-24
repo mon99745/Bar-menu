@@ -19,36 +19,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 주문
+ * 주문 정보 ENTITY
  */
 @Schema(description = "주문")
 @Getter
 @Setter
-@NoArgsConstructor
 @SuperBuilder
+@NoArgsConstructor
 @Entity
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
-@Table(indexes = {
+@Table(name = "OrderInfo",indexes = {
         @Index(name = "idx_order_id", columnList = "order_id", unique = true),
         @Index(name = "idx_order_orderer", columnList = "user_id"),
         @Index(name = "idx_order_price", columnList = "price"),
         @Index(name = "idx_order_status", columnList = "status"),
         @Index(name = "idx_order_reg_date", columnList = "regDate"),
         @Index(name = "idx_order_mod_date", columnList = "modDate")})
-@org.hibernate.annotations.Table(appliesTo = Order.TABLE_NAME, comment = Order.TABLE_DESC)
-
-//TODO: 테이블 생성이 안되는 에러 발생
 
 public class Order extends AbstractModel {
-    public static final String NAME_SPACE = "Order";
-    public static final String TABLE_NAME = "order";
-    public static final String TABLE_DESC = "주문";
-
-    private boolean removed;
-    private LocalDateTime removedAt;
-    private int totalAmount;
 
     /**
      * 주문 ID
@@ -82,10 +72,13 @@ public class Order extends AbstractModel {
     @Schema(description = "주문 금액")
     @Column(length = 100)
     protected Long price;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderProduct> orderProductList = new ArrayList<>();
+
+    private boolean removed;
+    private LocalDateTime removedAt;
+    private int totalAmount;
 
     private void setOrderItemList(List<OrderProduct> orderItemEntityList) {
         orderItemEntityList.stream()

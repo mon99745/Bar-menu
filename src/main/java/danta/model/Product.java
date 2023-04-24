@@ -13,7 +13,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 /**
- * 상품
+ * 상품 정보 ENTITY
  */
 @Schema(description = "상품")
 @Getter
@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
-@Table(indexes = {
+@Table(name = "ProductInfo", indexes = {
         @Index(name = "idx_product_id", columnList = "product_id", unique = true),
         @Index(name = "idx_product_name", columnList = "name"),
         @Index(name = "idx_product_price", columnList = "price"),
@@ -33,11 +33,7 @@ import javax.persistence.*;
         @Index(name = "idx_product_status", columnList = "status"),
         @Index(name = "idx_product_reg_date", columnList = "regDate"),
         @Index(name = "idx_product_mod_date", columnList = "modDate")})
-@org.hibernate.annotations.Table(appliesTo = Product.TABLE_NAME, comment = Product.TABLE_DESC)
 public class Product extends AbstractModel {
-    public static final String NAME_SPACE = "Product";
-    public static final String TABLE_NAME = "product";
-    public static final String TABLE_DESC = "상품";
 
     /**
      * 상품 ID

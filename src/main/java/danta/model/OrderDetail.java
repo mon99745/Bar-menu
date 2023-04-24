@@ -9,14 +9,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 /**
- * 주문 상세
+ * 주문 상세 정보 ENTITY
  */
 @Schema(description = "주문 상세")
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(indexes = {
+@Table(name = "OrderDetail", indexes = {
         @Index(name = "idx_orderDetail_id", columnList = "orderDeatil_id", unique = true),
         @Index(name = "idx_orderDetail_name", columnList = "name"),
         @Index(name = "idx_orderDetail_price", columnList = "price"),
@@ -26,9 +26,6 @@ import javax.persistence.*;
         @Index(name = "idx_orderDetail_reg_date", columnList = "regDate"),
         @Index(name = "idx_orderDetail_mod_date", columnList = "modDate")})
 public class OrderDetail extends AbstractModel {
-    public static final String NAME_SPACE = "OrderDetail";
-    public static final String TABLE_NAME = "orderDetail";
-    public static final String TABLE_DESC = "주문 상세";
 
     /**
      * 주문 상세 ID

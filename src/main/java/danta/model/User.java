@@ -16,7 +16,7 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 
 /**
- * 회원
+ * 회원 정보 ENTITY
  */
 @Schema(description = "회원")
 @Getter
@@ -27,17 +27,13 @@ import javax.persistence.*;
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
-@Table(indexes = {
+@Table(name = "UserInfo", indexes = {
         @Index(name = "idx_user_id", columnList = "user_id", unique = true),
         @Index(name = "idx_user_name", columnList = "name"),
         @Index(name = "idx_user_status", columnList = "status"),
         @Index(name = "idx_user_reg_date", columnList = "regDate"),
         @Index(name = "idx_user_mod_date", columnList = "modDate")})
-@org.hibernate.annotations.Table(appliesTo = User.TABLE_NAME, comment = User.TABLE_DESC)
 public class User extends AbstractModel {
-    public static final String NAME_SPACE = "User";
-    public static final String TABLE_NAME = "user";
-    public static final String TABLE_DESC = "회원";
 
     /**
      * 회원 ID

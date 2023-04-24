@@ -8,14 +8,18 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * 주문 상품 정보 ENTITY
+ */
 @Entity
 @Table(name = "order_product")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderProduct extends AbstractModel{
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long orderItemId;
+    private Long orderProductId;
     private int orderCount;
     private int orderProductAmount;
 
