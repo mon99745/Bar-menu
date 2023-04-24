@@ -22,21 +22,17 @@ import java.util.Map;
 @Schema(description = "장바구니")
 @Getter
 @Setter
-@SuperBuilder
 @NoArgsConstructor
 @Entity
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
-        @Index(name = "idx_cart_id", columnList = "id", unique = true),
-        @Index(name = "idx_cart_name", columnList = "name"),
-        @Index(name = "idx_cart_price", columnList = "price"),
-        @Index(name = "idx_cart_image", columnList = "image"),
-        @Index(name = "idx_cart_description", columnList = "description"),
-        @Index(name = "idx_cart_status", columnList = "status"),
+        @Index(name = "idx_cart_id", columnList = "cart_id", unique = true),
+        @Index(name = "idx_cart_carterId", columnList = "user_id"),
+        @Index(name = "idx_cart_quantity", columnList = "quantity"),
         @Index(name = "idx_cart_reg_date", columnList = "regDate"),
         @Index(name = "idx_cart_mod_date", columnList = "modDate")})
-public class Cart {
+public class Cart extends AbstractModel {
     public static final String NAME_SPACE = "Cart";
     public static final String TABLE_NAME = "cart";
     public static final String TABLE_DESC = "장바구니";
@@ -46,16 +42,17 @@ public class Cart {
      */
     @Id
     @Schema(description = "장바구니 ID")
-    @Column(name = "id", nullable = false)
+    @Column(name = "cart_id", nullable = false)
     protected String id;
 
     /**
-     * 장바구니 회원 ID
+     * 장바구니 사용자 ID
      */
     @JsonProperty
-    @Schema(description = "장바구니 ID")
-    @Column(length = 100)
-    protected String carterId;
+    @Schema(description = "장바구니 사용자 ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    protected User carterId;
 
 
     /**

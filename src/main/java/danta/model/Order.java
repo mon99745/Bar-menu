@@ -4,10 +4,12 @@ package danta.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.common.BaseTimeEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -22,23 +24,24 @@ import java.util.List;
 @Schema(description = "주문")
 @Getter
 @Setter
-@SuperBuilder
 @NoArgsConstructor
+@SuperBuilder
 @Entity
 @Embeddable
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
-        @Index(name = "idx_order_id", columnList = "id", unique = true),
-        @Index(name = "idx_order_name", columnList = "name"),
+        @Index(name = "idx_order_id", columnList = "order_id", unique = true),
+        @Index(name = "idx_order_orderer", columnList = "user_id"),
         @Index(name = "idx_order_price", columnList = "price"),
-        @Index(name = "idx_order_image", columnList = "image"),
-        @Index(name = "idx_order_description", columnList = "description"),
         @Index(name = "idx_order_status", columnList = "status"),
         @Index(name = "idx_order_reg_date", columnList = "regDate"),
         @Index(name = "idx_order_mod_date", columnList = "modDate")})
 @org.hibernate.annotations.Table(appliesTo = Order.TABLE_NAME, comment = Order.TABLE_DESC)
-public class Order {
+
+//TODO: 테이블 생성이 안되는 에러 발생
+
+public class Order extends AbstractModel {
     public static final String NAME_SPACE = "Order";
     public static final String TABLE_NAME = "order";
     public static final String TABLE_DESC = "주문";
@@ -52,15 +55,16 @@ public class Order {
      */
     @Id
     @Schema(description = "주문 ID")
-    @Column(name = "id", nullable = false)
+    @Column(name = "order_id", nullable = false)
     protected String orderId;
 
     /**
-     * 주문자 이름
+     * 주문자 ID
      */
     @JsonProperty(index = 10)
-    @Schema(description = "주문자 이름")
-    @Column(length = 100)
+    @Schema(description = "주문자 ID")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     protected User orderer;
 
     /**
@@ -79,12 +83,9 @@ public class Order {
     @Column(length = 100)
     protected Long price;
 
-
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")
     private List<OrderProduct> orderProductList = new ArrayList<>();
-
 
     private void setOrderItemList(List<OrderProduct> orderItemEntityList) {
         orderItemEntityList.stream()

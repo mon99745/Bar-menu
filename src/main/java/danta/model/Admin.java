@@ -24,16 +24,13 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
-        @Index(name = "idx_admin_id", columnList = "id", unique = true),
+        @Index(name = "idx_admin_id", columnList = "admin_id", unique = true),
         @Index(name = "idx_admin_name", columnList = "name"),
-        @Index(name = "idx_admin_price", columnList = "price"),
-        @Index(name = "idx_admin_image", columnList = "image"),
-        @Index(name = "idx_admin_description", columnList = "description"),
         @Index(name = "idx_admin_status", columnList = "status"),
         @Index(name = "idx_admin_reg_date", columnList = "regDate"),
         @Index(name = "idx_admin_mod_date", columnList = "modDate")})
 @org.hibernate.annotations.Table(appliesTo = Admin.TABLE_NAME, comment = Admin.TABLE_DESC)
-public class Admin {
+public class Admin extends AbstractModel {
     public static final String NAME_SPACE = "Admin";
     public static final String TABLE_NAME = "admin";
     public static final String TABLE_DESC = "관리자";
@@ -43,7 +40,7 @@ public class Admin {
      */
     @Id
     @Schema(description = "관리자 ID")
-    @Column(name = "id", nullable = false)
+    @Column(name = "admin_id", nullable = false)
     protected String id;
 
     /**

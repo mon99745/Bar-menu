@@ -25,7 +25,7 @@ import javax.persistence.*;
 @DynamicInsert
 @DynamicUpdate
 @Table(indexes = {
-        @Index(name = "idx_product_id", columnList = "id", unique = true),
+        @Index(name = "idx_product_id", columnList = "product_id", unique = true),
         @Index(name = "idx_product_name", columnList = "name"),
         @Index(name = "idx_product_price", columnList = "price"),
         @Index(name = "idx_product_image", columnList = "image"),
@@ -34,7 +34,7 @@ import javax.persistence.*;
         @Index(name = "idx_product_reg_date", columnList = "regDate"),
         @Index(name = "idx_product_mod_date", columnList = "modDate")})
 @org.hibernate.annotations.Table(appliesTo = Product.TABLE_NAME, comment = Product.TABLE_DESC)
-public class Product {
+public class Product extends AbstractModel {
     public static final String NAME_SPACE = "Product";
     public static final String TABLE_NAME = "product";
     public static final String TABLE_DESC = "상품";
@@ -44,7 +44,7 @@ public class Product {
      */
     @Id
     @Schema(description = "상품 ID")
-    @Column(name = "id", nullable = false)
+    @Column(name = "product_id", nullable = false)
     protected String id;
 
     /**
@@ -62,6 +62,14 @@ public class Product {
     @Schema(description = "상품 가격")
     @Column(length = 100)
     protected Long price;
+
+    /**
+     * 상품 상태
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "상품 상태")
+    @Column(length = 100)
+    protected String status;
 
     /**
      * 상품 이미지

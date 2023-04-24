@@ -5,9 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
-import org.hibernate.annotations.DynamicInsert;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -20,7 +17,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(indexes = {
-        @Index(name = "idx_orderDetail_id", columnList = "id", unique = true),
+        @Index(name = "idx_orderDetail_id", columnList = "orderDeatil_id", unique = true),
         @Index(name = "idx_orderDetail_name", columnList = "name"),
         @Index(name = "idx_orderDetail_price", columnList = "price"),
         @Index(name = "idx_orderDetail_image", columnList = "image"),
@@ -28,7 +25,7 @@ import javax.persistence.*;
         @Index(name = "idx_orderDetail_status", columnList = "status"),
         @Index(name = "idx_orderDetail_reg_date", columnList = "regDate"),
         @Index(name = "idx_orderDetail_mod_date", columnList = "modDate")})
-public class OrderDetail {
+public class OrderDetail extends AbstractModel {
     public static final String NAME_SPACE = "OrderDetail";
     public static final String TABLE_NAME = "orderDetail";
     public static final String TABLE_DESC = "주문 상세";
@@ -38,15 +35,14 @@ public class OrderDetail {
      */
     @Id
     @Schema(description = "주문 상세 ID")
-    @Column(name = "id", nullable = false)
+    @Column(name = "orderDeatil_id", nullable = false)
     protected String id;
 
     /**
      * 주문 ID
      */
-    @JsonProperty(index = 10)
-    @Schema(description = "주문 ID")
-    @Column(length = 100)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
     protected Order orderId;
 
     /**

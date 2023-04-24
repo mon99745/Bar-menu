@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Table(name = "order_product")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrderProduct extends BaseTimeEntity {
+public class OrderProduct extends AbstractModel{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long orderItemId;
@@ -23,7 +23,6 @@ public class OrderProduct extends BaseTimeEntity {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Builder
     public OrderProduct(Product product, int orderCount) {
         this.product = product;
         this.orderCount = orderCount;

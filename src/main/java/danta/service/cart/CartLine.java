@@ -9,12 +9,12 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Getter
 public class CartLine {
-    private String cartId;
+    private String cart_id;
     private Long itemId;
     private Integer orderCount;
 
     public CartLine(String cartId, Long itemId, Integer orderCount) {
-        this.cartId = cartId;
+        this.cart_id = cartId;
         this.itemId = itemId;
         this.orderCount = orderCount;
     }
