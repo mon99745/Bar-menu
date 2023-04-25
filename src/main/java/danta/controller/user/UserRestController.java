@@ -3,6 +3,8 @@ package danta.controller.user;
 import danta.model.User;
 import danta.service.user.UserService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,42 +26,32 @@ public class UserRestController {
 
     @Value("${security.auth}")
     private boolean auth;
-
-//    if(auth){
-//        String PathTemp = "/auth/api/v1";
-//    }else{
-//        String PathTemp = "/api/v1";
-//    }
-
     public static final String PATH = "/auth/api/v1";
     public static final String TAG = "User Rest API";
     private final UserService userService;
 
-//    v1 은 현재 사용 중인 디플로이 연동 API의 버전을 의미.
-//    추후 기능 추가 및 변경으로 인하여 API가 바뀌면 v2 등을 사용하게 될 수도 있다.
-//    JSON 데이터 변환하는 형식은 생략
-
     /**
      * 회원가입 API
      */
+    @Operation(summary = "1. 회원 가입")
     @PostMapping("create")
-    public String create(@RequestBody User user) {
+    public String create(User user) {
         return userService.save(user);
     }
 
     /**
-     * 전체 회원 조회 API (관리자용)
+     * 회원조회 API
      */
-    @GetMapping("list")
-    public List<User> list(){
-        List<User> userList = userService.findAll();
-//        model.addAttribute("users", users);
-        return userList;
+    @Operation(summary = "2. 회원 조회")
+    @GetMapping("read")
+    public User read(@RequestBody String userId) {
+        return userService.findUser(userId);
     }
 
     /**
      * 회원수정 API
      */
+    @Operation(summary = "3. 회원 정보 수정")
     @PutMapping("update")
     // @AuthenticationPrincipal에 PrincipalDetail타입으로 파라미터를 받으면 유저 정보를 얻을 수 있다.
     public String update(@RequestBody User user) {
@@ -69,9 +61,20 @@ public class UserRestController {
     /**
      * 회원탈퇴 API
      */
+    @Operation(summary = "4. 회원 탈퇴 ")
     @DeleteMapping("delete/{authId}")
     // id값을 주소에 받기 위해 @PathVariable
     public void delete(@RequestBody User user) {
         userService.delete(user);
+    }
+
+    /**
+     * 전체 회원 조회 API (관리자용)
+     */
+    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
+    @GetMapping("readList")
+    public List<User> list(){
+        List<User> userList = userService.findAll();
+        return userList;
     }
 }

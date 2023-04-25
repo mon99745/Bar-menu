@@ -26,7 +26,7 @@ public class OrderService {
     private final ProductRepository productRepository;
     private final Product product;
 
-    public String order(Long ordererId, OrderRequest orderRequest) {
+    public String order(String ordererId, OrderRequest orderRequest) {
         // 엔티티 조회
         User orderer = userService.findUser(ordererId);
 
