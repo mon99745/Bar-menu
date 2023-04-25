@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @Api(tags = OrderController.TAG, description = "주문을 관리하는 API")
+@ApiIgnore
 @Controller
 public class OrderController {
     public static final String TAG = "Order API";

@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.constraints.NotBlank;
 
 @Slf4j
-@Api(tags =UserTestRestController.TAG, description = "회원 로직을 테스트하는 관리하는 Rest API")
+@ApiIgnore
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @RestController
 @RequestMapping()

@@ -10,6 +10,7 @@ import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,7 @@ public class CartController {
     private final CartService cartService;
 //    private final AuthenticationConverter authenticationConverter;
 
+    @ApiIgnore
     @GetMapping("/carts")
     public String getCartPage(Authentication authentication, Model model) {
 //        Long authId = authenticationConverter.getUserFromAuthentication(authentication)
@@ -28,7 +30,7 @@ public class CartController {
 
         return "carts/cart";
     }
-
+    @ApiIgnore
     @PostMapping("/carts")
     public String addItemToCart(@ModelAttribute @Valid AddToCartRequestForm addToCartRequestForm,
                                 Authentication authentication) {
@@ -38,7 +40,7 @@ public class CartController {
 
         return "redirect:/carts";
     }
-
+    @ApiIgnore
     @PutMapping("/carts")
     @ResponseBody
     public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestForm modifyOrderCountRequestForm,
@@ -50,6 +52,7 @@ public class CartController {
         return ResponseEntity.ok().build();
     }
 
+    @ApiIgnore
     @DeleteMapping("/carts")
     @ResponseBody
     public ResponseEntity deleteCartLine(@RequestParam("itemId") Long itemId,

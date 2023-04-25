@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Slf4j
 @Api(tags = MyOrderController.TAG, description = "자신의 주문을 관리하는 API")
+@ApiIgnore
 @Controller
 @RequiredArgsConstructor
 @RequestMapping(MyOrderController.PATH)

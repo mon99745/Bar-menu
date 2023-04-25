@@ -3,6 +3,8 @@ server:
   error:
     include-message: always
     include-stacktrace: never
+    whitelabel:
+      enabled: false
 
 spring:
   datasource:
@@ -22,7 +24,12 @@ spring:
     defer-datasource-initialization: 'true'
     show-sql: 'true'
   thymeleaf:
-    cache: 'false '
+    cache: 'false'
 
 security:
   auth: true
+
+springfox:
+  documentation:
+    swagger-ui:
+      enabled: true

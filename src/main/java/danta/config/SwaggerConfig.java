@@ -7,22 +7,40 @@ import danta.controller.order.OrderController;
 import danta.controller.user.UserRestController;
 import danta.controller.user.UserTestRestController;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Tag;
+import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Slf4j
 @Configuration
-@EnableSwagger2
+@EnableOpenApi
 public class SwaggerConfig {
+    @Bean
+    public Docket api() {
+        return new Docket(DocumentationType.OAS_30)
+                .apiInfo(apiInfo())
+                .tags(new Tag(UserRestController.TAG, "회원 로직을 관리하는 Rest API", 110))
+//                new Tag(UserTestRestController.TAG, "회원 로직을 테스트하는 관리하는 Rest API", 210),
+//                new Tag(OrderController.TAG, "결제 로직을 관리하는 API", 210),
+//                new Tag(MyOrderController.TAG, "자신의 결제 로직을 관리하는 API", 210),
+//                new Tag(MyOrderRestController.TAG,"자신의 결제 로직을 관리하는 Rest API", 210));
+                .select()
+                .apis(RequestHandlerSelectors.basePackage("danta.controller"))
+                .build();
+
+    }
 
     public ApiInfo apiInfo() {
         log.info("apiInfo");
         return new ApiInfoBuilder()
-                .title("SpringBoot Practice Rest API Documentation")
+                .title("SpringBoot Rest API Documentation")
                 .description("springboot rest api practice.")
                 .version("0.1")
                 .build();
@@ -42,14 +60,4 @@ public class SwaggerConfig {
 //                        new Tag(MyOrderController.TAG, "자신의 결제 로직을 관리하는 API", 210),
 //                        new Tag(MyOrderRestController.TAG,"자신의 결제 로직을 관리하는 Rest API", 210));
 //    }
-
-    public Docket api(Docket docket) {
-        //
-        docket.tags(new Tag(UserRestController.TAG, "회원 로직을 관리하는 Rest API", 110),
-                        new Tag(UserTestRestController.TAG, "회원 로직을 테스트하는 관리하는 Rest API", 210),
-                        new Tag(OrderController.TAG, "결제 로직을 관리하는 API", 210),
-                        new Tag(MyOrderController.TAG, "자신의 결제 로직을 관리하는 API", 210),
-                        new Tag(MyOrderRestController.TAG,"자신의 결제 로직을 관리하는 Rest API", 210));
-        return docket;
-    }
 }

@@ -7,9 +7,11 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Slf4j
 @Api(tags = MyOrderRestController.TAG,description = "자신의 주문을 관리하는 Rest API")
+@ApiIgnore
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(MyOrderRestController.PATH)
