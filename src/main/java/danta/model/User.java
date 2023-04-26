@@ -39,7 +39,7 @@ public class User extends AbstractModel {
     @Id
     @Column(name = "user_id", nullable = false)
     @ApiModelProperty(hidden = true)
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**

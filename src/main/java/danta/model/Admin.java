@@ -41,7 +41,7 @@ public class Admin extends AbstractModel {
      */
     @Id
     @Column(name = "admin_id", nullable = false)
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ApiModelProperty(hidden = true)
     protected Long id;
 
