@@ -16,12 +16,12 @@ public class CartService {
     private final CartRepository cartRepository;
     private final ProductRepository itemRepository;
 
-    public String createCart(Cart cart) {
+    public Long createCart(Cart cart) {
         return cartRepository.save(cart).getId();
     }
 
 
-    public void addProductToCart(String authId, AddToCartRequestForm addToCartRequestForm) {
+    public void addProductToCart(Long authId, AddToCartRequestForm addToCartRequestForm) {
 //        Cart cart = cartRepository.findById(Long.valueOf(authId));
 //
 //        CartLine newCartLine = new CartLine(cart.getId(),
@@ -49,14 +49,14 @@ public class CartService {
     }
 
     //  특정 상품들만 주문하는 경우가 존재하므로, 장바구니를 그냥 비우는게 아닌, id를 기준으로 비워야함
-    public void removeCartLines(String authId, List<Long> itemIds) {
+    public void removeCartLines(Long authId, List<Long> itemIds) {
 //        Cart cart = cartRepository.findById(authId);
 //
 //        itemIds.stream()
 //                .forEach(itemId -> cart.removeCartLine(itemId));
     }
 
-    public void removeCartLine(String authId, Long itemId) {
+    public void removeCartLine(Long authId, Long itemId) {
 //        Cart cart = cartRepository.findById(authId);
 //        cart.removeCartLine(itemId);
     }

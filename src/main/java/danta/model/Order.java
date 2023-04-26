@@ -48,7 +48,7 @@ public class Order extends AbstractModel {
     @Id
     @Schema(description = "주문 ID")
     @Column(name = "order_id", nullable = false)
-    protected String orderId;
+    protected Long orderId;
 
     /**
      * 주문자 ID

@@ -40,7 +40,7 @@ public class Cart extends AbstractModel {
     @Id
     @Schema(description = "장바구니 ID")
     @Column(name = "cart_id", nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 장바구니 사용자 ID

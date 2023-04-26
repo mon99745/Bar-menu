@@ -2,6 +2,7 @@ package danta.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +13,7 @@ import javax.persistence.*;
  * 주문 상세 정보 ENTITY
  */
 @Schema(description = "주문 상세")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Entity
 @Table(name = "OrderDetail", indexes = {
@@ -32,7 +32,7 @@ public class OrderDetail extends AbstractModel {
     @Id
     @Schema(description = "주문 상세 ID")
     @Column(name = "orderDeatil_id", nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 주문 ID

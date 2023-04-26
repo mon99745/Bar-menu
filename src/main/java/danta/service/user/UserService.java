@@ -24,7 +24,8 @@ public class UserService {
      * 회원가입 로직
      */
     @Transactional
-    public String save(User user) {
+    public Long save(User user) {
+        // 패스워드를 암호화해서 저장
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
 
@@ -60,8 +61,8 @@ public class UserService {
     // UserService 클래스에서도
     // @AuthenticationPrincipal PrincipalDetail principalDetail를 파라미터로
     // 받아서 update된 유저 정보를 principalDetail에 집어넣는다.
-    public String update(User user) {
-        User userEntity = userRepository.findById(Long.valueOf(user.getId())).orElseThrow(()
+    public Long update(User user) {
+        User userEntity = userRepository.findById(user.getId()).orElseThrow(()
                 -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
 //        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()));
 //        User.setUser(userEntity); //추가

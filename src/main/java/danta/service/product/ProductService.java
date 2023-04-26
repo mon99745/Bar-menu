@@ -16,7 +16,7 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     @Transactional
-    public String saveProduct(ProductRequest request) {
+    public Long saveProduct(ProductRequest request) {
         Product newProduct = Product.builder()
                 .name(request.getName())
                 .image(request.getImagePath())

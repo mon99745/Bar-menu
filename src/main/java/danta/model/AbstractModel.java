@@ -27,7 +27,7 @@ public class AbstractModel {
     @Schema(description = "등록일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
     @JsonSerialize(converter = DateTimeFormatConverter.DateToStringConverter.class)
     @JsonDeserialize(converter = DateTimeFormatConverter.StringToDateConverter.class)
-    @Column(nullable = false, insertable=false, updatable=false)
+    @Column(nullable = true, insertable=false, updatable=false)
     protected Date regDate;
 
     /**
@@ -37,6 +37,6 @@ public class AbstractModel {
     @Schema(description = "수정일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
     @JsonSerialize(converter = DateTimeFormatConverter.DateToStringConverter.class)
     @JsonDeserialize(converter = DateTimeFormatConverter.StringToDateConverter.class)
-    @Column(nullable = false, insertable=false, updatable=false)
+    @Column(nullable = true, insertable=false, updatable=false)
     protected Date modDate;
 }

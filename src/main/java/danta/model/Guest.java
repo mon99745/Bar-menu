@@ -38,7 +38,7 @@ public class Guest extends AbstractModel {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "guest_id", nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 비회원 상태

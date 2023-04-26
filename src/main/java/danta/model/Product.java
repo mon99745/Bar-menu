@@ -45,7 +45,7 @@ public class Product extends AbstractModel {
     @Id
     @Schema(description = "상품 ID")
     @Column(name = "product_id", nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 상품 이름

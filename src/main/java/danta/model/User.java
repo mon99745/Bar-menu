@@ -3,9 +3,8 @@ package danta.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -16,8 +15,7 @@ import javax.persistence.*;
  * 회원 정보 ENTITY
  */
 @Schema(description = "회원")
-@Getter
-@Setter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @Entity
@@ -40,7 +38,7 @@ public class User extends AbstractModel {
     @Schema(description = "회원 ID")
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "user_id",nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 회원 비밀번호

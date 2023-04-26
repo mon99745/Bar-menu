@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ProductDetails {
-    private String itemId;
+    private Long itemId;
     private String imagePath;
     private String name;
     private int price;

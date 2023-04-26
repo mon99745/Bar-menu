@@ -41,7 +41,7 @@ public class Admin extends AbstractModel {
     @Schema(description = "관리자 ID")
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "admin_id", nullable = false)
-    protected String id;
+    protected Long id;
 
     /**
      * 관리자 비밀번호
