@@ -65,6 +65,10 @@ public class UserService {
      */
     @Transactional
     public User update(Long userId, User user) {
+        // 패스워드를 암호화해서 저장
+        String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
+        user.setPassword(hashPw);
+
         User tempUser = userRepository.findById(userId).orElseThrow(()
                 -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
 
