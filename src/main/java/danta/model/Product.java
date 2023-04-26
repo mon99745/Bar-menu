@@ -29,6 +29,7 @@ import javax.persistence.*;
 @Component
 @Table(name = "ProductInfo", indexes = {
         @Index(name = "idx_product_id", columnList = "product_id", unique = true),
+        @Index(name = "idx_product_category", columnList = "category"),
         @Index(name = "idx_product_name", columnList = "name"),
         @Index(name = "idx_product_price", columnList = "price"),
         @Index(name = "idx_product_status", columnList = "status"),
@@ -46,6 +47,15 @@ public class Product extends AbstractModel {
     @Schema(description = "상품 ID")
     @Column(name = "product_id", nullable = false)
     protected Long id;
+
+    /**
+     * 상품 카테고리
+     * TODO : ENUM 으로 변경
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "상품 카테고리")
+    @Column(length = 100)
+    protected String category;
 
     /**
      * 상품 이름
