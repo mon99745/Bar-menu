@@ -2,13 +2,13 @@ package danta.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-import springfox.documentation.annotations.ApiIgnore;
 
 import javax.persistence.*;
 
@@ -38,6 +38,7 @@ public class User extends AbstractModel {
      */
     @Id
     @Column(name = "user_id", nullable = false)
+    @ApiModelProperty(hidden = true)
     @GeneratedValue(strategy = GenerationType.TABLE)
     protected Long id;
 

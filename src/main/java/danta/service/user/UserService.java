@@ -40,33 +40,36 @@ public class UserService {
     }
 
     /**
-     * 전체 회원 목록 로직 (관리자용)
+     * 회원 정보 조회
+      * @param id
+     * @return
      */
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    // orderer 구분을 위함
     public User findUser(Long id) {
         User user = validateExistMember(userRepository.findById(id));
 
         return user;
     }
 
+    /**
+     * 전체 회원 목록 로직 (관리자용)
+     */
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
 
     /**
-     * 회원수정 로직
+     * 회원 정보 수정
      */
     @Transactional
-    // UserService 클래스에서도
-    // @AuthenticationPrincipal PrincipalDetail principalDetail를 파라미터로
-    // 받아서 update된 유저 정보를 principalDetail에 집어넣는다.
-    public Long update(User user) {
-        User userEntity = userRepository.findById(user.getId()).orElseThrow(()
+    public User update(Long userId, User user) {
+        User tempUser = userRepository.findById(userId).orElseThrow(()
                 -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
-//        userEntity.update(bCryptPasswordEncoder.encode(user.getPassword()));
-//        User.setUser(userEntity); //추가
-        return userEntity.getId();
+
+        tempUser.setPassword(user.getPassword());
+        tempUser.setName(user.getName());
+        tempUser.setStatus(user.getStatus());
+
+        return tempUser;
     }
 
     /**
