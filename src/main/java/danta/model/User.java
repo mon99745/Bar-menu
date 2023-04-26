@@ -26,11 +26,11 @@ import javax.persistence.*;
 @Table(name = "UserInfo", indexes = {
         @Index(name = "idx_user_id", columnList = "user_id", unique = true),
         @Index(name = "idx_username", columnList = "username"),
-        @Index(name = "idx_password", columnList = "password"),
-        @Index(name = "idx_name", columnList = "name"),
-        @Index(name = "idx_status", columnList = "status"),
-        @Index(name = "idx_reg_date", columnList = "regDate"),
-        @Index(name = "idx_mod_date", columnList = "modDate")})
+        @Index(name = "idx_user_password", columnList = "password"),
+        @Index(name = "idx_user_name", columnList = "name"),
+        @Index(name = "idx_user_status", columnList = "status"),
+        @Index(name = "idx_user_reg_date", columnList = "regDate"),
+        @Index(name = "idx_user_mod_date", columnList = "modDate")})
 public class User extends AbstractModel {
 
     /**

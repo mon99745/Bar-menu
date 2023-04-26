@@ -2,6 +2,7 @@ package danta.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ import javax.persistence.*;
 @DynamicUpdate
 @Table(name = "adminInfo", indexes = {
         @Index(name = "idx_admin_id", columnList = "admin_id", unique = true),
+        @Index(name = "idx_adminname", columnList = "adminname"),
         @Index(name = "idx_admin_password", columnList = "password"),
         @Index(name = "idx_admin_name", columnList = "name"),
         @Index(name = "idx_admin_status", columnList = "status"),
@@ -35,18 +37,26 @@ import javax.persistence.*;
 public class Admin extends AbstractModel {
 
     /**
-     * 관리자 ID
+     * 관리자 식별 번호
      */
     @Id
-    @Schema(description = "관리자 ID")
-    @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "admin_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @ApiModelProperty(hidden = true)
     protected Long id;
+
+    /**
+     * 관리자 ID
+     */
+    @JsonProperty(index = 10)
+    @Schema(description = "관리자 ID")
+    @Column(length = 100, nullable = false)
+    protected String adminname;
 
     /**
      * 관리자 비밀번호
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 20)
     @Schema(description = "관리자 비밀번호")
     @Column(length = 100)
     protected String password;
@@ -54,7 +64,7 @@ public class Admin extends AbstractModel {
     /**
      * 관리자 이름
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 30)
     @Schema(description = "관리자 이름")
     @Column(length = 100)
     protected String name;
@@ -63,7 +73,7 @@ public class Admin extends AbstractModel {
      * 관리자 상태
      * TODO 상태정보를 ENUM 처리
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 40)
     @Schema(description = "관리자 상태")
     @Column(length = 100)
     protected String status;
@@ -73,7 +83,7 @@ public class Admin extends AbstractModel {
      * (지점 주소)
      * TODO Stream 사용
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 50)
     @Schema(description = "관리 주소")
     @Column(length = 100)
     protected String address;
