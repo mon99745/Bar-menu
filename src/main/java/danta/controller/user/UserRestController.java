@@ -60,18 +60,8 @@ public class UserRestController {
      * 회원탈퇴 API
      */
     @Operation(summary = "4. 회원 탈퇴 ")
-    @DeleteMapping("delete")
-    public void delete(@RequestBody User user) {
-        userService.delete(user);
-    }
-
-    /**
-     * 전체 회원 조회 API (관리자용)
-     */
-    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
-    @GetMapping("readList")
-    public List<User> list(){
-        List<User> userList = userService.findAll();
-        return userList;
+    @DeleteMapping("delete/{userId}")
+    public void delete(@PathVariable Long userId, @RequestBody User user) {
+        userService.delete(userId, user);
     }
 }

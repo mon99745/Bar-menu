@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor //생성자 주입을 받기 위해
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
@@ -21,7 +21,7 @@ public class UserService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**
-     * 회원가입 로직
+     * 회원 가입
      */
     @Transactional
     public Long save(User user) {
@@ -80,10 +80,11 @@ public class UserService {
     }
 
     /**
-     * 회원삭제 로직
+     * 회원 삭제 로직
      */
     @Transactional
-    public void delete(User user) {
+    public void delete(Long userId, User user) {
+        user.setId(userId);
         userRepository.delete(user);
     }
 
