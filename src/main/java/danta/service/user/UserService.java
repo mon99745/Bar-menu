@@ -25,6 +25,9 @@ public class UserService {
      */
     @Transactional
     public Long save(User user) {
+        if (userRepository.findByUsername(user.getUsername()) != null) {
+            throw new IllegalArgumentException("중복된 아이디 입니다.");
+        }
         // 패스워드를 암호화해서 저장
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
