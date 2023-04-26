@@ -3,6 +3,7 @@ package danta.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.sun.xml.bind.v2.TODO;
 import danta.converter.DateTimeFormatConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -20,6 +21,8 @@ import java.util.Date;
 @NoArgsConstructor
 @MappedSuperclass
 public class AbstractModel {
+    // TODO: 자동 등록 장애 문제해결
+
     /**
      * 등록일시(형식: yyyy-MM-dd HH:mm:ss)
      */
