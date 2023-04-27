@@ -1,7 +1,5 @@
 package danta.repository;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import danta.model.CartDao;
 import danta.model.CartLine;
 import org.springframework.stereotype.Repository;
 
@@ -9,7 +7,7 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository
-public class CartRepositoryImpl implements CartDao {
+public class CartRepositoryImpl{
     private final EntityManager em;
 //    private final JPAQueryFactory query;
 
@@ -18,7 +16,6 @@ public class CartRepositoryImpl implements CartDao {
 //        this.query = query;
     }
 
-    @Override
     public List<CartLine> getCartLineListInCartPage(Long userId) {
         List<CartLine> cartLineDtoList = em
                 .createQuery(
