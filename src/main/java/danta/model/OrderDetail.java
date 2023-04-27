@@ -6,6 +6,10 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 
@@ -14,8 +18,13 @@ import javax.persistence.*;
  */
 @Schema(description = "주문 상세")
 @Data
+@SuperBuilder
 @NoArgsConstructor
 @Entity
+@Embeddable
+@DynamicInsert
+@DynamicUpdate
+@Component
 @Table(name = "OrderDetail", indexes = {
         @Index(name = "idx_orderDetail_id", columnList = "orderDeatil_id", unique = true),
         @Index(name = "idx_orderDetail_order_id", columnList = "order_id"),

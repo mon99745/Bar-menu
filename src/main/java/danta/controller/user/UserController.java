@@ -10,6 +10,8 @@ import springfox.documentation.annotations.ApiIgnore;
 @ApiIgnore
 @Controller
 public class UserController {
+    @Autowired
+    private UserService userService;
 
     /**
      * 회원가입 페이지
@@ -44,14 +46,11 @@ public class UserController {
     }
 
     /**
-     * 전체 회원목록 조회
+     * 전체 회원목록 페이지
      */
-    @Autowired
-    private UserService userService;
-
     @GetMapping("/admin/users")
     public String list(Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userService.findAllUser());
         return "admin/user-list";
     }
 

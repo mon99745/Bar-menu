@@ -54,9 +54,9 @@ public class UserService {
     }
 
     /**
-     * 전체 회원 목록 로직 (관리자용)
+     * 전체 회원 목록 (관리자용)
      */
-    public List<User> findAll() {
+    public List<User> findAllUser() {
         return userRepository.findAll();
     }
 

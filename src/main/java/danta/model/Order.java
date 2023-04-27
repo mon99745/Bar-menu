@@ -2,12 +2,8 @@ package danta.model;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import danta.common.BaseTimeEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -23,8 +19,7 @@ import java.util.List;
  * 주문 정보 ENTITY
  */
 @Schema(description = "주문")
-@Getter
-@Setter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @Entity

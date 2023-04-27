@@ -1,8 +1,6 @@
 package danta.model;
 
-import danta.common.BaseTimeEntity;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

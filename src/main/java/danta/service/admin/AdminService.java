@@ -46,10 +46,10 @@ public class AdminService {
     }
 
     /**
-     * 전체 회원 목록 로직 (관리자용)
+     * 전체 관리자 목록 조회
      */
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<Admin> findAllAdmin() {
+        return adminRepository.findAll();
     }
 
     /**

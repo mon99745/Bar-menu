@@ -10,36 +10,38 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
-@Setter
 @SuperBuilder
 @NoArgsConstructor
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public class AbstractModel {
-    // TODO: 자동 등록 장애 문제해결
 
     /**
      * 등록일시(형식: yyyy-MM-dd HH:mm:ss)
      */
+    @CreatedDate // 자동 등록
     @JsonProperty(index = 910)
     @Schema(description = "등록일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
-    @JsonSerialize(converter = DateTimeFormatConverter.DateToStringConverter.class)
-    @JsonDeserialize(converter = DateTimeFormatConverter.StringToDateConverter.class)
-    @Column(nullable = true, insertable=false, updatable=false)
-    protected Date regDate;
+    @Column(updatable = false)
+    private LocalDateTime regDate;
 
     /**
      * 수정일시(형식: yyyy-MM-dd HH:mm:ss)
      */
+    @LastModifiedDate // 자동 수정
     @JsonProperty(index = 920)
     @Schema(description = "수정일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
-    @JsonSerialize(converter = DateTimeFormatConverter.DateToStringConverter.class)
-    @JsonDeserialize(converter = DateTimeFormatConverter.StringToDateConverter.class)
-    @Column(nullable = true, insertable=false, updatable=false)
-    protected Date modDate;
+    @Column
+    private LocalDateTime modDate;
 }

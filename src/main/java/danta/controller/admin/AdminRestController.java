@@ -29,7 +29,7 @@ public class AdminRestController {
     private boolean auth;
     public static final String PATH = "/auth/api/v1/admin";
     public static final String TAG = "Admin Rest API";
-    private final AdminService adminServie;
+    private final AdminService adminService;
     private final UserService userService;
 
 
@@ -39,7 +39,7 @@ public class AdminRestController {
     @Operation(summary = "1. 관리자 가입")
     @PostMapping("create")
     public Long create(@RequestBody Admin admin) {
-        return adminServie.save(admin);
+        return adminService.save(admin);
     }
 
     /**
@@ -48,7 +48,7 @@ public class AdminRestController {
     @Operation(summary = "2. 관리자 조회")
     @GetMapping("read/{adminId}")
     public Admin read(@PathVariable Long adminId) {
-        return adminServie.findAdmin(adminId);
+        return adminService.findAdmin(adminId);
     }
 
     /**
@@ -57,7 +57,7 @@ public class AdminRestController {
     @Operation(summary = "3. 관리자 정보 수정")
     @PutMapping("update/{adminId}")
     public Admin update(@PathVariable Long adminId, @RequestBody Admin admin) {
-        return adminServie.update(adminId, admin);
+        return adminService.update(adminId, admin);
     }
 
     /**
@@ -66,16 +66,26 @@ public class AdminRestController {
     @Operation(summary = "4. 관리자 탈퇴 ")
     @DeleteMapping("delete/{adminId}")
     public void delete(@PathVariable Long adminId, @RequestBody Admin admin) {
-        adminServie.delete(adminId, admin);
+        adminService.delete(adminId, admin);
     }
 
     /**
      * 전체 회원 조회 API (관리자용)
      */
     @Operation(summary = "5. 전체 회원 조회 (관리자용)")
-    @GetMapping("readList")
-    public List<User> list(){
-        List<User> userList = userService.findAll();
+    @GetMapping("userList")
+    public List<User> userList(){
+        List<User> userList = userService.findAllUser();
         return userList;
+    }
+
+    /**
+     * 전체 관리자 조회 API
+     */
+    @Operation(summary = "6. 전체 관리자 조회")
+    @GetMapping("adminList")
+    public List<Admin> list(){
+        List<Admin> adminList = adminService.findAllAdmin();
+        return adminList;
     }
 }
