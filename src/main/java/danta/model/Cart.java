@@ -5,9 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
 import danta.service.cart.CartLine;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -19,8 +21,8 @@ import java.util.Map;
  * 장바구니 정보 ENTITY
  */
 @Schema(description = "장바구니")
-@Getter
-@Setter
+@Data
+@SuperBuilder
 @NoArgsConstructor
 @Entity
 @DynamicInsert

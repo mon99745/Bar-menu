@@ -20,7 +20,6 @@ import javax.persistence.*;
 @SuperBuilder
 @NoArgsConstructor
 @Entity
-@Embeddable
 @DynamicInsert
 @DynamicUpdate
 @Table(name = "UserInfo", indexes = {

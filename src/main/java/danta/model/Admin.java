@@ -4,6 +4,7 @@ package danta.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +18,7 @@ import javax.persistence.*;
  * 관리자 정보 ENTITY
  */
 @Schema(description = "관리자")
-@Getter
-@Setter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @Entity

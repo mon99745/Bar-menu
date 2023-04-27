@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.sun.xml.bind.v2.TODO;
 import danta.converter.DateTimeFormatConverter;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,7 +21,7 @@ import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Getter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @MappedSuperclass
@@ -33,7 +34,7 @@ public class AbstractModel {
     @CreatedDate // 자동 등록
     @JsonProperty(index = 910)
     @Schema(description = "등록일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
-    @Column(updatable = false)
+    @Column(name = "regDate", updatable = false)
     private LocalDateTime regDate;
 
     /**
@@ -42,6 +43,6 @@ public class AbstractModel {
     @LastModifiedDate // 자동 수정
     @JsonProperty(index = 920)
     @Schema(description = "수정일시(형식: yyyy-MM-dd HH:mm:ss)", hidden = true)
-    @Column
+    @Column(name = "modDate")
     private LocalDateTime modDate;
 }

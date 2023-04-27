@@ -18,8 +18,7 @@ import javax.persistence.*;
  * 상품 정보 ENTITY
  */
 @Schema(description = "상품")
-@Getter
-@Setter
+@Data
 @SuperBuilder
 @NoArgsConstructor
 @Entity
