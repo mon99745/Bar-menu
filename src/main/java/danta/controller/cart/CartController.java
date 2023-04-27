@@ -1,64 +1,68 @@
 package danta.controller.cart;
 
-import danta.service.cart.AddToCartRequestForm;
+import danta.model.User;
+import danta.model.CartLine;
+import danta.service.cart.form.AddToCartRequestForm;
 import danta.service.cart.CartService;
-import danta.service.cart.ModifyOrderCountRequestForm;
+import danta.service.cart.form.ModifyOrderCountRequestForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
+import java.util.List;
 
+@ApiIgnore
 @Controller
 @RequiredArgsConstructor
 public class CartController {
     private final CartService cartService;
-//    private final AuthenticationConverter authenticationConverter;
 
-    @ApiIgnore
+    /**
+     * 장바구니 목록 조회
+     */
     @GetMapping("/carts")
-    public String getCartPage(Authentication authentication, Model model) {
-//        Long authId = authenticationConverter.getUserFromAuthentication(authentication)
-//                .getAuthId();
-//        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(authId);
-//        model.addAttribute("cartLineList", cartLineDtoInCartPage);
+    public String getCartPage(User user, Model model) {
+        Long userId = user.getId();
+        List<CartLine> cartLineDtoInCartPage = cartService.getCartInCartPage(userId);
+        model.addAttribute("cartLineList", cartLineDtoInCartPage);
 
         return "carts/cart";
     }
-    @ApiIgnore
-    @PostMapping("/carts")
-    public String addItemToCart(@ModelAttribute @Valid AddToCartRequestForm addToCartRequestForm,
-                                Authentication authentication) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//
-//        cartService.addItemToCart(user.getAuthId(), addToCartRequestForm);
 
+    /**
+     * 장바구니 목록 추가
+     */
+    @PostMapping("/carts")
+    public String addProductToCart(@ModelAttribute @Valid AddToCartRequestForm addToCartRequestForm,
+                                User user) {
+        cartService.addProductToCart(user.getId(), addToCartRequestForm);
         return "redirect:/carts";
     }
-    @ApiIgnore
+
+    /**
+     * 장바구니 목록 변경
+     */
     @PutMapping("/carts")
     @ResponseBody
     public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestForm modifyOrderCountRequestForm,
-                                         Authentication authentication) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//
-//        cartService.modifyOrderCount(user.getAuthId(), modifyOrderCountRequestForm);
+                                         User user) {
+        cartService.modifyOrderCount(user.getId(), modifyOrderCountRequestForm);
 
         return ResponseEntity.ok().build();
     }
 
-    @ApiIgnore
+    /**
+     * 장바구니 목록 삭제
+     */
     @DeleteMapping("/carts")
     @ResponseBody
-    public ResponseEntity deleteCartLine(@RequestParam("itemId") Long itemId,
-                                         Authentication authentication) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//        cartService.removeCartLine(user.getAuthId(), itemId);
+    public ResponseEntity deleteCartLine(@RequestParam("productId") Long productId,
+                                         User user) {
+        cartService.removeCartLine(user.getId(), productId);
         return ResponseEntity.ok().build();
     }
 }

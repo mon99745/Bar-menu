@@ -1,4 +1,4 @@
-package danta.service.cart;
+package danta.service.cart.form;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import javax.validation.constraints.Min;
 @Getter
 @Setter
 public class ModifyOrderCountRequestForm {
-    private Long itemId;
+    private Long productId;
     @Min(1)
     private int orderCount;
 }

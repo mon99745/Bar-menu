@@ -3,12 +3,9 @@ package danta.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
-import danta.service.cart.CartLine;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -71,17 +68,16 @@ public class Cart extends AbstractModel {
     @MapKeyColumn(name = "map_key")
     private Map<Long, CartLine> cart = new HashMap<>();
 
-
     public void addProductToCart(int targetStock, CartLine cartLine) {
         verifyEnoughStockQuantity(targetStock, cartLine.getOrderCount());
 
-        Long mapKey = cartLine.getItemId();
+        Long mapKey = cartLine.getProductId();
 
         // 기존 아이템이 존재한다면 수량을 더함
         if (cart.containsKey(mapKey)) {
-            CartLine existCartLine = cart.get(cartLine.getItemId());
+            CartLine existCartLine = cart.get(cartLine.getProductId());
             int newOrderCount = existCartLine.getOrderCount() + cartLine.getOrderCount();
-            cart.replace(mapKey, new CartLine(id, cartLine.getItemId(), newOrderCount));
+            cart.replace(mapKey, new CartLine(id, cartLine.getProductId(), newOrderCount));
         }
         else {
             cart.put(mapKey, cartLine);
@@ -91,7 +87,7 @@ public class Cart extends AbstractModel {
     public void modifyOrderCount(int targetStockQuantity, CartLine newCartLine) {
         verifyEnoughStockQuantity(targetStockQuantity, newCartLine.getOrderCount());
 
-        this.cart.replace(newCartLine.getItemId(), newCartLine);
+        this.cart.replace(newCartLine.getProductId(), newCartLine);
     }
 
     public void removeCartLine(Long cartItemId) {
