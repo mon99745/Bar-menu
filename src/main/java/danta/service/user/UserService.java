@@ -32,6 +32,9 @@ public class UserService {
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
 
+        // 활성화 상태
+        user.setStatus(true);
+
         // 회원가입과 동시에 장바구니 생성
         User savedUser = userRepository.save(user);
         Cart cart = new Cart();

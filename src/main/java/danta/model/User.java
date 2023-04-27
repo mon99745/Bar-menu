@@ -42,6 +42,14 @@ public class User extends AbstractModel {
     protected Long id;
 
     /**
+     * 회원 상태
+     * 활성화 OR 비활성화
+     */
+    @Column(length = 100)
+    @ApiModelProperty(hidden = true)
+    protected Boolean status;
+
+    /**
      * 회원 ID
      * TODO 암호화
      */
@@ -66,15 +74,6 @@ public class User extends AbstractModel {
     @Schema(description = "회원 이름")
     @Column(length = 100)
     protected String name;
-
-    /**
-     * 회원 상태
-     * TODO ENUM
-     */
-    @JsonProperty(index = 40)
-    @Schema(description = "회원 상태")
-    @Column(length = 100)
-    protected String status;
 
 }
 
