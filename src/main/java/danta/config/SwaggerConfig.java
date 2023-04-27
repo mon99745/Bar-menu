@@ -1,6 +1,7 @@
 package danta.config;
 
 
+import danta.controller.admin.AdminRestController;
 import danta.controller.user.UserRestController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,9 @@ public class SwaggerConfig {
         return new Docket(DocumentationType.OAS_30)
                 .useDefaultResponseMessages(true) // Swagger 에서 제공해주는 기본 응답 코드
                 .apiInfo(apiInfo())
-                .tags(new Tag(UserRestController.TAG, "회원 로직을 관리하는 Rest API", 110))
+                .tags(
+                        new Tag(UserRestController.TAG, "회원 관리 API", 110),
+                        new Tag(AdminRestController.TAG, "관리자 관리 API", 110))
 //                new Tag(UserTestRestController.TAG, "회원 로직을 테스트하는 관리하는 Rest API", 210),
 //                new Tag(OrderController.TAG, "결제 로직을 관리하는 API", 210),
 //                new Tag(MyOrderController.TAG, "자신의 결제 로직을 관리하는 API", 210),

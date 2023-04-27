@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @Slf4j
-@Api(tags = AdminRestController.TAG, description = "회원 로직을 관리하는 Rest API")
+@Api(tags = AdminRestController.TAG)
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 @RestController
 @RequestMapping(AdminRestController.PATH)
