@@ -1,4 +1,4 @@
-package danta.service.product;
+package danta.service.product.dto;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Length;

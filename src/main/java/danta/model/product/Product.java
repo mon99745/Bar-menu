@@ -4,9 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -59,7 +57,7 @@ public class Product extends AbstractModel {
     /**
      * 상품 이름
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 20)
     @Schema(description = "상품 이름")
     @Column(length = 100)
     protected String name;
@@ -67,7 +65,7 @@ public class Product extends AbstractModel {
     /**
      * 상품 가격
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 30)
     @Schema(description = "상품 가격")
     @Column(length = 100)
     protected Long price;
@@ -75,7 +73,7 @@ public class Product extends AbstractModel {
     /**
      * 상품 상태
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 40)
     @Schema(description = "상품 상태")
     @Column(length = 100)
     protected String status;
@@ -84,7 +82,7 @@ public class Product extends AbstractModel {
      * 상품 이미지
      * TODO 상품이미지를 경로로 변경
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 50)
     @Schema(description = "상품 이미지")
     @Column(length = 100)
     protected String image;
@@ -92,7 +90,7 @@ public class Product extends AbstractModel {
     /**
     * 상품 설명
     */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 60)
     @Schema(description = "상품 설명")
     @Column(length = 100)
     protected String description;
@@ -100,7 +98,7 @@ public class Product extends AbstractModel {
     /**
      * 상품 재고
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 70)
     @Schema(description = "상품 재고")
     @Column(length = 100)
     protected int stock;

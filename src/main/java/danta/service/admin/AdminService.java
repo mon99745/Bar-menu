@@ -1,7 +1,6 @@
 package danta.service.admin;
 
-import danta.model.Admin;
-import danta.model.User;
+import danta.model.admin.Admin;
 import danta.repository.AdminRepository;
 import danta.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,10 +1,10 @@
 package danta.controller.cart;
 
-import danta.model.User;
-import danta.model.CartLine;
-import danta.service.cart.form.AddToCartRequestForm;
+import danta.model.user.User;
+import danta.service.cart.dto.CartLine;
+import danta.service.cart.dto.AddToCartRequestForm;
 import danta.service.cart.CartService;
-import danta.service.cart.form.ModifyOrderCountRequestForm;
+import danta.service.cart.dto.ModifyOrderCountRequestForm;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

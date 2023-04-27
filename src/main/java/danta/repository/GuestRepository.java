@@ -1,6 +1,6 @@
 package danta.repository;
 
-import danta.model.Guest;
+import danta.model.guest.Guest;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface GuestRepository

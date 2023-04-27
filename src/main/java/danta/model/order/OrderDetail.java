@@ -1,11 +1,11 @@
-package danta.model;
+package danta.model.order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import danta.model.Product;
+import danta.model.order.Order;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;

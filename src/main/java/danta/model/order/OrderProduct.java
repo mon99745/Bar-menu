@@ -1,5 +1,7 @@
-package danta.model;
+package danta.model.order;
 
+import danta.model.AbstractModel;
+import danta.model.Product;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "order_product")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class OrderProduct extends AbstractModel{
+public class OrderProduct extends AbstractModel {
 
     @Id
     private Long orderProductId;

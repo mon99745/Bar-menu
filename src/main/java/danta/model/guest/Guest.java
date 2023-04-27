@@ -1,12 +1,11 @@
-package danta.model;
+package danta.model.guest;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import danta.model.AbstractModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -32,8 +31,7 @@ import javax.persistence.*;
 public class Guest extends AbstractModel {
 
     /**
-     * TODO:
-     * 일련 번호 사용
+     * TODO: 일련 번호 사용
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

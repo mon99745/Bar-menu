@@ -1,7 +1,7 @@
 package danta.repository;
 
 
-import danta.model.OrderDetail;
+import danta.model.order.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderDetailRepository

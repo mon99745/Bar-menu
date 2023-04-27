@@ -1,8 +1,11 @@
 package danta.controller.order;
 
-import danta.model.Order;
-import danta.model.User;
+import danta.model.order.Order;
+import danta.model.user.User;
+import danta.repository.OrderRepository;
 import danta.repository.ProductRepository;
+import danta.repository.UserRepository;
+import danta.service.order.OrderLineRequest;
 import danta.service.order.OrderRequest;
 import danta.service.order.OrderService;
 import io.swagger.annotations.Api;
@@ -10,7 +13,6 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +24,7 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,35 +37,38 @@ public class OrderController {
     public static final String TAG = "Order API";
     private final OrderService orderService;
     private final Order order;
+    private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
-//    @ModelAttribute
-//    public void setOrderInfo(Authentication authentication,
-//                             Model model) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//        model.addAttribute("shippingInfo", user.getId());
-//
-////        order ordererInfo = createOrdererInfo(user);
-////        model.addAttribute("ordererInfo", ordererInfo);
-//    }
+    private final User user;
 
-//    // 주문 페이지
-//    // 장바구니에 담긴 item id 들만을 받아옴
-//    @PostMapping("/orders")
-//    public String getOrderPage(Authentication authentication,
-//                               @ModelAttribute OrderRequest orderRequest,
-//                               Model model) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//
-//        List<Long> orderItemIdList = orderRequest.getOrderLineList()
-//                .stream()
-//                .map(ol -> ol.getItemId())
-//                .collect(Collectors.toList());
-////        OrderSummaryDto orderSummaryDto = orderDao.getOrderSummaryInCart(user.getAuthId(), orderItemIdList);
-////        model.addAttribute("orderSummary", orderSummaryDto);
-//
-//        return "orders/order";
-//    }
+    @ModelAttribute
+    public void setOrderInfo(User user, Model model) {
+
+        User user = userRepository.findByUsername(user.getUsername())
+        model.addAttribute("shippingInfo", user.getUsername());
+
+        OrdererInfo ordererInfoDto = createOrdererInfo(user);
+        model.addAttribute("ordererInfo", ordererInfoDto);
+    }
+    // 주문 페이지
+    // 장바구니에 담긴 item id 들만을 받아옴
+    @PostMapping("/orders")
+    public String getOrderPage(Authentication authentication,
+                               @ModelAttribute OrderRequest orderRequest,
+                               Model model) {
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
+
+        List<Long> orderItemIdList = orderRequest.getOrderLineList()
+                .stream()
+                .map(ol -> ol.getItemId())
+                .collect(Collectors.toList());
+//        OrderSummaryDto orderSummaryDto = orderDao.getOrderSummaryInCart(user.getAuthId(), orderItemIdList);
+//        model.addAttribute("orderSummary", orderSummaryDto);
+
+        return "orders/order";
+    }
 
     // 바로구매
     @PostMapping("/orders/direct")
@@ -72,38 +78,38 @@ public class OrderController {
         return "orders/order";
     }
 
-    // 바로구매 요청의 OrderSummary를 생성
-//    private OrderSummaryDto createOrderSummary(OrderRequest orderRequest) {
-//        // 바로구매시 하나의 아이템만을 구매하게 되므로 첫번째 인덱스의 아이템을 이용
-//        OrderLineRequest orderLineRequest = orderRequest.getOrderLineList().get(0);
-//
-//        ItemEntity itemEntity = itemRepository.findById(orderLineRequest.getItemId())
-//                .get();
-//        OrderItemDto orderItemDto = new OrderItemDto(itemEntity.getItemId(),
-//                itemEntity.getName(),
-//                itemEntity.getPrice(),
-//                orderLineRequest.getOrderCount());
-//
-//        return new OrderSummaryDto(Arrays.asList(orderItemDto));
-//    }
+     바로구매 요청의 OrderSummary를 생성
+    private OrderSummaryDto createOrderSummary(OrderRequest orderRequest) {
+        // 바로구매시 하나의 아이템만을 구매하게 되므로 첫번째 인덱스의 아이템을 이용
+        OrderLineRequest orderLineRequest = orderRequest.getOrderLineList().get(0);
+
+        ItemEntity itemEntity = itemRepository.findById(orderLineRequest.getItemId())
+                .get();
+        OrderItemDto orderItemDto = new OrderItemDto(itemEntity.getItemId(),
+                itemEntity.getName(),
+                itemEntity.getPrice(),
+                orderLineRequest.getOrderCount());
+
+        return new OrderSummaryDto(Arrays.asList(orderItemDto));
+    }
 
 
-//    private OrdererInfoDto createOrdererInfo(User orderer) {
-//        return new OrdererInfoDto(orderer.getAuthId(),
-//                orderer.getUsername());
-////                orderer.getNickname());
-//    }
+    private OrdererInfoDto createOrdererInfo(User orderer) {
+        return new OrdererInfoDto(orderer.getAuthId(),
+                orderer.getUsername());
+//                orderer.getNickname());
+    }
 
-    // 주문 요청 처리
-//    @PostMapping("/orders/order")
-//    public String order(Authentication authentication,
-//                        @ModelAttribute @Valid OrderRequest orderRequest) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
+     주문 요청 처리
+    @PostMapping("/orders/order")
+    public String order(Authentication authentication,
+                        @ModelAttribute @Valid OrderRequest orderRequest) {
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
 
-//        Long orderId = orderService.order(user.getId(), orderRequest);
+        Long orderId = orderService.order(user.getId(), orderRequest);
 
-//        return "redirect:/orders/complete/" + orderId;
-//    }
+        return "redirect:/orders/complete/" + orderId;
+    }
 
     // 주문완료 페이지 요청
     @GetMapping("/orders/complete/{orderId}")

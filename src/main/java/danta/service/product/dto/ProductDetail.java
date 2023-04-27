@@ -1,4 +1,4 @@
-package danta.service.product;
+package danta.service.product.dto;
 
 import danta.model.Product;
 import lombok.Getter;
@@ -8,14 +8,14 @@ import lombok.Setter;
 @RequiredArgsConstructor
 @Getter
 @Setter
-public class ProductDetails {
+public class ProductDetail {
     private Long itemId;
     private String imagePath;
     private String name;
     private int price;
     private int stockQuantity;
 
-    public ProductDetails(Product product) {
+    public ProductDetail(Product product) {
         this.itemId = product.getId();
         this.imagePath = product.getImage();
         this.name = product.getName();

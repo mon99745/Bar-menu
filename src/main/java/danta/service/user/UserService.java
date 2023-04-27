@@ -1,7 +1,7 @@
 package danta.service.user;
 
-import danta.model.Cart;
-import danta.model.User;
+import danta.model.cart.Cart;
+import danta.model.user.User;
 import danta.repository.UserRepository;
 import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package danta.controller.product;
 
-import danta.service.product.ProductDetails;
-import danta.service.product.ProductRequest;
+import danta.service.product.dto.ProductDetail;
+import danta.service.product.dto.ProductRequest;
 import danta.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -37,7 +37,7 @@ public class ProductController {
     @GetMapping("/items/{itemId}")
     public String getItemDetailsPage(@PathVariable("itemId") Long itemId,
                                      Model model) {
-        ProductDetails productDetails = productService.findItem(itemId);
+        ProductDetail productDetails = productService.findItem(itemId);
         model.addAttribute("productDetails", productDetails);
         return "items/itemDetails";
     }

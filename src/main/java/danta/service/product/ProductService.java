@@ -3,6 +3,8 @@ package danta.service.product;
 
 import danta.model.Product;
 import danta.repository.ProductRepository;
+import danta.service.product.dto.ProductDetail;
+import danta.service.product.dto.ProductRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,10 +33,10 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public ProductDetails findItem(Long productId) {
+    public ProductDetail findItem(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
 
-        return new ProductDetails(product);
+        return new ProductDetail(product);
     }
 }

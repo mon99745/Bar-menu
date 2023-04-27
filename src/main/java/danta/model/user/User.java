@@ -1,7 +1,8 @@
-package danta.model;
+package danta.model.user;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import danta.model.AbstractModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;

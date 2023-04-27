@@ -1,10 +1,10 @@
 package danta.service.order;
 
 
-import danta.model.Order;
-import danta.model.OrderProduct;
+import danta.model.order.Order;
+import danta.model.order.OrderProduct;
 import danta.model.Product;
-import danta.model.User;
+import danta.model.user.User;
 import danta.repository.OrderRepository;
 import danta.repository.ProductRepository;
 import danta.service.cart.CartService;

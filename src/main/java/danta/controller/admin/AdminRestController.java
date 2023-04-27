@@ -1,7 +1,7 @@
 package danta.controller.admin;
 
-import danta.model.Admin;
-import danta.model.User;
+import danta.model.admin.Admin;
+import danta.model.user.User;
 import danta.service.admin.AdminService;
 import danta.service.user.UserService;
 import io.swagger.annotations.Api;

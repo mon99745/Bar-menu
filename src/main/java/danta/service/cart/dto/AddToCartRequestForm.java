@@ -1,4 +1,4 @@
-package danta.service.cart.form;
+package danta.service.cart.dto;
 
 import lombok.Getter;
 import lombok.Setter;

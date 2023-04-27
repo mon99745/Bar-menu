@@ -1,5 +1,6 @@
 package danta.controller.order;
 
+import danta.model.order.OrderDetail;
 import danta.service.order.OrderService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
@@ -31,16 +32,16 @@ public class MyOrderController {
     @GetMapping("{orderId}")
     public String getMyOrderDetails(@PathVariable("orderId") Long orderId,
                                     Model model) {
-//        OrderDetail orderDetails = orderService.getMyOrderDetails(orderId);
-//        model.addAttribute("myOrderDetails", myOrderDetails);
+        OrderDetail orderDetails = orderService.getMyOrderDetails(orderId);
+        model.addAttribute("myOrderDetails", myOrderDetails);
         return "orders/myOrderDetails";
     }
 
     @GetMapping("delete/{orderId}")
     public String deleteMyOrder(Authentication authentication,
                                 @PathVariable("orderId") Long orderId) {
-//        User user = authenticationConverter.getUserFromAuthentication(authentication);
-//        orderService.deleteMyOrder(user.getAuthId(), orderId);
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
+        orderService.deleteMyOrder(user.getAuthId(), orderId);
         return "redirect:/my/orders";
     }
 }

@@ -1,11 +1,10 @@
 package danta.repository;
 
-import danta.model.Cart;
-import danta.model.CartLine;
+import danta.model.cart.Cart;
+import danta.service.cart.dto.CartLine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository

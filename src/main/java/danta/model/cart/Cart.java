@@ -1,8 +1,11 @@
-package danta.model;
+package danta.model.cart;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
+import danta.model.AbstractModel;
+import danta.model.user.User;
+import danta.service.cart.dto.CartLine;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package danta.repository;
 
-import danta.model.CartLine;
+import danta.service.cart.dto.CartLine;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

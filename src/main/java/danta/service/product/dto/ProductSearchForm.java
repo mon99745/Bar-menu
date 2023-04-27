@@ -1,4 +1,4 @@
-package danta.service.product;
+package danta.service.product.dto;
 
 import danta.controller.Sorter;
 import lombok.Getter;

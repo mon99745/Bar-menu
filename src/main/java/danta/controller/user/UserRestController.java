@@ -1,6 +1,6 @@
 package danta.controller.user;
 
-import danta.model.User;
+import danta.model.user.User;
 import danta.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
@@ -9,8 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * Swagger 사용을 위해 모든 권한(authh) 을 허용한 상태

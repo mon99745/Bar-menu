@@ -1,7 +1,9 @@
-package danta.model;
+package danta.model.order;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import danta.model.AbstractModel;
+import danta.model.user.User;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -57,7 +59,7 @@ public class Order extends AbstractModel {
     /**
      * 주문 상태
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 20)
     @Schema(description = "주문 상태")
     @Column(length = 100)
     protected String status;
@@ -65,7 +67,7 @@ public class Order extends AbstractModel {
     /**
      * 주문 금액
      */
-    @JsonProperty(index = 10)
+    @JsonProperty(index = 30)
     @Schema(description = "주문 금액")
     @Column(length = 100)
     protected Long price;
@@ -96,8 +98,8 @@ public class Order extends AbstractModel {
     }
 
     public void deleteOrder(Long ordererId) {
-//        if (ordererId != this.orderer.getId())
-//            throw new IllegalStateException("주문자와 삭제 요청자가 일치하지 않습니다.");
+        if (ordererId != this.orderer.getId())
+            throw new IllegalStateException("주문자와 삭제 요청자가 일치하지 않습니다.");
 
         this.removed = true;
         this.removedAt = LocalDateTime.now();

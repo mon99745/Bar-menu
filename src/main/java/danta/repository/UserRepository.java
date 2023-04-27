@@ -1,6 +1,6 @@
 package danta.repository;
 
-import danta.model.User;
+import danta.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UserRepository

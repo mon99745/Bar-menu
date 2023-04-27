@@ -1,7 +1,6 @@
 package danta.repository;
 
-import danta.model.Admin;
-import danta.model.User;
+import danta.model.admin.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdminRepository extends JpaRepository<Admin, Long> {
