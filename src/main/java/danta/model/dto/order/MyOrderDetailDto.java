@@ -1,6 +1,6 @@
 package danta.model.dto.order;
 
-import danta.model.enume.OrderStatus;
+import danta.model.enums.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
