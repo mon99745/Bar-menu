@@ -44,7 +44,7 @@
 
         <form th:onsubmit="return validateOrderCount()">
           <div class="form-group">
-            <input id="productId.Input" type="text" th:name="productId." th:value="${product.productId.}"
+            <input id="productId.Input" type="text" th:name="productId" th:value="${product.productId}"
                    style="display: none;">
             <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${product.stockQuantity}"
                    th:name="orderCount">
