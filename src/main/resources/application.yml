@@ -10,7 +10,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/bar-menu?rewriteBatchedStatements=true
-    username: root
+    username: user
     password: '0000'
   mvc:
     pathmatch:
@@ -33,3 +33,6 @@ springfox:
   documentation:
     swagger-ui:
       enabled: true
+
+file:
+  uploadDir: C:\workspace\Bar-menu\src\main\resources\static\img

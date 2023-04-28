@@ -15,3 +15,6 @@ spring:
 
 security:
   auth: false
+
+file:
+  uploadDir: C:\git-personal\Bar-menu\src\main\resources\static\img
