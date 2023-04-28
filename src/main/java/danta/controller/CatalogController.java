@@ -29,9 +29,9 @@ public class CatalogController {
 
         // 아이템 검색 form
         if (searchForm == null)
-            model.addAttribute("itemSearchForm", new ProductSearchForm());
+            model.addAttribute("productSearchForm", new ProductSearchForm());
         else
-            model.addAttribute("itemSearchForm", searchForm);
+            model.addAttribute("productSearchForm", searchForm);
 
         // 아이템 리스트
         searchForm.setCategory(category);

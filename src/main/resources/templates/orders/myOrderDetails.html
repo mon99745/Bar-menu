@@ -42,21 +42,21 @@
             </div>
         </div>
         <div class="componentBody">
-            <div class="orderInformationContainer" th:each="orderedItem : ${myOrderDetails.orderedItemList}">
+            <div class="orderInformationContainer" th:each="orderedProduct : ${myOrderDetails.orderedProductList}">
                 <div class="itemContainer">
                     <div class="itemImageContainer">
-                        <img class="itemImage" th:src="@{/products/{productId.}(productId.=${orderedItem.itemImagePath})}" alt="">
+                        <img class="itemImage" th:src="@{/products/{productId.}(productId.=${orderedProduct.itemImagePath})}" alt="">
                     </div>
                     <div class="itemInformationContainer">
-                        <a th:href="@{/products/{productId.}(productId.=${orderedItem.productId.})}">
-                            <span style="font-weight: bold; margin-left: 100px;" th:text="${orderedItem.itemName}"></span>
+                        <a th:href="@{/products/{productId.}(productId.=${orderedProduct.productId.})}">
+                            <span style="font-weight: bold; margin-left: 100px;" th:text="${orderedProduct.itemName}"></span>
                         </a>
-                        <span style="margin-top: 10px; margin-left: 100px;" th:text="${orderedItem.itemPrice}"></span>
+                        <span style="margin-top: 10px; margin-left: 100px;" th:text="${orderedProduct.itemPrice}"></span>
                     </div>
                     <div class="etcContainer">
                         <span th:text="${myOrderDetails.orderStatus.getStatus()}"></span>
                         <!-- todo 주문상태에 따라 분기처리 필요 -->
-<!--                        <a th:href="@{/reviews/review?productId={productId}(productId=${orderedItem.productId.})}">리뷰작성</a>-->
+<!--                        <a th:href="@{/reviews/review?productId={productId}(productId=${orderedProduct.productId.})}">리뷰작성</a>-->
                     </div>
                 </div>
             </div>

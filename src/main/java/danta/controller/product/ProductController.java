@@ -21,24 +21,24 @@ public class ProductController {
 
     @ApiIgnore
     @GetMapping("/products/new")
-    public String getNewItemPage(Model model) {
+    public String getNewProductPage(Model model) {
         model.addAttribute("form", new ProductRequestDto());
-        return "products/registerItemForm";
+        return "products/registerProductForm";
     }
 
     @ApiIgnore
     @PostMapping("/products/new")
-    public String createItem(@ModelAttribute @Valid ProductRequestDto productRequest) {
-        Long newItemId = Long.valueOf(productService.saveProduct(productRequest));
-        return "redirect:/products/"+ newItemId;
+    public String createProduct(@ModelAttribute @Valid ProductRequestDto productRequest) {
+        Long newProductId = Long.valueOf(productService.saveProduct(productRequest));
+        return "redirect:/products/"+ newProductId;
     }
 
     @ApiIgnore
-    @GetMapping("/products/{itemId}")
-    public String getItemDetailsPage(@PathVariable("itemId") Long itemId,
+    @GetMapping("/products/{productId}")
+    public String getProductDetailsPage(@PathVariable("productId") Long productId,
                                      Model model) {
-        ProductDetailDto productDetails = productService.findProduct(itemId);
+        ProductDetailDto productDetails = productService.findProduct(productId);
         model.addAttribute("productDetails", productDetails);
-        return "products/itemDetails";
+        return "products/productDetails";
     }
 }
