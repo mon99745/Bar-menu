@@ -7,7 +7,7 @@
 <head>
   <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
   <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
-  <link rel="stylesheet" th:href="@{/css/itemdetails.css}" href="../css/itemdetails.css">
+  <link rel="stylesheet" th:href="@{/css/itemdetails.css}" href="../css/productdetails.css">
 </head>
 <body>
 <div id=tablet>
@@ -25,28 +25,28 @@
     </div>
 
 <div class="container table">
-  <div class="itemContainer">
+  <div class="productContainer">
     <div class="imageContainer">
-      <img class="itemImage" th:src="@{${item.imagePath}}" alt="">
+      <img class="productImage" th:src="@{${product.image}}" alt="">
     </div>
     <div class="informationContainer">
       <div class="itemNameContainer">
-        <h2 class="itemName" th:text="${item.name}"></h2>
+        <h2 class="itemName" th:text="${product.name}"></h2>
       </div>
       <div class="itemPriceContainer">
-        <h2 class="itemPrice" th:text="${#numbers.formatInteger(item.price, 3, 'COMMA')} + ' 원'"></h2>
+        <h2 class="itemPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')} + ' 원'"></h2>
       </div>
 
-      <div th:if="${item.stockQuantity &lt; 1}" class="soldOutContainer">
+      <div th:if="${product.stock &lt; 1}" class="soldOutContainer">
         <i class="fas fa-ban" style="color: #CCC;"></i> 품절
       </div>
-      <div th:unless="${item.stockQuantity &lt; 1}" class="orderContainer">
+      <div th:unless="${product.stock &lt; 1}" class="orderContainer">
 
         <form th:onsubmit="return validateOrderCount()">
           <div class="form-group">
-            <input id="itemIdInput" type="text" th:name="itemId" th:value="${item.itemId}"
+            <input id="productId.Input" type="text" th:name="productId." th:value="${product.productId.}"
                    style="display: none;">
-            <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${item.stockQuantity}"
+            <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${product.stockQuantity}"
                    th:name="orderCount">
             <button th:formmethod="post" th:formaction="@{/carts}" id="addToCartBtn" class="btn btn-light">
               장바구니

@@ -61,12 +61,12 @@
         <div class="component">
             <table class="table">
                 <tbody>
-                <tr class="orderItemListTr" th:each="item : ${orderSummary.orderItemList}">
-                    <td class="itemIdTd" style="display: none;" th:text="${item.itemId}"></td>
-                    <td style="max-width: 500px; min-width: 450px; padding-left: 15px;" th:text="${item.name}"></td>
-                    <td class="orderCountTd" style="max-width: 50px; min-width: 50px;" th:text="${item.orderCount}"></td>
-                    <td style="max-width: 100px; min-width: 100px;" th:text="${#numbers.formatInteger(item.totalAmount, 3, 'COMMA')} +
-                                                                                '(' + ${#numbers.formatInteger(item.price, 3, 'COMMA')} + ')'"></td>
+                <tr class="orderItemListTr" th:each="product : ${orderSummary.orderItemList}">
+                    <td class="productId.Td" style="display: none;" th:text="${product.productId.}"></td>
+                    <td style="max-width: 500px; min-width: 450px; padding-left: 15px;" th:text="${product.name}"></td>
+                    <td class="orderCountTd" style="max-width: 50px; min-width: 50px;" th:text="${product.orderCount}"></td>
+                    <td style="max-width: 100px; min-width: 100px;" th:text="${#numbers.formatInteger(product.totalAmount, 3, 'COMMA')} +
+                                                                                '(' + ${#numbers.formatInteger(product.price, 3, 'COMMA')} + ')'"></td>
                 </tr>
                 </tbody>
             </table>

@@ -22,7 +22,7 @@ public class CatalogController {
     // 완성 후 인덱스와 합칠것
 
     @GetMapping("/")
-    public String getMainPage(String categoryName, @ModelAttribute ProductSearchForm searchForm, Model model) {
+    public String getMainPage(String category, @ModelAttribute ProductSearchForm searchForm, Model model) {
 //        // category
 //        List<CategoryEntity> categorys = categoryService.findAll();
 //        model.addAttribute("categorys", categorys);
@@ -34,13 +34,13 @@ public class CatalogController {
             model.addAttribute("itemSearchForm", searchForm);
 
         // 아이템 리스트
-        searchForm.setCategoryName(categoryName);
+        searchForm.setCategory(category);
         List<Product> products = productService.findAll();
-        model.addAttribute("items", products);
+        model.addAttribute("products", products);
 
 //        searchForm에서의 오류를 못잡음
-//        List<CatalogSummary> items = catalogService.getCatalog(searchForm);
-//        model.addAttribute("items", items);
+//        List<CatalogSummary> products = catalogService.getCatalog(searchForm);
+//        model.addAttribute("products", products);
 
         // Todo 정상 작동 시 menu 로 복구
         return "menu";

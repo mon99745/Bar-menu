@@ -45,10 +45,10 @@
             <div class="orderInformationContainer" th:each="orderedItem : ${myOrderDetails.orderedItemList}">
                 <div class="itemContainer">
                     <div class="itemImageContainer">
-                        <img class="itemImage" th:src="@{/items/{itemId}(itemId=${orderedItem.itemImagePath})}" alt="">
+                        <img class="itemImage" th:src="@{/products/{productId.}(productId.=${orderedItem.itemImagePath})}" alt="">
                     </div>
                     <div class="itemInformationContainer">
-                        <a th:href="@{/items/{itemId}(itemId=${orderedItem.itemId})}">
+                        <a th:href="@{/products/{productId.}(productId.=${orderedItem.productId.})}">
                             <span style="font-weight: bold; margin-left: 100px;" th:text="${orderedItem.itemName}"></span>
                         </a>
                         <span style="margin-top: 10px; margin-left: 100px;" th:text="${orderedItem.itemPrice}"></span>
@@ -56,7 +56,7 @@
                     <div class="etcContainer">
                         <span th:text="${myOrderDetails.orderStatus.getStatus()}"></span>
                         <!-- todo 주문상태에 따라 분기처리 필요 -->
-<!--                        <a th:href="@{/reviews/review?productId={productId}(productId=${orderedItem.itemId})}">리뷰작성</a>-->
+<!--                        <a th:href="@{/reviews/review?productId={productId}(productId=${orderedItem.productId.})}">리뷰작성</a>-->
                     </div>
                 </div>
             </div>

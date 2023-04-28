@@ -26,7 +26,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository{
         return query
                 .select(new QCatalogSummary(product.id, product.image, product.name, product.price))
                 .from(product)
-                .where(nameLike(searchForm.getName()), categoryEq(searchForm.getCategoryName()))
+                .where(nameLike(searchForm.getName()), categoryEq(searchForm.getCategory()))
                 .orderBy(sorter(searchForm.getSorter()))
                 .fetch();
     }
@@ -39,9 +39,9 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository{
         return null;
     }
 
-    private Predicate categoryEq(String categoryName) {
-        if (categoryName != null)
-            return product.category.eq(categoryName);
+    private Predicate categoryEq(String category) {
+        if (category != null)
+            return product.category.eq(category);
         return null;
     }
 

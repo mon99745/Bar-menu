@@ -9,5 +9,5 @@ import lombok.Setter;
 public class ProductSearchForm {
     private String name;
     private Sorter sorter;
-    private String categoryName;
+    private String category;
 }

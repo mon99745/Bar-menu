@@ -45,12 +45,12 @@
           <input type="checkbox" class="checkBox">
         </td>
         <td class="itemImageTd">
-          <a th:href="@{/items/{itemId}(itemId=${cartLine.getItemId()})}">
+          <a th:href="@{/products/{productId.}(productId.=${cartLine.getItemId()})}">
             <img class="itemImage" th:src="@{${cartLine.itemImagePath}}" alt="">
           </a>
         </td>
         <td class="itemInfoTd">
-          <a th:href="@{/items/{itemId}(itemId=${cartLine.getItemId()})}">
+          <a th:href="@{/products/{productId.}(productId.=${cartLine.getItemId()})}">
             <span th:text="${cartLine.getItemName()}"></span>
           </a>
         </td>
@@ -58,9 +58,9 @@
           <span th:text="${#numbers.formatInteger(cartLine.itemPrice, 3, 'COMMA')}"></span>
         </td>
         <td class="orderCountTd">
-          <!-- itemId를 가져오기 위한 필드 -->
-          <input class="itemId" type="text" style="display: none;" th:value="${cartLine.getItemId()}"
-                 th:name="itemId">
+          <!-- productId.를 가져오기 위한 필드 -->
+          <input class="productId." type="text" style="display: none;" th:value="${cartLine.getItemId()}"
+                 th:name="productId.">
           <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stockQuantity}"
                  th:name="orderCount">
           <button class="btn btn-light orderCountModifyBtn">
