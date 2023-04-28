@@ -1,8 +1,8 @@
 package danta.service.user;
 
-import danta.model.cart.Cart;
-import danta.model.user.User;
-import danta.repository.UserRepository;
+import danta.domain.cart.Cart;
+import danta.domain.user.User;
+import danta.domain.user.UserRepository;
 import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,10 +1,10 @@
 package danta.controller.cart;
 
-import danta.model.user.User;
-import danta.service.cart.dto.CartLine;
-import danta.service.cart.dto.AddToCartRequestForm;
+import danta.domain.user.User;
+import danta.model.dto.cart.CartLineDto;
+import danta.model.dto.cart.AddToCartRequestFormDto;
 import danta.service.cart.CartService;
-import danta.service.cart.dto.ModifyOrderCountRequestForm;
+import danta.model.dto.cart.ModifyOrderCountRequestFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class CartController {
     @GetMapping("/carts")
     public String getCartPage(User user, Model model) {
         Long userId = user.getId();
-        List<CartLine> cartLineDtoInCartPage = cartService.getCartInCartPage(userId);
+        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(userId);
         model.addAttribute("cartLineList", cartLineDtoInCartPage);
 
         return "carts/cart";
@@ -37,7 +37,7 @@ public class CartController {
      * 장바구니 목록 추가
      */
     @PostMapping("/carts")
-    public String addProductToCart(@ModelAttribute @Valid AddToCartRequestForm addToCartRequestForm,
+    public String addProductToCart(@ModelAttribute @Valid AddToCartRequestFormDto addToCartRequestForm,
                                 User user) {
         cartService.addProductToCart(user.getId(), addToCartRequestForm);
         return "redirect:/carts";
@@ -48,7 +48,7 @@ public class CartController {
      */
     @PutMapping("/carts")
     @ResponseBody
-    public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestForm modifyOrderCountRequestForm,
+    public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestFormDto modifyOrderCountRequestForm,
                                          User user) {
         cartService.modifyOrderCount(user.getId(), modifyOrderCountRequestForm);
 

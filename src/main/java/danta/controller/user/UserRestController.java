@@ -1,6 +1,6 @@
 package danta.controller.user;
 
-import danta.model.user.User;
+import danta.domain.user.User;
 import danta.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;

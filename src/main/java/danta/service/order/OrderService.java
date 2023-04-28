@@ -1,12 +1,12 @@
 package danta.service.order;
 
 
-import danta.model.order.Order;
-import danta.model.order.OrderProduct;
-import danta.model.Product;
-import danta.model.user.User;
-import danta.repository.OrderRepository;
-import danta.repository.ProductRepository;
+import danta.domain.order.Order;
+import danta.domain.order.OrderProduct;
+import danta.domain.product.Product;
+import danta.domain.user.User;
+import danta.domain.order.OrderRepository;
+import danta.domain.product.ProductRepository;
 import danta.service.cart.CartService;
 import danta.service.user.UserService;
 import lombok.RequiredArgsConstructor;
@@ -35,7 +35,7 @@ public class OrderService {
         List<OrderProduct> orderProductList = orderRequest.getOrderLineList()
                 .stream()
                 .map(ol -> {
-                    Product Product = productRepository.findById(ol.getProductId())
+                    Product product = productRepository.findById(ol.getProductId())
                             .get();
                     return new OrderProduct(product, ol.getOrderCount());
                 })

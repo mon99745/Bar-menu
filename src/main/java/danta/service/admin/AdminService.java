@@ -1,8 +1,8 @@
 package danta.service.admin;
 
-import danta.model.admin.Admin;
-import danta.repository.AdminRepository;
-import danta.repository.UserRepository;
+import danta.domain.admin.Admin;
+import danta.domain.admin.AdminRepository;
+import danta.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package danta.controller.product;
 
-import danta.service.product.dto.ProductDetail;
-import danta.service.product.dto.ProductRequest;
+import danta.model.dto.product.ProductDetailDto;
+import danta.model.dto.product.ProductRequestDto;
 import danta.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,13 +22,13 @@ public class ProductController {
     @ApiIgnore
     @GetMapping("/items/new")
     public String getNewItemPage(Model model) {
-        model.addAttribute("form", new ProductRequest());
+        model.addAttribute("form", new ProductRequestDto());
         return "items/registerItemForm";
     }
 
     @ApiIgnore
     @PostMapping("/items/new")
-    public String createItem(@ModelAttribute @Valid ProductRequest productRequest) {
+    public String createItem(@ModelAttribute @Valid ProductRequestDto productRequest) {
         Long newItemId = Long.valueOf(productService.saveProduct(productRequest));
         return "redirect:/items/"+ newItemId;
     }
@@ -37,7 +37,7 @@ public class ProductController {
     @GetMapping("/items/{itemId}")
     public String getItemDetailsPage(@PathVariable("itemId") Long itemId,
                                      Model model) {
-        ProductDetail productDetails = productService.findItem(itemId);
+        ProductDetailDto productDetails = productService.findItem(itemId);
         model.addAttribute("productDetails", productDetails);
         return "items/itemDetails";
     }

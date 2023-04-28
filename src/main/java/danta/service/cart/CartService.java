@@ -1,11 +1,12 @@
 package danta.service.cart;
 
-import danta.model.cart.Cart;
-import danta.service.cart.dto.CartLine;
-import danta.repository.CartRepository;
-import danta.repository.ProductRepository;
-import danta.service.cart.dto.AddToCartRequestForm;
-import danta.service.cart.dto.ModifyOrderCountRequestForm;
+import danta.domain.cart.Cart;
+import danta.model.dao.cart.CartDao;
+import danta.model.dto.cart.CartLineDto;
+import danta.domain.cart.CartRepository;
+import danta.domain.product.ProductRepository;
+import danta.model.dto.cart.AddToCartRequestFormDto;
+import danta.model.dto.cart.ModifyOrderCountRequestFormDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +18,7 @@ import java.util.List;
 @Transactional
 public class CartService {
     private final CartRepository cartRepository;
+    private final CartDao cartDao;
     private final ProductRepository productRepository;
 
     /**
@@ -34,10 +36,10 @@ public class CartService {
      * @param userId
      * @param addToCartRequestForm
      */
-    public void addProductToCart(Long userId, AddToCartRequestForm addToCartRequestForm) {
+    public void addProductToCart(Long userId, AddToCartRequestFormDto addToCartRequestForm) {
         Cart cart = cartRepository.findCartById(userId);
 
-        CartLine newCartLine = new CartLine(cart.getId(),
+        CartLineDto newCartLine = new CartLineDto(cart.getId(),
                 addToCartRequestForm.getProductId(),
                 addToCartRequestForm.getOrderCount());
 
@@ -52,8 +54,8 @@ public class CartService {
      * @param userId
      * @return
      */
-    public List<CartLine> getCartInCartPage(Long userId) {
-        return cartRepository.getCartLineListInCartPage(userId);
+    public List<CartLineDto> getCartInCartPage(Long userId) {
+        return cartDao.getCartLineListInCartPage(userId);
     }
 
     /**
@@ -62,14 +64,14 @@ public class CartService {
      * @param modifyOrderCountRequestForm
      */
 
-    public void modifyOrderCount(Long userId, ModifyOrderCountRequestForm modifyOrderCountRequestForm) {
+    public void modifyOrderCount(Long userId, ModifyOrderCountRequestFormDto modifyOrderCountRequestForm) {
          //엔티티 조회
         Cart cart = cartRepository.findCartById(userId);
         int targetStock = productRepository.findById(modifyOrderCountRequestForm.getProductId())
                 .get()
                 .getStock();
 
-        CartLine newCartLine = new CartLine(cart.getId(), modifyOrderCountRequestForm.getProductId(), modifyOrderCountRequestForm.getOrderCount());
+        CartLineDto newCartLine = new CartLineDto(cart.getId(), modifyOrderCountRequestForm.getProductId(), modifyOrderCountRequestForm.getOrderCount());
         cart.modifyOrderCount(targetStock, newCartLine);
     }
 

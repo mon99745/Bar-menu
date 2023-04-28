@@ -1,13 +1,19 @@
 package danta.controller.order;
 
-import danta.model.order.Order;
-import danta.model.user.User;
-import danta.repository.OrderRepository;
-import danta.repository.ProductRepository;
-import danta.repository.UserRepository;
+import danta.converter.AuthenticationConverter;
+import danta.domain.product.Product;
+import danta.domain.order.Order;
+import danta.domain.user.User;
+import danta.domain.order.OrderRepository;
+import danta.domain.product.ProductRepository;
+import danta.domain.user.UserRepository;
+import danta.model.dao.order.OrderDao;
 import danta.service.order.OrderLineRequest;
 import danta.service.order.OrderRequest;
 import danta.service.order.OrderService;
+import danta.model.dto.order.OrderProductDto;
+import danta.model.dto.order.OrderSummaryDto;
+import danta.model.dto.order.OrdererDto;
 import io.swagger.annotations.Api;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +30,6 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,32 +45,44 @@ public class OrderController {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
+    private final OrderDao orderDao;
+    private final AuthenticationConverter authenticationConverter;
 
-    private final User user;
-
+    /**
+     * 주문 정보 설정
+     * @param authentication
+     * @param model
+     */
     @ModelAttribute
-    public void setOrderInfo(User user, Model model) {
+    public void setOrderInfo(Authentication authentication, Model model) {
 
-        User user = userRepository.findByUsername(user.getUsername())
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
         model.addAttribute("shippingInfo", user.getUsername());
 
-        OrdererInfo ordererInfoDto = createOrdererInfo(user);
-        model.addAttribute("ordererInfo", ordererInfoDto);
+        OrdererDto orderer = createOrdererInfo(user);
+        model.addAttribute("ordererInfo", orderer);
     }
-    // 주문 페이지
-    // 장바구니에 담긴 item id 들만을 받아옴
+
+    /**
+     * 주문 페이지
+     * 장바구니에 담긴 Product_id 들만을 받아온다.
+     * @param authentication
+     * @param orderRequest
+     * @param model
+     * @return
+     */
     @PostMapping("/orders")
     public String getOrderPage(Authentication authentication,
                                @ModelAttribute OrderRequest orderRequest,
                                Model model) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);
 
-        List<Long> orderItemIdList = orderRequest.getOrderLineList()
+        List<Long> orderProductIdList = orderRequest.getOrderLineList()
                 .stream()
-                .map(ol -> ol.getItemId())
+                .map(ol -> ol.getProductId())
                 .collect(Collectors.toList());
-//        OrderSummaryDto orderSummaryDto = orderDao.getOrderSummaryInCart(user.getAuthId(), orderItemIdList);
-//        model.addAttribute("orderSummary", orderSummaryDto);
+        OrderSummaryDto orderSummary = orderDao.getOrderSummaryInCart(user.getId(), orderProductIdList);
+        model.addAttribute("orderSummary", orderSummary);
 
         return "orders/order";
     }
@@ -74,33 +91,41 @@ public class OrderController {
     @PostMapping("/orders/direct")
     public String getOrderPageByDirect(@ModelAttribute OrderRequest orderRequest,
                                        Model model) {
-//        model.addAttribute("orderSummary", createOrderSummary(orderRequest));
+        model.addAttribute("orderSummary", createOrderSummary(orderRequest));
         return "orders/order";
     }
 
-     바로구매 요청의 OrderSummary를 생성
+    /**
+     * 바로구매 요청의 OrderSummary를 생성
+     */
     private OrderSummaryDto createOrderSummary(OrderRequest orderRequest) {
         // 바로구매시 하나의 아이템만을 구매하게 되므로 첫번째 인덱스의 아이템을 이용
         OrderLineRequest orderLineRequest = orderRequest.getOrderLineList().get(0);
 
-        ItemEntity itemEntity = itemRepository.findById(orderLineRequest.getItemId())
+        Product product = productRepository.findById(orderLineRequest.getProductId())
                 .get();
-        OrderItemDto orderItemDto = new OrderItemDto(itemEntity.getItemId(),
-                itemEntity.getName(),
-                itemEntity.getPrice(),
+        OrderProductDto orderProductDto = new OrderProductDto(product.getId(),
+                product.getName(),
+                product.getPrice(),
                 orderLineRequest.getOrderCount());
 
-        return new OrderSummaryDto(Arrays.asList(orderItemDto));
+        return new OrderSummaryDto((List<OrderProductDto>) orderProductDto);
     }
 
-
-    private OrdererInfoDto createOrdererInfo(User orderer) {
-        return new OrdererInfoDto(orderer.getAuthId(),
+    /**
+     * 주문자 정보 생성
+     * @param orderer
+     * @return
+     */
+    private OrdererDto createOrdererInfo(User orderer) {
+        return new OrdererDto(orderer.getId(),
                 orderer.getUsername());
 //                orderer.getNickname());
     }
 
-     주문 요청 처리
+    /**
+     * 주문 요청 처리
+     */
     @PostMapping("/orders/order")
     public String order(Authentication authentication,
                         @ModelAttribute @Valid OrderRequest orderRequest) {
@@ -111,7 +136,9 @@ public class OrderController {
         return "redirect:/orders/complete/" + orderId;
     }
 
-    // 주문완료 페이지 요청
+    /**
+     * 주문완료 페이지 요청
+     */
     @GetMapping("/orders/complete/{orderId}")
     public String getOrderCompletePage(@PathVariable("orderId") Long orderId,
                                        Model model) {
@@ -119,7 +146,9 @@ public class OrderController {
         model.addAttribute("orderDate", getOrderCompleteDate());
         return "orders/orderComplete";
     }
-
+    /**
+     * 주문 완료 일자
+     */
     private String getOrderCompleteDate() {
         LocalDateTime now = LocalDateTime.now();
         return now.format(DateTimeFormatter.ISO_DATE);
