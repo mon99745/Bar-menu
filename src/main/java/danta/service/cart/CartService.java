@@ -1,7 +1,6 @@
 package danta.service.cart;
 
 import danta.domain.cart.Cart;
-import danta.model.dao.cart.CartDao;
 import danta.model.dto.cart.CartLineDto;
 import danta.domain.cart.CartRepository;
 import danta.domain.product.ProductRepository;
@@ -18,7 +17,6 @@ import java.util.List;
 @Transactional
 public class CartService {
     private final CartRepository cartRepository;
-    private final CartDao cartDao;
     private final ProductRepository productRepository;
 
     /**
@@ -55,7 +53,7 @@ public class CartService {
      * @return
      */
     public List<CartLineDto> getCartInCartPage(Long userId) {
-        return cartDao.getCartLineListInCartPage(userId);
+        return cartRepository.getCartLineListInCartPage(userId);
     }
 
     /**

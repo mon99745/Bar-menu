@@ -7,7 +7,6 @@ import danta.domain.user.User;
 import danta.domain.order.OrderRepository;
 import danta.domain.product.ProductRepository;
 import danta.domain.user.UserRepository;
-import danta.model.dao.order.OrderDao;
 import danta.service.order.OrderLineRequest;
 import danta.service.order.OrderRequest;
 import danta.service.order.OrderService;
@@ -45,7 +44,6 @@ public class OrderController {
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
-    private final OrderDao orderDao;
     private final AuthenticationConverter authenticationConverter;
 
     /**
@@ -81,7 +79,7 @@ public class OrderController {
                 .stream()
                 .map(ol -> ol.getProductId())
                 .collect(Collectors.toList());
-        OrderSummaryDto orderSummary = orderDao.getOrderSummaryInCart(user.getId(), orderProductIdList);
+        OrderSummaryDto orderSummary = orderRepository.getOrderSummaryInCart(user.getId(), orderProductIdList);
         model.addAttribute("orderSummary", orderSummary);
 
         return "orders/order";

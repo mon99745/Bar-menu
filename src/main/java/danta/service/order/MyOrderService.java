@@ -4,7 +4,6 @@ package danta.service.order;
 import danta.domain.product.Product;
 import danta.domain.order.Order;
 import danta.domain.order.OrderRepository;
-import danta.model.dao.order.MyOrderDao;
 import danta.model.dto.order.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -19,11 +18,10 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class MyOrderService {
-    private final MyOrderDao myOrderDao;
     private final OrderRepository orderRepository;
 
     public MyOrderSummaryDto getMyOrderSummary(Long ordererId, Pageable pageable) {
-        Page<Order> myOrders = myOrderDao.getMyOrders(ordererId, pageable);
+        Page<Order> myOrders = orderRepository.getMyOrders(ordererId, pageable);
 
         List<MyOrderDto> contents = myOrders.stream()
                 .map(o -> MyOrderDto.builder()
@@ -41,7 +39,7 @@ public class MyOrderService {
     }
 
     public MyOrderDetailDto getMyOrderDetails(Long orderId) {
-        Order order = myOrderDao.getMyOrderDetails(orderId)
+        Order order = orderRepository.getMyOrderDetails(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문번호입니다."));
 
         List<MyOrderDetailProductDto> myOrderDetailsProductDtoList = order.getOrderProductList().stream()
