@@ -1,4 +1,4 @@
-package danta.service.product;//package danta.service.item;
+package danta.service.product;
 
 import danta.domain.product.ProductRepository;
 import danta.model.dto.cart.ProductSearchForm;

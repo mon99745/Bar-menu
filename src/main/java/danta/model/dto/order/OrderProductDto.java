@@ -9,15 +9,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OrderProductDto {
-    private Long itemId;
+    private Long productId;
     private String name;
     private int price;
     private int orderCount;
     private int totalAmount;
 
     @QueryProjection
-    public OrderProductDto(Long itemId, String name, int price, int orderCount) {
-        this.itemId = itemId;
+    public OrderProductDto(Long productId, String name, int price, int orderCount) {
+        this.productId = productId;
         this.name = name;
         this.price = price;
         this.orderCount = orderCount;

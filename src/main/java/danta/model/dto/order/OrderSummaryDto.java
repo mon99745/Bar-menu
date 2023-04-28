@@ -10,13 +10,13 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class OrderSummaryDto {
-    private List<OrderProductDto> orderItemList;
+    private List<OrderProductDto> orderProductList;
     private int totalAmount;
 
-    public OrderSummaryDto(List<OrderProductDto> orderItemList) {
-        this.orderItemList = orderItemList;
-        this.totalAmount = orderItemList.stream()
-                .mapToInt(orderItem -> orderItem.getTotalAmount())
+    public OrderSummaryDto(List<OrderProductDto> orderProductList) {
+        this.orderProductList = orderProductList;
+        this.totalAmount = orderProductList.stream()
+                .mapToInt(orderProduct -> orderProduct.getTotalAmount())
                 .sum();
     }
 }

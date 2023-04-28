@@ -19,7 +19,7 @@ public class OrderProduct extends AbstractModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderItemId;
+    private Long orderProductId;
     private int orderCount;
     private int orderProductAmount;
 

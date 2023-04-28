@@ -37,7 +37,7 @@ public class ProductController {
     @GetMapping("/items/{itemId}")
     public String getItemDetailsPage(@PathVariable("itemId") Long itemId,
                                      Model model) {
-        ProductDetailDto productDetails = productService.findItem(itemId);
+        ProductDetailDto productDetails = productService.findProduct(itemId);
         model.addAttribute("productDetails", productDetails);
         return "items/itemDetails";
     }

@@ -84,11 +84,11 @@ public class CartService {
         Cart cart = cartRepository.findCartById(userId);
 
         productIds.stream()
-                .forEach(itemId -> cart.removeCartLine(itemId));
+                .forEach(productId -> cart.removeCartLine(productId));
     }
 
-    public void removeCartLine(Long userId, Long itemId) {
+    public void removeCartLine(Long userId, Long productId) {
         Cart cart = cartRepository.findCartById(userId);
-        cart.removeCartLine(itemId);
+        cart.removeCartLine(productId);
     }
 }

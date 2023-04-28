@@ -33,7 +33,7 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public ProductDetailDto findItem(Long productId) {
+    public ProductDetailDto findProduct(Long productId) {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
 
