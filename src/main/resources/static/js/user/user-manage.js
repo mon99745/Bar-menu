@@ -9,7 +9,7 @@ let index = {
         $("#btn-save").on("click", () => {
             let form = document.querySelector("#needs-validation");
             if (form.checkValidity() == false) {
-                console.log("회원가입 안됨")
+                console.log("회원가입 문제 발생")
             } else {
                 this.save();
             }
@@ -19,7 +19,7 @@ let index = {
         $("#btn-update").on("click", () => {
             let form = document.querySelector("#needs-validation");
             if (form.checkValidity() == false) {
-                console.log("회원수정 안됨")
+                console.log("회원수정 문제 발생")
             } else {
                 this.update();
             }
@@ -41,21 +41,26 @@ let index = {
         let data = { //JavaScript Object
             username: $("#username").val(),
             password: $("#password").val(),
-            email: $("#email").val(),
-            nickname: $("#nickname").val()
+            name: $("#name").val()
         }
-
+        // /auth/user/login
         $.ajax({
             type: "POST", //Http method
-            url: "/auth/api/v1/user", //추가 /auth
+            url: "/auth/api/v1/create", //추가 /auth
             data: JSON.stringify(data), //JSON으로 변환
             contentType: "application/json; charset=utf-8", //MIME 타입
-            dataType: "json" //응답 데이터
-        }).done(function(res) {
+            dataType: "json" //응답 데이터 타입
+        }).done(function(response) {
+            console.log(response);
             alert("회원가입이 완료되었습니다.");
             location.href = "/auth/user/login";
-        }).fail(function(err) {
-            alert(JSON.stringify(err));
+        }).fail(function(xhr, status, error) {
+            if(xhr.responseJSON && xhr.responseJSON.message) {
+                alert(xhr.responseJSON.message);
+            } else {
+                alert("회원가입 중 문제가 발생하였습니다.");
+                console.error(xhr, status, error);
+            }
         });
     },
 
@@ -63,9 +68,7 @@ let index = {
     update: function () {
         let data = {
             authId: $("#authId").val(),
-            password: $("#password").val(),
-            email: $("#email").val(),
-            nickname: $("#nickname").val()
+            password: $("#password").val()
         }
 
         $.ajax({
