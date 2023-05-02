@@ -11,6 +11,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * 비회원 정보 ENTITY
@@ -44,6 +45,6 @@ public class Guest extends AbstractModel {
     @JsonProperty(index = 10)
     @Schema(description = "비회원 상태")
     @Column(length = 100)
-    protected String status;
+    protected boolean status;
 
 }

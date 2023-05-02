@@ -1,4 +1,3 @@
-// // 회원가입에 대한 CRUD 해당하는 JS
 'use strict';
 
 let index = {
@@ -43,7 +42,7 @@ let index = {
             password: $("#password").val(),
             name: $("#name").val()
         }
-        // /auth/user/login
+        // TODO : 회원가입 시 로그인 페이지로 이동 에러
         $.ajax({
             type: "POST", //Http method
             url: "/auth/api/v1/create", //추가 /auth
