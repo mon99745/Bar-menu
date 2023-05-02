@@ -65,16 +65,4 @@ public class UserRestController {
     public void delete(@PathVariable Long userId, @RequestBody User user) {
         userService.delete(userId, user);
     }
-
-    /**
-     * 로그인 API
-     * @param username
-     * @param password
-     * @param session
-     * @return
-     */
-    @PostMapping("login")
-    public void login(@RequestParam String username, @RequestParam String password, HttpSession session) {
-        userService.login(username, password, session);
-    }
 }
