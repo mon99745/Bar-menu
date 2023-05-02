@@ -3,6 +3,7 @@ package danta.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.AbstractModel;
+import danta.model.enums.Role;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -75,6 +76,21 @@ public class User extends AbstractModel {
     @Schema(description = "회원 이름")
     @Column(length = 100)
     protected String name;
+
+    /**
+     * 권한
+     */
+    @Enumerated(EnumType.STRING)
+    @Schema(description = "권한")
+    @Column(nullable = false)
+    private Role role;
+
+    /**
+     * 권한 메소드
+     */
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 
 }
 

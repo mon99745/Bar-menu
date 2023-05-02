@@ -3,12 +3,14 @@ package danta.service.user;
 import danta.domain.cart.Cart;
 import danta.domain.user.User;
 import danta.domain.user.UserRepository;
+import danta.model.enums.Role;
 import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,6 +30,8 @@ public class UserService {
         if (userRepository.findByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("중복된 아이디 입니다.");
         }
+        user.setRole(Role.USER);
+
         // 패스워드를 암호화해서 저장
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
@@ -89,6 +93,24 @@ public class UserService {
     public void delete(Long userId, User user) {
         user.setId(userId);
         userRepository.delete(user);
+    }
+
+    @Transactional
+    public String login(String username, String password, HttpSession session) {
+        boolean isSuccess = false;
+        User user = userRepository.findByUsername(username);
+
+        // 비밀번호 일치 여부 확인
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+        if(user != null && encoder.matches(password, user.getPassword())) {
+            session.setAttribute("user", user);
+            isSuccess = true;
+            return "redirect:/";
+        }
+        else{
+            throw new IllegalStateException("기입한 정보가 잘못되었습니다.");
+        }
     }
 
 

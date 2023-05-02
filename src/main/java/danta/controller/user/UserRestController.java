@@ -8,7 +8,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * Swagger 사용을 위해 모든 권한(authh) 을 허용한 상태
@@ -61,5 +64,17 @@ public class UserRestController {
     @DeleteMapping("delete/{userId}")
     public void delete(@PathVariable Long userId, @RequestBody User user) {
         userService.delete(userId, user);
+    }
+
+    /**
+     * 로그인 API
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
+    @PostMapping("login")
+    public void login(@RequestParam String username, @RequestParam String password, HttpSession session) {
+        userService.login(username, password, session);
     }
 }
