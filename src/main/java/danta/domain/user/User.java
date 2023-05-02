@@ -4,6 +4,7 @@ package danta.domain.user;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.AbstractModel;
 import danta.model.enums.Role;
+import danta.model.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -49,7 +50,7 @@ public class User extends AbstractModel {
      */
     @Column(length = 100)
     @ApiModelProperty(hidden = true)
-    protected Boolean status;
+    protected Status status;
 
     /**
      * 회원 ID

@@ -14,19 +14,14 @@ public enum Status {
     /**
      * 활성화
      */
-    VALID("활성화"),
+    TRUE("활성화"),
     /**
      * 비활성화
      */
-    INVALID("비활성화"),
-    /**
-     * 폐기
-     */
-    DELETE("폐기");
+    FALSE("비활성화");
 
     public static final String ENUM = "";
-    public static final String DESC = "상태 (VALID: 활성화, INVALID: 비활성화, DELETE: 폐기)";
-    public static final String DEFAULT = "'VALID'";
+    public static final String DEFAULT = "'TRUE'";
 
     private final String value;
 }

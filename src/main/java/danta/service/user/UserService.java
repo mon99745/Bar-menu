@@ -4,6 +4,7 @@ import danta.domain.cart.Cart;
 import danta.domain.user.User;
 import danta.domain.user.UserRepository;
 import danta.model.enums.Role;
+import danta.model.enums.Status;
 import danta.service.cart.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,7 +38,7 @@ public class UserService {
         user.setPassword(hashPw);
 
         // 활성화 상태
-        user.setStatus(true);
+        user.setStatus(Status.TRUE);
 
         // 회원가입과 동시에 장바구니 생성
         User savedUser = userRepository.save(user);
@@ -94,25 +95,6 @@ public class UserService {
         user.setId(userId);
         userRepository.delete(user);
     }
-
-    @Transactional
-    public String login(String username, String password, HttpSession session) {
-        boolean isSuccess = false;
-        User user = userRepository.findByUsername(username);
-
-        // 비밀번호 일치 여부 확인
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-        if(user != null && encoder.matches(password, user.getPassword())) {
-            session.setAttribute("user", user);
-            isSuccess = true;
-            return "redirect:/";
-        }
-        else{
-            throw new IllegalStateException("기입한 정보가 잘못되었습니다.");
-        }
-    }
-
 
     /**
      * 회원 예외검증
