@@ -42,27 +42,27 @@ let index = {
             password: $("#password").val(),
             name: $("#name").val()
         }
-        // TODO : 회원가입 시 로그인 페이지로 이동 에러
         $.ajax({
             type: "POST", //Http method
             url: "/auth/api/v1/create", //추가 /auth
             data: JSON.stringify(data), //JSON으로 변환
             contentType: "application/json; charset=utf-8", //MIME 타입
             dataType: "json" //응답 데이터 타입
-        }).done(function(response) {
-            console.log(response);
-            alert("회원가입이 완료되었습니다.");
-            location.href = "/auth/user/login";
-        }).fail(function(xhr, status, error) {
-            if(xhr.responseJSON && xhr.responseJSON.message) {
-                alert(xhr.responseJSON.message);
-            } else {
+        })
+            .done(function(response) {
+                // 요청이 성공했을 때 처리하는 코드
+                console.log(response);
+                alert("회원가입이 완료되었습니다.");
+                location.href = "/auth/user/login";
+            })
+            .fail(function(xhr, status, error) {
+                // 요청이 실패했을 때 처리하는 코드
+                console.log("Error: " + error);
+                console.log("Status: " + status);
+                console.dir(xhr);
                 alert("회원가입 중 문제가 발생하였습니다.");
-                console.error(xhr, status, error);
-            }
-        });
+            });
     },
-
     //회원 정보 수정
     update: function () {
         let data = {
