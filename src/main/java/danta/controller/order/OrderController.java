@@ -64,12 +64,14 @@ public class OrderController {
     /**
      * 주문 페이지
      * 장바구니에 담긴 Product_id 들만을 받아온다.
+     * TODO: 상품리스트가 NULL 로 찍히는 에러 발생
      * @param authentication
      * @param orderRequest
      * @param model
      * @return
      */
-    @PostMapping("/orders")
+
+    @PostMapping("/order")
     public String getOrderPage(Authentication authentication,
                                @ModelAttribute OrderRequest orderRequest,
                                Model model) {
@@ -79,18 +81,19 @@ public class OrderController {
                 .stream()
                 .map(ol -> ol.getProductId())
                 .collect(Collectors.toList());
-        OrderSummaryDto orderSummary = orderRepository.getOrderSummaryInCart(user.getId(), orderProductIdList);
-        model.addAttribute("orderSummary", orderSummary);
 
-        return "orders/order";
+        OrderSummaryDto orderSummaryDto = orderRepository.getOrderSummaryInCart(user.getId(), orderProductIdList);
+        model.addAttribute("orderSummary", orderSummaryDto);
+
+        return "order/order";
     }
 
     // 바로구매
-    @PostMapping("/orders/direct")
+    @PostMapping("/order/direct")
     public String getOrderPageByDirect(@ModelAttribute OrderRequest orderRequest,
                                        Model model) {
         model.addAttribute("orderSummary", createOrderSummary(orderRequest));
-        return "orders/order";
+        return "order/order";
     }
 
     /**
@@ -118,31 +121,30 @@ public class OrderController {
     private OrdererDto createOrdererInfo(User orderer) {
         return new OrdererDto(orderer.getId(),
                 orderer.getUsername());
-//                orderer.getNickname());
     }
 
     /**
      * 주문 요청 처리
      */
-    @PostMapping("/orders/order")
+    @PostMapping("/order/order")
     public String order(Authentication authentication,
                         @ModelAttribute @Valid OrderRequest orderRequest) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);
 
         Long orderId = orderService.order(user.getId(), orderRequest);
 
-        return "redirect:/orders/complete/" + orderId;
+        return "redirect:/order/complete/" + orderId;
     }
 
     /**
      * 주문완료 페이지 요청
      */
-    @GetMapping("/orders/complete/{orderId}")
+    @GetMapping("/order/complete/{orderId}")
     public String getOrderCompletePage(@PathVariable("orderId") Long orderId,
                                        Model model) {
         model.addAttribute("orderId", orderId);
         model.addAttribute("orderDate", getOrderCompleteDate());
-        return "orders/orderComplete";
+        return "order/orderComplete";
     }
     /**
      * 주문 완료 일자

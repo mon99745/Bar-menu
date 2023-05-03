@@ -27,7 +27,7 @@ public class MyOrderRestController {
     private final MyOrderService myOrderService;
     private final AuthenticationConverter authenticationConverter;
 
-    @GetMapping("/orders")
+    @GetMapping("/order")
     public MyOrderSummaryDto getMoreOrderList(Authentication authentication,
                                               Pageable pageable) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);

@@ -38,7 +38,7 @@
                 <span>| 주문번호: <strong th:text="${myOrderDetails.orderId}"></strong></span>
             </div>
             <div class="removeBtnContainer">
-                <a th:href="@{/my/orders/delete/{orderId}(orderId=${myOrderDetails.orderId})}" onclick="return confirm('주문내역 삭제시 복구할 수 없습니다. 삭제하시겠습니까?')">주문내역 삭제</a>
+                <a th:href="@{/my/order/delete/{orderId}(orderId=${myOrderDetails.orderId})}" onclick="return confirm('주문내역 삭제시 복구할 수 없습니다. 삭제하시겠습니까?')">주문내역 삭제</a>
             </div>
         </div>
         <div class="componentBody">

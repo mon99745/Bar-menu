@@ -15,7 +15,7 @@ $(function() {
         let nextPage = parseInt(total/size);
         let data = '';
 
-        await $.get(`/api/v1/orders?page=${nextPage}&size=${size}`, function(result) {
+        await $.get(`/api/v1/order?page=${nextPage}&size=${size}`, function(result) {
             data = result;
         })
         $("tbody").append(toTrList(data.myOrderList));
@@ -36,7 +36,7 @@ $(function() {
                 `<td>${order.orderId}</td>` +
                 `<td>${orderDate}</td>` +
                 "<td>" +
-                "<a class='itemInformationContainer' href='/my/orders/" + order.orderId + "'>" +
+                "<a class='itemInformationContainer' href='/my/order/" + order.orderId + "'>" +
                 "<div class='representativeImageContainer'>" +
                 "<img class='representativeImage' src='" + order.representativeImagePath + "'>" +
                 "</div>" +
@@ -49,7 +49,7 @@ $(function() {
                 "<span>" + order.orderStatus + "</span>" +
                 "</div>" +
                 "<div>" +
-                "<a href=" + `/my/orders/${order.orderId}` + "><span>결제 조회</span></a>"
+                "<a href=" + `/my/order/${order.orderId}` + "><span>결제 조회</span></a>"
             "</div>" +
             "</td>" +
             "</tr>";

@@ -24,14 +24,14 @@ import springfox.documentation.annotations.ApiIgnore;
 @RequiredArgsConstructor
 @RequestMapping(MyOrderController.PATH)
 public class MyOrderController {
-    public static final String PATH = "/my/orders";
+    public static final String PATH = "/my/order";
     public static final String TAG = "My Order API";
     private final MyOrderService myOrderService;
     private final AuthenticationConverter authenticationConverter;
 
     @GetMapping("")
     public String getMyOrderListPage() {
-        return "orders/myOrderList";
+        return "order/myOrderList";
     }
 
     @GetMapping("{orderId}")
@@ -39,7 +39,7 @@ public class MyOrderController {
                                     Model model) {
         MyOrderDetailDto myOrderDetail = myOrderService.getMyOrderDetails(orderId);
         model.addAttribute("myOrderDetails", myOrderDetail);
-        return "orders/myOrderDetails";
+        return "order/myOrderDetail";
     }
 
     @GetMapping("delete/{orderId}")
@@ -47,7 +47,7 @@ public class MyOrderController {
                                 @PathVariable("orderId") Long orderId) {
         User user = authenticationConverter.getUserFromAuthentication(authentication);
         myOrderService.deleteMyOrder(user.getId(), orderId);
-        return "redirect:/my/orders";
+        return "redirect:/my/order";
     }
 }
 

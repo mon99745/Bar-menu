@@ -10,7 +10,7 @@ $(function () {
     }
 
     $("#orderBtn").on("click", function() {
-        let form = $("<form action='/orders/direct' method='post'>" +
+        let form = $("<form action='/order/direct' method='post'>" +
             getCartInputList() +
             "</form> ");
         $("body").append(form);

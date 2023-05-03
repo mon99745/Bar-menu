@@ -67,7 +67,7 @@ $(function () {
 
     // form 생성
     $("#orderBtn").on("click", function () {
-        let form = $("<form action='/orders' method='post' style='display: none'>" +
+        let form = $("<form action='/order' method='post' style='display: none'>" +
             getCartInputList() +
             "</form> ");
         $("body").append(form);

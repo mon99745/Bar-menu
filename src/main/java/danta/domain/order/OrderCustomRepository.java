@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface OrderCustomRepository {
-    OrderSummaryDto getOrderSummaryInCart(Long id, List<Long> productIdList);
+    OrderSummaryDto getOrderSummaryInCart(Long userId, List<Long> productIdList);
     Page<Order> getMyOrders(Long ordererId, Pageable pageable);
     Optional<Order> getMyOrderDetails(Long orderId);
 }

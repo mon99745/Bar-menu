@@ -11,6 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OrdererDto {
     private Long ordererId;
-//    private String Nickname;
-    private String phone;
+    private String name;
 }
