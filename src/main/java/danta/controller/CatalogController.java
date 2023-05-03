@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.view.RedirectView;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class CatalogController {
     private final ProductService productService;
 
-    // TODO : indexController 와 병합
+    // TODO : 검색기능 에러 수정 작업
 
     @GetMapping("/")
     public String getMainPage(String category, @ModelAttribute ProductSearchForm searchForm, Model model) {
@@ -42,8 +43,11 @@ public class CatalogController {
 //        List<CatalogSummary> products = catalogService.getCatalog(searchForm);
 //        model.addAttribute("products", products);
 
-        // Todo 정상 작동 시 menu 로 복구
         return "menu";
 
+    }
+    @GetMapping("api")
+    public Object swaggerApi() {
+        return new RedirectView("swagger-ui/");
     }
 }
