@@ -1,4 +1,4 @@
-package danta.controller;
+package danta.model.enums;
 
 
 import lombok.Getter;

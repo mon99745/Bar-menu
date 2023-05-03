@@ -1,6 +1,6 @@
 package danta.model.dto.product;
 
-import danta.controller.Sorter;
+import danta.model.enums.Sorter;
 import lombok.Getter;
 import lombok.Setter;
 

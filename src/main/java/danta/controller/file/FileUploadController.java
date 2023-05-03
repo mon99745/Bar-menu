@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @RestController
 public class FileUploadController {
+    // TODO : 파일 업로드 적용 -> 상품 등록
     @Value("file.uploadDir")
     String uploadDir;
 

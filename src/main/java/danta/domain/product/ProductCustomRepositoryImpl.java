@@ -3,7 +3,7 @@ package danta.domain.product;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import danta.controller.Sorter;
+import danta.model.enums.Sorter;
 import danta.model.dto.cart.ProductSearchForm;
 import danta.model.dto.product.CatalogSummary;
 import danta.model.dto.product.QCatalogSummary;

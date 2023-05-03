@@ -1,6 +1,6 @@
 --  초기 아이템 설정
 # insert into categories(category, parent_id) values ('여행', 3);
-
+-- TODO : 초기 아이템 스크립트 파일 작성
 -- 탕
 -- ex
 insert into product_info(product_id, category, description, image, name, price, status, stock) values (1, '탕',"description", '../img/곱도리탕.jpeg', '곱도리탕', 15900, true, 999);

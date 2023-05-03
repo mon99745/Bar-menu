@@ -19,7 +19,7 @@ import java.util.List;
 public class CatalogController {
     private final ProductService productService;
 
-    // 완성 후 인덱스와 합칠것
+    // TODO : indexController 와 병합
 
     @GetMapping("/")
     public String getMainPage(String category, @ModelAttribute ProductSearchForm searchForm, Model model) {
