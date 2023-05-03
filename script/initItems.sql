@@ -4,18 +4,17 @@
 -- 탕
 -- ex
 insert into product_info(product_id, category, description, image, name, price, status, stock) values (1, '탕',"description", '../img/곱도리탕.jpeg', '곱도리탕', 15900, true, 999);
-#
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (2,'탕', '../img/곱창묵은지전골.jpeg', '곱창묵은지전골', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (3,'탕', '../img/나가사키탕.jpeg', '나가사키탕', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (4,'탕', '../img/밀푀유나베.jpeg', '밀푀유나베', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (5,'탕', '../img/새우탕.jpeg', '새우탕', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (6,'탕', '../img/소불고기전골.jpeg', '소불고기전골', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (7,'탕', '../img/어묵탕.jpeg', '어묵탕', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (8,'탕', '../img/제주화산전골.jpeg', '제주화산전골', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (9,'탕', '../img/차돌박이 짬뽕탕.jpeg', '차돌박이 짬뽕탕', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (10,'탕', '../img/차돌박이 김치찌개.jpeg', '차돌박이 김치찌개', 15900, 999);
-# insert into product_info(product_id, category, description, image, name, price, status, stock) values (11,'탕', '../img/크림짬뽕.jpeg', '크림짬뽕', 15900, 999);
-#
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (2,'탕',"description", '../img/곱창묵은지전골.jpeg', '곱창묵은지전골', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (3,'탕',"description", '../img/나가사키탕.jpeg', '나가사키탕', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (4,'탕',"description", '../img/밀푀유나베.jpeg', '밀푀유나베', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (5,'탕',"description", '../img/새우탕.jpeg', '새우탕', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (6,'탕',"description", '../img/소불고기전골.jpeg', '소불고기전골', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (7,'탕',"description", '../img/어묵탕.jpeg', '어묵탕', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (8,'탕',"description", '../img/제주화산전골.jpeg', '제주화산전골', 15900,true,999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (9,'탕',"description", '../img/차돌박이 짬뽕탕.jpeg', '차돌박이 짬뽕탕', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (10,'탕',"description", '../img/차돌박이 김치찌개.jpeg', '차돌박이 김치찌개', 15900,true, 999);
+insert into product_info(product_id, category, description, image, name, price, status, stock) values (11,'탕',"description",'../img/크림짬뽕.jpeg', '크림짬뽕', 15900,true, 999);
+
 # -- 볶음
 # insert into product_info(product_id, category, description, image, name, price, status, stock) values ('볶음', '../img/해물볶음우동.jpeg', '해물볶음우동', 15900, 999);
 # insert into product_info(product_id, category, description, image, name, price, status, stock) values ('볶음', '../img/쭈꾸미볶음.jpeg', '쭈꾸미볶음', 15900, 999);
