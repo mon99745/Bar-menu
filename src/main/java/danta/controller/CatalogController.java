@@ -2,7 +2,6 @@ package danta.controller;
 
 import danta.domain.product.Product;
 import danta.model.dto.cart.ProductSearchForm;
-import danta.service.product.CatalogService;
 import danta.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -43,7 +42,7 @@ public class CatalogController {
 //        List<CatalogSummary> products = catalogService.getCatalog(searchForm);
 //        model.addAttribute("products", products);
 
-        return "menu";
+        return "catalog";
 
     }
     @GetMapping("api")
