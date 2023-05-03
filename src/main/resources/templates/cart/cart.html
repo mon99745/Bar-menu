@@ -45,23 +45,23 @@
           <input type="checkbox" class="checkBox">
         </td>
         <td class="itemImageTd">
-          <a th:href="@{/products/{productId}(productId.=${cartLine.getProductId()})}">
-            <img class="itemImage" th:src="@{${cartLine.itemImagePath}}" alt="">
+          <a th:href="@{/product/{productId}(productId=${cartLine.getProductId()})}">
+            <img class="itemImage" th:src="@{${cartLine.prdouctImage}}" alt="">
           </a>
         </td>
         <td class="itemInfoTd">
-          <a th:href="@{/products/{productId.}(productId.=${cartLine.getProductId()})}">
+          <a th:href="@{/product/{productId}(productId=${cartLine.getProductId()})}">
             <span th:text="${cartLine.getProductName()}"></span>
           </a>
         </td>
         <td class="itemPriceTd">
-          <span th:text="${#numbers.formatInteger(cartLine.itemPrice, 3, 'COMMA')}"></span>
+          <span th:text="${#numbers.formatInteger(cartLine.productPrice, 3, 'COMMA')}"></span>
         </td>
         <td class="orderCountTd">
           <!-- productId.를 가져오기 위한 필드 -->
-          <input class="productId." type="text" style="display: none;" th:value="${cartLine.getProductId()}"
+          <input class="itemId." type="text" style="display: none;" th:value="${cartLine.getProductId()}"
                  th:name="productId.">
-          <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stockQuantity}"
+          <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stock}"
                  th:name="orderCount">
           <button class="btn btn-light orderCountModifyBtn">
             변경
@@ -71,7 +71,7 @@
           </button>
         </td>
         <td class="totalPriceTd">
-                    <span th:text="${#numbers.formatInteger(cartLine.itemPrice * cartLine.orderCount, 3, 'COMMA')}"></span>
+                    <span th:text="${#numbers.formatInteger(cartLine.productPrice * cartLine.orderCount, 3, 'COMMA')}"></span>
         </td>
       </tr>
       </tbody>

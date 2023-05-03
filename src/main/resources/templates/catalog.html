@@ -83,7 +83,7 @@
         <ul>
           <li th:each="product : ${products}" th:if="${product.category} eq '탕'" >
             <!-- a 태그에 대한 기존설정이 있어서 b로 임시 태그설정  -->
-            <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
+            <a type="hidden" th:href="@{/product/{productId}(productId=${product.getId()})}">
             <button type="submit" name ="product">
               <img class="product" th:src="@{${product.getImage()}}">
             </button>

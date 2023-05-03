@@ -19,6 +19,6 @@ public class ProductRequestDto {
     @Min(0)
     private int price;
     @Min(1)
-    private int stockQuantity;
+    private int stock;
     private String category;
 }

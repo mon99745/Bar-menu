@@ -23,7 +23,7 @@ public class ProductService {
                 .name(request.getName())
                 .image(request.getImagePath())
                 .price (request.getPrice())
-                .stock(request.getStockQuantity())
+                .stock(request.getStock())
                 .build();
         Product savedProduct = productRepository.save(newProduct);
 

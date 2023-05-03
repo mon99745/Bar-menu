@@ -1,5 +1,6 @@
 package danta.domain.cart;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import danta.model.dto.cart.CartLineDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,11 +12,11 @@ import java.util.List;
 public class CartCustomRepositoryImpl implements CartCustomRepository{
     @Autowired
     private final EntityManager em;
-//    private final JPAQueryFactory query;
+    private final JPAQueryFactory query;
 
     public CartCustomRepositoryImpl(EntityManager em) {
         this.em = em;
-//        this.query = query;
+        this.query = new JPAQueryFactory(em);
     }
 
     public List<CartLineDto> getCartLineListInCartPage(Long userId) {
@@ -24,9 +25,9 @@ public class CartCustomRepositoryImpl implements CartCustomRepository{
                         "select new danta.model.dto.cart.CartLineDto(cl.cartId, p.id, p.image, p.name, p.price, cl.orderCount, p.stock)" +
                                 " from Cart c" +
                                 " join c.cart cl" +
-                                " on c.cart.cartId = cl.cartId" +
+                                " on c.id= cl.cartId" +
                                 " join Product p" +
-                                " on cl.productId = p. id" +
+                                " on cl.productId = p.id" +
                                 " where c.id = : userId", CartLineDto.class)
                 .setParameter("userId", userId)
                 .getResultList();

@@ -10,16 +10,16 @@ import lombok.Setter;
 @Setter
 public class ProductDetailDto {
     private Long ProductId;
-    private String imagePath;
+    private String image;
     private String name;
     private int price;
-    private int stockQuantity;
+    private int stock;
 
     public ProductDetailDto(Product product) {
         this.ProductId = product.getId();
-        this.imagePath = product.getImage();
+        this.image = product.getImage();
         this.name = product.getName();
         this.price = Math.toIntExact(product.getPrice());
-        this.stockQuantity = Math.toIntExact(product.getStock());
+        this.stock = Math.toIntExact(product.getStock());
     }
 }

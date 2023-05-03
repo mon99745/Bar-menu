@@ -27,28 +27,28 @@
 <div class="container table">
   <div class="productContainer">
     <div class="imageContainer">
-      <img class="productImage" th:src="@{${product.image}}" alt="">
+      <img class="itemImage" th:src="@{${productDetails.getImage()}}" alt="">
     </div>
     <div class="informationContainer">
       <div class="itemNameContainer">
-        <h2 class="itemName" th:text="${product.name}"></h2>
+        <h2 class="itemName" th:text="${productDetails.name}"></h2>
       </div>
       <div class="itemPriceContainer">
-        <h2 class="itemPrice" th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')} + ' 원'"></h2>
+        <h2 class="itemPrice" th:text="${#numbers.formatInteger(productDetails.price, 3, 'COMMA')} + ' 원'"></h2>
       </div>
 
-      <div th:if="${product.stock &lt; 1}" class="soldOutContainer">
+      <div th:if="${productDetails.stock &lt; 1}" class="soldOutContainer">
         <i class="fas fa-ban" style="color: #CCC;"></i> 품절
       </div>
-      <div th:unless="${product.stock &lt; 1}" class="orderContainer">
+      <div th:unless="${productDetails.stock &lt; 1}" class="orderContainer">
 
         <form th:onsubmit="return validateOrderCount()">
           <div class="form-group">
-            <input id="productId.Input" type="text" th:name="productId" th:value="${product.productId}"
+            <input id="productId.Input" type="text" th:name="productId" th:value="${productDetails.productId}"
                    style="display: none;">
-            <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${product.stockQuantity}"
+            <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${productDetails.stock}"
                    th:name="orderCount">
-            <button th:formmethod="post" th:formaction="@{/carts}" id="addToCartBtn" class="btn btn-light">
+            <button th:formmethod="post" th:formaction="@{/cart}" id="addToCartBtn" class="btn btn-light">
               장바구니
             </button>
           </div>

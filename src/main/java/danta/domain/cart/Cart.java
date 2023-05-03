@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.user.User;
 import danta.exception.NotEnoughStockQuantityException;
 import danta.domain.AbstractModel;
-import danta.model.dto.cart.CartLineDto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -69,25 +68,25 @@ public class Cart extends AbstractModel {
     @ElementCollection
     @CollectionTable(name = "cart_line")
     @MapKeyColumn(name = "map_key")
-    private Map<Long, CartLineDto> cart = new HashMap<>();
+    private Map<Long, CartLine> cart = new HashMap<>();
 
-    public void addProductToCart(int targetStock, CartLineDto cartLine) {
+    public void addProductToCart(int targetStock, CartLine cartLine) {
         verifyEnoughStockQuantity(targetStock, cartLine.getOrderCount());
 
         Long mapKey = cartLine.getProductId();
 
         // 기존 아이템이 존재한다면 수량을 더함
         if (cart.containsKey(mapKey)) {
-            CartLineDto existCartLine = cart.get(cartLine.getProductId());
+            CartLine existCartLine = cart.get(cartLine.getProductId());
             int newOrderCount = existCartLine.getOrderCount() + cartLine.getOrderCount();
-            cart.replace(mapKey, new CartLineDto(id, cartLine.getProductId(), newOrderCount));
+            cart.replace(mapKey, new CartLine(id, cartLine.getProductId(), newOrderCount));
         }
         else {
             cart.put(mapKey, cartLine);
         }
     }
 
-    public void modifyOrderCount(int targetStockQuantity, CartLineDto newCartLine) {
+    public void modifyOrderCount(int targetStockQuantity, CartLine newCartLine) {
         verifyEnoughStockQuantity(targetStockQuantity, newCartLine.getOrderCount());
 
         this.cart.replace(newCartLine.getProductId(), newCartLine);

@@ -1,6 +1,7 @@
 package danta.service.cart;
 
 import danta.domain.cart.Cart;
+import danta.domain.cart.CartLine;
 import danta.model.dto.cart.CartLineDto;
 import danta.domain.cart.CartRepository;
 import danta.domain.product.ProductRepository;
@@ -37,7 +38,7 @@ public class CartService {
     public void addProductToCart(Long userId, AddToCartRequestFormDto addToCartRequestForm) {
         Cart cart = cartRepository.findCartById(userId);
 
-        CartLineDto newCartLine = new CartLineDto(cart.getId(),
+        CartLine newCartLine = new CartLine(cart.getId(),
                 addToCartRequestForm.getProductId(),
                 addToCartRequestForm.getOrderCount());
 
@@ -69,7 +70,7 @@ public class CartService {
                 .get()
                 .getStock();
 
-        CartLineDto newCartLine = new CartLineDto(cart.getId(), modifyOrderCountRequestForm.getProductId(), modifyOrderCountRequestForm.getOrderCount());
+        CartLine newCartLine = new CartLine(cart.getId(), modifyOrderCountRequestForm.getProductId(), modifyOrderCountRequestForm.getOrderCount());
         cart.modifyOrderCount(targetStock, newCartLine);
     }
 

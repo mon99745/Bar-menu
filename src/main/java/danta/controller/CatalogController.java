@@ -13,6 +13,8 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
+import static danta.domain.product.QProduct.product;
+
 @ApiIgnore
 @Controller
 @RequiredArgsConstructor
@@ -40,7 +42,7 @@ public class CatalogController {
 
 //        searchForm에서의 오류를 못잡음
 //        List<CatalogSummary> products = catalogService.getCatalog(searchForm);
-//        model.addAttribute("products", products);
+//        model.addAttribute("product", product);
 
         return "catalog";
 

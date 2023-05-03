@@ -20,25 +20,25 @@ public class ProductController {
     private final ProductService productService;
 
     @ApiIgnore
-    @GetMapping("/products/new")
+    @GetMapping("/product/new")
     public String getNewProductPage(Model model) {
         model.addAttribute("form", new ProductRequestDto());
-        return "products/registerProductForm";
+        return "product/registerProductForm";
     }
 
     @ApiIgnore
-    @PostMapping("/products/new")
+    @PostMapping("/product/new")
     public String createProduct(@ModelAttribute @Valid ProductRequestDto productRequest) {
         Long newProductId = Long.valueOf(productService.saveProduct(productRequest));
-        return "redirect:/products/"+ newProductId;
+        return "redirect:/product/"+ newProductId;
     }
 
     @ApiIgnore
-    @GetMapping("/products/{productId}")
+    @GetMapping("/product/{productId}")
     public String getProductDetailsPage(@PathVariable("productId") Long productId,
                                      Model model) {
         ProductDetailDto productDetails = productService.findProduct(productId);
         model.addAttribute("productDetails", productDetails);
-        return "products/productDetails";
+        return "product/productDetail";
     }
 }

@@ -13,7 +13,7 @@ public class CartLineDto {
     private Long cartId;
 
     private Long productId;
-    private String ProductImage;
+    private String productImage;
     private String productName;
     private int productPrice;
     private int orderCount;
@@ -22,10 +22,10 @@ public class CartLineDto {
     private int stock;
 
     @QueryProjection
-    public CartLineDto(Long cartId, Long productId, int productPrice) {
+    public CartLineDto(Long cartId, Long productId, String productImage, String productName, int productPrice, int orderCount, int stock) {
         this.cartId = cartId;
         this.productId = productId;
-        this.ProductImage = ProductImage;
+        this.productImage = productImage;
         this.productName = productName;
         this.productPrice = productPrice;
         this.orderCount = orderCount;
