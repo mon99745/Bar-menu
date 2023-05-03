@@ -3,6 +3,7 @@ package danta.service.admin;
 import danta.domain.admin.Admin;
 import danta.domain.admin.AdminRepository;
 import danta.domain.user.UserRepository;
+import danta.model.enums.Status;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -26,6 +27,8 @@ public class AdminService {
         if (adminRepository.findByAdminname(admin.getAdminname()) != null) {
             throw new IllegalArgumentException("중복된 아이디 입니다.");
         }
+        admin.setStatus(Status.TRUE);
+
         // 패스워드를 암호화해서 저장
         String hashPw = bCryptPasswordEncoder.encode(admin.getPassword());
         admin.setPassword(hashPw);

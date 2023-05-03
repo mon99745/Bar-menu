@@ -10,7 +10,6 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public enum Status {
-    // TODO : Status Enum 적용
     /**
      * 활성화
      */

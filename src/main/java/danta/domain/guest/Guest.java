@@ -32,7 +32,8 @@ import java.util.UUID;
 public class Guest extends AbstractModel {
 
     /**
-     * TODO: 일련 번호 사용
+     * 게스트 ID
+     * 일련 번호 사용
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,8 @@ package danta.domain.admin;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.AbstractModel;
+import danta.model.enums.Role;
+import danta.model.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -70,12 +72,11 @@ public class Admin extends AbstractModel {
 
     /**
      * 관리자 상태
-     * TODO 상태정보를 ENUM 처리
      */
     @JsonProperty(index = 40)
     @Schema(description = "관리자 상태")
     @Column(length = 100)
-    protected String status;
+    protected Status status;
 
     /**
      * 관리 주소
@@ -87,5 +88,19 @@ public class Admin extends AbstractModel {
     @Column(length = 100)
     protected String address;
 
+//    /**
+//     * 권한
+//     */
+//    @Enumerated(EnumType.STRING)
+//    @Schema(description = "권한")
+//    @Column(nullable = false)
+//    private Role role;
+
+//    /**
+//     * 권한 메소드
+//     */
+//    public String getRoleKey() {
+//        return this.role.getKey();
+//    }
 
 }
