@@ -37,8 +37,8 @@ public class CartController {
      * 장바구니 목록 조회
      */
     @GetMapping("/cart")
-    public String getCartPage(User user, Model model) {
-        Long userId = user.getId();
+    public String getCartPage(Authentication authentication, Model model) {
+        Long userId = authenticationConverter.getUserFromAuthentication(authentication).getId();
         List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(userId);
         model.addAttribute("cartLineList", cartLineDtoInCartPage);
 

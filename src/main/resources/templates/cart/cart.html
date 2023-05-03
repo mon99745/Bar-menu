@@ -46,7 +46,7 @@
         </td>
         <td class="itemImageTd">
           <a th:href="@{/product/{productId}(productId=${cartLine.getProductId()})}">
-            <img class="itemImage" th:src="@{${cartLine.prdouctImage}}" alt="">
+            <img class="itemImage" th:src="@{${cartLine.productImage}}" alt="">
           </a>
         </td>
         <td class="itemInfoTd">
@@ -60,7 +60,7 @@
         <td class="orderCountTd">
           <!-- productId.를 가져오기 위한 필드 -->
           <input class="itemId." type="text" style="display: none;" th:value="${cartLine.getProductId()}"
-                 th:name="productId.">
+                 th:name="productId">
           <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stock}"
                  th:name="orderCount">
           <button class="btn btn-light orderCountModifyBtn">
