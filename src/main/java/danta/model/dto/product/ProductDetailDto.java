@@ -14,6 +14,7 @@ public class ProductDetailDto {
     private String name;
     private int price;
     private int stock;
+    private String description;
 
     public ProductDetailDto(Product product) {
         this.ProductId = product.getId();
@@ -21,5 +22,6 @@ public class ProductDetailDto {
         this.name = product.getName();
         this.price = Math.toIntExact(product.getPrice());
         this.stock = Math.toIntExact(product.getStock());
+        this.description = product.getDescription();
     }
 }

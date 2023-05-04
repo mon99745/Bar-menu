@@ -88,7 +88,12 @@ public class OrderController {
         return "order/order";
     }
 
-    // 바로구매
+    /**
+     * 즉시 구매
+     * @param orderRequest
+     * @param model
+     * @return
+     */
     @PostMapping("/order/direct")
     public String getOrderPageByDirect(@ModelAttribute OrderRequest orderRequest,
                                        Model model) {
@@ -97,7 +102,7 @@ public class OrderController {
     }
 
     /**
-     * 바로구매 요청의 OrderSummary를 생성
+     * 즉시 구매 요청 시 OrderSummary를 생성
      */
     private OrderSummaryDto createOrderSummary(OrderRequest orderRequest) {
         // 바로구매시 하나의 아이템만을 구매하게 되므로 첫번째 인덱스의 아이템을 이용
@@ -124,7 +129,7 @@ public class OrderController {
     }
 
     /**
-     * 주문 요청 처리
+     * 주문
      */
     @PostMapping("/order/order")
     public String order(Authentication authentication,
@@ -137,7 +142,7 @@ public class OrderController {
     }
 
     /**
-     * 주문완료 페이지 요청
+     * 주문완료 페이지
      */
     @GetMapping("/order/complete/{orderId}")
     public String getOrderCompletePage(@PathVariable("orderId") Long orderId,

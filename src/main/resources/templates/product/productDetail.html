@@ -55,15 +55,12 @@
         </form>
         <div class="form-group">
           <button id="orderBtn" class="btn btn-primary">
-            바로구매
+            즉시 주문
           </button>
         </div>
       </div>
       <div class="detailsContainer">
-      세부사항 :
-      </br>
-      원산지 표기 :
-      </div>
+        <h3 class="itemDescription" th:text="${productDetails.getDescription()}">소개</h3>
     </div>
   </div>
 
