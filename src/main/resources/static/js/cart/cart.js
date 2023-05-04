@@ -53,8 +53,10 @@ $(function () {
                 let orderCount = $(trList[i]).find(".orderCountTd .orderCount").val();
 
                 let orderLineListIdx = i-1;
-                cartInputList += "<input type='text' name='orderLineList["+ orderLineListIdx + "].productId' value='" + productId + "'>";
-                cartInputList += "<input type='text' name='orderLineList["+ orderLineListIdx + "].orderCount' value='" + orderCount + "'>"
+                cartInputList += "<input type='number' name='orderLineList["+ orderLineListIdx + "].productId' value='" + productId + "'>";
+                console.log("productId =",productId)
+                cartInputList += "<input type='number' name='orderLineList["+ orderLineListIdx + "].orderCount' value='" + orderCount + "'>"
+                console.log("orderCount =",orderCount)
             }
         }
 

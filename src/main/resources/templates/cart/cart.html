@@ -59,7 +59,7 @@
         </td>
         <td class="orderCountTd">
           <!-- productId를 가져오기 위한 필드 -->
-          <input class="itemId" type="text" style="display: none;" th:value="${cartLine.getProductId()}"
+          <input class="productId" type="number" style="display: none;" th:value="${cartLine.getProductId()}"
                  th:name="productId">
           <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stock}"
                  th:name="orderCount">

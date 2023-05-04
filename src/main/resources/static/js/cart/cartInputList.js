@@ -2,9 +2,9 @@ $(function () {
     // 바로 구매 ====================
     function getCartInputList() {
         let cartInputList = "";
-        let itemId = $("#itemIdInput").val();
+        let productId = $("#productIdInput").val();
         let orderCount = $("#orderCountInput").val();
-        cartInputList += "<input type='text' name='orderLineList[0].itemId' value='" + itemId + "'>";
+        cartInputList += "<input type='number' name='orderLineList[0].productId' value='" + productId + "'>";
         cartInputList += "<input type='text' name='orderLineList[0].orderCount' value='"+ orderCount + "'>";
         return cartInputList;
     }
