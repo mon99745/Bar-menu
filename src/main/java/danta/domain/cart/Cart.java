@@ -45,6 +45,7 @@ public class Cart extends AbstractModel {
 
     /**
      * 장바구니 사용자 ID
+     * User 를 참조하는 역할
      */
     @JsonProperty
     @Schema(description = "장바구니 사용자 ID")

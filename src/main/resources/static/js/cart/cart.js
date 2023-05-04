@@ -1,15 +1,15 @@
 $(function () {
     // 장바구니 수량변경 ====================
     $(".orderCountModifyBtn").on("click", function () {
-        let itemId = $(this).parent().find(".itemId").val();
+        let productId = $(this).parent().find(".productId").val();
         let newOrderCount = $(this).parent().find(".orderCount").val();
 
         let formData = new FormData();
-        formData.append("itemId", itemId);
+        formData.append("productId", productId);
         formData.append("orderCount", newOrderCount);
 
         $.ajax({
-            url: '/carts',
+            url: '/cart',
             data: formData,
             processData: false,
             contentType: false,
@@ -21,11 +21,11 @@ $(function () {
     })
 
     // 장바구니 삭제 요청 ====================
-    $(".removeCartItemBtn").on("click", function () {
-        let itemId = $(this).parent().find(".itemId").val();
+    $(".removeCartProductBtn").on("click", function () {
+        let productId = $(this).parent().find(".productId").val();
 
         $.ajax({
-            url: `/carts?itemId=${itemId}`,
+            url: `/cart?productId=${productId}`,
             type: 'DELETE',
             success: function (data) {
                 location.reload();
@@ -49,11 +49,11 @@ $(function () {
             // 체크된 아이템만 추가하도록
             let isSelected = $(trList[i]).find(".checkBox").is(":checked");
             if (isSelected) {
-                let itemId = $(trList[i]).find(".orderCountTd .itemId").val();
+                let productId = $(trList[i]).find(".orderCountTd .productId").val();
                 let orderCount = $(trList[i]).find(".orderCountTd .orderCount").val();
 
                 let orderLineListIdx = i-1;
-                cartInputList += "<input type='text' name='orderLineList["+ orderLineListIdx + "].itemId' value='" + itemId + "'>";
+                cartInputList += "<input type='text' name='orderLineList["+ orderLineListIdx + "].productId' value='" + productId + "'>";
                 cartInputList += "<input type='text' name='orderLineList["+ orderLineListIdx + "].orderCount' value='" + orderCount + "'>"
             }
         }
