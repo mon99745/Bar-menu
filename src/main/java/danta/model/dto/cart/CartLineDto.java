@@ -10,8 +10,6 @@ import javax.persistence.Embeddable;
 @NoArgsConstructor
 @Getter
 public class CartLineDto {
-    private Long cartId;
-
     private Long productId;
     private String productImage;
     private String productName;
@@ -22,8 +20,7 @@ public class CartLineDto {
     private int stock;
 
     @QueryProjection
-    public CartLineDto(Long cartId, Long productId, String productImage, String productName, int productPrice, int orderCount, int stock) {
-        this.cartId = cartId;
+    public CartLineDto(Long productId, String productImage, String productName, int productPrice, int orderCount, int stock) {
         this.productId = productId;
         this.productImage = productImage;
         this.productName = productName;

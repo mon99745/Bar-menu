@@ -45,7 +45,7 @@ public class UserService {
         Cart cart = new Cart();
         cart.setId(savedUser.getId());
 
-        cartService.createCart(cart);
+        cartService.createCart(user.getId());
 
         return userRepository.save(user).getId();
     }

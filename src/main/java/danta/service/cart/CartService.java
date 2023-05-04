@@ -22,11 +22,11 @@ public class CartService {
 
     /**
      * 장바구니 생성
-     * @param cart
+     * @param carterId
      * @return
      */
-    public Long createCart(Cart cart) {
-        return cartRepository.save(cart).getId();
+    public Long createCart(Long carterId) {
+        return cartRepository.save(new Cart(carterId)).getId();
     }
 
 

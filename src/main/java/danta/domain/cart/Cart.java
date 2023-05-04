@@ -28,7 +28,7 @@ import java.util.Map;
 @DynamicUpdate
 @Table(name = "CartInfo", indexes = {
         @Index(name = "idx_cart_id", columnList = "cart_id", unique = true),
-        @Index(name = "idx_cart_carterId", columnList = "user_id"),
+        @Index(name = "idx_cart_carterId", columnList = "carter_id"),
         @Index(name = "idx_cart_quantity", columnList = "quantity"),
         @Index(name = "idx_cart_reg_date", columnList = "regDate"),
         @Index(name = "idx_cart_mod_date", columnList = "modDate")})
@@ -41,6 +41,7 @@ public class Cart extends AbstractModel {
     @Id
     @Schema(description = "장바구니 ID")
     @Column(name = "cart_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
     /**
@@ -49,9 +50,11 @@ public class Cart extends AbstractModel {
      */
     @JsonProperty
     @Schema(description = "장바구니 사용자 ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    protected User carterId;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "carter_id")
+//    @Column(name = "carter_id", nullable = false)
+    @Column(name = "carter_id")
+    protected Long carterId;
 
 
     /**
@@ -86,6 +89,10 @@ public class Cart extends AbstractModel {
             cart.put(mapKey, cartLine);
         }
     }
+    public Cart(Long carterId) {
+        this.carterId = carterId;
+    }
+
 
     public void modifyOrderCount(int targetStockQuantity, CartLine newCartLine) {
         verifyEnoughStockQuantity(targetStockQuantity, newCartLine.getOrderCount());
