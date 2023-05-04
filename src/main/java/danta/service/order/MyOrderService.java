@@ -1,6 +1,7 @@
 package danta.service.order;
 
 
+import danta.domain.order.MyOrderRepository;
 import danta.domain.product.Product;
 import danta.domain.order.Order;
 import danta.domain.order.OrderRepository;
@@ -18,10 +19,10 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class MyOrderService {
-    private final OrderRepository orderRepository;
+    private final MyOrderRepository MyOrderRepository;
 
     public MyOrderSummaryDto getMyOrderSummary(Long ordererId, Pageable pageable) {
-        Page<Order> myOrders = orderRepository.getMyOrders(ordererId, pageable);
+        Page<Order> myOrders = MyOrderRepository.getMyOrders(ordererId, pageable);
 
         List<MyOrderDto> contents = myOrders.stream()
                 .map(o -> MyOrderDto.builder()
@@ -39,7 +40,7 @@ public class MyOrderService {
     }
 
     public MyOrderDetailDto getMyOrderDetails(Long orderId) {
-        Order order = orderRepository.getMyOrderDetails(orderId)
+        Order order = MyOrderRepository.getMyOrderDetails(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문번호입니다."));
 
         List<MyOrderDetailProductDto> myOrderDetailsProductDtoList = order.getOrderProductList().stream()
@@ -61,7 +62,7 @@ public class MyOrderService {
     }
 
     public void deleteMyOrder(Long ordererId, Long orderId) {
-        Order order  = orderRepository.findById(orderId)
+        Order order  = MyOrderRepository.findById(orderId)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문입니다."));
 
         order.deleteOrder(ordererId);

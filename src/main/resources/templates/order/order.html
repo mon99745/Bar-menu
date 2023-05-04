@@ -58,7 +58,7 @@
             <table class="table">
                 <tbody>
                 <tr class="orderProductListTr" th:each="product : ${orderSummary.orderProductList}">
-                    <td class="productId.Td" style="display: none;" th:text="${product.productId}"></td>
+                    <td class="productIdTd" style="display: none;" th:text="${product.productId}"></td>
                     <td style="max-width: 500px; min-width: 450px; padding-left: 15px;" th:text="${product.name}"></td>
                     <td class="orderCountTd" style="max-width: 50px; min-width: 50px;" th:text="${product.orderCount}"></td>
                     <td style="max-width: 100px; min-width: 100px;" th:text="${#numbers.formatInteger(product.totalAmount, 3, 'COMMA')} +

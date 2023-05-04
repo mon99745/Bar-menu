@@ -32,47 +32,16 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
                         " from Cart c" +
                         " join c.cart cl" +
                         " on c.id = cl.cartId" +
-                        " join User m" +
-                        " on c.id = m.id" +
+                        " join User u" +
+                        " on c.id = u.id" +
                         " join Product i" +
                         " on cl.productId = i.id" +
-                        " where m.id = :id" +
+                        " where u.id = :id" +
                         " and cl.productId in :cartProductList", OrderProductDto.class)
                 .setParameter("id", id)
                 .setParameter("cartProductList", productIdList)
                 .getResultList();
 
         return new OrderSummaryDto(orderProductList);
-    }
-
-    @Override
-    public Page<Order> getMyOrders(Long ordererId, Pageable pageable) {
-        QueryResults<Order> searchOrderByOrdererId = query.select(order)
-                .from(order)
-                .join(order.orderer, user).fetchJoin()
-                .join(order).fetchJoin()
-                .where(order.removed.eq(false))
-                .where(order.orderer.id.eq(ordererId))
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .orderBy(order.orderId.desc())
-                .fetchResults();
-
-        List<Order> contents = searchOrderByOrdererId.getResults();
-        long total = searchOrderByOrdererId.getTotal();
-
-        return new PageImpl<>(contents, pageable, total);
-    }
-
-    @Override
-    public Optional<Order> getMyOrderDetails(Long orderId) {
-        Order order = query.select(QOrder.order)
-                .from(QOrder.order)
-                .join(QOrder.order.orderer).fetchJoin()
-                .join(QOrder.order).fetchJoin()
-                .where(QOrder.order.orderId.eq(orderId))
-                .fetchOne();
-
-        return Optional.of(order);
     }
 }

@@ -9,8 +9,8 @@ $(function() {
         for (let i = 0; i < trList.length; i++) {
             let productId = $(trList[i]).find(".productIdTd").text();
             let orderCount = $(trList[i]).find(".orderCountTd").text();
-            orderLineInputList += "<input type='text' name='orderLineList[" + i + "].productId'  value='" + productId +"'> ";
-            orderLineInputList += "<input type='text' value='" + orderCount + "' name='orderLineList[" + i + "].orderCount'> ";
+            orderLineInputList += "<input type='number' name='orderLineList[" + i + "].productId'  value='" + productId +"'> ";
+            orderLineInputList += "<input type='number' value='" + orderCount + "' name='orderLineList[" + i + "].orderCount'> ";
         }
 
         return orderLineInputList;
