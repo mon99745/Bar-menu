@@ -15,14 +15,10 @@
 - Tools : 
   
   - FE : Html, CSS, JS, JQuery, Bootstrap
-  - BE : Java(1.8), Spring, SpringBoot, 
-      - build : Gradle
-      - ORM : JPA(Hibernate)
-      - DB : MySQL 
-      
+  - BE : Java(1.8), Spring, SpringBoot, Gradle, JPA(Hibernate), MySQL
   - SSR : Thymeleaf
-  - Cloud : AWS
-  - Collaboration : Discode, Github
+  - Cloud : AWS(EC2)
+  - Collaboration : Discode, Github, Notion
 
 
 
