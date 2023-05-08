@@ -1,5 +1,6 @@
 package danta.model.dto.order;
 
+import danta.model.enums.OrderStatus;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,18 +14,18 @@ import java.time.LocalDateTime;
 public class MyOrderDto {
     private Long orderId;
     private LocalDateTime orderDate;
-    private String representativeImagePath;
+    private String representativeImage;
     private String representativeProductName;
     private int totalAmount;
-    private String orderStatus;
+    private OrderStatus orderStatus;
 
     @Builder
     public MyOrderDto(Long orderId, LocalDateTime orderDate,
-                      String representativeImagePath, String representativeProductName,
-                      int totalAmount, String orderStatus) {
+                      String representativeImage, String representativeProductName,
+                      int totalAmount, OrderStatus orderStatus) {
         this.orderId = orderId;
         this.orderDate = orderDate;
-        this.representativeImagePath = representativeImagePath;
+        this.representativeImage = representativeImage;
         this.representativeProductName = representativeProductName;
         this.totalAmount = totalAmount;
         this.orderStatus = orderStatus;

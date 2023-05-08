@@ -28,10 +28,10 @@ public class MyOrderService {
                 .map(o -> MyOrderDto.builder()
                         .orderId(o.getOrderId())
                         .orderDate(o.getRegDate())
-                        .representativeImagePath(o.getOrderProductList().get(0).getProduct().getImage())
+                        .representativeImage(o.getOrderProductList().get(0).getProduct().getImage())
                         .representativeProductName(o.getOrderProductList().get(0).getProduct().getName())
                         .totalAmount(o.getTotalAmount())
-                        .orderStatus(o.getStatus().getStatus())
+                        .orderStatus(o.getStatus())
                         .build())
                 .collect(Collectors.toList());
         int total = contents.size();
