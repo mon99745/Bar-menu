@@ -38,8 +38,9 @@ public class CartController {
      */
     @GetMapping("/cart")
     public String getCartPage(Authentication authentication, Model model) {
-        Long userId = authenticationConverter.getUserFromAuthentication(authentication).getId();
-        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(userId);
+        if(authentication == null) {}
+        User user = authenticationConverter.getUserFromAuthentication(authentication);
+        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(user.getId());
         model.addAttribute("cartLineList", cartLineDtoInCartPage);
 
         return "cart/cart";
@@ -50,22 +51,14 @@ public class CartController {
      */
     @PostMapping("/cart")
     public String addProductToCart(Authentication authentication, @ModelAttribute @Valid AddToCartRequestFormDto addToCartRequestForm, HttpSession session) {
-        Long userId = authenticationConverter.getUserFromAuthentication(authentication).getId();
-        if(userId == null) {
+        if(authentication == null) {
             // 게스트의 경우
-            // 게스트 ID 생성
-            Guest guest = guestService.createGuest();
-            Long guestId = guest.getId();
-
-            // 장바구니 객체 생성 및 게스트 ID 할당
-            Cart cart = new Cart();
-            cart.setId(guestId);
-
-            // 장바구니에 아이템 추가
-            cartService.addProductToCart(guestId, addToCartRequestForm);
+            Guest guest = guestService.createGuest(session);
+            cartService.addProductToCart(guest.getId(), addToCartRequestForm);
         } else{
             // 회원일 경우
-            cartService.addProductToCart(userId,addToCartRequestForm);
+            User user = authenticationConverter.getUserFromAuthentication(authentication);
+            cartService.addProductToCart(user.getId(),addToCartRequestForm);
         }
 
         return "redirect:/cart";

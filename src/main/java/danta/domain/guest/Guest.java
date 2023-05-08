@@ -33,10 +33,9 @@ public class Guest extends AbstractModel {
 
     /**
      * 게스트 ID
-     * 일련 번호 사용
+     * Session id 의 Hash 값을 사용
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "guest_id", nullable = false)
     protected Long id;
 

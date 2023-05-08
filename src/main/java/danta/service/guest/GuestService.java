@@ -3,36 +3,38 @@ package danta.service.guest;
 import danta.domain.cart.Cart;
 import danta.domain.guest.Guest;
 import danta.domain.guest.GuestRepository;
-import danta.domain.user.User;
-import lombok.RequiredArgsConstructor;
+import danta.service.cart.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityNotFoundException;
-import java.util.UUID;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class GuestService {
     private final GuestRepository guestRepository;
+    private final CartService cartService;
+
 
     /**
      * 게스트 계정 생성
-     * - 임시 ID 발급
+     * Session ID
      */
     @Transactional
-    public Guest createGuest() {
-        // 랜덤값 생성
-        UUID uuid = UUID.randomUUID();
-        long longValueUuid = Long.parseUnsignedLong(
-                uuid.toString().replace("-", ""), 16);
+    public Guest createGuest(HttpSession session) {
 
-        // 생성한 UUID로 게스트 객체 생성 및 저장
+        // Session Id -> Guest Id
         Guest guest = new Guest();
-        guest.setId(longValueUuid);
+        guest.setId(Long.valueOf(session.getId().hashCode()));
         guest.setStatus(true);
 
         guestRepository.save(guest);
+
+        // 장바구니 생성
+        Cart cart = new Cart();
+        cart.setId(guest.getId());
+        cartService.createCart(guest.getId());
 
         return guest;
     }
@@ -44,7 +46,8 @@ public class GuestService {
     }
 
     @Autowired
-    public GuestService(GuestRepository guestRepository) {
+    public GuestService(GuestRepository guestRepository, CartService cartService) {
         this.guestRepository = guestRepository;
+        this.cartService = cartService;
     }
 }
