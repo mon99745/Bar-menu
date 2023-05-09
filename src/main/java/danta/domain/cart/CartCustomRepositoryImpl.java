@@ -28,8 +28,8 @@ public class CartCustomRepositoryImpl implements CartCustomRepository{
                                 " on c.id= cl.cartId" +
                                 " join Product p" +
                                 " on cl.productId = p.id" +
-                                " where c.carterId = : userId", CartLineDto.class)
-                .setParameter("userId", carterId)
+                                " where c.carterId = : carterId", CartLineDto.class)
+                .setParameter("carterId", carterId)
                 .getResultList();
 
         return cartLineDtoList;
