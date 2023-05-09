@@ -19,7 +19,7 @@ public class CartCustomRepositoryImpl implements CartCustomRepository{
         this.query = new JPAQueryFactory(em);
     }
 
-    public List<CartLineDto> getCartLineListInCartPage(Long userId) {
+    public List<CartLineDto> getCartLineListInCartPage(Long carterId) {
         List<CartLineDto> cartLineDtoList = em
                 .createQuery(
                         "select new danta.model.dto.cart.CartLineDto(p.id, p.image, p.name, p.price, cl.orderCount, p.stock)" +
@@ -29,7 +29,7 @@ public class CartCustomRepositoryImpl implements CartCustomRepository{
                                 " join Product p" +
                                 " on cl.productId = p.id" +
                                 " where c.carterId = : userId", CartLineDto.class)
-                .setParameter("userId", userId)
+                .setParameter("userId", carterId)
                 .getResultList();
 
         return cartLineDtoList;

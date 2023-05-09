@@ -8,8 +8,8 @@ public interface CartCustomRepository{
 
     /**
      * 장바구니 리스트 조회
-     * @param userId
+     * @param carterId
      * @return
      */
-    List<CartLineDto> getCartLineListInCartPage(Long userId);
+    List<CartLineDto> getCartLineListInCartPage(Long carterId);
 }

@@ -32,11 +32,11 @@ public class CartService {
 
     /**
      * 장바구니에 상품 추가
-     * @param userId
+     * @param carterId
      * @param addToCartRequestForm
      */
-    public void addProductToCart(Long userId, AddToCartRequestFormDto addToCartRequestForm) {
-        Cart cart = cartRepository.findCartById(userId);
+    public void addProductToCart(Long carterId, AddToCartRequestFormDto addToCartRequestForm) {
+        Cart cart = cartRepository.findCartById(carterId);
 
         CartLine newCartLine = new CartLine(cart.getId(),
                 addToCartRequestForm.getProductId(),
@@ -50,22 +50,22 @@ public class CartService {
 
     /**
      * 장바구니 목록조회
-     * @param userId
+     * @param carterId
      * @return
      */
-    public List<CartLineDto> getCartInCartPage(Long userId) {
-        return cartRepository.getCartLineListInCartPage(userId);
+    public List<CartLineDto> getCartInCartPage(Long carterId) {
+        return cartRepository.getCartLineListInCartPage(carterId);
     }
 
     /**
      * 주문 카운트 수정
-     * @param userId
+     * @param carterId
      * @param modifyOrderCountRequestForm
      */
 
-    public void modifyOrderCount(Long userId, ModifyOrderCountRequestFormDto modifyOrderCountRequestForm) {
+    public void modifyOrderCount(Long carterId, ModifyOrderCountRequestFormDto modifyOrderCountRequestForm) {
          //엔티티 조회
-        Cart cart = cartRepository.findCartById(userId);
+        Cart cart = cartRepository.findCartById(carterId);
         int targetStock = productRepository.findById(modifyOrderCountRequestForm.getProductId())
                 .get()
                 .getStock();
@@ -78,18 +78,18 @@ public class CartService {
 
     /**
      * 장바구니 삭제
-     * @param userId
+     * @param carterId
      * @param productIds
      */
-    public void removeCartLines(Long userId, List<Long> productIds) {
-        Cart cart = cartRepository.findCartById(userId);
+    public void removeCartLines(Long carterId, List<Long> productIds) {
+        Cart cart = cartRepository.findCartById(carterId);
 
         productIds.stream()
                 .forEach(productId -> cart.removeCartLine(productId));
     }
 
-    public void removeCartLine(Long userId, Long productId) {
-        Cart cart = cartRepository.findCartById(userId);
+    public void removeCartLine(Long carterId, Long productId) {
+        Cart cart = cartRepository.findCartById(carterId);
         cart.removeCartLine(productId);
     }
 }

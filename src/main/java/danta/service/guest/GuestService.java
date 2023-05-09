@@ -29,11 +29,11 @@ public class GuestService {
         guest.setId(Long.valueOf(session.getId().hashCode()));
         guest.setStatus(true);
 
-        guestRepository.save(guest);
+       guestRepository.save(guest);
 
         // 장바구니 생성
-        Cart cart = new Cart();
-        cart.setId(guest.getId());
+//        Cart cart = new Cart();
+//        cart.setId(guest.getId());
         cartService.createCart(guest.getId());
 
         return guest;

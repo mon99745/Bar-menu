@@ -14,7 +14,8 @@ public class AuthenticationConverter {
     public User getUserFromAuthentication(Authentication authentication) {
         String username = authentication.getName();
 
-        return userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
+        return userRepository.findByUsername(username);
+//        .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 아이디입니다."));
     }
 }
 
