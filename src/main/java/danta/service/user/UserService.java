@@ -40,11 +40,9 @@ public class UserService {
         // 활성화 상태
         user.setStatus(Status.TRUE);
 
-        // 장바구니 생성
-        User savedUser = userRepository.save(user);
-        Cart cart = new Cart();
-        cart.setId(savedUser.getId());
+        userRepository.save(user);
 
+        // 장바구니 생성
         cartService.createCart(user.getId());
 
         return userRepository.save(user).getId();
