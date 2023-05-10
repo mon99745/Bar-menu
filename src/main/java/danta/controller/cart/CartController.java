@@ -29,18 +29,23 @@ import java.util.UUID;
 public class CartController {
     private final GuestService guestService;
     private final CartService cartService;
-
-    private final PrincipalDetail principalDetail;
-
     private final AuthenticationConverter authenticationConverter;
+
     /**
      * 장바구니 목록 조회
      */
     @GetMapping("/cart")
-    public String getCartPage(Authentication authentication, Model model) {
-        if(authentication == null) {}
-        User user = authenticationConverter.getUserFromAuthentication(authentication);
-        List<CartLineDto> cartLineDtoInCartPage = cartService.getCartInCartPage(user.getId());
+    public String getCartPage(Authentication authentication, Model model, HttpSession session) {
+        List<CartLineDto> cartLineDtoInCartPage;
+
+        if(authentication == null) {
+            // 게스트의 경우
+            Guest guest = guestService.createGuest(session);
+            cartLineDtoInCartPage = cartService.getCartInCartPage(guest.getId());
+        } else {
+            User user = authenticationConverter.getUserFromAuthentication(authentication);
+            cartLineDtoInCartPage = cartService.getCartInCartPage(user.getId());
+        }
         model.addAttribute("cartLineList", cartLineDtoInCartPage);
 
         return "cart/cart";
@@ -69,10 +74,15 @@ public class CartController {
      */
     @PutMapping("/cart")
     @ResponseBody
-    public ResponseEntity modifyCartLine(@ModelAttribute ModifyOrderCountRequestFormDto modifyOrderCountRequestForm,
-                                         User user) {
-        cartService.modifyOrderCount(user.getId(), modifyOrderCountRequestForm);
-
+    public ResponseEntity modifyCartLine(Authentication authentication, @ModelAttribute ModifyOrderCountRequestFormDto modifyOrderCountRequestForm, HttpSession session) {
+        if(authentication == null) {
+            // 게스트의 경우
+            Guest guest = guestService.createGuest(session);
+            cartService.modifyOrderCount(guest.getId(), modifyOrderCountRequestForm);
+        } else {
+            User user = authenticationConverter.getUserFromAuthentication(authentication);
+            cartService.modifyOrderCount(user.getId(), modifyOrderCountRequestForm);
+        }
         return ResponseEntity.ok().build();
     }
 
@@ -81,9 +91,16 @@ public class CartController {
      */
     @DeleteMapping("/cart")
     @ResponseBody
-    public ResponseEntity deleteCartLine(@RequestParam("productId") Long productId,
-                                         User user) {
-        cartService.removeCartLine(user.getId(), productId);
+    public ResponseEntity deleteCartLine(Authentication authentication, @RequestParam("productId") Long productId, HttpSession session) {
+        if(authentication == null) {
+            // 게스트의 경우
+            Guest guest = guestService.createGuest(session);
+            cartService.removeCartLine(guest.getId(), productId);
+        } else {
+
+            User user = authenticationConverter.getUserFromAuthentication(authentication);
+            cartService.removeCartLine(user.getId(), productId);
+        }
         return ResponseEntity.ok().build();
     }
 }

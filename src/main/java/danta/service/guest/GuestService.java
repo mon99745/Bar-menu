@@ -24,17 +24,23 @@ public class GuestService {
     @Transactional
     public Guest createGuest(HttpSession session) {
 
-        // Session Id -> Guest Id
-        Guest guest = new Guest();
-        guest.setId(Long.valueOf(session.getId().hashCode()));
-        guest.setStatus(true);
+        String sessionId = session.getId();
+        Long guestId = Long.valueOf(sessionId.hashCode());
 
-       guestRepository.save(guest);
+        // 기존 게스트 엔티티 조회
+        Guest guest = guestRepository.findById(guestId).orElse(null);
 
-        // 장바구니 생성
-//        Cart cart = new Cart();
-//        cart.setId(guest.getId());
-        cartService.createCart(guest.getId());
+        if (guest == null) {
+            // 기존 게스트 엔티티가 없으면 새로운 게스트 엔티티 생성
+            guest = new Guest();
+            guest.setId(guestId);
+            guest.setStatus(true);
+
+            guestRepository.save(guest);
+
+            // 장바구니 생성
+            cartService.createCart(guest.getId());
+        }
 
         return guest;
     }
