@@ -36,7 +36,7 @@ public class CartService {
      * @param addToCartRequestForm
      */
     public void addProductToCart(Long carterId, AddToCartRequestFormDto addToCartRequestForm) {
-        Cart cart = cartRepository.findCartById(carterId);
+        Cart cart = cartRepository.findCartByCarterId(carterId);
 
         CartLine newCartLine = new CartLine(cart.getId(),
                 addToCartRequestForm.getProductId(),
@@ -65,7 +65,7 @@ public class CartService {
 
     public void modifyOrderCount(Long carterId, ModifyOrderCountRequestFormDto modifyOrderCountRequestForm) {
          //엔티티 조회
-        Cart cart = cartRepository.findCartById(carterId);
+        Cart cart = cartRepository.findCartByCarterId(carterId);
         int targetStock = productRepository.findById(modifyOrderCountRequestForm.getProductId())
                 .get()
                 .getStock();
@@ -82,14 +82,14 @@ public class CartService {
      * @param productIds
      */
     public void removeCartLines(Long carterId, List<Long> productIds) {
-        Cart cart = cartRepository.findCartById(carterId);
+        Cart cart = cartRepository.findCartByCarterId(carterId);
 
         productIds.stream()
                 .forEach(productId -> cart.removeCartLine(productId));
     }
 
     public void removeCartLine(Long carterId, Long productId) {
-        Cart cart = cartRepository.findCartById(carterId);
+        Cart cart = cartRepository.findCartByCarterId(carterId);
         cart.removeCartLine(productId);
     }
 }
