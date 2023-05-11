@@ -7,6 +7,7 @@ import danta.model.dto.order.OrderSummaryDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -27,21 +28,38 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
     }
 
     @Override
-    public OrderSummaryDto getOrderSummaryInCart(Long id, List<Long> productIdList) {
-        List<OrderProductDto> orderProductList = em.createQuery("select new danta.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
-                        " from Cart c" +
-                        " join c.cart cl" +
-                        " on c.id = cl.cartId" +
-                        " join User u" +
-                        " on c.id = u.id" +
-                        " join Product i" +
-                        " on cl.productId = i.id" +
-                        " where u.id = :id" +
-                        " and cl.productId in :cartProductList", OrderProductDto.class)
-                .setParameter("id", id)
-                .setParameter("cartProductList", productIdList)
-                .getResultList();
+    public OrderSummaryDto getOrderSummaryInCart(Authentication authentication, Long id, List<Long> productIdList) {
+        List<OrderProductDto> orderProductList;
+        if(authentication == null){
+            orderProductList = em.createQuery("select new danta.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
+                            " from Cart c" +
+                            " join c.cart cl" +
+                            " on c.id = cl.cartId" +
+                            " join Guest g" +
+                            " on c.carterId = g.id" +
+                            " join Product i" +
+                            " on cl.productId = i.id" +
+                            " where g.id = :id" +
+                            " and cl.productId in :cartProductList", OrderProductDto.class)
+                    .setParameter("id", id)
+                    .setParameter("cartProductList", productIdList)
+                    .getResultList();
 
+        } else{
+            orderProductList = em.createQuery("select new danta.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
+                            " from Cart c" +
+                            " join c.cart cl" +
+                            " on c.id = cl.cartId" +
+                            " join User u" +
+                            " on c.carterId = u.id" +
+                            " join Product i" +
+                            " on cl.productId = i.id" +
+                            " where u.id = :id" +
+                            " and cl.productId in :cartProductList", OrderProductDto.class)
+                    .setParameter("id", id)
+                    .setParameter("cartProductList", productIdList)
+                    .getResultList();
+        }
         return new OrderSummaryDto(orderProductList);
     }
 }

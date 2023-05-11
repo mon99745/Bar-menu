@@ -96,7 +96,7 @@ public class OrderController {
                     .map(ol -> ol.getProductId())
                     .collect(Collectors.toList());
 
-            orderSummaryDto = orderRepository.getOrderSummaryInCart(guest.getId(), orderProductIdList);
+            orderSummaryDto = orderRepository.getOrderSummaryInCart(null, guest.getId(), orderProductIdList);
         } else{
             // 회원의 경우
             User user = authenticationConverter.getUserFromAuthentication(authentication);
@@ -105,7 +105,7 @@ public class OrderController {
                     .map(ol -> ol.getProductId())
                     .collect(Collectors.toList());
 
-            orderSummaryDto = orderRepository.getOrderSummaryInCart(user.getId(), orderProductIdList);
+            orderSummaryDto = orderRepository.getOrderSummaryInCart(authentication, user.getId(), orderProductIdList);
         }
 
         model.addAttribute("orderSummary", orderSummaryDto);

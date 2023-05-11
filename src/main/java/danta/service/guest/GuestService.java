@@ -47,8 +47,8 @@ public class GuestService {
 
 
     public Guest findGuestById(Long guestId) {
-        return guestRepository.findById(guestId)
-                .orElseThrow(() -> new EntityNotFoundException("Guest not found"));
+        return guestRepository.findGuestById(guestId);
+//                .orElseThrow(() -> new EntityNotFoundException("Guest not found"));
     }
 
     @Autowired
