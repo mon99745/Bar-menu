@@ -6,6 +6,7 @@ import danta.domain.product.Product;
 import danta.domain.order.Order;
 import danta.domain.order.OrderRepository;
 import danta.model.dto.order.*;
+import danta.service.user.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @Transactional
 @RequiredArgsConstructor
 public class MyOrderService {
+    private final UserService userService;
     private final MyOrderRepository MyOrderRepository;
 
     public MyOrderSummaryDto getMyOrderSummary(Long ordererId, Pageable pageable) {
@@ -53,7 +55,7 @@ public class MyOrderService {
         MyOrderDetailDto myOrderDetailsDto = MyOrderDetailDto.builder()
                 .orderDate(order.getRegDate())
                 .orderId(orderId)
-                .receiverInfoDto(new MyOrderDetailReceiverDto(order.getOrderer().getUsername(), order.getOrderer().getUsername()))
+                .receiverInfoDto(new MyOrderDetailReceiverDto(userService.findUser(order.getOrdererId()).getUsername()))
                 .orderedProductList(myOrderDetailsProductDtoList)
                 .orderStatus(order.getStatus())
                 .build();

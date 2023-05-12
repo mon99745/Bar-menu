@@ -32,7 +32,7 @@ import java.util.List;
 @Component
 @Table(name = "OrderInfo",indexes = {
         @Index(name = "idx_order_id", columnList = "order_id", unique = true),
-        @Index(name = "idx_order_orderer", columnList = "user_id"),
+        @Index(name = "idx_order_orderer_id", columnList = "orderer_id"),
         @Index(name = "idx_order_price", columnList = "price"),
         @Index(name = "idx_order_status", columnList = "status"),
         @Index(name = "idx_order_reg_date", columnList = "regDate"),
@@ -54,9 +54,10 @@ public class Order extends AbstractModel {
      */
     @JsonProperty(index = 10)
     @Schema(description = "주문자 ID")
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    protected User orderer;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+    @Column(name = "orderer_id")
+    protected Long ordererId;
 
     /**
      * 주문 상태
@@ -82,8 +83,8 @@ public class Order extends AbstractModel {
     private int totalAmount;
 
     @Builder
-    public Order(User orderer, List<OrderProduct> orderProductList) {
-        this.orderer = orderer;
+    public Order(Long ordererId, List<OrderProduct> orderProductList) {
+        this.ordererId = ordererId;
         this.setOrderProductList(orderProductList);
         this.status = OrderStatus.ORDERED_STATUS;
     }
@@ -107,7 +108,7 @@ public class Order extends AbstractModel {
     }
 
     public void deleteOrder(Long ordererId) {
-        if (ordererId != this.orderer.getId())
+        if (ordererId != this.ordererId)
             throw new IllegalStateException("주문자와 삭제 요청자가 일치하지 않습니다.");
 
         this.removed = true;

@@ -45,15 +45,15 @@ public class MyOrderController {
     @GetMapping("")
     public String getMyOrderListPage(Authentication authentication, Model model, Pageable pageable, HttpSession session) {
         //TODO : 주문 페이지 조회 에러
-        MyOrderSummaryDto myOrderSummaryDto = null;
+        MyOrderSummaryDto myOrderSummaryDto;
         if(authentication == null) {
             // 게스트의 경우
             Guest guest = guestService.findGuestById(Long.valueOf(session.getId().hashCode()));
-            myOrderService.getMyOrderSummary(guest.getId(), pageable);
+            myOrderSummaryDto = myOrderService.getMyOrderSummary(guest.getId(), pageable);
         } else{
             // 회원의 경우
             User user = authenticationConverter.getUserFromAuthentication(authentication);
-            myOrderService.getMyOrderSummary(user.getId(), pageable);
+            myOrderSummaryDto = myOrderService.getMyOrderSummary(user.getId(), pageable);
         }
         model.addAttribute("myOrderSummary", myOrderSummaryDto);
         return "order/myOrderList";

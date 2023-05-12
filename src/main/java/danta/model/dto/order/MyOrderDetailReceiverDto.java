@@ -7,5 +7,5 @@ import lombok.Getter;
 @Getter
 public class MyOrderDetailReceiverDto {
     private String receiverName;
-    private String contact;
+//    private String contact;
 }

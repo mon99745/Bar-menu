@@ -26,10 +26,10 @@ public class MyOrderCustomRepositoryImpl implements MyOrderCustomRepository{
     public Page<Order> getMyOrders(Long ordererId, Pageable pageable) {
         QueryResults<Order> searchOrderByOrdererId = query.select(order)
                 .from(order)
-                .join(order.orderer, user).fetchJoin()
+//                .join(order.ordererId, user.id).fetchJoin()
                 .join(order).fetchJoin()
                 .where(order.removed.eq(false))
-                .where(order.orderer.id.eq(ordererId))
+                .where(order.ordererId.eq(ordererId))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .orderBy(order.orderId.desc())
@@ -45,7 +45,7 @@ public class MyOrderCustomRepositoryImpl implements MyOrderCustomRepository{
     public Optional<Order> getMyOrderDetails(Long orderId) {
         Order order = query.select(QOrder.order)
                 .from(QOrder.order)
-                .join(QOrder.order.orderer).fetchJoin()
+//                .join(QOrder.order.ordererId).fetchJoin()
                 .join(QOrder.order).fetchJoin()
                 .where(QOrder.order.orderId.eq(orderId))
                 .fetchOne();

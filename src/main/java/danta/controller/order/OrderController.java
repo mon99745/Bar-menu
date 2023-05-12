@@ -31,6 +31,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -58,7 +59,7 @@ public class OrderController {
         OrdererDto orderer;
         if(authentication == null) {
             // 게스트의 경우
-            Guest guest = guestService.findGuestById(Long.valueOf(session.getId().hashCode()));
+            Guest guest =  guestService.createGuest(session);
             model.addAttribute("shippingInfo", "GUEST");
             orderer = createOrdererInfo(guest);
             model.addAttribute("ordererInfo", orderer);
@@ -73,7 +74,7 @@ public class OrderController {
     }
 
     /**
-     * 주문 페이지
+     * 주문
      * 장바구니에 담긴 Product_id 들만을 받아온다.
      * TODO: 상품리스트가 NULL 로 찍히는 에러 발생
      * @param authentication
@@ -140,7 +141,7 @@ public class OrderController {
                 product.getPrice(),
                 orderLineRequest.getOrderCount());
 
-        return new OrderSummaryDto((List<OrderProductDto>) orderProductDto);
+        return new OrderSummaryDto(Arrays.asList(orderProductDto));
     }
 
     // TODO:주문자 정보 생성 메소드 통합
@@ -162,7 +163,7 @@ public class OrderController {
      * @return
      */
     private OrdererDto createOrdererInfo(Guest orderer) {
-        return new OrdererDto(orderer.getId(), null);
+        return new OrdererDto(orderer.getId(), "GUEST");
     }
 
     /**
@@ -175,7 +176,7 @@ public class OrderController {
         if(authentication == null) {
             // 게스트의 경우
             Guest guest = guestService.findGuestById(Long.valueOf(session.getId().hashCode()));
-            orderId = orderService.order(guest.getId(), orderRequest);
+            orderId = orderService.order(guest.getId(), orderRequest, session);
 
         } else {
          // 회원의 경우
