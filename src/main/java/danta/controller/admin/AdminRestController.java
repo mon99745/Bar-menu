@@ -10,6 +10,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -74,8 +75,9 @@ public class AdminRestController {
      */
     @Operation(summary = "5. 전체 회원 조회 (관리자용)")
     @GetMapping("userList")
-    public List<User> userList(){
+    public List<User> userList(Model model){
         List<User> userList = userService.findAllUser();
+        model.addAttribute("users", userList);
         return userList;
     }
 

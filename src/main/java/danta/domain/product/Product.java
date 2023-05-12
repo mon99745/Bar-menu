@@ -3,6 +3,7 @@ package danta.domain.product;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.exception.NotEnoughStockQuantityException;
 import danta.domain.AbstractModel;
+import danta.model.enums.Status;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;

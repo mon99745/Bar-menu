@@ -21,10 +21,15 @@ public class ProductService {
     public Long saveProduct(ProductRequestDto request) {
         Product newProduct = Product.builder()
                 .name(request.getName())
-                .image(request.getImagePath())
+                .image(request.getImage())
                 .price (request.getPrice())
                 .stock(request.getStock())
+                .description(request.getDescription())
+                .category(request.getCategory())
                 .build();
+        newProduct.setId(Long.valueOf(productCountForId()+1));
+        //TODO: 상품 상태 활성화/비활성화
+//        newProduct.setStatus(true);
         Product savedProduct = productRepository.save(newProduct);
 
         return savedProduct.getId();
@@ -38,5 +43,10 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
 
         return new ProductDetailDto(product);
+    }
+
+    public int productCountForId(){
+        List<Product> productList = productRepository.findAll();
+        return productList.size();
     }
 }

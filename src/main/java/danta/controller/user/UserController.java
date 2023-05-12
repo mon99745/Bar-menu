@@ -13,11 +13,12 @@ import springfox.documentation.annotations.ApiIgnore;
 @Controller
 //@RequestMapping(UserController.PATH)
 public class UserController {
+
+    //    TODO : PATH 적용
+    //    public static final String PATH = "/auth/user";
     @Autowired
     private UserService userService;
 
-//    TODO : PATH 적용
-//    public static final String PATH = "/auth/user";
 
     /**
      * 회원가입 페이지
@@ -50,15 +51,5 @@ public class UserController {
     public String userUpdate() {
         return "user/user-update";
     }
-
-    /**
-     * 전체 회원목록 페이지
-     */
-    @GetMapping("/admin/users")
-    public String list(Model model) {
-        model.addAttribute("users", userService.findAllUser());
-        return "admin/user-list";
-    }
-
 
 }

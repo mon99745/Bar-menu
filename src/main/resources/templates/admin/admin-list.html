@@ -27,7 +27,7 @@
             </div>
         </div>
 
-    <form action="/userList" class="form-inline" style="margin: 15px;">
+    <form action="/users" class="form-inline" style="margin: 15px;">
         <div class="form-group mb-2">
             <input type="text" class="form-control" name="name" placeholder="Search User" />
             <input type="submit" value="Search"  class="btn btn-primary"/>
@@ -43,9 +43,9 @@
                 </tr>
                 </thead>
                 <center>
-                <tr th:each="user:${userList}">
-                    <a class="item" th:href="@{/userList/{id}(id=${user.getId()})}">
-                        <td th:text="${user.username}"></td>
+                <tr th:each="user:${adminList}">
+                    <a class="item" th:href="@{/adminList/{id}(id=${admin.getId()})}">
+                        <td th:text="${admin.username}"></td>
                     </a>
                 </tr>
                 </center>

@@ -25,15 +25,15 @@
 
 <div class="jumbotron table">
   <div class="container">
-    <form method="post" th:object="${form}" th:action="@{/products/new}">
+    <form method="post" th:object="${form}" th:action="@{/product/new}">
       <div class="form-group">
         <label th:for="name">상품명</label>
         <input type="text" th:field="*{name}" class="form-control" placeholder="상품 이름">
       </div>
 
       <div class="form-group">
-        <label th:for="imagePath">상품사진</label>
-        <input type="text" th:field="*{imagePath}" class="form-control" placeholder="상품 사진">
+        <label th:for="image">상품사진</label>
+        <input type="file" th:field="*{image}" class="form-control" placeholder="상품 사진">
       </div>
 
       <div class="form-group">
@@ -47,8 +47,21 @@
       </div>
 
       <div class="form-group">
-        <label th:for="categoryName">카테고리</label>
-        <input type="text" th:field="*{categoryName}" class="form-control" placeholder="탕, 볶음, 별미, 샐러드, 음료, 주류 ">
+        <label th:for="description">상품 설명</label>
+        <input type="text" th:field="*{description}" class="form-control" placeholder="상품 설명">
+      </div>
+
+      <div class="form-group">
+        <label th:for="category">카테고리</label>
+        <select th:field="*{category}" class="form-control">
+          <option value="">카테고리 선택</option>
+          <option value="탕">탕</option>
+          <option value="볶음">볶음</option>
+          <option value="별미">별미</option>
+          <option value="샐러드">샐러드</option>
+          <option value="음료">음료</option>
+          <option value="주류">주류</option>
+        </select>
       </div>
 
       <button type="submit" class="btn btn-primary">SUBMIT</button>
