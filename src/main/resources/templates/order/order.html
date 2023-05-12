@@ -28,7 +28,7 @@
 
 <div class="container">
     <div class="titleContainer">
-        <h2>주문/결제</h2>
+        <h2>주문</h2>
     </div>
 
     <!-- 주문자 정보 -->
@@ -63,27 +63,23 @@
                     <td class="orderCountTd" style="max-width: 50px; min-width: 50px;" th:text="${product.orderCount}"></td>
                     <td style="max-width: 100px; min-width: 100px;" th:text="${#numbers.formatInteger(product.totalAmount, 3, 'COMMA')} +
                                                                                 '(' + ${#numbers.formatInteger(product.price, 3, 'COMMA')} + ')'"></td>
+<!--                    <td th:text="${#numbers.formatInteger(orderSummary.totalAmount, 3, 'COMMA')} + ' 원'"></td>-->
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 
-    <!-- 결제 -->
     <div class="componentContainer">
         <div class="componentHeaderContainer">
-            <h5>결제정보</h5>
+            <h5>총상품가격</h5>
         </div>
         <div class="component">
             <table class="table table-bordered">
                 <tbody>
                 <tr>
-                    <th scope="row">총상품가격</th>
+<!--                    <th scope="row">총상품가격</th>-->
                     <td th:text="${#numbers.formatInteger(orderSummary.totalAmount, 3, 'COMMA')} + ' 원'"></td>
-                </tr>
-                <tr>
-                    <th scope="row">결제방법</th>
-                    <td>중간 계산은 카운터에서 부탁드립니다.</td>
                 </tr>
                 </tbody>
             </table>
@@ -94,7 +90,7 @@
     <div id=right-list >
         <div class="payButtonContainer">
             <div id="payBtn">
-                <span>결제하기</span>
+                <span>주문</span>
             </div>
     </div>
     </div>

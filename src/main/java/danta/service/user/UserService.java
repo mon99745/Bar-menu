@@ -97,10 +97,10 @@ public class UserService {
     /**
      * 회원 예외검증
      */
-    private User validateExistMember(Optional<User> memberEntity) {
-        if(!memberEntity.isPresent())
+    private User validateExistMember(Optional<User> user) {
+        if(!user.isPresent())
             throw new IllegalStateException("존재하지 않는 유저입니다.");
-        return memberEntity.get();
+        return user.get();
     }
 
 }

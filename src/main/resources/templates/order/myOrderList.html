@@ -40,9 +40,9 @@
             <th>주문상태</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody th:each="myOrder : ${myOrderSummary.myOrderList}">
 <!--        **** JS 파일에서 정리 ****-->
-                            <tr th:each="myOrder : ${myOrderSummary.myOrderList}">
+                            <tr>
                                 <td th:text="${myOrder.orderId}"></td>
                                 <td th:text="${#temporals.format(myOrder.orderDate, 'yyyy-MM-dd HH:mm')}"></td>
                                 <td>
@@ -57,9 +57,6 @@
                                 <td>
                                     <div>
                                         <span th:text="${myOrder.getOrderStatus()}"></span>
-                                    </div>
-                                    <div class="write_review_btn">
-                                        <a href="">리뷰작성</a>
                                     </div>
                                 </td>
                             </tr>

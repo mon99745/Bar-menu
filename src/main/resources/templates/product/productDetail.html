@@ -44,9 +44,9 @@
 
         <form th:onsubmit="return validateOrderCount()">
           <div class="form-group">
-            <input id="productId.Input" type="text" th:name="productId" th:value="${productDetails.productId}"
+            <input class="productId" id="productId.Input" type="number" th:name="productId" th:value="${productDetails.productId}"
                    style="display: none;">
-            <input id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${productDetails.stock}"
+            <input class="orderCount" id="orderCountInput" type="number" th:value="1" th:min="1" th:max="${productDetails.stock}"
                    th:name="orderCount">
             <button th:formmethod="post" th:formaction="@{/cart}" id="addToCartBtn" class="btn btn-light">
               장바구니
@@ -59,15 +59,12 @@
           </button>
         </div>
       </div>
-      <div class="detailsContainer">
-        <h3 class="itemDescription" th:text="${productDetails.getDescription()}">소개</h3>
-    </div>
-  </div>
-
-</div>
+        <div class="detailsContainer">
+          <h3 class="itemDescription" th:text="${productDetails.getDescription()}">소개</h3>
+        </div>
+      </div>
   </div>
 </div>
-
 <script th:src="@{/js/validation/validateOrderCount.js}"></script>
 <script th:src="@{/js/cart/cartInputList.js}"></script>
 </body>

@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(PERMIT_URL_ARRAY).permitAll()
                 .antMatchers("/","/static/**", "/auth/**", "/js/**", "/css/**", "/img/**", "/error/**").permitAll() //권한 관리 대상을 지정하는 옵션
 
-                .antMatchers("/product/**", "/cart/**", "/order/**").permitAll() // 게스트를 위한 개방
+                .antMatchers("/product/**", "/cart/**", "/order/**", "/my/order/**").permitAll() // 게스트를 위한 개방
                 .anyRequest().authenticated()
                 .and()
 
