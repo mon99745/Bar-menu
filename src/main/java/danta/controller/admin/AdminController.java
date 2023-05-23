@@ -20,7 +20,9 @@ public class AdminController {
     //    TODO : PATH 적용
     //    public static final String PATH = "/auth/user";
 
+    @Autowired
     private AdminService adminService;
+    @Autowired
     private UserService userService;
 
     /**

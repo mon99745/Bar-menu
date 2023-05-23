@@ -70,24 +70,4 @@ public class AdminRestController {
         adminService.delete(adminId, admin);
     }
 
-    /**
-     * 전체 회원 조회 API (관리자용)
-     */
-    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
-    @GetMapping("userList")
-    public List<User> userList(Model model){
-        List<User> userList = userService.findAllUser();
-        model.addAttribute("users", userList);
-        return userList;
-    }
-
-    /**
-     * 전체 관리자 조회 API
-     */
-    @Operation(summary = "6. 전체 관리자 조회")
-    @GetMapping("adminList")
-    public List<Admin> list(){
-        List<Admin> adminList = adminService.findAllAdmin();
-        return adminList;
-    }
 }
