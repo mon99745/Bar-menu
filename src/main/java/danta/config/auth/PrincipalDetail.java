@@ -31,28 +31,45 @@ public class PrincipalDetail implements UserDetails {
         this.user = user;
     }
 
-    //생성자
     public PrincipalDetail(User user) {
         this.user = user;
     }
 
-    //사용자 패스워드
-    @Override
-    public String getPassword() {
-        return user.getPassword();
+    /**
+     * 사용자 구분코드 (PK)
+     * @return
+     */
+    public Long getId() {
+        return user.getId();
     }
 
-    //사용자 아이디
+    /**
+     * 사용자 아이디
+     * @return
+     */
     @Override
     public String getUsername() {
         return user.getUsername();
     }
 
-
-    //사용자 pk
-    public Long getId() {
-        return user.getId();
+    /**
+     * 사용자 비밀번호
+     * @return
+     */
+    @Override
+    public String getPassword() {
+        return user.getPassword();
     }
+
+    /**
+     * 사용자 명 
+     * @return
+     */
+    public String getName(){
+        return user.getName();
+    }
+
+
 
     //계정이 만료되었는지 (true: 만료되지 않음)
     @Override

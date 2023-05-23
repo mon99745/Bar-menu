@@ -44,7 +44,6 @@ public class MyOrderController {
 
     @GetMapping("")
     public String getMyOrderListPage(Authentication authentication, Model model, Pageable pageable, HttpSession session) {
-        //TODO : 주문 페이지 조회 에러
         MyOrderSummaryDto myOrderSummaryDto;
         if(authentication == null) {
             // 게스트의 경우

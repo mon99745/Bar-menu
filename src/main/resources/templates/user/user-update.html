@@ -42,7 +42,7 @@
 
             <div id="main-middle">
                 <table class="info" border="0">
-                    <input type="hidden" id="id" th:value="${#authentication.principal.authId}">
+                    <input type="hidden" id="id" th:value="${#authentication.principal.id}">
 
                     <tr>
                         <td for="username" class="t1">아이디</td>
@@ -59,13 +59,8 @@
                         <td><input type="password" class="input" placeholder="패스워드를 입력하세요."></td>
                     </tr>
                     <tr>
-                        <td class="t1">닉네임</td>
-                        <td><input type="text" class="input" th:value="${#authentication.principal.nickname}"></td>
-                    </tr>
-
-                    <tr>
-                        <td class="t1" for="email">이메일</td>
-                        <td><input type="email" th:value="${#authentication.principal.email}" class="input" id="email" placeholder="이메일을 입력하세요." required readonly></td>
+                        <td class="t1">이름</td>
+                        <td><input type="text" class="input" th:value="${#authentication.principal.name}"></td>
                     </tr>
                 </table>
             </div>
