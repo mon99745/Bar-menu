@@ -2,6 +2,8 @@ package danta.controller;
 
 import danta.domain.product.Product;
 import danta.model.dto.cart.ProductSearchForm;
+import danta.model.dto.product.CatalogSummary;
+import danta.service.product.CatalogService;
 import danta.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import static danta.domain.product.QProduct.product;
 @RequiredArgsConstructor
 public class CatalogController {
     private final ProductService productService;
+    private final CatalogService catalogService;
 
     // TODO : 검색기능 에러 수정 작업
 
@@ -40,12 +43,11 @@ public class CatalogController {
         List<Product> products = productService.findAll();
         model.addAttribute("products", products);
 
-//        searchForm에서의 오류를 못잡음
-//        List<CatalogSummary> products = catalogService.getCatalog(searchForm);
-//        model.addAttribute("product", product);
+        // TODO: 상품 검색 활성화
+        List<CatalogSummary> searchProducts = catalogService.getCatalog(searchForm);
+        model.addAttribute("searchProducts", searchProducts);
 
         return "catalog";
-
     }
     @GetMapping("api")
     public Object swaggerApi() {
