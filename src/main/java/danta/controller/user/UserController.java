@@ -11,11 +11,8 @@ import springfox.documentation.annotations.ApiIgnore;
 
 @ApiIgnore
 @Controller
-//@RequestMapping(UserController.PATH)
 public class UserController {
 
-    //    TODO : PATH 적용
-    //    public static final String PATH = "/auth/user";
     @Autowired
     private UserService userService;
 

@@ -76,7 +76,6 @@ public class OrderController {
     /**
      * 주문
      * 장바구니에 담긴 Product_id 들만을 받아온다.
-     * TODO: 상품리스트가 NULL 로 찍히는 에러 발생
      * @param authentication
      * @param orderRequest
      * @param model

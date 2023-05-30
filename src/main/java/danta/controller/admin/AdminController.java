@@ -1,5 +1,6 @@
 package danta.controller.admin;
 
+import danta.controller.user.UserController;
 import danta.domain.admin.Admin;
 import danta.domain.user.User;
 import danta.service.admin.AdminService;
@@ -9,16 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
 @Controller
-//@RequestMapping(UserController.PATH)
+@RequestMapping(AdminController.PATH)
 public class AdminController {
-
-    //    TODO : PATH 적용
-    //    public static final String PATH = "/auth/user";
+    public static final String PATH = "/auth/admin";
 
     @Autowired
     private AdminService adminService;
