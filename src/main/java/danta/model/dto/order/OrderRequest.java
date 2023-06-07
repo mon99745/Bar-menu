@@ -1,4 +1,4 @@
-package danta.service.order;
+package danta.model.dto.order;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

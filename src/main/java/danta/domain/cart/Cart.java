@@ -2,7 +2,6 @@ package danta.domain.cart;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import danta.domain.user.User;
 import danta.exception.NotEnoughStockQuantityException;
 import danta.domain.AbstractModel;
 import io.swagger.v3.oas.annotations.media.Schema;

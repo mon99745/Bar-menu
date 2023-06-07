@@ -3,7 +3,6 @@ package danta.domain.admin;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.AbstractModel;
-import danta.model.enums.Role;
 import danta.model.enums.Status;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.v3.oas.annotations.media.Schema;

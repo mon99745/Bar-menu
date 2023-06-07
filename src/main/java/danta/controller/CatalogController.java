@@ -15,8 +15,6 @@ import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
-import static danta.domain.product.QProduct.product;
-
 @ApiIgnore
 @Controller
 @RequiredArgsConstructor
