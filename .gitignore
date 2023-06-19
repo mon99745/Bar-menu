@@ -2,7 +2,6 @@
 bin/
 out/
 target/
-build/
 .gradle/
 .git/
 .mvn/
