@@ -1,0 +1,54 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>단타포차에 오신걸 환영합니다.</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+</head>
+<body>
+<div id=tablet>
+    <!--왼쪽 사이드 레이아웃-->
+    <div id=left-sidebar>
+        <button class="mainBtn" onclick="location.href='/'">HOME</button>
+    </div>
+
+    <!--가운데 레이아웃-->
+    <div id=middle>
+        <div class=middle-top>
+            <div class=logo href="/">
+                <!--단타포차 로고-->
+                <button type="button" id="logo">
+                    <a href="/">Danta</a>
+                </button>
+            </div>
+        </div>
+        <div class="login-page">
+                <form class="form" id="needs-validation" novalidation>
+                    <div class="form-group">
+                            <input type="text" class="form-control" id="username" placeholder="아이디를 입력하세요." required minlength="4">
+                        </div>
+
+                    <div class="form-group">
+                            <input type="password" class="form-control" id="password" placeholder="패스워드를 입력하세요." required minlength="4" size="20">
+                        </div>
+
+                    <div class="form-group">
+                            <input type="name" class="form-control" id="name" placeholder="성명을 입력하세요." required>
+                        </div>
+
+                    <button class="btn btn-primary" id="btn-save">회원가입</button>
+                </form>
+            </div>
+        </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script th:src="@{/js/validation/validation.js}"></script>
+<script th:src="@{/js/user/user-manage.js}"></script>
+</body>
+</html>

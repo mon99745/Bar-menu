@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="fragment/configHeader"/>
+<head>
+  <link rel="stylesheet" th:href="@{/css/login.css}" href="../css/login.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../css/style.css">
+  <link rel="stylesheet" th:href="@{/css/cart.css}" href="../css/cart.css">
+</head>
+<body>
+<div id=tablet>
+  <div id=left-sidebar> <!--왼쪽 사이드 레이아웃-->
+    <button class="mainBtn" onclick="location.href='/'">HOME</button >
+  </div>
+
+  <div id=middle> <!--가운데 레이아웃-->
+    <div class=middle-top>
+      <div class=logo href="/"> <!--단타포차 로고-->
+        <button type="button" id="logo">
+          <a href="/">Danta</a>
+        </button>
+      </div>
+    </div>
+
+<div class="container">
+  <div class="titleContainer">
+    <h1 class = "table">장바구니</h1>
+  </div>
+<!--  상품이 없을때 -->
+<th:block th:if="${cartLineList == null}"> 장바구니에 담긴 상품이 없습니다. </th:block>
+
+  <th:block th:unless="${cartLineList == null}">
+  <div class="cartContainer">
+    <table class="table" id="table">
+      <thead>
+      <th><input id="checkAll" type="checkbox"></th>
+      <th>이미지</th>
+      <th>상품정보</th>
+      <th>상품금액</th>
+      <th>수량</th>
+      <th>총 금액</th>
+      </thead>
+      <tbody th:each="cartLine: ${cartLineList}">
+      <tr>
+        <td class="checkBoxTd">
+          <input type="checkbox" class="checkBox">
+        </td>
+        <td class="itemImageTd">
+          <a th:href="@{/product/{productId}(productId=${cartLine.getProductId()})}">
+            <img class="itemImage" th:src="@{${cartLine.productImage}}" alt="">
+          </a>
+        </td>
+        <td class="itemInfoTd">
+          <a th:href="@{/product/{productId}(productId=${cartLine.getProductId()})}">
+            <span th:text="${cartLine.getProductName()}"></span>
+          </a>
+        </td>
+        <td class="itemPriceTd">
+          <span th:text="${#numbers.formatInteger(cartLine.productPrice, 3, 'COMMA')}"></span>
+        </td>
+        <td class="orderCountTd">
+          <!-- productId를 가져오기 위한 필드 -->
+          <input class="productId" type="number" style="display: none;" th:value="${cartLine.getProductId()}"
+                 th:name="productId">
+          <input class="orderCount" type="number" th:value="${cartLine.getOrderCount()}" th:min="1" th:max="${cartLine.stock}"
+                 th:name="orderCount">
+          <button class="btn btn-light orderCountModifyBtn">
+            변경
+          </button>
+          <button type="button" class="close removeCartProductBtn" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </td>
+        <td class="totalPriceTd">
+                    <span th:text="${#numbers.formatInteger(cartLine.productPrice * cartLine.orderCount, 3, 'COMMA')}"></span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  </th:block>
+
+  <div>
+    <button class="btn btn-primary" id="orderBtn" > 주문 </button>
+  </div>
+  </div>
+  </div>
+</div>
+<script th:src="@{/js/cart/cart.js}"></script>
+</body>
+</html>

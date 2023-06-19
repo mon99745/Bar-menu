@@ -1,0 +1,376 @@
+/*@import url(../fonts/hanna.css);*/
+* {
+    font-family: "Jua", sans-serif;
+}
+#tablet-roulette {
+    border: 20px solid #222;
+    box-sizing: content-box;
+    margin: 0 auto;
+    width: 1100px;
+    height: 600px;
+    border-radius: 25px;
+    background-image: url("../img/벽돌.png");
+}
+.mainBtn {
+    display: inline-block;
+    width: 125px;
+    height: 70px;
+    margin: 20px 0 20px 0;
+    margin-left: 30px;
+    padding: 20px 25px;
+    font-size: 25px;
+    text-align: center;
+    font-family: "Jua", sans-serif;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 10000000s infinite alternate;
+    background-color: transparent;
+}
+.roulette-top {
+    width: 800px;
+    height: 70px;
+    display: inline-block;
+    padding-top: 20px;
+    margin: 20px 0 20px 0;
+    margin-left: 30px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    border: 2px solid #fff;
+    text-transform: uppercase;
+    border-radius: 25px;
+    animation: flicker 10000000s infinite alternate;
+    overflow: hidden;
+}
+
+.wrap {
+    float: left;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    top: 0;
+    left: 0;
+}
+.roulette {
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+ul {
+    counter-reset: itemCounter;
+    list-style-type: none;
+    margin-left: 500px;
+    padding: 0px 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 400px;
+    height: 480px;
+    top: 120px;
+    left: 600px;
+}
+
+#list-zone::-webkit-scrollbar {
+    display: none;
+}
+li {
+    counter-increment: itemCounter;
+    position: relative;
+    width: 320px;
+    height: 50px;
+    margin: 5px 0px;
+    padding: 10px;
+    /*border: 1px solid black;*/
+    border: 2px solid #fff;
+    background: #000;
+    animation: flicker-box 3s infinite alternate;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+li > div {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+}
+
+#button-tooltip {
+    /*display: none;*/
+    background: #eff0f1;
+    position: fixed;
+}
+#button-tooltip .command {
+    color: #7d2727;
+    padding: 5px;
+    display: inline-block;
+    text-align: right;
+    width: 90px;
+}
+#button-tooltip .number {
+    color: #3777cf;
+    padding: 5px;
+    display: inline-block;
+    text-align: left;
+    width: 60px;
+}
+
+li.item.empty > .item-weight,
+li.item.empty > .item-weight-add,
+li.item.empty > .item-weight-sub,
+li.item.empty > .item-delete {
+    display: none !important;
+}
+li.item.empty::after {
+    content: "";
+}
+li.item.empty > .item-title::after {
+    content: "항목 추가";
+    color: #fff;
+}
+li.item.empty > .item-title:focus::after {
+    content: "";
+}
+
+li.item > .item-title {
+    cursor: text;
+    position: relative;
+    text-align: left;
+    margin-left: 30px;
+    margin-right: 150px;
+    padding: 2px 15px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    border-radius: 0px;
+    background-color: transparent;
+    color: #fff;
+}
+
+li.item > .item-title:focus {
+    background: transparent;
+}
+
+li.item > .item-weight {
+    padding: 10px 0;
+    cursor: default;
+    width: 45px;
+    right: 100px;
+    left: auto;
+    text-align: right;
+    overflow: visible;
+    color: #fff;
+}
+
+li.item > .item-weight[data-weight]::before {
+    content: "x" attr(data-weight);
+}
+
+li.item > .item-weight-add,
+li.item > .item-weight-sub {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    left: 225px;
+    /*border: 1px solid transparent;*/
+    /*transition: border-color 0.2s ease;*/
+    transition: box-shadow 0.2s ease, color 0.2s ease;
+    box-shadow: 0px 0px 10px transparent;
+    color: #fff;
+}
+li.item > .item-weight-add {
+    top: -1px;
+}
+
+li.item > .item-weight-sub {
+    top: 21px;
+}
+
+li::before,
+ul.lock > li::before {
+    content: counter(itemCounter);
+    position: absolute;
+    top: 10px;
+    left: 9px;
+
+    color: white;
+    width: 24px;
+    text-align: center;
+}
+
+li.empty::before {
+    content: "+";
+    color: #fff;
+    text-shadow: none;
+}
+li.empty {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.7s ease;
+}
+ul.lock > li.item.empty {
+    opacity: 0;
+}
+li.empty:hover {
+    opacity: 1;
+}
+li.empty:hover [contenteditable] {
+    background: transparent;
+    cursor: pointer;
+}
+
+*[contenteditable] {
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+*[contenteditable]:hover {
+    background: #eff;
+}
+ul.lock .item-title[contenteditable]:hover {
+    background: transparent;
+    cursor: default;
+}
+
+*[contenteditable]:focus {
+    outline: none;
+    background: #eee;
+}
+
+#roll.button {
+    font-family: "Jua", sans-serif;
+    font-size: 28px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 300px;
+    height: 50px;
+    margin-left: 150px;
+    animation: flicker 10000000s infinite alternate;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#roll.button::after {
+    content: "시작";
+}
+#roll.button.active::after {
+    content: "멈춰!!";
+}
+
+#roll.button {
+    border: 1px solid white;
+    color: white;
+}
+
+#roll.button.active {
+    background: white;
+    border: 1px solid white;
+    color: red;
+    animation: flicker 10000000s infinite alternate;
+}
+#roll.button.active:hover {
+    background: red;
+    border: 1px solid white;
+    color: white;
+}
+
+ul.lock .item-delete,
+ul.lock .item-weight-add,
+ul.lock .item-weight-sub {
+    display: none !important;
+}
+
+@keyframes shake-x {
+    0%,
+    50%,
+    100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(-3px, 0);
+    }
+    75% {
+        transform: translate(3px, 0);
+    }
+}
+@keyframes shake-y {
+    0%,
+    50%,
+    100% {
+        transform: translate(0, 0);
+    }
+    25% {
+        transform: translate(0, -3px);
+    }
+    75% {
+        transform: translate(0, 3px);
+    }
+}
+
+/*scroll bar*/
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #eee;
+    /*border: 2px solid #efeef1;*/
+    border-radius: 5px;
+}
+
+@keyframes FO {
+    0% {
+        color: transparent;
+        opacity: 0;
+        transform: translate(0, -10px);
+    }
+    15%,
+    80% {
+        color: black;
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+    100% {
+        color: transparent;
+        opacity: 0;
+        transform: translate(0, -150%);
+    }
+}
+
+#result {
+    width: 1100px;
+    height: 100px;
+    text-align: center;
+    display: block;
+    margin: auto;
+    position: absolute;
+    font-size: 36px;
+    font-family: "Jua";
+    line-height: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: black;
+    opacity: 0;
+}
+
+#result.out {
+    display: none;
+}
+#result.play {
+    animation: FO 2s ease;
+}
