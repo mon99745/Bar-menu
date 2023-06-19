@@ -1,6 +1,5 @@
 package danta.service.user;
 
-import danta.domain.cart.Cart;
 import danta.domain.user.User;
 import danta.domain.user.UserRepository;
 import danta.model.enums.Role;
@@ -11,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 

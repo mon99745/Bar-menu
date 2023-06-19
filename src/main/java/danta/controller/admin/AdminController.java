@@ -9,18 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
 @Controller
-//@RequestMapping(UserController.PATH)
+@RequestMapping(AdminController.PATH)
 public class AdminController {
+    public static final String PATH = "/auth/admin";
 
-    //    TODO : PATH 적용
-    //    public static final String PATH = "/auth/user";
-
+    @Autowired
     private AdminService adminService;
+    @Autowired
     private UserService userService;
 
     /**

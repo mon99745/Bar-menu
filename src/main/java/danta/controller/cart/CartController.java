@@ -1,8 +1,6 @@
 package danta.controller.cart;
 
-import danta.config.auth.PrincipalDetail;
 import danta.converter.AuthenticationConverter;
-import danta.domain.cart.Cart;
 import danta.domain.guest.Guest;
 import danta.domain.user.User;
 import danta.model.dto.cart.CartLineDto;
@@ -21,7 +19,6 @@ import springfox.documentation.annotations.ApiIgnore;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
-import java.util.UUID;
 
 @ApiIgnore
 @Controller

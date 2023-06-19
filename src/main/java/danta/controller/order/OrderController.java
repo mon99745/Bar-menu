@@ -2,14 +2,13 @@ package danta.controller.order;
 
 import danta.converter.AuthenticationConverter;
 import danta.domain.guest.Guest;
-import danta.domain.guest.GuestRepository;
 import danta.domain.product.Product;
 import danta.domain.user.User;
 import danta.domain.order.OrderRepository;
 import danta.domain.product.ProductRepository;
+import danta.model.dto.order.OrderLineRequest;
+import danta.model.dto.order.OrderRequest;
 import danta.service.guest.GuestService;
-import danta.service.order.OrderLineRequest;
-import danta.service.order.OrderRequest;
 import danta.service.order.OrderService;
 import danta.model.dto.order.OrderProductDto;
 import danta.model.dto.order.OrderSummaryDto;
@@ -76,7 +75,6 @@ public class OrderController {
     /**
      * 주문
      * 장바구니에 담긴 Product_id 들만을 받아온다.
-     * TODO: 상품리스트가 NULL 로 찍히는 에러 발생
      * @param authentication
      * @param orderRequest
      * @param model

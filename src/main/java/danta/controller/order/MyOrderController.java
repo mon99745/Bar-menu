@@ -3,15 +3,11 @@ package danta.controller.order;
 import danta.converter.AuthenticationConverter;
 import danta.domain.guest.Guest;
 import danta.domain.guest.GuestRepository;
-import danta.domain.order.MyOrderRepository;
-import danta.domain.order.OrderDetail;
 import danta.domain.user.User;
-import danta.model.dto.cart.CartLineDto;
 import danta.model.dto.order.MyOrderDetailDto;
 import danta.model.dto.order.MyOrderSummaryDto;
 import danta.service.guest.GuestService;
 import danta.service.order.MyOrderService;
-import danta.service.order.OrderService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @Slf4j
 @Api(tags = MyOrderController.TAG, description = "자신의 주문을 관리하는 API")
@@ -44,7 +39,6 @@ public class MyOrderController {
 
     @GetMapping("")
     public String getMyOrderListPage(Authentication authentication, Model model, Pageable pageable, HttpSession session) {
-        //TODO : 주문 페이지 조회 에러
         MyOrderSummaryDto myOrderSummaryDto;
         if(authentication == null) {
             // 게스트의 경우

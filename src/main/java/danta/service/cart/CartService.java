@@ -34,7 +34,6 @@ public class CartService {
      * 장바구니에 상품 추가
      * @param carterId
      * @param addToCartRequestForm
-     * TODO: 특정 경우 버그 발생
      */
     public void addProductToCart(Long carterId, AddToCartRequestFormDto addToCartRequestForm) {
         Cart cart = cartRepository.findCartByCarterId(carterId);
