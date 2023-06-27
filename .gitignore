@@ -1,10 +1,12 @@
 ### Build ###
+build/
 bin/
 out/
 target/
 .gradle/
 .git/
 .mvn/
+
 
 
 ### AP ###
