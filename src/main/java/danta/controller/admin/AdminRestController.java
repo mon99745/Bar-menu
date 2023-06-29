@@ -36,8 +36,9 @@ public class AdminRestController {
      */
     @Operation(summary = "1. 관리자 가입")
     @PostMapping("create")
-    public Long create(@RequestBody Admin admin) {
-        return adminService.save(admin);
+    public Admin create(@RequestBody Admin createMsg) {
+        adminService.save(createMsg);
+        return createMsg;
     }
 
     /**
@@ -54,8 +55,9 @@ public class AdminRestController {
      */
     @Operation(summary = "3. 관리자 정보 수정")
     @PutMapping("update/{adminId}")
-    public Admin update(@PathVariable Long adminId, @RequestBody Admin admin) {
-        return adminService.update(adminId, admin);
+    public Admin update(@PathVariable Long adminId, @RequestBody Admin updateMsg) {
+        adminService.update(adminId, updateMsg);
+        return updateMsg;
     }
 
     /**
