@@ -30,13 +30,12 @@ public class UserService {
             throw new IllegalArgumentException("중복된 아이디 입니다.");
         }
         user.setRole(Role.USER);
+        // 활성화 상태
+        user.setStatus(Status.TRUE);
 
         // 패스워드를 암호화해서 저장
         String hashPw = bCryptPasswordEncoder.encode(user.getPassword());
         user.setPassword(hashPw);
-
-        // 활성화 상태
-        user.setStatus(Status.TRUE);
 
         userRepository.save(user);
 

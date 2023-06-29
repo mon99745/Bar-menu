@@ -32,8 +32,9 @@ public class UserRestController {
      */
     @Operation(summary = "1. 회원 가입")
     @PostMapping("create")
-    public Long create(@RequestBody User user) {
-        return userService.save(user);
+    public User create(@RequestBody User createMsg) {
+        userService.save(createMsg);
+        return createMsg;
     }
 
     /**
@@ -50,8 +51,9 @@ public class UserRestController {
      */
     @Operation(summary = "3. 회원 정보 수정")
     @PutMapping("update/{userId}")
-    public User update(@PathVariable Long userId, @RequestBody User user) {
-        return userService.update(userId, user);
+    public User update(@PathVariable Long userId, @RequestBody User updateMsg) {
+        userService.update(userId, updateMsg);
+        return updateMsg;
     }
 
     /**
