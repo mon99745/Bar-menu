@@ -4,6 +4,7 @@ import danta.domain.cart.Cart;
 import danta.domain.guest.Guest;
 import danta.domain.guest.GuestRepository;
 import danta.domain.user.User;
+import danta.model.enums.Role;
 import danta.service.cart.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class GuestService {
             guest = new Guest();
             guest.setId(guestId);
             guest.setStatus(true);
+            guest.setRole(Role.GUEST);
 
             guestRepository.save(guest);
 

@@ -3,6 +3,7 @@ package danta.domain.guest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import danta.domain.AbstractModel;
+import danta.model.enums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,5 +47,13 @@ public class Guest extends AbstractModel {
     @Schema(description = "비회원 상태")
     @Column(length = 100)
     protected boolean status;
+
+    /**
+     * 권한
+     */
+    @Enumerated(EnumType.STRING)
+    @Schema(description = "권한")
+    @Column(nullable = false)
+    private Role role;
 
 }
