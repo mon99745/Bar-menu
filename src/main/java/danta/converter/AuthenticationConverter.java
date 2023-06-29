@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 public class AuthenticationConverter {
     private final UserRepository userRepository;
 
+    /**
+     * Authentication 에서 Username 반환
+     * @param authentication
+     * @return
+     */
     public User getUserFromAuthentication(Authentication authentication) {
         String username = authentication.getName();
 
