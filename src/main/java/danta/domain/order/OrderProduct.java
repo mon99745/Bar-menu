@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
@@ -15,6 +16,7 @@ import javax.persistence.*;
  */
 @Schema(description = "주문 상품")
 @Data
+@SuperBuilder
 @Entity
 @Table(name = "order_product")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
