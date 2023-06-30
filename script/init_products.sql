@@ -1,24 +1,39 @@
 --  초기 아이템 설정
 USE bar_menu;
--- drop table
--- To prevent a join conflict
-drop table if exists order_product;
-drop table if exists product_info;
 
--- create table
-create table product_info (
-    product_id  varchar(255) not null
-        primary key,
-    mod_date    datetime(6)  not null,
-    reg_date    datetime(6)  not null,
-    description varchar(100) null,
-    image       varchar(100) null,
-    name        varchar(100) null,
-    price       bigint       null,
-    status      varchar(100) null,
-    stock       int          null,
-    category    varchar(100) null
-) ;
+# -- drop table
+# -- To prevent a join conflict
+# drop table if exists order_product;
+# drop table if exists product_info;
+#
+# -- create table
+# create table product_info (
+#     product_id  varchar(255) not null
+#         primary key,
+#     mod_date    datetime(6)  not null,
+#     reg_date    datetime(6)  not null,
+#     description varchar(100) null,
+#     image       varchar(100) null,
+#     name        varchar(100) null,
+#     price       bigint       null,
+#     status      varchar(100) null,
+#     stock       int          null,
+#     category    varchar(100) null
+# ) ;
+#
+# CREATE TABLE order_product
+# (
+#     order_product_id bigint      not null
+#         auto_increment,
+#     mod_date         datetime(6),
+#     reg_date         datetime(6),
+#     order_count      integer     not null,
+#     order_product_amount integer not null,
+#     roduct_id        bigint,
+#     order_id         bigint,
+#     CONSTRAINT pk_order_product PRIMARY KEY (order_product_id)
+# );
+
 
 -- insert table
 #

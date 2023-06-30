@@ -1,13 +1,16 @@
 package danta.domain.cart;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
+/**
+ * 어떤 아이템을, 얼만큼 담았는지를 표현할 수 있는 오브젝트
+ */
 @Embeddable
 @NoArgsConstructor
-@Getter
+@Data
 public class CartLine {
     private Long cartId;
     private Long productId;
