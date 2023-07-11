@@ -85,7 +85,6 @@ public class OrderController {
     public String getOrderPage(Authentication authentication,
                                @ModelAttribute OrderRequest orderRequest,
                                Model model, HttpSession session) {
-        // TODO: 코드 중복 수정
         OrderSummaryDto orderSummaryDto;
         if(authentication == null) {
             // 게스트의 경우
@@ -142,7 +141,6 @@ public class OrderController {
         return new OrderSummaryDto(Arrays.asList(orderProductDto));
     }
 
-    // TODO:주문자 정보 생성 메소드 통합
     /**
      * 주문자 정보 생성
      * USER

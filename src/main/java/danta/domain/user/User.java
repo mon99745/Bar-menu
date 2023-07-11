@@ -54,7 +54,6 @@ public class User extends AbstractModel {
 
     /**
      * 회원 ID
-     * TODO 암호화
      */
     @JsonProperty(index = 10)
     @Schema(description = "회원 ID")
