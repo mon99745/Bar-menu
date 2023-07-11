@@ -1,0 +1,11 @@
+{
+  "id" : "1",
+  "category" : "탕",
+  "name" : "Test menu",
+  "price" : "10000",
+  "status" : "true",
+  "image" : "Test.path",
+  "description" : "Test",
+  "stock" : "100"
+
+}
