@@ -1,4 +1,4 @@
-package danta.model.dto.cart;
+package com.example.bmm.model.dto.cart;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,9 +1,9 @@
-package danta.domain.guest;
+package com.example.bmm.domain.guest;
 
 
+import com.example.bmm.domain.AbstractModel;
+import com.example.bmm.model.enums.Role;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import danta.domain.AbstractModel;
-import danta.model.enums.Role;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,8 +11,13 @@ import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
 
 /**
  * 비회원 정보 ENTITY
