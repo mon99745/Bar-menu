@@ -1,3 +1,11 @@
 rootProject.name = 'Bar-menu'
 
+// Bar-Menu-Admin
+include 'bma'
+
+// Bar-Menu-Manager
+include 'bmm'
+
+// Bar-Menu-Common
+include 'bmc'
 
