@@ -23,7 +23,7 @@ public class CartCustomRepositoryImpl implements CartCustomRepository {
     public List<CartLineDto> getCartLineListInCartPage(Long carterId) {
         List<CartLineDto> cartLineDtoList = em
                 .createQuery(
-                        "select new danta.model.dto.cart.CartLineDto(p.id, p.image, p.name, p.price, cl.orderCount, p.stock)" +
+                        "select new com.example.bmm.model.dto.cart.CartLineDto(p.id, p.image, p.name, p.price, cl.orderCount, p.stock)" +
                                 " from Cart c" +
                                 " join c.cart cl" +
                                 " on c.id= cl.cartId" +

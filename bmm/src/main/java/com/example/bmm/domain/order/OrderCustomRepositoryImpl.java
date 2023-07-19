@@ -24,7 +24,7 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
     public OrderSummaryDto getOrderSummaryInCart(Authentication authentication, Long id, List<Long> productIdList) {
         List<OrderProductDto> orderProductList;
         if(authentication == null){
-            orderProductList = em.createQuery("select new danta.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
+            orderProductList = em.createQuery("select new com.example.bmm.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
                             " from Cart c" +
                             " join c.cart cl" +
                             " on c.id = cl.cartId" +
@@ -39,7 +39,7 @@ public class OrderCustomRepositoryImpl implements OrderCustomRepository{
                     .getResultList();
 
         } else{
-            orderProductList = em.createQuery("select new danta.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
+            orderProductList = em.createQuery("select new com.example.bmm.model.dto.order.OrderProductDto(i.id, i.name, i.price, cl.orderCount)" +
                             " from Cart c" +
                             " join c.cart cl" +
                             " on c.id = cl.cartId" +
