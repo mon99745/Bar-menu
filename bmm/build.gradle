@@ -5,46 +5,19 @@ buildscript {
 }
 
 plugins {
-    id 'org.springframework.boot' version '2.6.2'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'war'
     id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
-    id 'java'
 }
 
-group = 'com.example'
-version = VERSION
-sourceCompatibility = 11
-targetCompatibility = 11
+war {
+    enabled = false
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
-    testImplementation 'org.projectlombok:lombok:1.18.22'
-    developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
-    implementation 'io.springfox:springfox-boot-starter:3.0.0'
-    implementation 'io.springfox:springfox-swagger-ui:3.0.0'
-
-    implementation 'junit:junit:4.13.1'
-    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
-
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
-    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.12.5'
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-csv'
-
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation group: 'javax.inject', name: 'javax.inject', version: '1'
-    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
 
     //DB
     implementation 'mysql:mysql-connector-java'
