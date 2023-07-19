@@ -1,14 +1,14 @@
-package com.example.bmm.controller.admin;
+package com.example.bma.cotroller;
 
-import com.example.bmm.domain.admin.Admin;
-import com.example.bmm.service.admin.AdminService;
-import com.example.bmm.service.user.UserService;
+import com.example.bma.domain.Admin;
+import com.example.bma.service.AdminService;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 
 /**
@@ -35,7 +37,6 @@ public class AdminRestController {
     public static final String PATH = "/auth/api/v1/admin";
     public static final String TAG = "Admin Rest API";
     private final AdminService adminService;
-    private final UserService userService;
 
 
     /**
@@ -56,6 +57,30 @@ public class AdminRestController {
     public Admin read(@PathVariable Long adminId) {
         return adminService.findAdmin(adminId);
     }
+
+    /**
+     * 전체 회원 조회 API (관리자용)
+     * TODO : 바이패스
+     */
+//    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
+//    @GetMapping("userList")
+//    public String userList(Model model){
+//        List<User> userList = userService.findAllUser();
+//        model.addAttribute("userList", userList);
+//        return "admin/user-list";
+//    }
+
+//    /**
+//     * 전체 관리자 조회 API
+//     */
+//    @Operation(summary = "6. 전체 관리자 조회")
+//    @GetMapping("adminList")
+//    public String adminList(Model model){
+//        List<Admin> adminList = adminService.findAllAdmin();
+//        model.addAttribute("adminList", adminList);
+//        return "admin/admin-list";
+//    }
+
 
     /**
      * 관리자 수정 API

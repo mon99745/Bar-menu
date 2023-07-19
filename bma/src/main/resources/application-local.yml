@@ -5,7 +5,7 @@ spring:
     username: localuser
     password: '0000'
   jpa:
-    hibernate.ddl-auto: update
+    hibernate.ddl-auto: create
     properties.hibernate:
       dialect: org.hibernate.dialect.MySQL8Dialect
 #      format_sql: 'true'

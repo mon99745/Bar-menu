@@ -1,10 +1,9 @@
-package com.example.bmm.service.admin;
+package com.example.bma.service;
 
-import com.example.bmm.domain.admin.Admin;
-import com.example.bmm.domain.admin.AdminRepository;
-import com.example.bmm.domain.user.UserRepository;
-import com.example.bmm.model.enums.Role;
-import com.example.bmm.model.enums.Status;
+import com.example.bma.domain.Admin;
+import com.example.bma.domain.AdminRepository;
+import com.example.bma.model.enums.Role;
+import com.example.bma.model.enums.Status;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,6 @@ import java.util.Optional;
 @Service
 public class AdminService {
     private final AdminRepository adminRepository;
-    private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**

@@ -1,6 +1,6 @@
-package com.example.bmm.config;
+package com.example.bma.config;
 
-import com.example.bmm.controller.user.UserRestController;
+import com.example.bma.cotroller.AdminRestController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,14 +22,14 @@ public class SwaggerConfig {
                 .useDefaultResponseMessages(true) // Swagger 에서 제공해주는 기본 응답 코드
                 .apiInfo(apiInfo())
                 .tags(
-                        new Tag(UserRestController.TAG, "회원 관리 API", 110))
-//                        new Tag(AdminRestController.TAG, "관리자 관리 API", 110))
+//                        new Tag(UserRestController.TAG, "회원 관리 API", 110),
+                        new Tag(AdminRestController.TAG, "관리자 관리 API", 110))
 //                new Tag(UserTestRestController.TAG, "회원 로직을 테스트하는 관리하는 Rest API", 210),
 //                new Tag(OrderController.TAG, "결제 로직을 관리하는 API", 210),
 //                new Tag(MyOrderController.TAG, "자신의 결제 로직을 관리하는 API", 210),
 //                new Tag(MyOrderRestController.TAG,"자신의 결제 로직을 관리하는 Rest API", 210));
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("danta.controller"))
+                .apis(RequestHandlerSelectors.basePackage("bma.controller"))
                 .build();
 
     }

@@ -1,11 +1,11 @@
-package com.example.bmm.domain.admin;
+package com.example.bma.domain;
 
 
-import com.example.bmm.domain.AbstractModel;
-import com.example.bmm.model.enums.Role;
-import com.example.bmm.model.enums.Status;
+import com.example.bma.model.enums.Role;
+import com.example.bma.model.enums.Status;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import com.example.bma.domain.AbstractModel;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -104,5 +104,10 @@ public class Admin extends AbstractModel {
     @Column(nullable = false)
     private Role role;
 
-
+    /**
+     * 권한 메소드
+     */
+    public String getRoleKey() {
+        return this.role.getKey();
+    }
 }

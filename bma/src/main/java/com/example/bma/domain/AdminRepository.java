@@ -1,4 +1,4 @@
-package com.example.bmm.domain.admin;
+package com.example.bma.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
