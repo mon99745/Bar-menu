@@ -81,12 +81,14 @@
       <div id="tang" class="tabimage" style= "overflow-y: scroll">
         <h2>보글보글 탕탕탕!</h2>
         <ul>
-          <li th:each="product : ${products}" th:if="${product.category} eq '탕'" >
+          <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
+          <li th:each="product : ${products}" th:if="${product.category} eq '탕'">
             <!-- a 태그에 대한 기존설정이 있어서 b로 임시 태그설정  -->
             <a type="hidden" th:href="@{/product/{productId}(productId=${product.getId()})}">
             <button type="submit" name ="product">
               <img class="product" th:src="@{${product.getImage()}}">
             </button>
+<!--              <div th:if="${#lists.isEmpty(product.getId())}"><h2> 등록된 상품이 없습니다! </h2></div>-->
             <a>
               <span th:text="${product.name}">메뉴이름</span><br>
               <span th:text="${#numbers.formatInteger(product.price, 3, 'COMMA')} + ' 원'">메뉴가격</span>
@@ -99,6 +101,7 @@
     <div id="stir-fry" class="tabimage" style= "overflow-y: scroll">
       <h2>볶으면 뭔들...</h2>
         <ul>
+          <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
           <li th:each="product : ${products}" th:if="${product.category} eq '볶음'">
             <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
             <button type="submit" name ="product">
@@ -116,6 +119,7 @@
       <div id="delicacy" class="tabimage" style= "overflow-y: scroll">
         <h2>별미</h2>
           <ul>
+            <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
             <li th:each="product : ${products}" th:if="${product.category} eq '별미'">
               <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
               <button type="submit" name ="product">
@@ -133,6 +137,7 @@
       <div id="salad" class="tabimage" style= "overflow-y: scroll">
         <h2>샐러드</h2>
           <ul>
+            <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
             <li th:each="product : ${products}" th:if="${product.category} eq '샐러드'">
               <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
               <button type="submit" name ="product">
@@ -150,6 +155,7 @@
       <div id="soda" class="tabimage">
         <h2>톡 쏘는 음료!</h2>
           <ul>
+            <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
             <li th:each="product : ${products}" th:if="${product.category} eq '음료'">
               <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
               <button type="submit" name ="product">
@@ -167,6 +173,7 @@
       <div id="alcohol" class="tabimage" style= "overflow-y: scroll">
         <h2>술이들어간다 쭉쭉~</h2>
           <ul>
+            <div th:if="${#lists.isEmpty(products)}"><h2> 등록된 상품이 없습니다! </h2></div>
             <li th:each="product : ${products}" th:if="${product.category} eq '주류'">
               <a type="hidden" th:href="@{/products/{productId}(productId.=${product.getId()})}">
               <button type="submit" name ="product">

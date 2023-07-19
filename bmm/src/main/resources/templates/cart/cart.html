@@ -26,9 +26,10 @@
     <h1 class = "table">장바구니</h1>
   </div>
 <!--  상품이 없을때 -->
-<th:block th:if="${cartLineList == null}"> 장바구니에 담긴 상품이 없습니다. </th:block>
-
-  <th:block th:unless="${cartLineList == null}">
+<th:block th:if="${#lists.isEmpty(cartLineList)}">
+  <h1 class="table" > 장바구니에 담긴 상품이 없습니다! </h1>
+</th:block>
+  <th:block th:if="${not #lists.isEmpty(cartLineList)}">
   <div class="cartContainer">
     <table class="table" id="table">
       <thead>
@@ -77,11 +78,10 @@
       </tbody>
     </table>
   </div>
-  </th:block>
-
   <div>
     <button class="btn btn-primary" id="orderBtn" > 주문 </button>
   </div>
+  </th:block>
   </div>
   </div>
 </div>

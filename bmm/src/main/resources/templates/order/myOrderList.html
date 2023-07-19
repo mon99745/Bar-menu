@@ -27,10 +27,14 @@
 <div id=myorderlist-middle> <!--가운데 레이아웃-->
 <div class="container">
     <div class="titleContainer">
-        <h1 class = "table">주문내역</h1>
+        <h1 class="table">주문내역</h1>
     </div>
 
-    <table class="table">
+    <table th:if="${#lists.isEmpty(myOrderSummary.myOrderList)}">
+        <h1 class="table"> 주문하신 상품이 없습니다! </h1>
+    </table>
+
+    <table class="table" th:if="${not #lists.isEmpty(myOrderSummary.myOrderList)}">
         <thead>
         <tr>
             <th>주문번호</th>
