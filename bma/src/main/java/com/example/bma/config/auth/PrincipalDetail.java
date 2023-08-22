@@ -1,6 +1,6 @@
 package com.example.bma.config.auth;
 
-import com.example.bma.domain.Admin;
+import com.example.bma.domain.admin.Admin;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;

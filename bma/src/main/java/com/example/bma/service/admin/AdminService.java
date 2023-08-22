@@ -1,7 +1,7 @@
-package com.example.bma.service;
+package com.example.bma.service.admin;
 
-import com.example.bma.domain.Admin;
-import com.example.bma.domain.AdminRepository;
+import com.example.bma.domain.admin.Admin;
+import com.example.bma.domain.admin.AdminRepository;
 import com.example.bma.model.enums.Role;
 import com.example.bma.model.enums.Status;
 import lombok.RequiredArgsConstructor;

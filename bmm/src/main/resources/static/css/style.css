@@ -46,6 +46,21 @@ ul {
     margin-left: 40px;
 }
 
+#middle-left {
+    float: left;
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    margin-left: 40px;
+}
+#middle-right {
+    float: left;
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    margin-left: 40px;
+}
+
 #right-sidebar {
     width: 140px;
     height: 100%;

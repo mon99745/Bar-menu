@@ -1,4 +1,4 @@
-package com.example.bma.domain;
+package com.example.bma.domain.admin;
 
 
 import com.example.bma.model.enums.Role;

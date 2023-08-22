@@ -1,6 +1,6 @@
 package com.example.bma.controller;
 
-import com.example.bma.cotroller.AdminRestController;
+import com.example.bma.cotroller.admin.AdminRestController;
 import com.example.bmm.config.ControllerTest;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;

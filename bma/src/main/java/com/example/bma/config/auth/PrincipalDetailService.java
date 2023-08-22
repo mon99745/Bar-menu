@@ -1,7 +1,7 @@
 package com.example.bma.config.auth;
 
-import com.example.bma.domain.Admin;
-import com.example.bma.domain.AdminRepository;
+import com.example.bma.domain.admin.Admin;
+import com.example.bma.domain.admin.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

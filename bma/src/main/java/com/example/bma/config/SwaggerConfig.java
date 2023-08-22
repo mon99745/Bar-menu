@@ -1,6 +1,6 @@
 package com.example.bma.config;
 
-import com.example.bma.cotroller.AdminRestController;
+import com.example.bma.cotroller.admin.AdminRestController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
