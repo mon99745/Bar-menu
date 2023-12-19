@@ -5,13 +5,13 @@ spring:
     username: localuser
     password: '0000'
   jpa:
-    hibernate.ddl-auto: create
+    hibernate.ddl-auto: update
     properties.hibernate:
       dialect: org.hibernate.dialect.MySQL8Dialect
-#      format_sql: 'true'
-#    show-sql: 'true'
+#      format_sql: true
+#    show-sql: true
   thymeleaf:
-#    cache: 'false '
+#    cache: false
 
 security:
 #  auth: false

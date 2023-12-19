@@ -1,5 +1,5 @@
 server:
-  port: '8200'
+  port: 8020
   error:
     include-message: always
     include-stacktrace: never
@@ -16,15 +16,15 @@ spring:
     pathmatch:
       matching-strategy: ant_path_matcher
   jpa:
-    open-in-view: 'false'
-    generate-ddl: 'true'
+    open-in-view: false
+    generate-ddl: true
     hibernate.ddl-auto: update
     properties.hibernate:
-      format_sql: 'true'
-    defer-datasource-initialization: 'true'
-    show-sql: 'true'
+      format_sql: true
+    defer-datasource-initialization: true
+    show-sql: true
   thymeleaf:
-    cache: 'false'
+    cache: false
 
 security:
   auth: true
