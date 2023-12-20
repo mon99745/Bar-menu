@@ -33,7 +33,7 @@ public class OrderService {
     private final Product product;
 
     /**
-     * GUEST
+     * GUEST 주문
      * @param ordererId
      * @param orderRequest
      * @param session
@@ -42,7 +42,6 @@ public class OrderService {
     public Long order(Long ordererId, OrderRequest orderRequest, HttpSession session) {
         // 엔티티 조회
         Guest orderer = guestService.findGuest(ordererId);
-
 
         // 주문상품 생성
         List<OrderProduct> orderProductList = orderRequest.getOrderLineList()
@@ -75,7 +74,7 @@ public class OrderService {
     }
 
     /**
-     * USER
+     * USER 주문
      * @param ordererId
      * @param orderRequest
      * @return
@@ -116,6 +115,10 @@ public class OrderService {
         return orderRepository.save(order).getOrderId();
     }
 
+    /**
+     * 주문 취소
+     * @param orderId
+     */
     public void cancel(Long orderId) {
         Order order = orderRepository.findById(orderId).get();
         order.cancel();

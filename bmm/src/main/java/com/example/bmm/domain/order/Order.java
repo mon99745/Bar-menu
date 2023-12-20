@@ -5,6 +5,7 @@ import com.example.bmm.domain.AbstractModel;
 import com.example.bmm.model.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,7 +36,7 @@ import java.util.List;
 @Schema(description = "주문")
 @Data
 @SuperBuilder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Embeddable
 @DynamicInsert
@@ -106,16 +107,23 @@ public class Order extends AbstractModel {
         this.calculateTotalAmount();
     }
 
+    /**
+     * 비즈니스 로직
+     * 주문 취소
+     */
+    public void cancel() {
+        this.orderProductList.stream()
+                .forEach(orderProduct -> orderProduct.cancel());
+    }
+
+    /**
+     * 조회 로직
+     * 전체 주문 가격 조회
+     */
     private void calculateTotalAmount() {
         this.totalAmount = this.orderProductList.stream()
                 .mapToInt(orderProduct -> orderProduct.getOrderProductAmount())
                 .sum();
-    }
-
-    // ==== 비즈니스 로직 ====
-    public void cancel() {
-        this.orderProductList.stream()
-                .forEach(orderProduct -> orderProduct.cancel());
     }
 
     public void deleteOrder(Long ordererId) {
