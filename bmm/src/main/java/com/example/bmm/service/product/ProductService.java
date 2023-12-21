@@ -87,21 +87,25 @@ public class ProductService {
     /**
      * 상품 수정
      */
+    @Transactional
     public Product updateProduct(Long productId, Product product){
         Product tempProduct = productRepository.findById(productId).orElseThrow(()
                 -> new IllegalArgumentException("해당 상품이 없습니다. id=" + product.getId()));
         // 수정 가능한 정보
+        tempProduct.setCategory(product.getCategory());
         tempProduct.setName(product.getName());
         tempProduct.setStatus(product.getStatus());
         tempProduct.setImage(product.getImage());
         tempProduct.setPrice(product.getPrice());
 
+        productRepository.save(tempProduct);
         return tempProduct;
     }
 
     /**
      * 상품 삭제
      */
+    @Transactional
     public void deleteProduct(Long productId, Product product){
         product.setId(productId);
         productRepository.delete(product);
