@@ -71,7 +71,7 @@ let index = {
         }
 
         $.ajax({
-            type: "PUT",
+            type: "POST",
             url: "/api/v1/user",
             data: JSON.stringify(data),
             contentType: "application/json; charset=utf-8",
@@ -91,7 +91,7 @@ let index = {
         let authId = $("#authId").val();
 
         $.ajax({
-            type: "DELETE",
+            type: "POST",
             url: "/api/v1/user/" + authId,
             dataType: "json"
         }).done(function (res) {

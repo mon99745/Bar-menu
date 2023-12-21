@@ -1,7 +1,7 @@
 package com.example.bma.controller;
 
+import com.example.bma.config.ControllerTest;
 import com.example.bma.cotroller.admin.AdminRestController;
-import com.example.bmm.config.ControllerTest;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Disabled;
@@ -12,10 +12,8 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -74,7 +72,7 @@ class AdminRestControllerTest {
 
 	@Test
 	void t07update() throws Exception {
-		mvc.perform(put(AdminRestController.PATH + "/update/{adminId}", id)
+		mvc.perform(post(AdminRestController.PATH + "/update/{adminId}", id)
 						.session(SESSION)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(updateMsg))
@@ -85,7 +83,7 @@ class AdminRestControllerTest {
 
 	@Test
 	void t08delete() throws Exception {
-		mvc.perform(delete(AdminRestController.PATH + "/delete/{adminId}", id)
+		mvc.perform(post(AdminRestController.PATH + "/delete/{adminId}", id)
 						.session(SESSION)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(createMsg))

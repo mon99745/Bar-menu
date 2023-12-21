@@ -8,11 +8,9 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -57,7 +55,7 @@ public class ProductRestController {
 	 * 상품 수정
 	 */
 	@Operation(summary = "3. 상품 수정")
-	@PutMapping("update/{productId}")
+	@PostMapping("update/{productId}")
 	public Product update(@PathVariable Long productId, @RequestBody Product updateMsg) {
 		productService.updateProduct(productId, updateMsg);
 		return updateMsg;
@@ -67,7 +65,7 @@ public class ProductRestController {
 	 * 상품 삭제
 	 */
 	@Operation(summary = "4. 상품 삭제 ")
-	@DeleteMapping("delete/{productId}")
+	@PostMapping("delete/{productId}")
 	public void delete(@PathVariable Long productId, @RequestBody Product product) {
 		productService.deleteProduct(productId, product);
 	}

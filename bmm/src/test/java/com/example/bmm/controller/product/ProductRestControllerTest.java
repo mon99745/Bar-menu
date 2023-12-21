@@ -12,10 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static com.example.bmm.controller.product.ProductRestController.PATH;
 import static org.hamcrest.Matchers.equalTo;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -78,7 +76,7 @@ class ProductRestControllerTest {
 
 	@Test
 	void t03update() throws Exception{
-		mvc.perform(put(PATH + "/update/{productId}", id)
+		mvc.perform(post(PATH + "/update/{productId}", id)
 						.session(SESSION)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(updateMsg))
@@ -89,7 +87,7 @@ class ProductRestControllerTest {
 
 	@Test
 	void t04delete() throws Exception{
-		mvc.perform(delete(PATH + "/delete/{productId}", id)
+		mvc.perform(post(PATH + "/delete/{productId}", id)
 						.session(SESSION)
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(createMsg))

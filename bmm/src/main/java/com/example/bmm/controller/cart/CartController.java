@@ -1,5 +1,6 @@
 package com.example.bmm.controller.cart;
 
+import com.example.bmm.controller.user.UserRestController;
 import com.example.bmm.converter.AuthenticationConverter;
 import com.example.bmm.domain.guest.Guest;
 import com.example.bmm.domain.user.User;
@@ -13,11 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import springfox.documentation.annotations.ApiIgnore;
@@ -30,15 +30,17 @@ import java.util.List;
 @ApiIgnore
 @Controller
 @RequiredArgsConstructor
+@RequestMapping(CartController.PATH)
 public class CartController {
     private final GuestService guestService;
     private final CartService cartService;
     private final AuthenticationConverter authenticationConverter;
+    public static final String PATH = "/cart";
 
     /**
      * 장바구니 목록 조회
      */
-    @GetMapping("/cart")
+    @GetMapping("read")
     public String getCartPage(Authentication authentication, Model model, HttpSession session) {
         List<CartLineDto> cartLineDtoInCartPage;
 
@@ -58,7 +60,7 @@ public class CartController {
     /**
      * 장바구니 목록 추가
      */
-    @PostMapping("/cart")
+    @PostMapping("add")
     public String addProductToCart(Authentication authentication, @ModelAttribute @Valid AddToCartRequestFormDto addToCartRequestForm, HttpSession session) {
         if(authentication == null) {
             // 게스트의 경우
@@ -76,7 +78,7 @@ public class CartController {
     /**
      * 장바구니 목록 변경
      */
-    @PutMapping("/cart")
+    @PostMapping("/update")
     @ResponseBody
     public ResponseEntity modifyCartLine(Authentication authentication, @ModelAttribute ModifyOrderCountRequestFormDto modifyOrderCountRequestForm, HttpSession session) {
         if(authentication == null) {
@@ -93,7 +95,7 @@ public class CartController {
     /**
      * 장바구니 목록 삭제
      */
-    @DeleteMapping("/cart")
+    @PostMapping("/delete")
     @ResponseBody
     public ResponseEntity deleteCartLine(Authentication authentication, @RequestParam("productId") Long productId, HttpSession session) {
         if(authentication == null) {

@@ -9,11 +9,11 @@ $(function () {
         formData.append("orderCount", newOrderCount);
 
         $.ajax({
-            url: '/cart',
+            url: '/cart/add',
             data: formData,
             processData: false,
             contentType: false,
-            type: 'PUT',
+            type: 'POST',
             success: function (data) {
                 location.reload();
             }
@@ -25,8 +25,8 @@ $(function () {
         let productId = $(this).parent().find(".productId").val();
 
         $.ajax({
-            url: `/cart?productId=${productId}`,
-            type: 'DELETE',
+            url: `/cart/delete?productId=${productId}`,
+            type: 'POST',
             success: function (data) {
                 location.reload();
             }
