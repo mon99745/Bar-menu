@@ -8,9 +8,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
+import java.util.List;
 
 /**
  * Swagger 사용을 위해 모든 권한(auth) 을 허용한 상태
@@ -73,5 +71,16 @@ public class UserRestController {
     @PostMapping("delete/{userId}")
     public void delete(@PathVariable Long userId, @RequestBody User deleteMsg) {
         userService.delete(userId, deleteMsg);
+    }
+
+    /**
+     * 전체 회원 조회 API (관리자용)
+     */
+    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
+    @GetMapping("userList")
+    public Model userList(Model model){
+        List<User> userList = userService.findAllUser();
+        model.addAttribute("userList", userList);
+        return model;
     }
 }

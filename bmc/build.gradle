@@ -22,6 +22,8 @@ repositories {
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
+    implementation 'org.apache.httpcomponents:httpclient-cache:4.5.14'
+    implementation 'com.squareup.okhttp3:okhttp-urlconnection:4.9.3'
 }
 
 tasks.named('test') {

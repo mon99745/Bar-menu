@@ -2,6 +2,8 @@ package com.example.bma.cotroller.admin;
 
 import com.example.bma.domain.admin.Admin;
 import com.example.bma.service.admin.AdminService;
+import com.example.bmc.util.HttpClient;
+import com.example.bmc.vaildation.DefaultProperties;
 import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AccessLevel;
@@ -9,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +37,8 @@ public class AdminRestController {
     public static final String TAG = "Admin Rest API";
     private final AdminService adminService;
 
+    protected final DefaultProperties defaultProperties;
+
 
     /**
      * 관리자 가입 API
@@ -56,27 +61,13 @@ public class AdminRestController {
 
     /**
      * 전체 회원 조회 API (관리자용)
-     * TODO : 바이패스
      */
-//    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
-//    @GetMapping("userList")
-//    public String userList(Model model){
-//        List<User> userList = userService.findAllUser();
-//        model.addAttribute("userList", userList);
-//        return "admin/user-list";
-//    }
-
-//    /**
-//     * 전체 관리자 조회 API
-//     */
-//    @Operation(summary = "6. 전체 관리자 조회")
-//    @GetMapping("adminList")
-//    public String adminList(Model model){
-//        List<Admin> adminList = adminService.findAllAdmin();
-//        model.addAttribute("adminList", adminList);
-//        return "admin/admin-list";
-//    }
-
+    @Operation(summary = "5. 전체 회원 조회 (관리자용)")
+    @GetMapping("userList")
+    public String userList(Model model){
+        model.addAttribute(HttpClient.sendGet(defaultProperties.getBmmReadUri()));
+        return "admin/user-list";
+    }
 
     /**
      * 관리자 수정 API
