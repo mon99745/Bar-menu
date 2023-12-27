@@ -1,6 +1,8 @@
 package com.example.bmm.service.order;
 
 
+import com.example.bmc.exception.BmmError;
+import com.example.bmc.exception.BmcException;
 import com.example.bmm.model.dto.order.MyOrderDetailDto;
 import com.example.bmm.model.dto.order.MyOrderDetailProductDto;
 import com.example.bmm.model.dto.order.MyOrderDetailReceiverDto;
@@ -46,7 +48,7 @@ public class MyOrderService {
 
     public MyOrderDetailDto getMyOrderDetails(Long orderId) {
         Order order = MyOrderRepository.getMyOrderDetails(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문번호입니다."));
+                .orElseThrow(() -> new BmcException(BmmError.BMM_ORDER_ID_NOT_EXIST, null));
 
         List<MyOrderDetailProductDto> myOrderDetailsProductDtoList = order.getOrderProductList().stream()
                 .map(oi -> {
@@ -68,8 +70,7 @@ public class MyOrderService {
 
     public void deleteMyOrder(Long ordererId, Long orderId) {
         Order order  = MyOrderRepository.findById(orderId)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 주문입니다."));
-
+                .orElseThrow(() -> new BmcException(BmmError.BMM_ORDER_ID_NOT_EXIST, null));
         order.deleteOrder(ordererId);
     }
 }

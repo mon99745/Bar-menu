@@ -1,9 +1,9 @@
 package com.example.bmm.domain.order;
 
+import com.example.bmc.exception.BmcException;
 import com.example.bmm.domain.product.Product;
 import com.example.bmm.domain.product.ProductRepository;
 import com.example.bmm.domain.user.User;
-import com.example.bmm.exception.NotEnoughStockQuantityException;
 import com.example.bmm.model.dto.order.OrderLineRequest;
 import com.example.bmm.model.dto.order.OrderRequest;
 import com.example.bmm.service.cart.CartService;
@@ -126,7 +126,7 @@ class OrderServiceTest {
 		int orderCount = 2;
 
 		//then
-		assertThrows(NotEnoughStockQuantityException.class,
+		assertThrows(BmcException.class,
 				() -> orderService.order(TEST_USER.getId(), createOrderRequest(TEST_PRODUCT_ID, orderCount)));
 	}
 
