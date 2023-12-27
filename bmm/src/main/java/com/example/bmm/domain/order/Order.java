@@ -1,6 +1,8 @@
 package com.example.bmm.domain.order;
 
 
+import com.example.bmc.exception.BmcException;
+import com.example.bmc.exception.BmmError;
 import com.example.bmm.domain.AbstractModel;
 import com.example.bmm.model.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -127,8 +129,9 @@ public class Order extends AbstractModel {
     }
 
     public void deleteOrder(Long ordererId) {
-        if (ordererId != this.ordererId)
-            throw new IllegalStateException("주문자와 삭제 요청자가 일치하지 않습니다.");
+        if (ordererId != this.ordererId) {
+            throw new BmcException(BmmError.BMM_ORDER_AND_REQUESTER_NOT_MATCH, null);
+        }
 
         this.removed = true;
         this.removedAt = LocalDateTime.now();

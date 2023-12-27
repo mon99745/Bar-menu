@@ -1,6 +1,8 @@
 package com.example.bmm.service.product;
 
 
+import com.example.bmc.exception.BmmError;
+import com.example.bmc.exception.BmcException;
 import com.example.bmm.domain.product.Product;
 import com.example.bmm.domain.product.ProductRepository;
 import com.example.bmm.model.dto.product.ProductDetailDto;
@@ -90,7 +92,8 @@ public class ProductService {
     @Transactional
     public Product updateProduct(Long productId, Product product){
         Product tempProduct = productRepository.findById(productId).orElseThrow(()
-                -> new IllegalArgumentException("해당 상품이 없습니다. id=" + product.getId()));
+                -> new BmcException(BmmError.BMM_PRODUCT_ID_NOT_EXIST, "ID = " + product.getId()));
+
         // 수정 가능한 정보
         tempProduct.setCategory(product.getCategory());
         tempProduct.setName(product.getName());
@@ -124,8 +127,9 @@ public class ProductService {
      * 상품 예외검증
      */
     private Product validateExistProduct(Optional<Product> product) {
-        if(!product.isPresent())
-            throw new IllegalStateException("존재하지 않는 상품입니다.");
+        if(!product.isPresent()){
+            throw new BmcException(BmmError.BMM_PRODUCT_INFO_NOT_EXIST, null);
+        }
         return product.get();
     }
 }

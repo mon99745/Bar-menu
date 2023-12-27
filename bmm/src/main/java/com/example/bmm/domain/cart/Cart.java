@@ -2,7 +2,7 @@ package com.example.bmm.domain.cart;
 
 
 import com.example.bmc.exception.BmmError;
-import com.example.bmc.exception.BmmException;
+import com.example.bmc.exception.BmcException;
 import com.example.bmm.domain.AbstractModel;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -116,7 +116,7 @@ public class Cart extends AbstractModel {
 
     private void verifyEnoughStockQuantity(int targetStockQuantity, int orderCount) {
         if (orderCount > targetStockQuantity) {
-            throw new BmmException(BmmError.BMM_EMPTY_STOCK_QUANTITY, null);
+            throw new BmcException(BmmError.BMM_EMPTY_STOCK_QUANTITY, null);
         }
     }
 }

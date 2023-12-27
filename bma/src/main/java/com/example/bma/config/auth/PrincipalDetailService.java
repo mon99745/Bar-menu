@@ -2,11 +2,16 @@ package com.example.bma.config.auth;
 
 import com.example.bma.domain.admin.Admin;
 import com.example.bma.domain.admin.AdminRepository;
+import com.example.bmc.exception.BmaError;
+import com.example.bmc.exception.BmcException;
+import com.example.bmc.exception.BmmError;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -21,8 +26,8 @@ public class PrincipalDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String adminname) throws UsernameNotFoundException {
-        Admin principal =  adminRepository.findByAdminname(adminname);
-//        .orElseThrow(() -> new UsernameNotFoundException("해당 사용자를 찾을 수 없습니다. " + adminname));
+        Optional<Admin> adminOptional =  adminRepository.findByAdminname(adminname);
+        Admin principal = adminOptional.orElseThrow(()-> new BmcException(BmaError.BMA_ID_NOT_EXIST, null));
         return new PrincipalDetail(principal);
     }
 }

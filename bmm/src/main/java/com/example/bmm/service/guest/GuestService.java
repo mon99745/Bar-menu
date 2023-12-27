@@ -1,5 +1,7 @@
 package com.example.bmm.service.guest;
 
+import com.example.bmc.exception.BmcException;
+import com.example.bmc.exception.BmmError;
 import com.example.bmm.domain.guest.Guest;
 import com.example.bmm.domain.guest.GuestRepository;
 import com.example.bmm.model.enums.Role;
@@ -63,8 +65,9 @@ public class GuestService {
      * 게스트 예외검증
      */
     private Guest validateExistMember(Optional<Guest> guest) {
-        if(!guest.isPresent())
-            throw new IllegalStateException("존재하지 않는 게스트 입니다.");
+        if(!guest.isPresent()){
+            throw new BmcException(BmmError.BMM_GUEST_INFO_NOT_EXIST, null);
+        }
         return guest.get();
     }
 

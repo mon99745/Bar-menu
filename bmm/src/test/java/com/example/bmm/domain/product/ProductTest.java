@@ -1,6 +1,6 @@
 package com.example.bmm.domain.product;
 
-import com.example.bmm.exception.NotEnoughStockQuantityException;
+import com.example.bmc.exception.BmcException;
 import org.junit.jupiter.api.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,7 +30,7 @@ class ProductTest {
 
 		//when, then
 		int OVER_ORDER_QUANTITY = 20;
-		assertThrows(NotEnoughStockQuantityException.class,
+		assertThrows(BmcException.class,
 				() -> product.removeStockQuantity(OVER_ORDER_QUANTITY));
 	}
 

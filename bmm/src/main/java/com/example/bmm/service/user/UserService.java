@@ -1,5 +1,7 @@
 package com.example.bmm.service.user;
 
+import com.example.bmc.exception.BmmError;
+import com.example.bmc.exception.BmcException;
 import com.example.bmm.domain.user.User;
 import com.example.bmm.domain.user.UserRepository;
 import com.example.bmm.model.enums.Role;
@@ -27,7 +29,7 @@ public class UserService {
     @Transactional
     public Long save(User user) {
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            throw new IllegalArgumentException("중복된 아이디 입니다.");
+            throw new BmcException(BmmError.BMM_ID_DUPLICATE, null);
         }
         user.setRole(Role.USER);
         // 활성화 상태
@@ -73,7 +75,7 @@ public class UserService {
         user.setPassword(hashPw);
 
         User tempUser = userRepository.findById(userId).orElseThrow(()
-                -> new IllegalArgumentException("해당 회원이 없습니다. id=" + user.getId()));
+                -> new BmcException(BmmError.BMM_ID_NOT_EXIST, "ID = " + user.getId()));
 
         tempUser.setPassword(user.getPassword());
         tempUser.setName(user.getName());
@@ -95,8 +97,9 @@ public class UserService {
      * 회원 예외검증
      */
     private User validateExistMember(Optional<User> user) {
-        if(!user.isPresent())
-            throw new IllegalStateException("존재하지 않는 유저입니다.");
+        if(!user.isPresent()){
+            throw new BmcException(BmmError.BMM_USER_INFO_NOT_EXIST, null);
+        }
         return user.get();
     }
 
