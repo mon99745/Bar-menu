@@ -1,6 +1,5 @@
 <div align="center">
  
- ![image](https://github.com/mon99745/Bar-menu/assets/84507123/ba93fbd9-144f-4fd7-afef-d49861dc6d71)
     
 # Bar-menu
 - ~~https://ProjectDanta.com~~ [ AWS EC2 일시 중지 ]
