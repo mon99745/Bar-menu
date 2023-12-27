@@ -4,6 +4,8 @@ import com.example.bma.domain.admin.Admin;
 import com.example.bma.domain.admin.AdminRepository;
 import com.example.bma.model.enums.Role;
 import com.example.bma.model.enums.Status;
+import com.example.bmc.exception.BmaError;
+import com.example.bmc.exception.BmcException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,7 +26,7 @@ public class AdminService {
     @Transactional
     public Long save(Admin admin) {
         if (adminRepository.findByAdminname(admin.getAdminname()) != null) {
-            throw new IllegalArgumentException("중복된 아이디 입니다.");
+            throw new BmcException(BmaError.BMA_ID_DUPLICATE, null);
         }
         admin.setRole(Role.ADMIN);
         admin.setStatus(Status.TRUE);
@@ -66,7 +68,7 @@ public class AdminService {
         admin.setPassword(hashPw);
 
         Admin tempAdmin = adminRepository.findById(adminId).orElseThrow(()
-                -> new IllegalArgumentException("해당 회원이 없습니다. id=" + admin.getId()));
+                -> new BmcException(BmaError.BMA_ID_NOT_EXIST, "ID = " + admin.getId()));
 
         tempAdmin.setPassword(admin.getPassword());
         tempAdmin.setName(admin.getName());
@@ -89,9 +91,10 @@ public class AdminService {
     /**
      * 회원 예외검증
      */
-    private Admin validateExistMember(Optional<Admin> memberEntity) {
-        if(!memberEntity.isPresent())
-            throw new IllegalStateException("존재하지 않는 유저입니다.");
-        return memberEntity.get();
+    private Admin validateExistMember(Optional<Admin> admin) {
+        if(!admin.isPresent()){
+            throw new BmcException(BmaError.BMA_ADMIN_INFO_NOT_EXIST, null);
+        }
+        return admin.get();
     }
 }
