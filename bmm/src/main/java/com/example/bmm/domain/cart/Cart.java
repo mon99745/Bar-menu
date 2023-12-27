@@ -1,8 +1,9 @@
 package com.example.bmm.domain.cart;
 
 
+import com.example.bmc.exception.BmmError;
+import com.example.bmc.exception.BmmException;
 import com.example.bmm.domain.AbstractModel;
-import com.example.bmm.exception.NotEnoughStockQuantityException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -115,7 +116,7 @@ public class Cart extends AbstractModel {
 
     private void verifyEnoughStockQuantity(int targetStockQuantity, int orderCount) {
         if (orderCount > targetStockQuantity) {
-            throw new NotEnoughStockQuantityException("재고량이 충분하지 않습니다.");
+            throw new BmmException(BmmError.BMM_EMPTY_STOCK_QUANTITY, null);
         }
     }
 }

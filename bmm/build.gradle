@@ -28,6 +28,7 @@ dependencies {
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
+    implementation project(':bmc')
     implementation group: 'io.socket', name: 'socket.io-client', version: '2.1.0'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

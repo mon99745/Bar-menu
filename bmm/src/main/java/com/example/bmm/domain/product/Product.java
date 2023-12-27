@@ -1,7 +1,8 @@
 package com.example.bmm.domain.product;
 
+import com.example.bmc.exception.BmmError;
+import com.example.bmc.exception.BmmException;
 import com.example.bmm.domain.AbstractModel;
-import com.example.bmm.exception.NotEnoughStockQuantityException;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -113,8 +114,9 @@ public class Product extends AbstractModel {
     public void removeStockQuantity(int orderQuantity) {
         int restStockQuantity = this.stock - orderQuantity;
 
-        if(restStockQuantity < 0)
-            throw new NotEnoughStockQuantityException();
+        if(restStockQuantity < 0){
+            throw new BmmException(BmmError.BMM_EMPTY_STOCK_QUANTITY, null);
+        }
 
         this.stock = restStockQuantity;
     }
