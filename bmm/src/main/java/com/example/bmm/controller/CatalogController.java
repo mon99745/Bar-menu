@@ -3,6 +3,7 @@ package com.example.bmm.controller;
 import com.example.bmm.domain.product.Product;
 import com.example.bmm.model.dto.cart.ProductSearchForm;
 import com.example.bmm.model.dto.product.CatalogSummary;
+import com.example.bmm.model.enums.Category;
 import com.example.bmm.service.product.CatalogService;
 import com.example.bmm.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -25,16 +26,14 @@ public class CatalogController {
     // TODO : 검색기능 에러 수정 작업
 
     @GetMapping("/")
-    public String getMainPage(String category, @ModelAttribute ProductSearchForm searchForm, Model model) {
-//        // category
-//        List<CategoryEntity> categorys = categoryService.findAll();
-//        model.addAttribute("categorys", categorys);
+    public String getMainPage(Category category, @ModelAttribute ProductSearchForm searchForm, Model model) {
 
-        // 아이템 검색 form
-        if (searchForm == null)
+        // 아이템 검색
+        if (searchForm == null) {
             model.addAttribute("productSearchForm", new ProductSearchForm());
-        else
+        } else {
             model.addAttribute("productSearchForm", searchForm);
+        }
 
         // 아이템 리스트
         searchForm.setCategory(category);

@@ -1,5 +1,6 @@
 package com.example.bmm.model.dto.product;
 
+import com.example.bmm.model.enums.Category;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,5 +27,5 @@ public class ProductRequestDto {
     @Min(1)
     private int stock;
     private String description;
-    private String category;
+    private Category category;
 }

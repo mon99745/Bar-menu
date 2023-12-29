@@ -3,6 +3,7 @@ package com.example.bmm.domain.product;
 import com.example.bmc.exception.BmmError;
 import com.example.bmc.exception.BmcException;
 import com.example.bmm.domain.AbstractModel;
+import com.example.bmm.model.enums.Category;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
@@ -60,7 +61,7 @@ public class Product extends AbstractModel {
     @JsonProperty(index = 10)
     @Schema(description = "상품 카테고리")
     @Column(length = 100)
-    protected String category;
+    protected Category category;
 
     /**
      * 상품 이름

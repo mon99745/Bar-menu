@@ -7,6 +7,7 @@ import com.example.bmm.domain.product.Product;
 import com.example.bmm.domain.product.ProductRepository;
 import com.example.bmm.model.dto.product.ProductDetailDto;
 import com.example.bmm.model.dto.product.ProductRequestDto;
+import com.example.bmm.model.enums.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,7 +34,7 @@ public class ProductService {
                 .price (request.getPrice())
                 .stock(request.getStock())
                 .description(request.getDescription())
-                .category(request.getCategory())
+                .category(Category.valueOf(request.getCategory().getValue()))
                 .build();
         newProduct.setId(Long.valueOf(productCountForId()+1));
         //TODO: 상품 상태 활성화/비활성화
@@ -63,6 +64,7 @@ public class ProductService {
      * @return
      */
     public List<Product> findAll() {
+        //TODO 예외 처리 : 상품 전체 조회 실패
         return productRepository.findAll();
     }
 

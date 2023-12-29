@@ -1,5 +1,6 @@
 package com.example.bmm.model.dto.product;
 
+import com.example.bmm.model.enums.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,11 +11,11 @@ import java.util.List;
 @Getter
 public class CategoryDto implements Serializable {
     private Long categoryId;
-    private String category;
+    private Category category;
 //    private Long parentId;
     private List<CategoryDto> subCategories;
 
-    public CategoryDto(Long categoryId, String category) {
+    public CategoryDto(Long categoryId, Category category) {
         this.categoryId = categoryId;
         this.category = category;
 //        this.parentId = parentId;

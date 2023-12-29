@@ -1,5 +1,6 @@
 package com.example.bmm.domain.product;
 
+import com.example.bmm.model.enums.Category;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Predicate;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -40,7 +41,7 @@ public class ProductCustomRepositoryImpl implements ProductCustomRepository{
         return null;
     }
 
-    private Predicate categoryEq(String category) {
+    private Predicate categoryEq(Category category) {
         if (category != null)
             return product.category.eq(category);
         return null;
