@@ -31,7 +31,7 @@
 <img width="1193" alt="스크린샷 2022-06-02 오후 1 22 06" src="https://user-images.githubusercontent.com/84507123/171552485-25f2f685-8e3b-4253-9b94-7b60acc90526.png">
 
 ## Prev
-  - https://github.com/mon99745/Bar-menu
+  - https://github.com/mon99745/Tablet-web
   - Tools : Html, CSS, JS, JQuery, JSP, Servlet, MySQL, AWS
   - IDE : Visual Studio Code, Eclipse 
   - Collaboration : Github
